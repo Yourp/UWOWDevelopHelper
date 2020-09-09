@@ -37,27 +37,18 @@ void MainWindow::on_pushButton_released()
     QString FinalText;
     QString Midle;
 
-    int StartIndex = TextStatics::GetIndexAfterString(&BeforeEdit, &StartGeneration);
-    int EndIndex = BeforeEdit.indexOf(EndGeneration);
-
-    LeftSide = BeforeEdit.left(StartIndex);
-    // Midle = BeforeEdit.mid(StartIndex, EndIndex - StartIndex);
-    RightSide = BeforeEdit.right(BeforeEdit.length() - EndIndex);
-
     Midle += "\n\nclass " + ScriptName + " : public SpellScript";
     Midle += "\n{";
     Midle += "\n    PrepareSpellScript(" + ScriptName + ");";
     Midle += "\n};\n\n";
 
-    FinalText = LeftSide + Midle + RightSide;
-
-    BeforeEdit = FinalText;
+    BeforeEdit = TextStatics::ReWriteBetweenStrings(&BeforeEdit, &StartGeneration, &Midle, &EndGeneration);
 
     QString AddSC = "void AddSC_hunter_spell_scripts()\n{";
 
-    StartIndex = BeforeEdit.indexOf(AddSC) + AddSC.length();
+    int StartIndex = TextStatics::GetIndexAfterString(&BeforeEdit, AddSC);
     LeftSide = BeforeEdit.left(StartIndex);
-    RightSide = BeforeEdit.right(BeforeEdit.length() - StartIndex);
+    RightSide = TextStatics::GetRightSide(&BeforeEdit, StartIndex);
     Midle = "\n    RegisterSpellScript(" + ScriptName + ");";
 
     FinalText = LeftSide + Midle + RightSide;
@@ -65,7 +56,7 @@ void MainWindow::on_pushButton_released()
     qq.seek(0);
     qq << FinalText;
 
-    ui->textEditDebug->setText(Midle);
+    ui->textEditDebug->setText(FinalText.left(TextStatics::GetIndexOfClassEnd(&FinalText, "Call to the Eagles")));
 
     file.close();
 }
