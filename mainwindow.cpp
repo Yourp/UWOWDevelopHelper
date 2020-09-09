@@ -42,13 +42,13 @@ void MainWindow::on_pushButton_released()
     Midle += "\n    PrepareSpellScript(" + ScriptName + ");";
     Midle += "\n};\n\n";
 
-    BeforeEdit = TextStatics::ReWriteBetweenStrings(&BeforeEdit, &StartGeneration, &Midle, &EndGeneration);
+    BeforeEdit = CodeStatics::ReWriteBetweenStrings(&BeforeEdit, &StartGeneration, &Midle, &EndGeneration);
 
     QString AddSC = "void AddSC_hunter_spell_scripts()\n{";
 
-    int StartIndex = TextStatics::GetIndexAfterString(&BeforeEdit, AddSC);
+    int StartIndex = CodeStatics::GetIndexAfterString(&BeforeEdit, AddSC);
     LeftSide = BeforeEdit.left(StartIndex);
-    RightSide = TextStatics::GetRightSide(&BeforeEdit, StartIndex);
+    RightSide = CodeStatics::GetRightSide(&BeforeEdit, StartIndex);
     Midle = "\n    RegisterSpellScript(" + ScriptName + ");";
 
     FinalText = LeftSide + Midle + RightSide;
@@ -56,7 +56,7 @@ void MainWindow::on_pushButton_released()
     qq.seek(0);
     qq << FinalText;
 
-    ui->textEditDebug->setText(FinalText.left(TextStatics::GetIndexOfClassEnd(&FinalText, "Call to the Eagles")));
+    ui->textEditDebug->setText(FinalText.left(CodeStatics::GetIndexOfClassEnd(&FinalText, "class spell_hun_steady_focus")));
 
     file.close();
 }

@@ -3,9 +3,9 @@
 
 class QString;
 
-class TextStatics
+class CodeStatics
 {
-    TextStatics() {}
+    CodeStatics() {}
 
 public:
 
@@ -14,6 +14,8 @@ public:
     static QString GetRightSide(QString const* From, int Index);
 
     static QString ReWriteBetweenStrings(QString const* Where, QString const* Start, QString const* Midle, QString const* End);
+
+    static QString ReWriteBetweenIndexes(QString const* Where, QString const* Midle, int Start, int End);
 
     static int GetIndexOfClassEnd(QString const* Where, QString const ClassName);
 };

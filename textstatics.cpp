@@ -6,7 +6,7 @@
 
 
 
-int TextStatics::GetIndexAfterString(const QString *From, const QString StringKey, int StartPoint)
+int CodeStatics::GetIndexAfterString(const QString *From, const QString StringKey, int StartPoint)
 {
     int Index = From->indexOf(StringKey, StartPoint);
 
@@ -18,7 +18,7 @@ int TextStatics::GetIndexAfterString(const QString *From, const QString StringKe
     return Index;
 }
 
-QString TextStatics::GetRightSide(const QString *From, int Index)
+QString CodeStatics::GetRightSide(const QString *From, int Index)
 {
     QString Result;
 
@@ -30,24 +30,29 @@ QString TextStatics::GetRightSide(const QString *From, int Index)
     return Result;
 }
 
-QString TextStatics::ReWriteBetweenStrings(const QString *Where, const QString *Start, const QString *Midle, const QString *End)
+QString CodeStatics::ReWriteBetweenStrings(const QString *Where, const QString *Start, const QString *Midle, const QString *End)
 {
-    QString Result;
-
     int StartIndex = GetIndexAfterString(Where, *Start);
     int EndIndex = Where->indexOf(End);
 
-    if (StartIndex >= 0)
+    return ReWriteBetweenIndexes(Where, Midle, StartIndex, EndIndex);
+}
+
+QString CodeStatics::ReWriteBetweenIndexes(const QString *Where, const QString *Midle, int Start, int End)
+{
+    QString Result;
+
+    if (Start >= 0)
     {
-        Result = Where->left(StartIndex);
+        Result = Where->left(Start);
         Result += Midle;
-        Result += GetRightSide(Where, EndIndex);
+        Result += GetRightSide(Where, End);
     }
 
     return Result;
 }
 
-int TextStatics::GetIndexOfClassEnd(const QString *Where, const QString ClassName)
+int CodeStatics::GetIndexOfClassEnd(const QString *Where, const QString ClassName)
 {
     int FieldsOpened = 0;
     int CurrentIndex = GetIndexAfterString(Where, ClassName);
