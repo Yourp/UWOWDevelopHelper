@@ -18,10 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    script.cpp \
     textstatics.cpp
 
 HEADERS += \
     mainwindow.h \
+    script.h \
     textstatics.h
 
 FORMS += \
