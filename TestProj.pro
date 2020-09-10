@@ -16,12 +16,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Scripts/spellscript.cpp \
     main.cpp \
     mainwindow.cpp \
     script.cpp \
     textstatics.cpp
 
 HEADERS += \
+    Scripts/spellscript.h \
     mainwindow.h \
     script.h \
     textstatics.h
