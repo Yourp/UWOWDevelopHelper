@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.14.1
+** Created by: Qt User Interface Compiler version 5.15.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -38,7 +38,6 @@ public:
     QLineEdit *ScriptName;
     QPushButton *pushButton;
     QTextEdit *textEditDebug;
-    QComboBox *CB_Classes;
     QGroupBox *groupBox;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
@@ -49,6 +48,8 @@ public:
     QVBoxLayout *verticalLayout_2;
     QTableWidget *TW_AddedRegisters;
     QPushButton *pushButton_3;
+    QComboBox *CB_Scripts;
+    QComboBox *CB_Classes;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QToolBar *toolBar;
@@ -87,17 +88,6 @@ public:
         textEditDebug = new QTextEdit(Tabs);
         textEditDebug->setObjectName(QString::fromUtf8("textEditDebug"));
         textEditDebug->setGeometry(QRect(680, 50, 251, 601));
-        CB_Classes = new QComboBox(Tabs);
-        CB_Classes->addItem(QString());
-        CB_Classes->addItem(QString());
-        CB_Classes->addItem(QString());
-        CB_Classes->addItem(QString());
-        CB_Classes->addItem(QString());
-        CB_Classes->addItem(QString());
-        CB_Classes->addItem(QString());
-        CB_Classes->addItem(QString());
-        CB_Classes->setObjectName(QString::fromUtf8("CB_Classes"));
-        CB_Classes->setGeometry(QRect(530, 100, 101, 21));
         groupBox = new QGroupBox(Tabs);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(10, 50, 431, 381));
@@ -174,7 +164,7 @@ public:
         TW_AddedRegisters->setGridStyle(Qt::SolidLine);
         TW_AddedRegisters->setSortingEnabled(false);
         TW_AddedRegisters->setCornerButtonEnabled(false);
-        TW_AddedRegisters->horizontalHeader()->setVisible(true);
+        TW_AddedRegisters->horizontalHeader()->setVisible(false);
         TW_AddedRegisters->horizontalHeader()->setCascadingSectionResizes(false);
         TW_AddedRegisters->horizontalHeader()->setMinimumSectionSize(100);
         TW_AddedRegisters->horizontalHeader()->setDefaultSectionSize(100);
@@ -200,6 +190,12 @@ public:
 
         horizontalLayout->addLayout(verticalLayout_2);
 
+        CB_Scripts = new QComboBox(Tabs);
+        CB_Scripts->setObjectName(QString::fromUtf8("CB_Scripts"));
+        CB_Scripts->setGeometry(QRect(490, 70, 121, 21));
+        CB_Classes = new QComboBox(Tabs);
+        CB_Classes->setObjectName(QString::fromUtf8("CB_Classes"));
+        CB_Classes->setGeometry(QRect(490, 120, 121, 22));
         MainWindow->setCentralWidget(Tabs);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -220,6 +216,12 @@ public:
         toolBar->setFont(font2);
         toolBar->setMovable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
+        QWidget::setTabOrder(pushButton, textEditDebug);
+        QWidget::setTabOrder(textEditDebug, lineEdit);
+        QWidget::setTabOrder(lineEdit, StaticRegisters);
+        QWidget::setTabOrder(StaticRegisters, pushButton_2);
+        QWidget::setTabOrder(pushButton_2, pushButton_3);
+        QWidget::setTabOrder(pushButton_3, ScriptName);
 
         toolBar->addAction(Generation);
 
@@ -242,15 +244,6 @@ public:
 #if QT_CONFIG(shortcut)
         pushButton->setShortcut(QCoreApplication::translate("MainWindow", "Return", nullptr));
 #endif // QT_CONFIG(shortcut)
-        CB_Classes->setItemText(0, QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
-        CB_Classes->setItemText(1, QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
-        CB_Classes->setItemText(2, QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
-        CB_Classes->setItemText(3, QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
-        CB_Classes->setItemText(4, QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
-        CB_Classes->setItemText(5, QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
-        CB_Classes->setItemText(6, QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
-        CB_Classes->setItemText(7, QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
-
         groupBox->setTitle(QCoreApplication::translate("MainWindow", "GroupBox", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Add Register", nullptr));
         QTableWidgetItem *___qtablewidgetitem = TW_AddedRegisters->horizontalHeaderItem(0);

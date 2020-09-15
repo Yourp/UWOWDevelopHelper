@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QtSql>
 #include <QSqlDatabase>
+#include "script.h"
+#include "Classes/classname.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,6 +29,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    Script* ScriptList[int(ScriptType::Max)];
+    ClassName* Classes[int(ClassNameType::Max)];
 
     QString const StartGeneration = "/** #CODE_GENERATION_START */";
     QString const EndGeneration = "/** #CODE_GENERATION_END */";

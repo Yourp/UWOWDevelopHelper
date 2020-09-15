@@ -71,56 +71,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QComboBox" name="CB_Classes">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>100</y>
-      <width>101</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Новый элемент</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Новый элемент</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Новый элемент</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Новый элемент</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Новый элемент</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Новый элемент</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Новый элемент</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Новый элемент</string>
-     </property>
-    </item>
-   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
@@ -275,7 +225,7 @@
            <bool>false</bool>
           </property>
           <attribute name="horizontalHeaderVisible">
-           <bool>true</bool>
+           <bool>false</bool>
           </attribute>
           <attribute name="horizontalHeaderCascadingSectionResizes">
            <bool>false</bool>
@@ -342,6 +292,26 @@
       </item>
      </layout>
     </widget>
+   </widget>
+   <widget class="QComboBox" name="CB_Scripts">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>70</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="CB_Classes">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>120</y>
+      <width>121</width>
+      <height>22</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -411,6 +381,15 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>pushButton</tabstop>
+  <tabstop>textEditDebug</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>StaticRegisters</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>ScriptName</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

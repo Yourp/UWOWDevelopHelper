@@ -20,6 +20,8 @@ public:
     SpellScript();
 
     ScriptRegisterBase const* GetRegisterByIndex(int Index) const override;
+
+    virtual QString const GetName() const override { return "SpellScript"; }
 };
 
 #endif // SPELLSCRIPT_H
