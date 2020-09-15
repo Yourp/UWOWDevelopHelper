@@ -212,10 +212,6 @@ Makefile: TestProj.pro F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\win32-msvc\qmak
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_script.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_script_private.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_scripttools.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_scripttools_private.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri \
@@ -236,18 +232,9 @@ Makefile: TestProj.pro F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\win32-msvc\qmak
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_virtualkeyboard.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri \
-		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webview.pri \
@@ -293,11 +280,13 @@ Makefile: TestProj.pro F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\win32-msvc\qmak
 		TestProj.pro \
 		F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Widgets.prl \
 		F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Gui.prl \
+		F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Sql.prl \
 		F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Core.prl \
 		F:\Programs\Qt\5.14.1\msvc2017_64\lib\qtmain.prl \
 		F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\features\build_pass.prf \
 		F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Widgetsd.prl \
 		F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Guid.prl \
+		F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Sqld.prl \
 		F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Cored.prl \
 		F:\Programs\Qt\5.14.1\msvc2017_64\lib\qtmaind.prl
 	$(QMAKE) -o Makefile TestProj.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -429,10 +418,6 @@ F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_script.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_script_private.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_scripttools.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_scripttools_private.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri:
@@ -453,18 +438,9 @@ F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.p
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_virtualkeyboard.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri:
-F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\modules\qt_lib_webview.pri:
@@ -510,11 +486,13 @@ F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\features\lex.prf:
 TestProj.pro:
 F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Widgets.prl:
 F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Gui.prl:
+F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Sql.prl:
 F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Core.prl:
 F:\Programs\Qt\5.14.1\msvc2017_64\lib\qtmain.prl:
 F:\Programs\Qt\5.14.1\msvc2017_64\mkspecs\features\build_pass.prf:
 F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Widgetsd.prl:
 F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Guid.prl:
+F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Sqld.prl:
 F:\Programs\Qt\5.14.1\msvc2017_64\lib\Qt5Cored.prl:
 F:\Programs\Qt\5.14.1\msvc2017_64\lib\qtmaind.prl:
 qmake: FORCE
