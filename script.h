@@ -31,7 +31,7 @@ public:
 
     virtual ~Script() {}
 
-    virtual class ScriptRegister const* GetRegisterByIndex(int Index) const = 0;
+    virtual class ScriptRegisterBase const* GetRegisterByIndex(int Index) const = 0;
 
     //virtual QString CreateScript(QString ScriptName, QVector<ScriptRegister> Registers, int ClassIndex) = 0;
 

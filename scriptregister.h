@@ -8,15 +8,15 @@ class ScriptRegisterBase
 {
     friend class SpellScript;
 
+
+protected:
+    ScriptRegisterBase() {}
+
     QString Name;
     QString DefaultFunctionName;
     QString FunctionsParameters;
     QString FunctionsReturnType;
     QString InitializationTemplate;
-
-protected:
-    ScriptRegisterBase() {}
-
 
 public:
 
@@ -31,11 +31,14 @@ public:
 class ScriptRegister : public ScriptRegisterBase
 {
 
+    QString FunctionName;
 
 public:
-    ScriptRegister() : ScriptRegisterBase() {}
+    ScriptRegister(ScriptRegisterBase const& Base);
 
-    QString FunctionName;
+    void SetFunctionName(QString const& Name) { FunctionName = Name; }
+    QString const GetFunctionName() const { return FunctionName; }
+
 };
 
 #endif // SCRIPTREGISTER_H

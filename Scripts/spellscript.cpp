@@ -19,7 +19,7 @@ SpellScript::SpellScript() : Script()
 
 }
 
-const ScriptRegister* SpellScript::GetRegisterByIndex(int Index) const
+const ScriptRegisterBase* SpellScript::GetRegisterByIndex(int Index) const
 {
     if (Index >= 0 && Index < int(SpellScriptRegisters::Max))
     {

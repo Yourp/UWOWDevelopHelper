@@ -14,12 +14,12 @@ enum class SpellScriptRegisters
 
 class SpellScript : public Script
 {
+    ScriptRegisterBase Registers[int(SpellScriptRegisters::Max)];
+
 public:
     SpellScript();
 
-    ScriptRegister Registers[int(SpellScriptRegisters::Max)];
-
-    ScriptRegister const* GetRegisterByIndex(int Index) const override;
+    ScriptRegisterBase const* GetRegisterByIndex(int Index) const override;
 };
 
 #endif // SPELLSCRIPT_H
