@@ -1,6 +1,6 @@
 #include "script.h"
 
-#pragma once
+//#pragma once
 
 Script::Script()
 {

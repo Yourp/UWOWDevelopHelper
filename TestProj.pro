@@ -20,12 +20,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     script.cpp \
+    scriptregister.cpp \
     textstatics.cpp
 
 HEADERS += \
     Scripts/spellscript.h \
     mainwindow.h \
     script.h \
+    scriptregister.h \
     textstatics.h
 
 FORMS += \

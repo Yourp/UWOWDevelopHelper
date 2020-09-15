@@ -40,6 +40,8 @@ void MainWindow::on_pushButton_released()
     QString FinalText;
     QString Midle;
 
+
+
     Midle += "\n\nclass " + ScriptName + " : public SpellScript";
     Midle += "\n{";
     Midle += "\n    PrepareSpellScript(" + ScriptName + ");";

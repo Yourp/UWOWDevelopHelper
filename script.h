@@ -1,5 +1,6 @@
 #include <QString>
 #include <QVector>
+//#include "scriptregister.h"
 
 #ifndef SCRIPT_H
 #define SCRIPT_H
@@ -22,14 +23,6 @@ enum class SpellFamily : quint8
     DemonHunter
 };
 
-struct ScriptRegister
-{
-    ScriptRegister(QString Name, int index) : FunctionName(Name), Index(index) {}
-
-    QString FunctionName;
-    int Index;
-};
-
 
 class Script
 {
@@ -38,7 +31,13 @@ public:
 
     virtual ~Script() {}
 
-    virtual QString CreateScript(QString ScriptName, QVector<ScriptRegister> Registers, int ClassIndex) = 0;
+    virtual class ScriptRegister const* GetRegisterByIndex(int Index) const = 0;
+
+    //virtual QString CreateScript(QString ScriptName, QVector<ScriptRegister> Registers, int ClassIndex) = 0;
+
+protected:
+
+
 };
 
 #endif // SCRIPT_H
