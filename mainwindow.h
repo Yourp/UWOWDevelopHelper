@@ -36,6 +36,12 @@ private slots:
 
     void on_PB_AddRegister_released();
 
+    void on_TW_AddedRegisters_cellClicked(int row, int column);
+
+    void on_PB_RemoveRegister_released();
+
+
+
 private:
     Ui::MainWindow *ui;
 

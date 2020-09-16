@@ -166,7 +166,28 @@ void MainWindow::on_PB_AddRegister_released()
     }
 }
 
+void MainWindow::on_TW_AddedRegisters_cellClicked(int, int)
+{
+    ui->PB_RemoveRegister->setEnabled(true);
+}
+
+void MainWindow::on_PB_RemoveRegister_released()
+{
+    int Index = ui->TW_AddedRegisters->currentRow();
+
+    ui->TW_AddedRegisters->removeRow(Index);
+    ui->TW_AddedRegisters->setCurrentCell(-1, -1);
+    ui->PB_RemoveRegister->setEnabled(false);
+    ui->TW_AddedRegisters->setFocus();
+
+    Registers.remove(Index);
+}
+
 int MainWindow::GetCurrentScriptIndex() const
 {
     return ui->CB_Scripts->currentIndex();
 }
+
+
+
+
