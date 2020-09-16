@@ -11,7 +11,6 @@ class ScriptRegisterBase : public ScriptsObject
 
 
 protected:
-    ScriptRegisterBase() {}
 
     QString Name;
     QString DefaultFunctionName;
@@ -20,6 +19,7 @@ protected:
     QString InitializationTemplate;
 
 public:
+    ScriptRegisterBase() {}
 
     QString const GetName() const override { return Name; }
     QString const GetDefaultFunctionName() const { return DefaultFunctionName; }

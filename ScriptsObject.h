@@ -8,6 +8,8 @@ class ScriptsObject
 {
 public:
 
+    virtual ~ScriptsObject() {}
+
     virtual QString const GetName() const = 0;
 };
 

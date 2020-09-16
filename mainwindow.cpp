@@ -49,6 +49,8 @@ MainWindow::MainWindow(QWidget *parent)
         ui->CB_Classes->insertItem(var, Classes[var]->GetName());
     }
 
+    //ui->StaticRegisters->currentRow()
+
 }
 
 MainWindow::~MainWindow()

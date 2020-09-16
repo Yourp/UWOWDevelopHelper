@@ -26,6 +26,8 @@ enum class ClassNameType : quint8
 class ClassName : public ScriptsObject
 {
 public:
+    virtual ~ClassName() {}
+
     virtual QString const GetPrefix() const = 0;
 };
 
