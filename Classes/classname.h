@@ -26,6 +26,7 @@ enum class ClassNameType : quint8
 class ClassName : public ScriptsObject
 {
 public:
+    ClassName() : ScriptsObject() {}
     virtual ~ClassName() {}
 
     virtual QString const GetPrefix() const = 0;
@@ -34,6 +35,8 @@ public:
 class Generic : public ClassName
 {
 public:
+    Generic() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_gen_"; }
     QString const GetName() const override { return "Generic"; }
 };
@@ -41,6 +44,8 @@ public:
 class Mage : public ClassName
 {
 public:
+    Mage() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_mage_"; }
     QString const GetName() const override { return "Mage"; }
 };
@@ -48,6 +53,8 @@ public:
 class Warrior : public ClassName
 {
 public:
+    Warrior() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_war_"; }
     QString const GetName() const override { return "Warrior"; }
 };
@@ -55,6 +62,8 @@ public:
 class Warlock : public ClassName
 {
 public:
+    Warlock() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_warl_"; }
     QString const GetName() const override { return "Warlock"; }
 };
@@ -62,6 +71,8 @@ public:
 class Priest : public ClassName
 {
 public:
+    Priest() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_pri_"; }
     QString const GetName() const override { return "Priest"; }
 };
@@ -69,6 +80,8 @@ public:
 class Druid : public ClassName
 {
 public:
+    Druid() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_dru_"; }
     QString const GetName() const override { return "Druid"; }
 };
@@ -76,6 +89,8 @@ public:
 class Rogue : public ClassName
 {
 public:
+    Rogue() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_rog_"; }
     QString const GetName() const override { return "Rogue"; }
 };
@@ -83,6 +98,8 @@ public:
 class Hunter : public ClassName
 {
 public:
+    Hunter() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_hun_"; }
     QString const GetName() const override { return "Hunter"; }
 };
@@ -90,6 +107,8 @@ public:
 class Paladin : public ClassName
 {
 public:
+    Paladin() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_pal_"; }
     QString const GetName() const override { return "Paladin"; }
 };
@@ -97,6 +116,8 @@ public:
 class Shaman : public ClassName
 {
 public:
+    Shaman() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_sha_"; }
     QString const GetName() const override { return "Shaman"; }
 };
@@ -104,6 +125,8 @@ public:
 class DeathKnight : public ClassName
 {
 public:
+    DeathKnight() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_dk_"; }
     QString const GetName() const override { return "DeathKnight"; }
 };
@@ -111,6 +134,8 @@ public:
 class Monk : public ClassName
 {
 public:
+    Monk() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_monk_"; }
     QString const GetName() const override { return "Monk"; }
 };
@@ -118,6 +143,8 @@ public:
 class DemonHunter : public ClassName
 {
 public:
+    DemonHunter() : ClassName() {}
+
     QString const GetPrefix() const override { return "spell_dh_"; }
     QString const GetName() const override { return "DemonHunter"; }
 };

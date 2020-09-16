@@ -19,7 +19,7 @@ protected:
     QString InitializationTemplate;
 
 public:
-    ScriptRegisterBase() {}
+    ScriptRegisterBase() : ScriptsObject() {}
 
     QString const GetName() const override { return Name; }
     QString const GetDefaultFunctionName() const { return DefaultFunctionName; }

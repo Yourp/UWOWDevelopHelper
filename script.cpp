@@ -2,7 +2,4 @@
 
 //#pragma once
 
-Script::Script()
-{
 
-}
