@@ -2,9 +2,10 @@
 #define SCRIPTREGISTER_H
 
 #include <QString>
+#include <ScriptsObject.h>
 
 
-class ScriptRegisterBase
+class ScriptRegisterBase : public ScriptsObject
 {
     friend class SpellScript;
 
@@ -20,7 +21,7 @@ protected:
 
 public:
 
-    QString const GetName() const { return Name; }
+    QString const GetName() const override { return Name; }
     QString const GetDefaultFunctionName() const { return DefaultFunctionName; }
     QString const GetFunctionsParameters() const { return FunctionsParameters; }
     QString const GetFunctionsReturnType() const { return FunctionsReturnType; }

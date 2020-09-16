@@ -27,6 +27,7 @@ SOURCES += \
 HEADERS += \
     Classes/classname.h \
     Scripts/spellscript.h \
+    ScriptsObject.h \
     mainwindow.h \
     script.h \
     scriptregister.h \

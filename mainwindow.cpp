@@ -6,13 +6,12 @@
 #include "Scripts/spellscript.h"
 
 
-#define CREATE_SCRIPT(COMBO_BOX, CLASS)             \
-ScriptList[int(ScriptType::CLASS)] = new CLASS();   \
-ui->COMBO_BOX->addItem(#CLASS)                      \
+#define CREATE_SCRIPT(CLASS)                                 \
+ScriptList[int(ScriptType::CLASS)] = new CLASS()
 
-#define CREATE_CLASSNAME(COMBO_BOX, CLASS)              \
-Classes[int(ClassNameType::CLASS)] = new CLASS();    \
-ui->COMBO_BOX->addItem(#CLASS)                          \
+
+#define CREATE_CLASSNAME(CLASS)                              \
+Classes[int(ClassNameType::CLASS)] = new CLASS()
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -24,15 +23,31 @@ MainWindow::MainWindow(QWidget *parent)
     ui->TW_AddedRegisters->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Fixed);
 
 
-    CREATE_SCRIPT(CB_Scripts, SpellScript);
+    CREATE_SCRIPT(SpellScript);
 
-    ui->CB_Classes->setItemText(int(ClassNameType::Monk), "Monk");
+    for (int var = 0; var < int(ScriptType::Max); ++var)
+    {
+        ui->CB_Scripts->insertItem(var, ScriptList[var]->GetName());
+    }
 
-    QString RightSide = ui->CB_Classes->itemText(int(ClassNameType::Monk));
+    CREATE_CLASSNAME(Generic);
+    CREATE_CLASSNAME(Mage);
+    CREATE_CLASSNAME(Warrior);
+    CREATE_CLASSNAME(Warlock);
+    CREATE_CLASSNAME(Priest);
+    CREATE_CLASSNAME(Druid);
+    CREATE_CLASSNAME(Rogue);
+    CREATE_CLASSNAME(Hunter);
+    CREATE_CLASSNAME(Paladin);
+    CREATE_CLASSNAME(Shaman);
+    CREATE_CLASSNAME(DeathKnight);
+    CREATE_CLASSNAME(Monk);
+    CREATE_CLASSNAME(DemonHunter);
 
-    CREATE_CLASSNAME(CB_Classes, Generic);
-
-
+    for (int var = 0; var < int(ClassNameType::Max); ++var)
+    {
+        ui->CB_Classes->insertItem(var, Classes[var]->GetName());
+    }
 
 }
 
@@ -115,7 +130,7 @@ void MainWindow::on_pushButton_3_clicked(bool checked)
 //    dada = q.exec("INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('9999999', 'spell_mage_ffffffff')");
 }
 
-
+#undef CREATE_CLASSNAME
 #undef CREATE_SCRIPT
 
 

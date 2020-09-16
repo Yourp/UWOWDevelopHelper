@@ -17,7 +17,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -43,7 +43,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
     QLineEdit *lineEdit;
-    QListView *StaticRegisters;
+    QListWidget *StaticRegisters;
     QPushButton *pushButton_2;
     QVBoxLayout *verticalLayout_2;
     QTableWidget *TW_AddedRegisters;
@@ -107,7 +107,7 @@ public:
 
         verticalLayout->addWidget(lineEdit);
 
-        StaticRegisters = new QListView(horizontalLayoutWidget);
+        StaticRegisters = new QListWidget(horizontalLayoutWidget);
         StaticRegisters->setObjectName(QString::fromUtf8("StaticRegisters"));
 
         verticalLayout->addWidget(StaticRegisters);
@@ -196,6 +196,7 @@ public:
         CB_Classes = new QComboBox(Tabs);
         CB_Classes->setObjectName(QString::fromUtf8("CB_Classes"));
         CB_Classes->setGeometry(QRect(490, 120, 121, 22));
+        CB_Classes->setMaxVisibleItems(100);
         MainWindow->setCentralWidget(Tabs);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -218,8 +219,7 @@ public:
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
         QWidget::setTabOrder(pushButton, textEditDebug);
         QWidget::setTabOrder(textEditDebug, lineEdit);
-        QWidget::setTabOrder(lineEdit, StaticRegisters);
-        QWidget::setTabOrder(StaticRegisters, pushButton_2);
+        QWidget::setTabOrder(lineEdit, pushButton_2);
         QWidget::setTabOrder(pushButton_2, pushButton_3);
         QWidget::setTabOrder(pushButton_3, ScriptName);
 

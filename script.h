@@ -1,4 +1,5 @@
 #include <QString>
+#include "ScriptsObject.h"
 
 //#include "scriptregister.h"
 
@@ -14,7 +15,7 @@ enum class ScriptType : quint8
 };
 
 
-class Script
+class Script : public ScriptsObject
 {
 public:
     Script();
@@ -23,7 +24,6 @@ public:
 
     virtual class ScriptRegisterBase const* GetRegisterByIndex(int Index) const = 0;
 
-    virtual QString const GetName() const = 0;
 
     //virtual QString CreateScript(QString ScriptName, QVector<ScriptRegister> Registers, int ClassIndex) = 0;
 

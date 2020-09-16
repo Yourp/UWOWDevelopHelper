@@ -117,7 +117,7 @@
          <widget class="QLineEdit" name="lineEdit"/>
         </item>
         <item>
-         <widget class="QListView" name="StaticRegisters"/>
+         <widget class="QListWidget" name="StaticRegisters"/>
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_2">
@@ -312,6 +312,9 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="maxVisibleItems">
+     <number>100</number>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -385,7 +388,6 @@
   <tabstop>pushButton</tabstop>
   <tabstop>textEditDebug</tabstop>
   <tabstop>lineEdit</tabstop>
-  <tabstop>StaticRegisters</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton_3</tabstop>
   <tabstop>ScriptName</tabstop>
