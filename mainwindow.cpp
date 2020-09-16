@@ -49,7 +49,10 @@ MainWindow::MainWindow(QWidget *parent)
         ui->CB_Classes->insertItem(var, Classes[var]->GetName());
     }
 
-    //ui->StaticRegisters->currentRow()
+    for (auto const& Itr : ScriptList[ui->CB_Scripts->currentIndex()]->GetRegisters())
+    {
+        ui->StaticRegisters->addItem(Itr.GetName());
+    }
 
 }
 
