@@ -164,7 +164,7 @@ public:
         TW_AddedRegisters->setGridStyle(Qt::SolidLine);
         TW_AddedRegisters->setSortingEnabled(false);
         TW_AddedRegisters->setCornerButtonEnabled(false);
-        TW_AddedRegisters->horizontalHeader()->setVisible(false);
+        TW_AddedRegisters->horizontalHeader()->setVisible(true);
         TW_AddedRegisters->horizontalHeader()->setCascadingSectionResizes(false);
         TW_AddedRegisters->horizontalHeader()->setMinimumSectionSize(100);
         TW_AddedRegisters->horizontalHeader()->setDefaultSectionSize(100);
