@@ -99,16 +99,7 @@ void MainWindow::on_pushButton_released()
     Midle = "\n    RegisterSpellScript(" + ScriptName + ");";
 
 
-    QTableWidgetItem* qq1 = new QTableWidgetItem("Rrrrr");
 
-    ui->TW_AddedRegisters->setRowCount(ui->TW_AddedRegisters->rowCount() + 1);
-    ui->TW_AddedRegisters->setItem(ui->TW_AddedRegisters->rowCount()-1, 0, qq1);
-
-    int item = ui->TW_AddedRegisters->currentRow();
-    QTableWidgetItem* itemmmm = ui->TW_AddedRegisters->item(item, 0);
-QString ttt;
-    if (itemmmm)
-     ttt = itemmmm->text();
     FinalText = LeftSide + Midle + RightSide;
 
     qq.seek(0);
