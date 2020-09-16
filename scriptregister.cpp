@@ -4,7 +4,7 @@
 
 
 
-ScriptRegister::ScriptRegister(const ScriptRegisterBase& Base)  : ScriptRegisterBase()
+ScriptRegister::ScriptRegister(const ScriptRegisterBase& Base, QString const& FuncName)  : ScriptRegisterBase(), FunctionName(FuncName)
 {
     Name = Base.GetName();
     DefaultFunctionName = Base.GetDefaultFunctionName();

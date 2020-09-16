@@ -4,10 +4,11 @@
 #include "ui_mainwindow.h"
 #include "textstatics.h"
 #include "Scripts/spellscript.h"
+#include "scriptregister.h"
 
 
 #define CREATE_SCRIPT(CLASS)                                 \
-ScriptList[int(ScriptType::CLASS)] = new CLASS()
+Scripts[int(ScriptType::CLASS)] = new CLASS()
 
 
 #define CREATE_CLASSNAME(CLASS)                              \
@@ -22,12 +23,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->TW_AddedRegisters->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Fixed);
 
+    Registers.reserve(20);
+
 
     CREATE_SCRIPT(SpellScript);
 
     for (int var = 0; var < int(ScriptType::Max); ++var)
     {
-        ui->CB_Scripts->insertItem(var, ScriptList[var]->GetName());
+        ui->CB_Scripts->insertItem(var, Scripts[var]->GetName());
     }
 
     CREATE_CLASSNAME(Generic);
@@ -49,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
         ui->CB_Classes->insertItem(var, Classes[var]->GetName());
     }
 
-    for (auto const& Itr : ScriptList[ui->CB_Scripts->currentIndex()]->GetRegisters())
+    for (auto const& Itr : Scripts[ui->CB_Scripts->currentIndex()]->GetRegisters())
     {
         ui->StaticRegisters->addItem(Itr.GetName());
     }
@@ -73,7 +76,7 @@ void MainWindow::on_pushButton_released()
 
     QTextStream qq(&file);
     QString BeforeEdit = qq.readAll();
-    QString ScriptName = "spell_hun_" + ui->ScriptName->text();
+    QString ScriptName = "spell_hun_" + ui->LE_ScriptName->text();
     QString LeftSide;
     QString RightSide;
     QString FinalText;
@@ -119,7 +122,7 @@ QString ttt;
 
 
 
-void MainWindow::on_pushButton_3_clicked(bool checked)
+void MainWindow::on_pushButton_3_clicked(bool )
 {
 //    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
 //    db.setHostName("127.0.0.1");
@@ -139,3 +142,40 @@ void MainWindow::on_pushButton_3_clicked(bool checked)
 #undef CREATE_SCRIPT
 
 
+
+void MainWindow::on_CB_Classes_currentIndexChanged(int index)
+{
+    ui->LE_ScriptName->setText(Classes[index]->GetPrefix());
+}
+
+void MainWindow::on_StaticRegisters_currentRowChanged(int currentRow)
+{
+    if (ScriptRegisterBase const* Register = Scripts[GetCurrentScriptIndex()]->GetRegisterByIndex(currentRow))
+    {
+        ui->LE_FunctionName->setText(Register->GetDefaultFunctionName());
+        ui->PB_AddRegister->setEnabled(true);
+    }
+}
+
+void MainWindow::on_PB_AddRegister_released()
+{
+
+    if (ScriptRegisterBase const* Base = Scripts[GetCurrentScriptIndex()]->GetRegisterByIndex(ui->StaticRegisters->currentRow()))
+    {
+        QString FunctionName = ui->LE_FunctionName->text();
+
+        int Index = Registers.size();
+
+        ui->TW_AddedRegisters->insertRow(Index);
+        ui->TW_AddedRegisters->setItem(Index, 0, new QTableWidgetItem(Base->GetName()));
+        ui->TW_AddedRegisters->setItem(Index, 1, new QTableWidgetItem(FunctionName));
+
+
+        Registers.push_back(ScriptRegister(*Base, FunctionName));
+    }
+}
+
+int MainWindow::GetCurrentScriptIndex() const
+{
+    return ui->CB_Scripts->currentIndex();
+}

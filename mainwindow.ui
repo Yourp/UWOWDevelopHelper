@@ -20,7 +20,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="Tabs">
-   <widget class="QLineEdit" name="ScriptName">
+   <widget class="QLineEdit" name="LE_ScriptName">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -114,13 +114,16 @@
          <number>3</number>
         </property>
         <item>
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="LE_FunctionName"/>
         </item>
         <item>
          <widget class="QListWidget" name="StaticRegisters"/>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="PB_AddRegister">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Add Register</string>
           </property>
@@ -276,7 +279,10 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="PB_RemoveRegister">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Remove Register</string>
           </property>
@@ -387,10 +393,10 @@
  <tabstops>
   <tabstop>pushButton</tabstop>
   <tabstop>textEditDebug</tabstop>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>pushButton_2</tabstop>
-  <tabstop>pushButton_3</tabstop>
-  <tabstop>ScriptName</tabstop>
+  <tabstop>LE_FunctionName</tabstop>
+  <tabstop>PB_AddRegister</tabstop>
+  <tabstop>PB_RemoveRegister</tabstop>
+  <tabstop>LE_ScriptName</tabstop>
  </tabstops>
  <resources/>
  <connections/>

@@ -35,19 +35,19 @@ class Ui_MainWindow
 public:
     QAction *Generation;
     QWidget *Tabs;
-    QLineEdit *ScriptName;
+    QLineEdit *LE_ScriptName;
     QPushButton *pushButton;
     QTextEdit *textEditDebug;
     QGroupBox *groupBox;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
-    QLineEdit *lineEdit;
+    QLineEdit *LE_FunctionName;
     QListWidget *StaticRegisters;
-    QPushButton *pushButton_2;
+    QPushButton *PB_AddRegister;
     QVBoxLayout *verticalLayout_2;
     QTableWidget *TW_AddedRegisters;
-    QPushButton *pushButton_3;
+    QPushButton *PB_RemoveRegister;
     QComboBox *CB_Scripts;
     QComboBox *CB_Classes;
     QStatusBar *statusbar;
@@ -75,9 +75,9 @@ public:
         Generation->setVisible(true);
         Tabs = new QWidget(MainWindow);
         Tabs->setObjectName(QString::fromUtf8("Tabs"));
-        ScriptName = new QLineEdit(Tabs);
-        ScriptName->setObjectName(QString::fromUtf8("ScriptName"));
-        ScriptName->setGeometry(QRect(10, 10, 239, 20));
+        LE_ScriptName = new QLineEdit(Tabs);
+        LE_ScriptName->setObjectName(QString::fromUtf8("LE_ScriptName"));
+        LE_ScriptName->setGeometry(QRect(10, 10, 239, 20));
         pushButton = new QPushButton(Tabs);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(10, 570, 101, 31));
@@ -102,20 +102,21 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(3);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        lineEdit = new QLineEdit(horizontalLayoutWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        LE_FunctionName = new QLineEdit(horizontalLayoutWidget);
+        LE_FunctionName->setObjectName(QString::fromUtf8("LE_FunctionName"));
 
-        verticalLayout->addWidget(lineEdit);
+        verticalLayout->addWidget(LE_FunctionName);
 
         StaticRegisters = new QListWidget(horizontalLayoutWidget);
         StaticRegisters->setObjectName(QString::fromUtf8("StaticRegisters"));
 
         verticalLayout->addWidget(StaticRegisters);
 
-        pushButton_2 = new QPushButton(horizontalLayoutWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        PB_AddRegister = new QPushButton(horizontalLayoutWidget);
+        PB_AddRegister->setObjectName(QString::fromUtf8("PB_AddRegister"));
+        PB_AddRegister->setEnabled(false);
 
-        verticalLayout->addWidget(pushButton_2);
+        verticalLayout->addWidget(PB_AddRegister);
 
 
         horizontalLayout->addLayout(verticalLayout);
@@ -180,12 +181,13 @@ public:
 
         verticalLayout_2->addWidget(TW_AddedRegisters);
 
-        pushButton_3 = new QPushButton(horizontalLayoutWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setCheckable(false);
-        pushButton_3->setChecked(false);
+        PB_RemoveRegister = new QPushButton(horizontalLayoutWidget);
+        PB_RemoveRegister->setObjectName(QString::fromUtf8("PB_RemoveRegister"));
+        PB_RemoveRegister->setEnabled(false);
+        PB_RemoveRegister->setCheckable(false);
+        PB_RemoveRegister->setChecked(false);
 
-        verticalLayout_2->addWidget(pushButton_3);
+        verticalLayout_2->addWidget(PB_RemoveRegister);
 
 
         horizontalLayout->addLayout(verticalLayout_2);
@@ -218,10 +220,10 @@ public:
         toolBar->setMovable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
         QWidget::setTabOrder(pushButton, textEditDebug);
-        QWidget::setTabOrder(textEditDebug, lineEdit);
-        QWidget::setTabOrder(lineEdit, pushButton_2);
-        QWidget::setTabOrder(pushButton_2, pushButton_3);
-        QWidget::setTabOrder(pushButton_3, ScriptName);
+        QWidget::setTabOrder(textEditDebug, LE_FunctionName);
+        QWidget::setTabOrder(LE_FunctionName, PB_AddRegister);
+        QWidget::setTabOrder(PB_AddRegister, PB_RemoveRegister);
+        QWidget::setTabOrder(PB_RemoveRegister, LE_ScriptName);
 
         toolBar->addAction(Generation);
 
@@ -245,12 +247,12 @@ public:
         pushButton->setShortcut(QCoreApplication::translate("MainWindow", "Return", nullptr));
 #endif // QT_CONFIG(shortcut)
         groupBox->setTitle(QCoreApplication::translate("MainWindow", "GroupBox", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Add Register", nullptr));
+        PB_AddRegister->setText(QCoreApplication::translate("MainWindow", "Add Register", nullptr));
         QTableWidgetItem *___qtablewidgetitem = TW_AddedRegisters->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = TW_AddedRegisters->horizontalHeaderItem(1);
         ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Function", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Remove Register", nullptr));
+        PB_RemoveRegister->setText(QCoreApplication::translate("MainWindow", "Remove Register", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 

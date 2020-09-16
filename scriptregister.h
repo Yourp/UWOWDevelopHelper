@@ -35,9 +35,9 @@ class ScriptRegister : public ScriptRegisterBase
     QString FunctionName;
 
 public:
-    ScriptRegister(ScriptRegisterBase const& Base);
+    ScriptRegister(ScriptRegisterBase const& Base, QString const& FuncName);
 
-    void SetFunctionName(QString const& Name) { FunctionName = Name; }
+    //void SetFunctionName(QString const& Name) { FunctionName = Name; }
     QString const GetFunctionName() const { return FunctionName; }
 
 };
