@@ -43,7 +43,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
     QLineEdit *LE_FunctionName;
-    QListWidget *StaticRegisters;
+    QListWidget *LW_StaticRegisters;
     QPushButton *PB_AddRegister;
     QVBoxLayout *verticalLayout_2;
     QTableWidget *TW_AddedRegisters;
@@ -107,14 +107,31 @@ public:
 
         verticalLayout->addWidget(LE_FunctionName);
 
-        StaticRegisters = new QListWidget(horizontalLayoutWidget);
-        StaticRegisters->setObjectName(QString::fromUtf8("StaticRegisters"));
+        LW_StaticRegisters = new QListWidget(horizontalLayoutWidget);
+        LW_StaticRegisters->setObjectName(QString::fromUtf8("LW_StaticRegisters"));
+        LW_StaticRegisters->setFocusPolicy(Qt::StrongFocus);
+        LW_StaticRegisters->setAutoScroll(false);
+        LW_StaticRegisters->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        LW_StaticRegisters->setProperty("showDropIndicator", QVariant(true));
+        LW_StaticRegisters->setSelectionMode(QAbstractItemView::SingleSelection);
+        LW_StaticRegisters->setSelectionBehavior(QAbstractItemView::SelectRows);
+        LW_StaticRegisters->setTextElideMode(Qt::ElideRight);
+        LW_StaticRegisters->setMovement(QListView::Static);
+        LW_StaticRegisters->setProperty("isWrapping", QVariant(false));
+        LW_StaticRegisters->setResizeMode(QListView::Fixed);
+        LW_StaticRegisters->setLayoutMode(QListView::SinglePass);
+        LW_StaticRegisters->setSpacing(0);
+        LW_StaticRegisters->setViewMode(QListView::ListMode);
+        LW_StaticRegisters->setWordWrap(false);
+        LW_StaticRegisters->setSelectionRectVisible(false);
 
-        verticalLayout->addWidget(StaticRegisters);
+        verticalLayout->addWidget(LW_StaticRegisters);
 
         PB_AddRegister = new QPushButton(horizontalLayoutWidget);
         PB_AddRegister->setObjectName(QString::fromUtf8("PB_AddRegister"));
         PB_AddRegister->setEnabled(false);
+        PB_AddRegister->setAutoDefault(true);
+        PB_AddRegister->setFlat(false);
 
         verticalLayout->addWidget(PB_AddRegister);
 
@@ -165,7 +182,7 @@ public:
         TW_AddedRegisters->setGridStyle(Qt::SolidLine);
         TW_AddedRegisters->setSortingEnabled(false);
         TW_AddedRegisters->setCornerButtonEnabled(false);
-        TW_AddedRegisters->horizontalHeader()->setVisible(true);
+        TW_AddedRegisters->horizontalHeader()->setVisible(false);
         TW_AddedRegisters->horizontalHeader()->setCascadingSectionResizes(false);
         TW_AddedRegisters->horizontalHeader()->setMinimumSectionSize(100);
         TW_AddedRegisters->horizontalHeader()->setDefaultSectionSize(100);
@@ -186,6 +203,7 @@ public:
         PB_RemoveRegister->setEnabled(false);
         PB_RemoveRegister->setCheckable(false);
         PB_RemoveRegister->setChecked(false);
+        PB_RemoveRegister->setAutoDefault(true);
 
         verticalLayout_2->addWidget(PB_RemoveRegister);
 
@@ -230,6 +248,8 @@ public:
         retranslateUi(MainWindow);
 
         pushButton->setDefault(false);
+        PB_AddRegister->setDefault(true);
+        PB_RemoveRegister->setDefault(true);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -243,16 +263,19 @@ public:
         Generation->setToolTip(QCoreApplication::translate("MainWindow", "Generate Code", nullptr));
 #endif // QT_CONFIG(tooltip)
         pushButton->setText(QCoreApplication::translate("MainWindow", "Generate Code", nullptr));
-#if QT_CONFIG(shortcut)
-        pushButton->setShortcut(QCoreApplication::translate("MainWindow", "Return", nullptr));
-#endif // QT_CONFIG(shortcut)
         groupBox->setTitle(QCoreApplication::translate("MainWindow", "GroupBox", nullptr));
         PB_AddRegister->setText(QCoreApplication::translate("MainWindow", "Add Register", nullptr));
+#if QT_CONFIG(shortcut)
+        PB_AddRegister->setShortcut(QCoreApplication::translate("MainWindow", "Return", nullptr));
+#endif // QT_CONFIG(shortcut)
         QTableWidgetItem *___qtablewidgetitem = TW_AddedRegisters->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = TW_AddedRegisters->horizontalHeaderItem(1);
         ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Function", nullptr));
         PB_RemoveRegister->setText(QCoreApplication::translate("MainWindow", "Remove Register", nullptr));
+#if QT_CONFIG(shortcut)
+        PB_RemoveRegister->setShortcut(QCoreApplication::translate("MainWindow", "Del", nullptr));
+#endif // QT_CONFIG(shortcut)
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 

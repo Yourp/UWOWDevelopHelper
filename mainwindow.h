@@ -24,23 +24,17 @@ private slots:
 
     void on_pushButton_released();
 
-
-
     void on_pushButton_3_clicked(bool checked);
 
     void on_CB_Classes_currentIndexChanged(int index);
 
-    void on_StaticRegisters_currentRowChanged(int currentRow);
-
-
-
     void on_PB_AddRegister_released();
-
-    void on_TW_AddedRegisters_cellClicked(int row, int column);
 
     void on_PB_RemoveRegister_released();
 
+    void on_LW_StaticRegisters_currentRowChanged(int currentRow);
 
+    void on_TW_AddedRegisters_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
 
 private:
     Ui::MainWindow *ui;

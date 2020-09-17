@@ -4,6 +4,7 @@
 #include "ui_mainwindow.h"
 #include "textstatics.h"
 #include "Scripts/spellscript.h"
+#include "mainwindow.h"
 #include "scriptregister.h"
 
 
@@ -21,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->TW_AddedRegisters->horizontalHeader()->setVisible(true);
     ui->TW_AddedRegisters->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Fixed);
 
     Registers.reserve(20);
@@ -54,7 +56,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     for (auto const& Itr : Scripts[ui->CB_Scripts->currentIndex()]->GetRegisters())
     {
-        ui->StaticRegisters->addItem(Itr.GetName());
+        ui->LW_StaticRegisters->addItem(Itr.GetName());
     }
 
 }
@@ -139,19 +141,16 @@ void MainWindow::on_CB_Classes_currentIndexChanged(int index)
     ui->LE_ScriptName->setText(Classes[index]->GetPrefix());
 }
 
-void MainWindow::on_StaticRegisters_currentRowChanged(int currentRow)
-{
-    if (ScriptRegisterBase const* Register = Scripts[GetCurrentScriptIndex()]->GetRegisterByIndex(currentRow))
-    {
-        ui->LE_FunctionName->setText(Register->GetDefaultFunctionName());
-        ui->PB_AddRegister->setEnabled(true);
-    }
-}
-
 void MainWindow::on_PB_AddRegister_released()
 {
+    int RegisterIndex = ui->LW_StaticRegisters->currentRow();
 
-    if (ScriptRegisterBase const* Base = Scripts[GetCurrentScriptIndex()]->GetRegisterByIndex(ui->StaticRegisters->currentRow()))
+    if (RegisterIndex < 0)
+    {
+        return;
+    }
+
+    if (ScriptRegisterBase const* Base = Scripts[GetCurrentScriptIndex()]->GetRegisterByIndex(RegisterIndex))
     {
         QString FunctionName = ui->LE_FunctionName->text();
 
@@ -161,23 +160,16 @@ void MainWindow::on_PB_AddRegister_released()
         ui->TW_AddedRegisters->setItem(Index, 0, new QTableWidgetItem(Base->GetName()));
         ui->TW_AddedRegisters->setItem(Index, 1, new QTableWidgetItem(FunctionName));
 
-
         Registers.push_back(ScriptRegister(*Base, FunctionName));
     }
-}
-
-void MainWindow::on_TW_AddedRegisters_cellClicked(int, int)
-{
-    ui->PB_RemoveRegister->setEnabled(true);
 }
 
 void MainWindow::on_PB_RemoveRegister_released()
 {
     int Index = ui->TW_AddedRegisters->currentRow();
 
-    ui->TW_AddedRegisters->removeRow(Index);
     ui->TW_AddedRegisters->setCurrentCell(-1, -1);
-    ui->PB_RemoveRegister->setEnabled(false);
+    ui->TW_AddedRegisters->removeRow(Index);
     ui->TW_AddedRegisters->setFocus();
 
     Registers.remove(Index);
@@ -188,6 +180,35 @@ int MainWindow::GetCurrentScriptIndex() const
     return ui->CB_Scripts->currentIndex();
 }
 
+void MainWindow::on_LW_StaticRegisters_currentRowChanged(int currentRow)
+{
+    if (currentRow < 0)
+    {
+        return;
+    }
+
+    if (ScriptRegisterBase const* Register = Scripts[GetCurrentScriptIndex()]->GetRegisterByIndex(currentRow))
+    {
+        ui->TW_AddedRegisters->setCurrentCell(-1, -1);
+        ui->LE_FunctionName->setText(Register->GetDefaultFunctionName());
+        ui->PB_AddRegister->setEnabled(true);
+        ui->LE_FunctionName->setFocus();
+        ui->PB_RemoveRegister->setEnabled(false);
+    }
+}
 
 
+void MainWindow::on_TW_AddedRegisters_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn)
+{
+    if (currentRow < 0)
+    {
+        ui->PB_RemoveRegister->setEnabled(false);
+        return;
+    }
 
+    ui->LW_StaticRegisters->setCurrentRow(-1);
+    ui->LE_FunctionName->clear();
+    ui->PB_AddRegister->setEnabled(false);
+    ui->PB_RemoveRegister->setEnabled(true);
+    ui->PB_RemoveRegister->setFocus();
+}

@@ -42,9 +42,6 @@
     <property name="text">
      <string>Generate Code</string>
     </property>
-    <property name="shortcut">
-     <string>Return</string>
-    </property>
     <property name="checkable">
      <bool>false</bool>
     </property>
@@ -117,7 +114,53 @@
          <widget class="QLineEdit" name="LE_FunctionName"/>
         </item>
         <item>
-         <widget class="QListWidget" name="StaticRegisters"/>
+         <widget class="QListWidget" name="LW_StaticRegisters">
+          <property name="focusPolicy">
+           <enum>Qt::StrongFocus</enum>
+          </property>
+          <property name="autoScroll">
+           <bool>false</bool>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="showDropIndicator" stdset="0">
+           <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="textElideMode">
+           <enum>Qt::ElideRight</enum>
+          </property>
+          <property name="movement">
+           <enum>QListView::Static</enum>
+          </property>
+          <property name="isWrapping" stdset="0">
+           <bool>false</bool>
+          </property>
+          <property name="resizeMode">
+           <enum>QListView::Fixed</enum>
+          </property>
+          <property name="layoutMode">
+           <enum>QListView::SinglePass</enum>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="viewMode">
+           <enum>QListView::ListMode</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>false</bool>
+          </property>
+          <property name="selectionRectVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="PB_AddRegister">
@@ -126,6 +169,18 @@
           </property>
           <property name="text">
            <string>Add Register</string>
+          </property>
+          <property name="shortcut">
+           <string>Return</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+          <property name="default">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -228,7 +283,7 @@
            <bool>false</bool>
           </property>
           <attribute name="horizontalHeaderVisible">
-           <bool>true</bool>
+           <bool>false</bool>
           </attribute>
           <attribute name="horizontalHeaderCascadingSectionResizes">
            <bool>false</bool>
@@ -286,11 +341,20 @@
           <property name="text">
            <string>Remove Register</string>
           </property>
+          <property name="shortcut">
+           <string>Del</string>
+          </property>
           <property name="checkable">
            <bool>false</bool>
           </property>
           <property name="checked">
            <bool>false</bool>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+          <property name="default">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
