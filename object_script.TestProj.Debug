@@ -1,0 +1,11 @@
+debug/classname.o
+debug/spellcastfn.o
+debug/spelleffectfn.o
+debug/spellhitfn.o
+debug/spellscript.o
+debug/main.o
+debug/mainwindow.o
+debug/script.o
+debug/scriptregister.o
+debug/textstatics.o
+debug/moc_mainwindow.o

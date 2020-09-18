@@ -98,6 +98,17 @@ int CodeStatics::GetIndexOfClassEnd(const QString *Where, const QString ClassNam
     return CurrentIndex;
 }
 
+QString CodeStatics::ReplaceFirst(const QString &Where, const QString WhatReplace, const QString ReplaceTo, int StartIndex)
+{
+    QString Result = Where.left(Where.indexOf(WhatReplace, StartIndex));
+    Result += ReplaceTo;
+    Result += GetRightSide(&Where, GetIndexAfterString(&Where, WhatReplace, StartIndex));
+
+    return Result;
+}
+
+
+
 
 
 

@@ -17,6 +17,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Classes/classname.cpp \
+    Registers/Spell/spellcastfn.cpp \
+    Registers/Spell/spelleffectfn.cpp \
+    Registers/Spell/spellhitfn.cpp \
     Scripts/spellscript.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -26,6 +29,9 @@ SOURCES += \
 
 HEADERS += \
     Classes/classname.h \
+    Registers/Spell/spellcastfn.h \
+    Registers/Spell/spelleffectfn.h \
+    Registers/Spell/spellhitfn.h \
     Scripts/spellscript.h \
     ScriptsObject.h \
     mainwindow.h \

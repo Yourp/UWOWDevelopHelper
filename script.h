@@ -22,15 +22,18 @@ public:
 
     virtual ~Script() {}
 
-    ScriptRegisterBase const* GetRegisterByIndex(int Index) const { return &Registers.at(Index); }
-    QVector<ScriptRegisterBase> const& GetRegisters() const { return Registers; }
+    ScriptRegisterBase const* GetRegisterByIndex(int Index) const { return Registers.at(Index); }
+    QVector<ScriptRegisterBase*> const& GetRegisters() const { return Registers; }
 
 
-    //virtual QString CreateScript(QString ScriptName, QVector<ScriptRegister> Registers, int ClassIndex) = 0;
+    virtual QString CreateScript(QString ScriptName, QVector<ScriptRegister> const& Registers) = 0;
+
+    QString const FunctionFindMarker = "@FUNCTIONNAME";
+    QString const ClassFindMarker = "@CLASSNAME";
 
 protected:
 
-    QVector<ScriptRegisterBase> Registers;
+    QVector<ScriptRegisterBase*> Registers;
 
 };
 

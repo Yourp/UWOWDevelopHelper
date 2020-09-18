@@ -1,0 +1,11 @@
+release/classname.o
+release/spellcastfn.o
+release/spelleffectfn.o
+release/spellhitfn.o
+release/spellscript.o
+release/main.o
+release/mainwindow.o
+release/script.o
+release/scriptregister.o
+release/textstatics.o
+release/moc_mainwindow.o

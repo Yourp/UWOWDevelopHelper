@@ -54,9 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
         ui->CB_Classes->insertItem(var, Classes[var]->GetName());
     }
 
-    for (auto const& Itr : Scripts[ui->CB_Scripts->currentIndex()]->GetRegisters())
+    for (auto Itr : Scripts[ui->CB_Scripts->currentIndex()]->GetRegisters())
     {
-        ui->LW_StaticRegisters->addItem(Itr.GetName());
+        ui->LW_StaticRegisters->addItem(Itr->GetName());
     }
 
 }
@@ -82,14 +82,11 @@ void MainWindow::on_pushButton_released()
     QString LeftSide;
     QString RightSide;
     QString FinalText;
-    QString Midle;
+    QString Midle = Scripts[GetCurrentScriptIndex()]->CreateScript(ui->LE_ScriptName->text(), Registers);
 
 
 
-    Midle += "\n\nclass " + ScriptName + " : public SpellScript";
-    Midle += "\n{";
-    Midle += "\n    PrepareSpellScript(" + ScriptName + ");";
-    Midle += "\n};\n\n";
+
 
     BeforeEdit = CodeStatics::ReWriteBetweenStrings(&BeforeEdit, &StartGeneration, &Midle, &EndGeneration);
 
@@ -198,7 +195,7 @@ void MainWindow::on_LW_StaticRegisters_currentRowChanged(int currentRow)
 }
 
 
-void MainWindow::on_TW_AddedRegisters_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn)
+void MainWindow::on_TW_AddedRegisters_currentCellChanged(int currentRow, int, int, int)
 {
     if (currentRow < 0)
     {
