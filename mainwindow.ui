@@ -28,10 +28,6 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">border-top-color: rgba(255, 255, 255, 0);
-border-right-color: rgba(255, 255, 255, 0);</string>
-  </property>
   <widget class="QWidget" name="Tabs">
    <widget class="QLineEdit" name="LE_ScriptName">
     <property name="geometry">
