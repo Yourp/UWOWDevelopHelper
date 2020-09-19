@@ -7,7 +7,7 @@
 
 class ScriptRegisterBase : public ScriptsObject
 {
-    friend class SpellScript;
+    friend class SSSpell;
 
 
 protected:

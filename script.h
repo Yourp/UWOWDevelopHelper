@@ -1,16 +1,15 @@
+#ifndef SCRIPT_H
+#define SCRIPT_H
+
 #include <QVector>
 #include "ScriptsObject.h"
 #include "scriptregister.h"
 
 
-#ifndef SCRIPT_H
-#define SCRIPT_H
-
-
 
 enum class ScriptType : quint8
 {
-    SpellScript = 0,
+    SSSpell = 0,
     Max
 };
 
@@ -22,18 +21,19 @@ public:
 
     virtual ~Script() {}
 
-    ScriptRegisterBase const* GetRegisterByIndex(int Index) const { return Registers.at(Index); }
-    QVector<ScriptRegisterBase*> const& GetRegisters() const { return Registers; }
-
-
     virtual QString CreateScript(QString ScriptName, QVector<ScriptRegister> const& Registers) = 0;
+
+    virtual void FillOptionsListWidget(class QListWidget*) {}
+
+    virtual void EditScriptFilesText(QString& FilesText, QString ScriptName, QVector<ScriptRegister> const& Registers);
 
     QString const FunctionFindMarker = "@FUNCTIONNAME";
     QString const ClassFindMarker = "@CLASSNAME";
+    QString const StartGeneration = "/** #CODE_GENERATION_START */";
 
 protected:
 
-    QVector<ScriptRegisterBase*> Registers;
+
 
 };
 

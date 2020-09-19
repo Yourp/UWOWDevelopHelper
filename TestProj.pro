@@ -21,6 +21,7 @@ SOURCES += \
     Registers/Spell/spelleffectfn.cpp \
     Registers/Spell/spellhitfn.cpp \
     Scripts/spellscript.cpp \
+    Scripts/ssspell.cpp \
     main.cpp \
     mainwindow.cpp \
     script.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     Registers/Spell/spelleffectfn.h \
     Registers/Spell/spellhitfn.h \
     Scripts/spellscript.h \
+    Scripts/ssspell.h \
     ScriptsObject.h \
     mainwindow.h \
     script.h \

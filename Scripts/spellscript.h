@@ -1,36 +1,9 @@
-#include "script.h"
-#include "scriptregister.h"
-#include <QVector>
-
 #ifndef SPELLSCRIPT_H
 #define SPELLSCRIPT_H
 
-enum class SpellScriptRegisters
-{
-    BeforeCast = 0,
-    OnCast,
-    AfterCast,
-    BeforeStartCast,
-    OnFinishCast,
-    OnCheckCast,
-    AfterCheckCast,
-    OnTakePower,
-    DoCalcEffMask,
-    OnEffectLaunch,
-    OnEffectLaunchTarget,
-    OnEffectHit,
-    OnEffectHitTarget,
-    OnEffectSuccessfulDispel,
-    BeforeHit,
-    OnHit,
-    AfterHit,
-    OnObjectAreaTargetSelect,
-    OnObjectJumpTarget,
-    DoCalcChannelDuration,
-    DoModTriggerFlags,
-    OnObjectTargetSelect,
-    Max
-};
+#include "script.h"
+#include "scriptregister.h"
+#include <QVector>
 
 
 class SpellScript : public Script
@@ -38,13 +11,22 @@ class SpellScript : public Script
 
 
 public:
-    SpellScript();
+    SpellScript() : Script() {};
 
     virtual ~SpellScript() {}
 
-    virtual QString const GetName() const override { return "SpellScript"; }
+    ScriptRegisterBase const* GetRegisterByIndex(int Index) const { return StaticRegisters.at(Index); }
+    virtual QVector<ScriptRegisterBase*> const& GetRegisters() const { return StaticRegisters; }
 
-    QString CreateScript(QString ScriptName, QVector<ScriptRegister> const& Registers) override;
+    virtual void FillOptionsListWidget(class QListWidget*) override;
+
+    QString CreateScript(QString ScriptName, QVector<ScriptRegister> const& StaticRegisters) override;
+
+    virtual void EditScriptFilesText(QString& FilesText, QString ScriptName, QVector<ScriptRegister> const& StaticRegisters) override;
+
+protected:
+
+    QVector<ScriptRegisterBase*> StaticRegisters;
 };
 
 #endif // SPELLSCRIPT_H

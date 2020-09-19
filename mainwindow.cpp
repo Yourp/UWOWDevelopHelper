@@ -4,8 +4,10 @@
 #include "ui_mainwindow.h"
 #include "textstatics.h"
 #include "Scripts/spellscript.h"
+#include "Scripts/ssspell.h"
 #include "mainwindow.h"
 #include "scriptregister.h"
+
 
 
 #define CREATE_SCRIPT(CLASS)                                 \
@@ -24,11 +26,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->TW_AddedRegisters->horizontalHeader()->setVisible(true);
     ui->TW_AddedRegisters->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Fixed);
+    setFixedSize(size());
 
     Registers.reserve(20);
 
 
-    CREATE_SCRIPT(SpellScript);
+    CREATE_SCRIPT(SSSpell);
 
     for (int var = 0; var < int(ScriptType::Max); ++var)
     {
@@ -54,11 +57,7 @@ MainWindow::MainWindow(QWidget *parent)
         ui->CB_Classes->insertItem(var, Classes[var]->GetName());
     }
 
-    for (auto Itr : Scripts[ui->CB_Scripts->currentIndex()]->GetRegisters())
-    {
-        ui->LW_StaticRegisters->addItem(Itr->GetName());
-    }
-
+    Scripts[ui->CB_Scripts->currentIndex()]->FillOptionsListWidget(ui->LW_StaticRegisters);
 }
 
 MainWindow::~MainWindow()
@@ -68,6 +67,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_released()
 {
+    /** TODO: PATH */
     QFile file("d:/Work/spell_hunter1.cpp");
 
     if (!file.exists())
@@ -77,34 +77,15 @@ void MainWindow::on_pushButton_released()
         return;
 
     QTextStream qq(&file);
-    QString BeforeEdit = qq.readAll();
-    QString ScriptName = "spell_hun_" + ui->LE_ScriptName->text();
-    QString LeftSide;
-    QString RightSide;
-    QString FinalText;
-    QString Midle = Scripts[GetCurrentScriptIndex()]->CreateScript(ui->LE_ScriptName->text(), Registers);
+    QString FilesText = qq.readAll();
 
+    Scripts[GetCurrentScriptIndex()]->EditScriptFilesText(FilesText, ui->LE_ScriptName->text(), Registers);
 
+    file.resize(0);
 
+    qq << FilesText;
 
-
-    BeforeEdit = CodeStatics::ReWriteBetweenStrings(&BeforeEdit, &StartGeneration, &Midle, &EndGeneration);
-
-    QString AddSC = "void AddSC_hunter_spell_scripts()\n{";
-
-    int StartIndex = CodeStatics::GetIndexAfterString(&BeforeEdit, AddSC);
-    LeftSide = BeforeEdit.left(StartIndex);
-    RightSide = CodeStatics::GetRightSide(&BeforeEdit, StartIndex);
-    Midle = "\n    RegisterSpellScript(" + ScriptName + ");";
-
-
-
-    FinalText = LeftSide + Midle + RightSide;
-
-    qq.seek(0);
-    qq << FinalText;
-
-    ui->textEditDebug->setText(FinalText.left(CodeStatics::GetIndexOfClassEnd(&FinalText, "class spell_hun_steady_focus")));
+    ui->textEditDebug->setText(FilesText);
 
     file.close();
 }
@@ -147,17 +128,21 @@ void MainWindow::on_PB_AddRegister_released()
         return;
     }
 
-    if (ScriptRegisterBase const* Base = Scripts[GetCurrentScriptIndex()]->GetRegisterByIndex(RegisterIndex))
+
+    if (SpellScript const* CastedSpellScript = dynamic_cast<SpellScript const*>(Scripts[GetCurrentScriptIndex()]))
     {
-        QString FunctionName = ui->LE_FunctionName->text();
+        if (ScriptRegisterBase const* Base = CastedSpellScript->GetRegisterByIndex(RegisterIndex))
+        {
+            QString FunctionName = ui->LE_FunctionName->text();
 
-        int Index = Registers.size();
+            int Index = Registers.size();
 
-        ui->TW_AddedRegisters->insertRow(Index);
-        ui->TW_AddedRegisters->setItem(Index, 0, new QTableWidgetItem(Base->GetName()));
-        ui->TW_AddedRegisters->setItem(Index, 1, new QTableWidgetItem(FunctionName));
+            ui->TW_AddedRegisters->insertRow(Index);
+            ui->TW_AddedRegisters->setItem(Index, 0, new QTableWidgetItem(Base->GetName()));
+            ui->TW_AddedRegisters->setItem(Index, 1, new QTableWidgetItem(FunctionName));
 
-        Registers.push_back(ScriptRegister(*Base, FunctionName));
+            Registers.push_back(ScriptRegister(*Base, FunctionName));
+        }
     }
 }
 
@@ -184,13 +169,16 @@ void MainWindow::on_LW_StaticRegisters_currentRowChanged(int currentRow)
         return;
     }
 
-    if (ScriptRegisterBase const* Register = Scripts[GetCurrentScriptIndex()]->GetRegisterByIndex(currentRow))
+    if (SpellScript const* CastedSpellScript = dynamic_cast<SpellScript const*>(Scripts[GetCurrentScriptIndex()]))
     {
-        ui->TW_AddedRegisters->setCurrentCell(-1, -1);
-        ui->LE_FunctionName->setText(Register->GetDefaultFunctionName());
-        ui->PB_AddRegister->setEnabled(true);
-        ui->LE_FunctionName->setFocus();
-        ui->PB_RemoveRegister->setEnabled(false);
+        if (ScriptRegisterBase const* Register = CastedSpellScript->GetRegisterByIndex(currentRow))
+        {
+            ui->TW_AddedRegisters->setCurrentCell(-1, -1);
+            ui->LE_FunctionName->setText(Register->GetDefaultFunctionName());
+            ui->PB_AddRegister->setEnabled(true);
+            ui->LE_FunctionName->setFocus();
+            ui->PB_RemoveRegister->setEnabled(false);
+        }
     }
 }
 

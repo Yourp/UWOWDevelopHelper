@@ -1,9 +1,6 @@
 #include <QString>
 #include "textstatics.h"
 
-#pragma once
-
-
 
 
 int CodeStatics::GetIndexAfterString(const QString *From, const QString StringKey, int StartPoint)

@@ -43,9 +43,6 @@ private:
     ClassName* Classes[int(ClassNameType::Max)];
     QVector<class ScriptRegister> Registers;
 
-    QString const StartGeneration = "/** #CODE_GENERATION_START */";
-    QString const EndGeneration = "/** #CODE_GENERATION_END */";
-
     int GetCurrentScriptIndex() const;
 
 };

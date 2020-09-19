@@ -58,11 +58,16 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(958, 730);
+        MainWindow->setWindowModality(Qt::NonModal);
+        MainWindow->setEnabled(true);
+        MainWindow->resize(977, 755);
         QFont font;
         font.setBold(false);
         font.setWeight(50);
         MainWindow->setFont(font);
+        MainWindow->setContextMenuPolicy(Qt::DefaultContextMenu);
+        MainWindow->setStyleSheet(QString::fromUtf8("border-top-color: rgba(255, 255, 255, 0);\n"
+"border-right-color: rgba(255, 255, 255, 0);"));
         Generation = new QAction(MainWindow);
         Generation->setObjectName(QString::fromUtf8("Generation"));
         Generation->setCheckable(false);
@@ -90,7 +95,7 @@ public:
         textEditDebug->setGeometry(QRect(680, 50, 251, 601));
         groupBox = new QGroupBox(Tabs);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(10, 50, 431, 381));
+        groupBox->setGeometry(QRect(20, 60, 431, 381));
         horizontalLayoutWidget = new QWidget(groupBox);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(10, 20, 411, 351));
@@ -223,7 +228,7 @@ public:
         MainWindow->setStatusBar(statusbar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 958, 22));
+        menuBar->setGeometry(QRect(0, 0, 977, 22));
         MainWindow->setMenuBar(menuBar);
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));

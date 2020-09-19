@@ -3,6 +3,7 @@ release/spellcastfn.o
 release/spelleffectfn.o
 release/spellhitfn.o
 release/spellscript.o
+release/ssspell.o
 release/main.o
 release/mainwindow.o
 release/script.o

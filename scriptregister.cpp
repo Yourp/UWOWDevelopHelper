@@ -1,4 +1,3 @@
-
 #include "scriptregister.h"
 
 
