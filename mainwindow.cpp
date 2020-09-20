@@ -59,9 +59,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     Scripts[ui->CB_Scripts->currentIndex()]->FillOptionsListWidget(ui->LW_StaticRegisters);
 
-    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);
+//    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);
 
-    ui->LE_ScriptName->setText(tt.value("ScriptName").toString());
+//    ui->LE_ScriptName->setText(tt.value("ScriptName").toString());
 }
 
 MainWindow::~MainWindow()
@@ -71,9 +71,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_released()
 {
-    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);
+//    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);
 
-    tt.setValue("ScriptName", ui->LE_ScriptName->text());
+//    tt.setValue("ScriptName", ui->LE_ScriptName->text());
 
 
 
