@@ -20,6 +20,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    int GetCurrentScriptIndex() const;
+    QString const GetScriptName() const;
+    QString const GetSpellID() const;
+
+
+    static QVector<Script*> const Scripts;
+    static QVector<ClassName*> const Classes;
+    QVector<class ScriptRegister> Registers;
+
 private slots:
 
     void on_pushButton_released();
@@ -39,11 +48,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    static QVector<Script*> const Scripts;
-    static QVector<ClassName*> const Classes;
-    QVector<class ScriptRegister> Registers;
 
-    int GetCurrentScriptIndex() const;
+
 
 };
 

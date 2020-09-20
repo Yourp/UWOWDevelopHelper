@@ -19,6 +19,8 @@ public:
 
     virtual void EditScriptFilesText(QString& FilesText, QString ScriptName, QVector<ScriptRegister> const& Registers);
 
+    virtual void HandleDataBase(class MainWindow const*) {}
+
     QString const FunctionFindMarker = "@FUNCTIONNAME";
     QString const ClassFindMarker = "@CLASSNAME";
     QString const StartGeneration = "/** #CODE_GENERATION_START */";

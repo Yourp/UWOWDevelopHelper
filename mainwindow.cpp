@@ -40,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->TW_AddedRegisters->horizontalHeader()->setVisible(true);
     ui->TW_AddedRegisters->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Fixed);
+    ui->LE_SpellID->setValidator(new QIntValidator(0, 99999999, this));
     setFixedSize(size());
 
     Registers.reserve(20);
@@ -87,17 +88,16 @@ void MainWindow::on_pushButton_released()
     QTextStream qq(&file);
     QString FilesText = qq.readAll();
 
-    Scripts[GetCurrentScriptIndex()]->EditScriptFilesText(FilesText, ui->LE_ScriptName->text(), Registers);
+    Scripts[GetCurrentScriptIndex()]->EditScriptFilesText(FilesText, GetScriptName(), Registers);
 
     file.resize(0);
-
     qq << FilesText;
 
-    ui->textEditDebug->setText(QDateTime::currentDateTime().toString("dd_MM_yyyy"));
-
-
-
     file.close();
+
+    Scripts[GetCurrentScriptIndex()]->HandleDataBase(this);
+
+    ui->textEditDebug->setText(QDateTime::currentDateTime().toString("dd_MM_yyyy"));
 }
 
 
@@ -173,6 +173,16 @@ void MainWindow::on_PB_RemoveRegister_released()
 int MainWindow::GetCurrentScriptIndex() const
 {
     return ui->CB_Scripts->currentIndex();
+}
+
+const QString MainWindow::GetScriptName() const
+{
+    return ui->LE_ScriptName->text();
+}
+
+const QString MainWindow::GetSpellID() const
+{
+    return ui->LE_SpellID->text();
 }
 
 void MainWindow::on_LW_StaticRegisters_currentRowChanged(int currentRow)

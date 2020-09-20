@@ -50,6 +50,7 @@ public:
     QPushButton *PB_RemoveRegister;
     QComboBox *CB_Scripts;
     QComboBox *CB_Classes;
+    QLineEdit *LE_SpellID;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QToolBar *toolBar;
@@ -220,6 +221,10 @@ public:
         CB_Classes->setObjectName(QString::fromUtf8("CB_Classes"));
         CB_Classes->setGeometry(QRect(490, 120, 121, 22));
         CB_Classes->setMaxVisibleItems(100);
+        LE_SpellID = new QLineEdit(Tabs);
+        LE_SpellID->setObjectName(QString::fromUtf8("LE_SpellID"));
+        LE_SpellID->setGeometry(QRect(250, 10, 113, 20));
+        LE_SpellID->setMaxLength(10);
         MainWindow->setCentralWidget(Tabs);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));

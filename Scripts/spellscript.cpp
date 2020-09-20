@@ -1,6 +1,10 @@
 #include <QListWidget>
+#include <QTextStream>
+#include <QFile>
+#include <QDateTime>
 #include "spellscript.h"
 #include "textstatics.h"
+#include "mainwindow.h"
 
 
 void SpellScript::FillOptionsListWidget(QListWidget* LW)
@@ -58,6 +62,28 @@ void SpellScript::EditScriptFilesText(QString &FilesText, QString ScriptName, co
     Result += "\n    " + GetRegisterMacroName() + "(" + ScriptName + ");";
     Result += CodeStatics::GetRightSide(&FilesText, StartIndex);
     FilesText = Result;
+}
+
+void SpellScript::HandleDataBase(MainWindow const* MW)
+{
+    QString Path = "d:/Work/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_") + "spell_script_names.sql";
+    /** TODO: PATH */
+    QFile file(Path);
+
+    if (!file.open(QFile::ReadWrite | QFile::Text))
+        return;
+
+    QTextStream qq(&file);
+    QString FilesText = qq.readAll();
+
+    FilesText += "DELETE FROM `spell_script_names` WHERE (`ScriptName`='" + MW->GetScriptName() + "');";
+    FilesText += "\n";
+    FilesText += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + MW->GetSpellID() + "', '" + MW->GetScriptName() + "');\n";
+
+    file.resize(0);
+    qq << FilesText;
+
+    file.close();
 }
 
 

@@ -28,9 +28,14 @@ public:
 
     virtual QString const GetRegisterMacroName() const = 0;
 
+    virtual void HandleDataBase(class MainWindow const* MW) override;
+
+    void SetSpellID(QString ID) { SpellID = ID; }
+
 protected:
 
     QVector<ScriptRegisterBase*> StaticRegisters;
+    QString SpellID;
 };
 
 #endif // SPELLSCRIPT_H
