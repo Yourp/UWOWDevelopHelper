@@ -17,7 +17,7 @@ QString SpellScript::CreateScript(QString ScriptName, QVector<ScriptRegister> co
 
     Result += "\n\nclass " + ScriptName + " : public SpellScript";
     Result += "\n{";
-    Result += "\n    PrepareSpellScript(" + ScriptName + ");";
+    Result += "\n    " + GetPrepareMacroName() + "(" + ScriptName + ");";
 
     if (!Registers.isEmpty())
     {
@@ -55,7 +55,7 @@ void SpellScript::EditScriptFilesText(QString &FilesText, QString ScriptName, co
     StartIndex = CodeStatics::GetIndexAfterString(&FilesText, "{", StartIndex);
 
     QString Result = FilesText.left(StartIndex);
-    Result += "\n    RegisterSpellScript(" + ScriptName + ");";
+    Result += "\n    " + GetRegisterMacroName() + "(" + ScriptName + ");";
     Result += CodeStatics::GetRightSide(&FilesText, StartIndex);
     FilesText = Result;
 }

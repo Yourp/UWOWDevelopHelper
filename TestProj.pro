@@ -42,7 +42,6 @@ HEADERS += \
     textstatics.h
 
 FORMS += \
-    Open.ui \
     mainwindow.ui
 
 TRANSLATIONS += \

@@ -1,5 +1,6 @@
 #include <QTextStream>
 #include <QFile>
+#include <QDateTime>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "textstatics.h"
@@ -30,7 +31,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     Registers.reserve(20);
 
-
     CREATE_SCRIPT(SSSpell);
 
     for (int var = 0; var < int(ScriptType::Max); ++var)
@@ -58,6 +58,10 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     Scripts[ui->CB_Scripts->currentIndex()]->FillOptionsListWidget(ui->LW_StaticRegisters);
+
+    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);
+
+    ui->LE_ScriptName->setText(tt.value("ScriptName").toString());
 }
 
 MainWindow::~MainWindow()
@@ -67,6 +71,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_released()
 {
+    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);
+
+    tt.setValue("ScriptName", ui->LE_ScriptName->text());
+
+
+
+
     /** TODO: PATH */
     QFile file("d:/Work/spell_hunter1.cpp");
 
@@ -85,7 +96,9 @@ void MainWindow::on_pushButton_released()
 
     qq << FilesText;
 
-    ui->textEditDebug->setText(FilesText);
+    ui->textEditDebug->setText(QDateTime::currentDateTime().toString("dd_MM_yyyy"));
+
+
 
     file.close();
 }

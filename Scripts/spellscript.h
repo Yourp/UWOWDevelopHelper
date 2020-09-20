@@ -24,6 +24,10 @@ public:
 
     virtual void EditScriptFilesText(QString& FilesText, QString ScriptName, QVector<ScriptRegister> const& StaticRegisters) override;
 
+    virtual QString const GetPrepareMacroName() const = 0;
+
+    virtual QString const GetRegisterMacroName() const = 0;
+
 protected:
 
     QVector<ScriptRegisterBase*> StaticRegisters;

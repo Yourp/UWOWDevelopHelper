@@ -36,6 +36,10 @@ public:
     SSSpell();
 
     virtual QString const GetName() const override { return "SpellScript"; }
+
+    virtual QString const GetPrepareMacroName() const override { return "PrepareSpellScript"; }
+
+    virtual QString const GetRegisterMacroName() const override { return "RegisterSpellScript"; }
 };
 
 #endif // SSSPELL_H

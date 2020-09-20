@@ -66,8 +66,6 @@ public:
         font.setWeight(50);
         MainWindow->setFont(font);
         MainWindow->setContextMenuPolicy(Qt::DefaultContextMenu);
-        MainWindow->setStyleSheet(QString::fromUtf8("border-top-color: rgba(255, 255, 255, 0);\n"
-"border-right-color: rgba(255, 255, 255, 0);"));
         Generation = new QAction(MainWindow);
         Generation->setObjectName(QString::fromUtf8("Generation"));
         Generation->setCheckable(false);
