@@ -6,14 +6,6 @@
 #include "scriptregister.h"
 
 
-
-enum class ScriptType : quint8
-{
-    SSSpell = 0,
-    Max
-};
-
-
 class Script : public ScriptsObject
 {
 public:

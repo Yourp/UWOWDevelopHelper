@@ -4,24 +4,6 @@
 #include <QString>
 #include "ScriptsObject.h"
 
-enum class ClassNameType : quint8
-{
-    Generic = 0,
-    Mage,
-    Warrior,
-    Warlock,
-    Priest,
-    Druid,
-    Rogue,
-    Hunter,
-    Paladin,
-    Shaman,
-    DeathKnight,
-    Monk,
-    DemonHunter,
-    Max
-};
-
 
 class ClassName : public ScriptsObject
 {

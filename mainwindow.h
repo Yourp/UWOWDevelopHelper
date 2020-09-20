@@ -39,11 +39,13 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    Script* Scripts[int(ScriptType::Max)];
-    ClassName* Classes[int(ClassNameType::Max)];
+    static QVector<Script*> const Scripts;
+    static QVector<ClassName*> const Classes;
     QVector<class ScriptRegister> Registers;
 
     int GetCurrentScriptIndex() const;
 
 };
+
+
 #endif // MAINWINDOW_H

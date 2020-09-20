@@ -10,14 +10,27 @@
 #include "scriptregister.h"
 
 
+QVector<ClassName*> const MainWindow::Classes =
+{
+    new Generic(),
+    new Mage(),
+    new Warrior(),
+    new Warlock(),
+    new Priest(),
+    new Druid(),
+    new Rogue(),
+    new Hunter(),
+    new Paladin(),
+    new Shaman(),
+    new DeathKnight(),
+    new Monk(),
+    new DemonHunter()
+};
 
-#define CREATE_SCRIPT(CLASS)                                 \
-Scripts[int(ScriptType::CLASS)] = new CLASS()
-
-
-#define CREATE_CLASSNAME(CLASS)                              \
-Classes[int(ClassNameType::CLASS)] = new CLASS()
-
+QVector<Script*> const MainWindow::Scripts =
+{
+    new SSSpell()
+};
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -31,30 +44,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     Registers.reserve(20);
 
-    CREATE_SCRIPT(SSSpell);
-
-    for (int var = 0; var < int(ScriptType::Max); ++var)
+    for (auto const& Itr : Scripts)
     {
-        ui->CB_Scripts->insertItem(var, Scripts[var]->GetName());
+        ui->CB_Scripts->addItem(Itr->GetName());
     }
 
-    CREATE_CLASSNAME(Generic);
-    CREATE_CLASSNAME(Mage);
-    CREATE_CLASSNAME(Warrior);
-    CREATE_CLASSNAME(Warlock);
-    CREATE_CLASSNAME(Priest);
-    CREATE_CLASSNAME(Druid);
-    CREATE_CLASSNAME(Rogue);
-    CREATE_CLASSNAME(Hunter);
-    CREATE_CLASSNAME(Paladin);
-    CREATE_CLASSNAME(Shaman);
-    CREATE_CLASSNAME(DeathKnight);
-    CREATE_CLASSNAME(Monk);
-    CREATE_CLASSNAME(DemonHunter);
-
-    for (int var = 0; var < int(ClassNameType::Max); ++var)
+    for (auto const& Itr : Classes)
     {
-        ui->CB_Classes->insertItem(var, Classes[var]->GetName());
+        ui->CB_Classes->addItem(Itr->GetName());
     }
 
     Scripts[ui->CB_Scripts->currentIndex()]->FillOptionsListWidget(ui->LW_StaticRegisters);
@@ -129,7 +126,10 @@ void MainWindow::on_pushButton_3_clicked(bool )
 
 void MainWindow::on_CB_Classes_currentIndexChanged(int index)
 {
-    ui->LE_ScriptName->setText(Classes[index]->GetPrefix());
+    if (ClassName const* Element = Classes.at(index))
+    {
+        ui->LE_ScriptName->setText(Element->GetPrefix());
+    }
 }
 
 void MainWindow::on_PB_AddRegister_released()
