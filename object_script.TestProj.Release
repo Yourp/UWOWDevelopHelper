@@ -5,6 +5,7 @@ release/spelleffectfn.o
 release/spellhitfn.o
 release/spellscript.o
 release/ssspell.o
+release/settingbase.o
 release/main.o
 release/mainwindow.o
 release/script.o

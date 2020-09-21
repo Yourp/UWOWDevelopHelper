@@ -2,13 +2,13 @@
 #define CLASSNAME_H
 
 #include <QString>
-#include "ScriptsObject.h"
+#include "ObjectBase.h"
 
 
-class ClassName : public ScriptsObject
+class ClassName : public ObjectBase
 {
 public:
-    ClassName() : ScriptsObject() {}
+    ClassName() : ObjectBase() {}
     virtual ~ClassName() {}
 
     virtual QString const GetPrefix() const = 0;

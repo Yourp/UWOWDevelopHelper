@@ -2,14 +2,14 @@
 #define SCRIPT_H
 
 #include <QVector>
-#include "ScriptsObject.h"
+#include "ObjectBase.h"
 #include "scriptregister.h"
 
 
-class Script : public ScriptsObject
+class Script : public ObjectBase
 {
 public:
-    Script() : ScriptsObject() {}
+    Script() : ObjectBase() {}
 
     virtual ~Script() {}
 

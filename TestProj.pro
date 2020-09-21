@@ -23,6 +23,7 @@ SOURCES += \
     Registers/Spell/spellhitfn.cpp \
     Scripts/spellscript.cpp \
     Scripts/ssspell.cpp \
+    Settings/settingbase.cpp \
     main.cpp \
     mainwindow.cpp \
     script.cpp \
@@ -33,12 +34,13 @@ SOURCES += \
 HEADERS += \
     Classes/classname.h \
     DataBase/databaseconnector.h \
+    ObjectBase.h \
     Registers/Spell/spellcastfn.h \
     Registers/Spell/spelleffectfn.h \
     Registers/Spell/spellhitfn.h \
     Scripts/spellscript.h \
     Scripts/ssspell.h \
-    ScriptsObject.h \
+    Settings/settingbase.h \
     mainwindow.h \
     script.h \
     scriptregister.h \

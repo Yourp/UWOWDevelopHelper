@@ -4,11 +4,11 @@
 #include <QString>
 
 
-class ScriptsObject
+class ObjectBase
 {
 public:
 
-    virtual ~ScriptsObject() {}
+    virtual ~ObjectBase() {}
 
     virtual QString const GetName() const = 0;
 };
