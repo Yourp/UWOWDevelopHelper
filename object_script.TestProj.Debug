@@ -5,6 +5,7 @@ debug/spelleffectfn.o
 debug/spellhitfn.o
 debug/spellscript.o
 debug/ssspell.o
+debug/databasesettings.o
 debug/settingbase.o
 debug/main.o
 debug/mainwindow.o

@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     Scripts[ui->CB_Scripts->currentIndex()]->FillOptionsListWidget(ui->LW_StaticRegisters);
 
-    SettingWindow = new Settings(this);
+    SettingWindow = new SettingsWindow(this);
 
 
 //    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);

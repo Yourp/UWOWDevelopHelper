@@ -47,7 +47,7 @@ private:
     Ui::MainWindow *ui;
 
     DataBaseConnector DBConnector;
-    class Settings* SettingWindow;
+    class SettingsWindow* SettingWindow;
 
 
 

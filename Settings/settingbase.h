@@ -7,19 +7,15 @@
 
 class SettingBase : public ObjectBase
 {
-    QString Name;
-
 public:
-    SettingBase(QString const& NewName);
+    SettingBase() : ObjectBase() {}
     virtual ~SettingBase() {}
-
-    virtual const QString GetName() const override { return Name; }
 };
 
 class Setting : public SettingBase
 {
 public:
-    Setting(const QString &NewName) : SettingBase(NewName) {}
+    Setting() : SettingBase() {}
     virtual ~Setting() {}
 };
 

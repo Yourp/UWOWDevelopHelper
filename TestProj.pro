@@ -23,6 +23,7 @@ SOURCES += \
     Registers/Spell/spellhitfn.cpp \
     Scripts/spellscript.cpp \
     Scripts/ssspell.cpp \
+    Settings/databasesettings.cpp \
     Settings/settingbase.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
     Registers/Spell/spellhitfn.h \
     Scripts/spellscript.h \
     Scripts/ssspell.h \
+    Settings/databasesettings.h \
     Settings/settingbase.h \
     mainwindow.h \
     script.h \
@@ -49,7 +51,7 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
-    settings.ui
+    settingswindow.ui
 
 TRANSLATIONS += \
     TestProj_ru_RU.ts

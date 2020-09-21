@@ -8,16 +8,19 @@ namespace Ui {
 class SettingsWindow;
 }
 
-class Settings : public QDialog
+class SettingsWindow : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit Settings(QWidget *parent = nullptr);
-    ~Settings();
+    explicit SettingsWindow(QWidget *parent = nullptr);
+    ~SettingsWindow();
 
 private:
     Ui::SettingsWindow *ui;
+
+
+    class QListWidgetItem* CreateSettingWidgetItem(QString const& ItemName);
 
 };
 
