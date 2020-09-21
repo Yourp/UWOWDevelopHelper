@@ -9,7 +9,7 @@
 #include "script.h"
 #include "Classes/classname.h"
 #include "mainwindow.h"
-#include "settings.h"
+#include "settingswindow.h"
 #include "scriptregister.h"
 
 
@@ -78,8 +78,6 @@ void MainWindow::on_pushButton_released()
 //    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);
 
 //    tt.setValue("ScriptName", ui->LE_ScriptName->text());
-
-
 
 
     /** TODO: PATH */

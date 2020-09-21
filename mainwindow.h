@@ -50,6 +50,7 @@ private:
     class Settings* SettingWindow;
 
 
+
 };
 
 

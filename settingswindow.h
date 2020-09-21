@@ -3,8 +3,9 @@
 
 #include <QDialog>
 
+
 namespace Ui {
-class Settings;
+class SettingsWindow;
 }
 
 class Settings : public QDialog
@@ -16,7 +17,8 @@ public:
     ~Settings();
 
 private:
-    Ui::Settings *ui;
+    Ui::SettingsWindow *ui;
+
 };
 
 #endif // SETTINGS_H

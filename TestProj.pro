@@ -27,7 +27,7 @@ SOURCES += \
     mainwindow.cpp \
     script.cpp \
     scriptregister.cpp \
-    settings.cpp \
+    settingswindow.cpp \
     textstatics.cpp
 
 HEADERS += \
@@ -42,7 +42,7 @@ HEADERS += \
     mainwindow.h \
     script.h \
     scriptregister.h \
-    settings.h \
+    settingswindow.h \
     textstatics.h
 
 FORMS += \

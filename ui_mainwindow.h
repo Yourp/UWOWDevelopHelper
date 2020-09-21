@@ -62,10 +62,6 @@ public:
         MainWindow->setWindowModality(Qt::NonModal);
         MainWindow->setEnabled(true);
         MainWindow->resize(977, 755);
-        QFont font;
-        font.setBold(false);
-        font.setWeight(50);
-        MainWindow->setFont(font);
         MainWindow->setContextMenuPolicy(Qt::DefaultContextMenu);
         Settings = new QAction(MainWindow);
         Settings->setObjectName(QString::fromUtf8("Settings"));
@@ -233,11 +229,9 @@ public:
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
         toolBar->setEnabled(true);
-        QFont font1;
-        font1.setPointSize(10);
-        font1.setBold(false);
-        font1.setWeight(50);
-        toolBar->setFont(font1);
+        QFont font;
+        font.setPointSize(10);
+        toolBar->setFont(font);
         toolBar->setMovable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
         QWidget::setTabOrder(pushButton, textEditDebug);

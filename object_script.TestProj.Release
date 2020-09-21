@@ -9,7 +9,7 @@ release/main.o
 release/mainwindow.o
 release/script.o
 release/scriptregister.o
-release/settings.o
+release/settingswindow.o
 release/textstatics.o
 release/moc_mainwindow.o
-release/moc_settings.o
+release/moc_settingswindow.o
