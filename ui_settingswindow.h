@@ -24,7 +24,7 @@ class Ui_SettingsWindow
 {
 public:
     QListWidget *LW_SettingsCategories;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout;
     QLabel *L_HostName;
     QLineEdit *LE_HostName;
@@ -45,7 +45,7 @@ public:
         SettingsWindow->setWindowOpacity(1.000000000000000);
         LW_SettingsCategories = new QListWidget(SettingsWindow);
         LW_SettingsCategories->setObjectName(QString::fromUtf8("LW_SettingsCategories"));
-        LW_SettingsCategories->setGeometry(QRect(10, 10, 161, 161));
+        LW_SettingsCategories->setGeometry(QRect(10, 10, 161, 311));
         QFont font;
         font.setPointSize(9);
         LW_SettingsCategories->setFont(font);
@@ -58,61 +58,61 @@ public:
         LW_SettingsCategories->setAutoScroll(false);
         LW_SettingsCategories->setTextElideMode(Qt::ElideRight);
         LW_SettingsCategories->setViewMode(QListView::ListMode);
-        widget = new QWidget(SettingsWindow);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(220, 20, 271, 141));
-        gridLayout = new QGridLayout(widget);
+        layoutWidget = new QWidget(SettingsWindow);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(430, 420, 271, 132));
+        gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        L_HostName = new QLabel(widget);
+        L_HostName = new QLabel(layoutWidget);
         L_HostName->setObjectName(QString::fromUtf8("L_HostName"));
 
-        gridLayout->addWidget(L_HostName, 0, 0, 1, 2);
+        gridLayout->addWidget(L_HostName, 0, 0, 2, 2);
 
-        LE_HostName = new QLineEdit(widget);
+        LE_HostName = new QLineEdit(layoutWidget);
         LE_HostName->setObjectName(QString::fromUtf8("LE_HostName"));
 
-        gridLayout->addWidget(LE_HostName, 0, 2, 1, 2);
+        gridLayout->addWidget(LE_HostName, 1, 1, 1, 1);
 
-        L_UserName = new QLabel(widget);
+        L_UserName = new QLabel(layoutWidget);
         L_UserName->setObjectName(QString::fromUtf8("L_UserName"));
 
-        gridLayout->addWidget(L_UserName, 1, 0, 1, 2);
+        gridLayout->addWidget(L_UserName, 2, 0, 1, 1);
 
-        LE_UserName = new QLineEdit(widget);
+        LE_UserName = new QLineEdit(layoutWidget);
         LE_UserName->setObjectName(QString::fromUtf8("LE_UserName"));
 
-        gridLayout->addWidget(LE_UserName, 1, 2, 1, 2);
+        gridLayout->addWidget(LE_UserName, 2, 1, 1, 1);
 
-        L_Password = new QLabel(widget);
+        L_Password = new QLabel(layoutWidget);
         L_Password->setObjectName(QString::fromUtf8("L_Password"));
 
-        gridLayout->addWidget(L_Password, 2, 0, 1, 1);
+        gridLayout->addWidget(L_Password, 3, 0, 1, 1);
 
-        LE_Password = new QLineEdit(widget);
+        LE_Password = new QLineEdit(layoutWidget);
         LE_Password->setObjectName(QString::fromUtf8("LE_Password"));
 
-        gridLayout->addWidget(LE_Password, 2, 1, 1, 3);
+        gridLayout->addWidget(LE_Password, 3, 1, 1, 1);
 
-        L_Port = new QLabel(widget);
+        L_Port = new QLabel(layoutWidget);
         L_Port->setObjectName(QString::fromUtf8("L_Port"));
 
-        gridLayout->addWidget(L_Port, 3, 0, 1, 1);
+        gridLayout->addWidget(L_Port, 4, 0, 1, 1);
 
-        LE_Port = new QLineEdit(widget);
+        LE_Port = new QLineEdit(layoutWidget);
         LE_Port->setObjectName(QString::fromUtf8("LE_Port"));
 
-        gridLayout->addWidget(LE_Port, 3, 1, 1, 3);
+        gridLayout->addWidget(LE_Port, 4, 1, 1, 1);
 
-        L_DatabaseName = new QLabel(widget);
+        L_DatabaseName = new QLabel(layoutWidget);
         L_DatabaseName->setObjectName(QString::fromUtf8("L_DatabaseName"));
 
-        gridLayout->addWidget(L_DatabaseName, 4, 0, 1, 3);
+        gridLayout->addWidget(L_DatabaseName, 5, 0, 1, 1);
 
-        LE_DatabaseName = new QLineEdit(widget);
+        LE_DatabaseName = new QLineEdit(layoutWidget);
         LE_DatabaseName->setObjectName(QString::fromUtf8("LE_DatabaseName"));
 
-        gridLayout->addWidget(LE_DatabaseName, 4, 3, 1, 1);
+        gridLayout->addWidget(LE_DatabaseName, 5, 1, 1, 1);
 
 
         retranslateUi(SettingsWindow);
@@ -122,7 +122,7 @@ public:
 
     void retranslateUi(QDialog *SettingsWindow)
     {
-        SettingsWindow->setWindowTitle(QCoreApplication::translate("SettingsWindow", "SettingsWindow", nullptr));
+        SettingsWindow->setWindowTitle(QCoreApplication::translate("SettingsWindow", "Settings", nullptr));
         L_HostName->setText(QCoreApplication::translate("SettingsWindow", "Host Name: ", nullptr));
         L_UserName->setText(QCoreApplication::translate("SettingsWindow", "User Name: ", nullptr));
         L_Password->setText(QCoreApplication::translate("SettingsWindow", "Password: ", nullptr));

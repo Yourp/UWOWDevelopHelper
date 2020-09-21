@@ -2189,7 +2189,50 @@ release/settingswindow.o: settingswindow.cpp settingswindow.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/qfile.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/qfiledevice.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qvector2d.h \
-		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qtouchdevice.h
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qtouchdevice.h \
+		ui_settingswindow.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/qcoreapplication.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/qeventloop.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qguiapplication.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qinputmethod.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QGridLayout \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qgridlayout.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qlayout.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qboxlayout.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QLabel \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qlabel.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qframe.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qlineedit.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qtextcursor.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qtextformat.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QListWidget \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qlistwidget.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qlistview.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractitemview.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/qabstractitemmodel.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/qitemselectionmodel.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qstyleoption.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractspinbox.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qvalidator.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/qregularexpression.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qicon.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qslider.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractslider.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qstyle.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qtabbar.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qtabwidget.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qrubberband.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\settingswindow.o settingswindow.cpp
 
 release/textstatics.o: textstatics.cpp F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QString \
