@@ -33,7 +33,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *Generation;
+    QAction *Settings;
     QWidget *Tabs;
     QLineEdit *LE_ScriptName;
     QPushButton *pushButton;
@@ -67,16 +67,13 @@ public:
         font.setWeight(50);
         MainWindow->setFont(font);
         MainWindow->setContextMenuPolicy(Qt::DefaultContextMenu);
-        Generation = new QAction(MainWindow);
-        Generation->setObjectName(QString::fromUtf8("Generation"));
-        Generation->setCheckable(false);
-        Generation->setChecked(false);
-        Generation->setEnabled(true);
-        QFont font1;
-        font1.setPointSize(12);
-        Generation->setFont(font1);
-        Generation->setAutoRepeat(true);
-        Generation->setVisible(true);
+        Settings = new QAction(MainWindow);
+        Settings->setObjectName(QString::fromUtf8("Settings"));
+        Settings->setCheckable(false);
+        Settings->setChecked(false);
+        Settings->setEnabled(true);
+        Settings->setAutoRepeat(true);
+        Settings->setVisible(true);
         Tabs = new QWidget(MainWindow);
         Tabs->setObjectName(QString::fromUtf8("Tabs"));
         LE_ScriptName = new QLineEdit(Tabs);
@@ -236,13 +233,11 @@ public:
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
         toolBar->setEnabled(true);
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Friz Quadrata Com"));
-        font2.setPointSize(14);
-        font2.setBold(false);
-        font2.setItalic(false);
-        font2.setWeight(50);
-        toolBar->setFont(font2);
+        QFont font1;
+        font1.setPointSize(10);
+        font1.setBold(false);
+        font1.setWeight(50);
+        toolBar->setFont(font1);
         toolBar->setMovable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
         QWidget::setTabOrder(pushButton, textEditDebug);
@@ -251,7 +246,7 @@ public:
         QWidget::setTabOrder(PB_AddRegister, PB_RemoveRegister);
         QWidget::setTabOrder(PB_RemoveRegister, LE_ScriptName);
 
-        toolBar->addAction(Generation);
+        toolBar->addAction(Settings);
 
         retranslateUi(MainWindow);
 
@@ -266,10 +261,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        Generation->setText(QCoreApplication::translate("MainWindow", "Generate", nullptr));
-#if QT_CONFIG(tooltip)
-        Generation->setToolTip(QCoreApplication::translate("MainWindow", "Generate Code", nullptr));
-#endif // QT_CONFIG(tooltip)
+        Settings->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Generate Code", nullptr));
         groupBox->setTitle(QCoreApplication::translate("MainWindow", "GroupBox", nullptr));
         PB_AddRegister->setText(QCoreApplication::translate("MainWindow", "Add Register", nullptr));

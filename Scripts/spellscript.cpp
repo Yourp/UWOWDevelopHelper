@@ -64,7 +64,7 @@ void SpellScript::EditScriptFilesText(QString &FilesText, QString ScriptName, co
     FilesText = Result;
 }
 
-void SpellScript::HandleDataBase(MainWindow const* MW)
+void SpellScript::HandleDataBase(MainWindow* MW)
 {
     QString Path = "d:/Work/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_") + "spell_script_names.sql";
     /** TODO: PATH */
@@ -76,14 +76,16 @@ void SpellScript::HandleDataBase(MainWindow const* MW)
     QTextStream qq(&file);
     QString FilesText = qq.readAll();
 
-    FilesText += "DELETE FROM `spell_script_names` WHERE (`ScriptName`='" + MW->GetScriptName() + "');";
-    FilesText += "\n";
-    FilesText += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + MW->GetSpellID() + "', '" + MW->GetScriptName() + "');\n";
+    QString AddNew = "DELETE FROM `spell_script_names` WHERE (`ScriptName`='" + MW->GetScriptName() + "');";
+    AddNew += "\n";
+    AddNew += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + MW->GetSpellID() + "', '" + MW->GetScriptName() + "');\n";
 
     file.resize(0);
-    qq << FilesText;
+    qq << FilesText + AddNew;
 
     file.close();
+
+    MW->PushToDataBase(AddNew);
 }
 
 

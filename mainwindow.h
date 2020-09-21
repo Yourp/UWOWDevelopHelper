@@ -3,10 +3,7 @@
 
 #include <QMainWindow>
 #include <QVector>
-#include <QtSql>
-#include <QSqlDatabase>
-#include "script.h"
-#include "Classes/classname.h"
+#include "DataBase/databaseconnector.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,17 +20,16 @@ public:
     int GetCurrentScriptIndex() const;
     QString const GetScriptName() const;
     QString const GetSpellID() const;
+    bool PushToDataBase(QString const& Command);
 
 
-    static QVector<Script*> const Scripts;
-    static QVector<ClassName*> const Classes;
+    static QVector<class Script*> const Scripts;
+    static QVector<class ClassName*> const Classes;
     QVector<class ScriptRegister> Registers;
 
 private slots:
 
     void on_pushButton_released();
-
-    void on_pushButton_3_clicked(bool checked);
 
     void on_CB_Classes_currentIndexChanged(int index);
 
@@ -45,10 +41,13 @@ private slots:
 
     void on_TW_AddedRegisters_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
 
+    void on_Settings_triggered();
+
 private:
     Ui::MainWindow *ui;
 
-
+    DataBaseConnector DBConnector;
+    class Settings* SettingWindow;
 
 
 };

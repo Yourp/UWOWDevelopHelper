@@ -1,4 +1,5 @@
 debug/classname.o
+debug/databaseconnector.o
 debug/spellcastfn.o
 debug/spelleffectfn.o
 debug/spellhitfn.o
@@ -8,5 +9,7 @@ debug/main.o
 debug/mainwindow.o
 debug/script.o
 debug/scriptregister.o
+debug/settings.o
 debug/textstatics.o
 debug/moc_mainwindow.o
+debug/moc_settings.o

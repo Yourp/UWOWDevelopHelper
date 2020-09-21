@@ -1,4 +1,5 @@
 release/classname.o
+release/databaseconnector.o
 release/spellcastfn.o
 release/spelleffectfn.o
 release/spellhitfn.o
@@ -8,5 +9,7 @@ release/main.o
 release/mainwindow.o
 release/script.o
 release/scriptregister.o
+release/settings.o
 release/textstatics.o
 release/moc_mainwindow.o
+release/moc_settings.o

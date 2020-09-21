@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Classes/classname.cpp \
+    DataBase/databaseconnector.cpp \
     Registers/Spell/spellcastfn.cpp \
     Registers/Spell/spelleffectfn.cpp \
     Registers/Spell/spellhitfn.cpp \
@@ -26,10 +27,12 @@ SOURCES += \
     mainwindow.cpp \
     script.cpp \
     scriptregister.cpp \
+    settings.cpp \
     textstatics.cpp
 
 HEADERS += \
     Classes/classname.h \
+    DataBase/databaseconnector.h \
     Registers/Spell/spellcastfn.h \
     Registers/Spell/spelleffectfn.h \
     Registers/Spell/spellhitfn.h \
@@ -39,10 +42,12 @@ HEADERS += \
     mainwindow.h \
     script.h \
     scriptregister.h \
+    settings.h \
     textstatics.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    settings.ui
 
 TRANSLATIONS += \
     TestProj_ru_RU.ts

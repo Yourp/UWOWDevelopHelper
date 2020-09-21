@@ -426,10 +426,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Friz Quadrata Com</family>
-     <pointsize>14</pointsize>
+     <pointsize>10</pointsize>
      <weight>50</weight>
-     <italic>false</italic>
      <bold>false</bold>
     </font>
    </property>
@@ -445,9 +443,9 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="Generation"/>
+   <addaction name="Settings"/>
   </widget>
-  <action name="Generation">
+  <action name="Settings">
    <property name="checkable">
     <bool>false</bool>
    </property>
@@ -458,15 +456,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Generate</string>
-   </property>
-   <property name="toolTip">
-    <string>Generate Code</string>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
+    <string>Settings</string>
    </property>
    <property name="autoRepeat">
     <bool>true</bool>

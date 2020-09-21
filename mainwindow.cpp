@@ -6,8 +6,12 @@
 #include "textstatics.h"
 #include "Scripts/spellscript.h"
 #include "Scripts/ssspell.h"
+#include "script.h"
+#include "Classes/classname.h"
 #include "mainwindow.h"
+#include "settings.h"
 #include "scriptregister.h"
+
 
 
 QVector<ClassName*> const MainWindow::Classes =
@@ -32,9 +36,7 @@ QVector<Script*> const MainWindow::Scripts =
     new SSSpell()
 };
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -57,6 +59,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     Scripts[ui->CB_Scripts->currentIndex()]->FillOptionsListWidget(ui->LW_StaticRegisters);
 
+    SettingWindow = new Settings(this);
+
+
 //    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);
 
 //    ui->LE_ScriptName->setText(tt.value("ScriptName").toString());
@@ -65,6 +70,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete SettingWindow;
 }
 
 void MainWindow::on_pushButton_released()
@@ -99,30 +105,6 @@ void MainWindow::on_pushButton_released()
 
     ui->textEditDebug->setText(QDateTime::currentDateTime().toString("dd_MM_yyyy"));
 }
-
-
-
-
-void MainWindow::on_pushButton_3_clicked(bool )
-{
-//    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-//    db.setHostName("127.0.0.1");
-//    db.setUserName("root");
-//    db.setPassword("root");
-//    db.setPort(3306);
-//    db.setDatabaseName("world735");
-
-//    bool dada = db.open();
-
-//    QSqlQuery q = QSqlQuery(db);
-
-//    dada = q.exec("INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('9999999', 'spell_mage_ffffffff')");
-}
-
-#undef CREATE_CLASSNAME
-#undef CREATE_SCRIPT
-
-
 
 void MainWindow::on_CB_Classes_currentIndexChanged(int index)
 {
@@ -185,6 +167,11 @@ const QString MainWindow::GetSpellID() const
     return ui->LE_SpellID->text();
 }
 
+bool MainWindow::PushToDataBase(QString const& Command)
+{
+    return DBConnector.Push(Command);
+}
+
 void MainWindow::on_LW_StaticRegisters_currentRowChanged(int currentRow)
 {
     if (currentRow < 0)
@@ -219,4 +206,14 @@ void MainWindow::on_TW_AddedRegisters_currentCellChanged(int currentRow, int, in
     ui->PB_AddRegister->setEnabled(false);
     ui->PB_RemoveRegister->setEnabled(true);
     ui->PB_RemoveRegister->setFocus();
+}
+
+void MainWindow::on_Settings_triggered()
+{
+    if (!SettingWindow)
+    {
+        return;
+    }
+
+    SettingWindow->exec();
 }
