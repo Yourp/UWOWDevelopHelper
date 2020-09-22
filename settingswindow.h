@@ -3,7 +3,6 @@
 
 #include <QDialog>
 #include <QString>
-#include <QVector>
 #include "DataBase/databaseconnector.h"
 
 
@@ -40,10 +39,8 @@ private:
 
     DataBaseConnector DBConnection;
 
-    QVector<QWidget*> SettingsSections;
 
-
-    class QListWidgetItem* CreateSettingWidgetItem(QString const& ItemName, QWidget* Layer);
+    class QListWidgetItem* CreateSettingWidgetItem(QString const& ItemName);
 
     void EditButtonsWhenConnected();
     void EditButtonsWhenDisconnected();

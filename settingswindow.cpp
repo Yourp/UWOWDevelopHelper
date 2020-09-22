@@ -5,8 +5,9 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
 {
     ui->setupUi(this);
 
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Data Base", ui->W_DatabaseLayer));
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts Paths", nullptr));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database Connection"));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts Settings"));
+
 
     ui->LW_SettingsCategories->setCurrentRow(0);
 
@@ -55,11 +56,10 @@ QString SettingsWindow::GetDatabaseName() const
     return ui->LE_DatabaseName->text();
 }
 
-QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName, QWidget* Layer)
+QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName)
 {
     QListWidgetItem* NewItem = new QListWidgetItem(ItemName);
     NewItem->setSizeHint(QSize(10, 30));
-    SettingsSections.push_back(Layer);
     return NewItem;
 }
 
@@ -137,16 +137,5 @@ void SettingsWindow::on_PB_Connect_clicked()
 
 void SettingsWindow::on_LW_SettingsCategories_currentRowChanged(int currentRow)
 {
-    for (auto& Itr : SettingsSections)
-    {
-        if (Itr != nullptr)
-        {
-            Itr->setVisible(false);
-        }
-    }
-
-    if (QWidget* Layer = SettingsSections.at(currentRow))
-    {
-        Layer->setVisible(true);
-    }
+    ui->SW_SettingsLayer->setCurrentIndex(currentRow);
 }

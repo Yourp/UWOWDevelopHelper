@@ -19,6 +19,7 @@
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,9 +29,10 @@ class Ui_SettingsWindow
 {
 public:
     QListWidget *LW_SettingsCategories;
-    QWidget *W_DatabaseLayer;
+    QStackedWidget *SW_SettingsLayer;
+    QWidget *page;
     QGroupBox *groupBox;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_5;
@@ -52,6 +54,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *PB_Connect;
     QPushButton *PB_Disconnect;
+    QWidget *page_2;
 
     void setupUi(QDialog *SettingsWindow)
     {
@@ -65,29 +68,48 @@ public:
         QFont font;
         font.setPointSize(9);
         LW_SettingsCategories->setFont(font);
+        LW_SettingsCategories->setFocusPolicy(Qt::NoFocus);
         LW_SettingsCategories->setLayoutDirection(Qt::LeftToRight);
-        LW_SettingsCategories->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
+        LW_SettingsCategories->setStyleSheet(QString::fromUtf8("QListWidget::item:hover {\n"
+"   border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(180, 190, 200, 60), stop:1 rgba(255, 255, 255, 255));\n"
+"    border-color: rgb(180, 190, 200, 230);\n"
+"    border-radius: 8px;\n"
+"}\n"
+"\n"
+"QListWidget::item:selected {\n"
+"    border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(84, 128, 190, 50), stop:1 rgba(255, 255, 255, 255));\n"
+"    border-color: rgb(84, 128, 190);\n"
+"    border-radius: 8px;\n"
+"}\n"
+"\n"
+"QListWidget\n"
+"{\n"
+"    background-color: rgb(240, 240, 240);\n"
+"}"));
         LW_SettingsCategories->setFrameShape(QFrame::WinPanel);
         LW_SettingsCategories->setFrameShadow(QFrame::Sunken);
         LW_SettingsCategories->setLineWidth(1);
-        LW_SettingsCategories->setMidLineWidth(0);
         LW_SettingsCategories->setAutoScroll(false);
+        LW_SettingsCategories->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        LW_SettingsCategories->setProperty("showDropIndicator", QVariant(false));
+        LW_SettingsCategories->setSelectionMode(QAbstractItemView::SingleSelection);
         LW_SettingsCategories->setTextElideMode(Qt::ElideRight);
-        LW_SettingsCategories->setViewMode(QListView::ListMode);
-        W_DatabaseLayer = new QWidget(SettingsWindow);
-        W_DatabaseLayer->setObjectName(QString::fromUtf8("W_DatabaseLayer"));
-        W_DatabaseLayer->setEnabled(true);
-        W_DatabaseLayer->setGeometry(QRect(180, 10, 451, 361));
-        W_DatabaseLayer->setTabletTracking(false);
-        W_DatabaseLayer->setFocusPolicy(Qt::TabFocus);
-        W_DatabaseLayer->setAutoFillBackground(false);
-        groupBox = new QGroupBox(W_DatabaseLayer);
+        SW_SettingsLayer = new QStackedWidget(SettingsWindow);
+        SW_SettingsLayer->setObjectName(QString::fromUtf8("SW_SettingsLayer"));
+        SW_SettingsLayer->setGeometry(QRect(180, 10, 531, 341));
+        page = new QWidget();
+        page->setObjectName(QString::fromUtf8("page"));
+        groupBox = new QGroupBox(page);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(0, 0, 211, 311));
-        widget = new QWidget(groupBox);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 30, 192, 271));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(groupBox);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 30, 192, 271));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_3 = new QVBoxLayout();
@@ -95,12 +117,12 @@ public:
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setSpacing(0);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        L_HostName_2 = new QLabel(widget);
+        L_HostName_2 = new QLabel(layoutWidget);
         L_HostName_2->setObjectName(QString::fromUtf8("L_HostName_2"));
 
         verticalLayout_5->addWidget(L_HostName_2);
 
-        LE_HostName = new QLineEdit(widget);
+        LE_HostName = new QLineEdit(layoutWidget);
         LE_HostName->setObjectName(QString::fromUtf8("LE_HostName"));
 
         verticalLayout_5->addWidget(LE_HostName);
@@ -111,12 +133,12 @@ public:
         verticalLayout_8 = new QVBoxLayout();
         verticalLayout_8->setSpacing(0);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
-        L_Port_2 = new QLabel(widget);
+        L_Port_2 = new QLabel(layoutWidget);
         L_Port_2->setObjectName(QString::fromUtf8("L_Port_2"));
 
         verticalLayout_8->addWidget(L_Port_2);
 
-        LE_Port = new QLineEdit(widget);
+        LE_Port = new QLineEdit(layoutWidget);
         LE_Port->setObjectName(QString::fromUtf8("LE_Port"));
         LE_Port->setMaximumSize(QSize(40, 16777215));
         LE_Port->setMaxLength(5);
@@ -129,12 +151,12 @@ public:
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setSpacing(0);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        L_UserName_2 = new QLabel(widget);
+        L_UserName_2 = new QLabel(layoutWidget);
         L_UserName_2->setObjectName(QString::fromUtf8("L_UserName_2"));
 
         verticalLayout_6->addWidget(L_UserName_2);
 
-        LE_UserName = new QLineEdit(widget);
+        LE_UserName = new QLineEdit(layoutWidget);
         LE_UserName->setObjectName(QString::fromUtf8("LE_UserName"));
 
         verticalLayout_6->addWidget(LE_UserName);
@@ -145,12 +167,12 @@ public:
         verticalLayout_7 = new QVBoxLayout();
         verticalLayout_7->setSpacing(0);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
-        L_Password_2 = new QLabel(widget);
+        L_Password_2 = new QLabel(layoutWidget);
         L_Password_2->setObjectName(QString::fromUtf8("L_Password_2"));
 
         verticalLayout_7->addWidget(L_Password_2);
 
-        LE_Password = new QLineEdit(widget);
+        LE_Password = new QLineEdit(layoutWidget);
         LE_Password->setObjectName(QString::fromUtf8("LE_Password"));
         LE_Password->setFrame(true);
         LE_Password->setEchoMode(QLineEdit::Password);
@@ -163,12 +185,12 @@ public:
         verticalLayout_9 = new QVBoxLayout();
         verticalLayout_9->setSpacing(0);
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
-        L_DatabaseName_2 = new QLabel(widget);
+        L_DatabaseName_2 = new QLabel(layoutWidget);
         L_DatabaseName_2->setObjectName(QString::fromUtf8("L_DatabaseName_2"));
 
         verticalLayout_9->addWidget(L_DatabaseName_2);
 
-        LE_DatabaseName = new QLineEdit(widget);
+        LE_DatabaseName = new QLineEdit(layoutWidget);
         LE_DatabaseName->setObjectName(QString::fromUtf8("LE_DatabaseName"));
 
         verticalLayout_9->addWidget(LE_DatabaseName);
@@ -185,7 +207,7 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        PB_Connect = new QPushButton(widget);
+        PB_Connect = new QPushButton(layoutWidget);
         PB_Connect->setObjectName(QString::fromUtf8("PB_Connect"));
         PB_Connect->setEnabled(true);
         PB_Connect->setMinimumSize(QSize(91, 31));
@@ -196,12 +218,10 @@ public:
         PB_Connect->setFont(font1);
         PB_Connect->setCheckable(false);
         PB_Connect->setChecked(false);
-        PB_Connect->setAutoRepeatDelay(10000);
-        PB_Connect->setAutoRepeatInterval(10000);
 
         horizontalLayout->addWidget(PB_Connect);
 
-        PB_Disconnect = new QPushButton(widget);
+        PB_Disconnect = new QPushButton(layoutWidget);
         PB_Disconnect->setObjectName(QString::fromUtf8("PB_Disconnect"));
         PB_Disconnect->setEnabled(false);
         PB_Disconnect->setMinimumSize(QSize(91, 31));
@@ -214,8 +234,15 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        SW_SettingsLayer->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName(QString::fromUtf8("page_2"));
+        SW_SettingsLayer->addWidget(page_2);
 
         retranslateUi(SettingsWindow);
+
+        SW_SettingsLayer->setCurrentIndex(0);
+
 
         QMetaObject::connectSlotsByName(SettingsWindow);
     } // setupUi

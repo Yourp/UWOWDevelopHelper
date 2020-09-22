@@ -60,6 +60,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     SettingWindow = new SettingsWindow(this);
 
+    SettingWindow->exec();
+
 }
 
 MainWindow::~MainWindow()
