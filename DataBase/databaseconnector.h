@@ -12,8 +12,8 @@ class DataBaseConnector
 public:
     DataBaseConnector();
 
-    bool Connect();
-    bool ReConnect();
+    bool Connect(class SettingsWindow* Settings);
+    void Disconnect();
     bool Push(class QString command);
 };
 

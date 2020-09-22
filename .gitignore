@@ -48,5 +48,7 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Config files
+*.ini
 debug/
 release/

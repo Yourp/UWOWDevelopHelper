@@ -58,21 +58,21 @@
     <enum>QListView::ListMode</enum>
    </property>
   </widget>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QWidget" name="W_DatabaseLayer" native="true">
    <property name="geometry">
     <rect>
      <x>190</x>
      <y>20</y>
-     <width>191</width>
+     <width>141</width>
      <height>221</height>
     </rect>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>181</width>
+      <width>131</width>
       <height>206</height>
      </rect>
     </property>
@@ -91,6 +91,33 @@
        </item>
        <item>
         <widget class="QLineEdit" name="LE_HostName"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="L_Port_2">
+         <property name="text">
+          <string>Port: </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="LE_Port">
+         <property name="maximumSize">
+          <size>
+           <width>40</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="maxLength">
+          <number>5</number>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -124,24 +151,14 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="LE_Password"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_8">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="L_Port_2">
-         <property name="text">
-          <string>Port: </string>
+        <widget class="QLineEdit" name="LE_Password">
+         <property name="frame">
+          <bool>true</bool>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
          </property>
         </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="LE_Port"/>
        </item>
       </layout>
      </item>
@@ -164,6 +181,66 @@
      </item>
     </layout>
    </widget>
+  </widget>
+  <widget class="QPushButton" name="PB_Disconnect">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>20</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(170, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>Disconnect</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PB_Connect">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>60</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 177, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Connected</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
   </widget>
  </widget>
  <resources/>

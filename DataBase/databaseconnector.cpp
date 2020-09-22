@@ -1,31 +1,30 @@
 #include "databaseconnector.h"
+#include "settingswindow.h"
 
 DataBaseConnector::DataBaseConnector()
 {
-    Connect();
 }
 
-bool DataBaseConnector::Connect()
+bool DataBaseConnector::Connect(SettingsWindow* Settings)
 {
     Connector = QSqlDatabase::addDatabase("QMYSQL");
-    Connector.setHostName("127.0.0.1");
-    Connector.setUserName("root");
-    Connector.setPassword("root");
-    Connector.setPort(3306);
-    Connector.setDatabaseName("world735");
+    Connector.setHostName(Settings->GetHostName());
+    Connector.setUserName(Settings->GetUserName());
+    Connector.setPassword(Settings->GetPassword());
+    Connector.setPort(Settings->GetPort());
+    Connector.setDatabaseName(Settings->GetDatabaseName());
 
     return Connector.open();
 }
 
-bool DataBaseConnector::ReConnect()
+void DataBaseConnector::Disconnect()
 {
     Connector.close();
-    return Connect();
 }
 
 bool DataBaseConnector::Push(QString command)
 {
     QSqlQuery Query = QSqlQuery(Connector);
 
-    return  Query.exec(command);
+    return Query.exec(command);
 }

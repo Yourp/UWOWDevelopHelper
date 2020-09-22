@@ -1,6 +1,5 @@
 #include <QTextStream>
 #include <QFile>
-#include <QDateTime>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "textstatics.h"
@@ -61,10 +60,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     SettingWindow = new SettingsWindow(this);
 
-
-//    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);
-
-//    ui->LE_ScriptName->setText(tt.value("ScriptName").toString());
 }
 
 MainWindow::~MainWindow()
@@ -75,9 +70,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_released()
 {
-//    QSettings tt("tdaddadadadadadadadadadadada.ini", QSettings::IniFormat);
 
-//    tt.setValue("ScriptName", ui->LE_ScriptName->text());
 
 
     /** TODO: PATH */
