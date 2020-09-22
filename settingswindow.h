@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QString>
+#include <QVector>
 #include "DataBase/databaseconnector.h"
 
 
@@ -31,20 +32,26 @@ private slots:
 
 
     void on_PB_Disconnect_clicked();
-
     void on_PB_Connect_clicked();
+    void on_LW_SettingsCategories_currentRowChanged(int currentRow);
 
 private:
     Ui::SettingsWindow *ui;
 
     DataBaseConnector DBConnection;
-    class QListWidgetItem* CreateSettingWidgetItem(QString const& ItemName);
+
+    QVector<QWidget*> SettingsSections;
+
+
+    class QListWidgetItem* CreateSettingWidgetItem(QString const& ItemName, QWidget* Layer);
 
     void EditButtonsWhenConnected();
     void EditButtonsWhenDisconnected();
 
     void LoadConfig();
     void SaveToConfig();
+
+
 
 
 

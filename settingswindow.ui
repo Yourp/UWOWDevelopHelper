@@ -241,6 +241,12 @@
    <property name="checked">
     <bool>false</bool>
    </property>
+   <property name="autoRepeatDelay">
+    <number>10000</number>
+   </property>
+   <property name="autoRepeatInterval">
+    <number>10000</number>
+   </property>
   </widget>
  </widget>
  <resources/>

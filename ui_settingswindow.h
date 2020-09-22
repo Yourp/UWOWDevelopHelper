@@ -179,6 +179,8 @@ public:
 ""));
         PB_Connect->setCheckable(false);
         PB_Connect->setChecked(false);
+        PB_Connect->setAutoRepeatDelay(10000);
+        PB_Connect->setAutoRepeatInterval(10000);
 
         retranslateUi(SettingsWindow);
 

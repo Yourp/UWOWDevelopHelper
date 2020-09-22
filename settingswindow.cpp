@@ -5,8 +5,8 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
 {
     ui->setupUi(this);
 
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Data Base"));
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts Paths"));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Data Base", ui->W_DatabaseLayer));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts Paths", nullptr));
 
     ui->LW_SettingsCategories->setCurrentRow(0);
 
@@ -55,10 +55,11 @@ QString SettingsWindow::GetDatabaseName() const
     return ui->LE_DatabaseName->text();
 }
 
-QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName)
+QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName, QWidget* Layer)
 {
     QListWidgetItem* NewItem = new QListWidgetItem(ItemName);
     NewItem->setSizeHint(QSize(10, 30));
+    SettingsSections.push_back(Layer);
     return NewItem;
 }
 
@@ -70,18 +71,30 @@ void SettingsWindow::EditButtonsWhenConnected()
 
     ui->PB_Disconnect->setText("Disconnect");
     ui->PB_Disconnect->setEnabled(true);
-    ui->PB_Disconnect->setStyleSheet("color: rgb(170, 0, 0);");
+    ui->PB_Disconnect->setStyleSheet("");
+
+    ui->LE_HostName->setEnabled(false);
+    ui->LE_Port->setEnabled(false);
+    ui->LE_UserName->setEnabled(false);
+    ui->LE_Password->setEnabled(false);
+    ui->LE_DatabaseName->setEnabled(false);
 }
 
 void SettingsWindow::EditButtonsWhenDisconnected()
 {
     ui->PB_Disconnect->setText("Disconnected");
     ui->PB_Disconnect->setEnabled(false);
-    ui->PB_Disconnect->setStyleSheet("");
+    ui->PB_Disconnect->setStyleSheet("color: rgb(170, 0, 0);");
 
     ui->PB_Connect->setText("Connect");
     ui->PB_Connect->setEnabled(true);
     ui->PB_Connect->setStyleSheet("");
+
+    ui->LE_HostName->setEnabled(true);
+    ui->LE_Port->setEnabled(true);
+    ui->LE_UserName->setEnabled(true);
+    ui->LE_Password->setEnabled(true);
+    ui->LE_DatabaseName->setEnabled(true);
 }
 
 void SettingsWindow::LoadConfig()
@@ -118,5 +131,22 @@ void SettingsWindow::on_PB_Connect_clicked()
     if (DBConnection.Connect(this))
     {
         EditButtonsWhenConnected();
+    }
+}
+
+
+void SettingsWindow::on_LW_SettingsCategories_currentRowChanged(int currentRow)
+{
+    for (auto& Itr : SettingsSections)
+    {
+        if (Itr != nullptr)
+        {
+            Itr->setVisible(false);
+        }
+    }
+
+    if (QWidget* Layer = SettingsSections.at(currentRow))
+    {
+        Layer->setVisible(true);
     }
 }
