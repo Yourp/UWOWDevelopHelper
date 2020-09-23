@@ -1,5 +1,7 @@
 #include "settingswindow.h"
 #include "ui_settingswindow.h"
+#include "mainwindow.h"
+#include "Classes/classname.h"
 
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
 {
@@ -111,6 +113,11 @@ void SettingsWindow::LoadConfig()
     ui->LE_UserName->setText(Conf.value("Database.UserName").toString());
     ui->LE_Password->setText(Conf.value("Database.Password").toString());
     ui->LE_DatabaseName->setText(Conf.value("Database.DatabaseName").toString());
+
+    for (auto& Class : MainWindow::Classes)
+    {
+        Class->SetScriptsFilePath(Conf.value("SpellScript.Classes." + Class->GetName()).toString());
+    }
 }
 
 void SettingsWindow::SaveToConfig()
@@ -122,6 +129,11 @@ void SettingsWindow::SaveToConfig()
     Conf.setValue("Database.UserName", ui->LE_UserName->text());
     Conf.setValue("Database.Password", ui->LE_Password->text());
     Conf.setValue("Database.DatabaseName", ui->LE_DatabaseName->text());
+
+    for (auto& Class : MainWindow::Classes)
+    {
+        Conf.setValue("SpellScript.Classes." + Class->GetName(), Class->GetScriptsFilePath());
+    }
 }
 
 

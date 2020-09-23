@@ -7,11 +7,16 @@
 
 class ClassName : public ObjectBase
 {
+    QString ScriptsFilePath;
+
 public:
     ClassName() : ObjectBase() {}
     virtual ~ClassName() {}
 
     virtual QString const GetPrefix() const = 0;
+
+    QString const& GetScriptsFilePath() const { return ScriptsFilePath; }
+    void SetScriptsFilePath(QString Str) { ScriptsFilePath = Str; }
 };
 
 class Generic : public ClassName
