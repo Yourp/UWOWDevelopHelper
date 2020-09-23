@@ -543,7 +543,6 @@ debug/moc_settingswindow.cpp: settingswindow.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qvector2d.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qtouchdevice.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QString \
-		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QVector \
 		DataBase/databaseconnector.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtSql/QtSql \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtSql/QtSqlDepends \
@@ -1044,8 +1043,7 @@ debug/databaseconnector.o: DataBase/databaseconnector.cpp DataBase/databaseconne
 		settingswindow.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QDialog \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qdialog.h \
-		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QString \
-		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QVector
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\databaseconnector.o DataBase\databaseconnector.cpp
 
 debug/spellcastfn.o: Registers/Spell/spellcastfn.cpp Registers/Spell/spellcastfn.h \
@@ -2361,7 +2359,6 @@ debug/settingswindow.o: settingswindow.cpp settingswindow.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qvector2d.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qtouchdevice.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QString \
-		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QVector \
 		DataBase/databaseconnector.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtSql/QtSql \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtSql/QtSqlDepends \
@@ -2554,6 +2551,8 @@ debug/settingswindow.o: settingswindow.cpp settingswindow.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qpushbutton.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QSpacerItem \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QStackedWidget \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qstackedwidget.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QVBoxLayout \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\settingswindow.o settingswindow.cpp

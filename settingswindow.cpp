@@ -8,6 +8,9 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database Connection"));
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts Settings"));
 
+//    ui->LW_SettingsCategories->item(0)->setIcon(QIcon("Icons/not ok.png"));
+//    ui->LW_SettingsCategories->item(1)->setIcon(QIcon("Icons/ok.png"));
+
 
     ui->LW_SettingsCategories->setCurrentRow(0);
 
@@ -60,6 +63,8 @@ QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName
 {
     QListWidgetItem* NewItem = new QListWidgetItem(ItemName);
     NewItem->setSizeHint(QSize(10, 30));
+
+
     return NewItem;
 }
 

@@ -27,7 +27,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>9</pointsize>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -311,6 +312,97 @@ QListWidget
     </widget>
    </widget>
    <widget class="QWidget" name="page_2"/>
+  </widget>
+  <widget class="QListWidget" name="LW_SettingsCategories_2">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>410</y>
+     <width>161</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>22</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QListWidget::item:hover {
+   border: 2px solid;
+    color: rgb(0, 0, 0);
+    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(180, 190, 200, 60), stop:1 rgba(255, 255, 255, 255));
+    border-color: rgb(180, 190, 200, 230);
+    border-radius: 8px;
+	image: url(:/Icons/Icons/check.png);
+}
+
+QListWidget::item:selected {
+    border: 2px solid;
+    color: rgb(0, 0, 0);
+    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(84, 128, 190, 50), stop:1 rgba(255, 255, 255, 255));
+    border-color: rgb(84, 128, 190);
+    border-radius: 8px;
+}
+
+QListWidget
+{
+    background-color: rgb(240, 240, 240);
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::WinPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Sunken</enum>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="autoScroll">
+    <bool>false</bool>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
+   <property name="showDropIndicator" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SingleSelection</enum>
+   </property>
+   <property name="textElideMode">
+    <enum>Qt::ElideRight</enum>
+   </property>
+   <item>
+    <property name="text">
+     <string>Новый элемент</string>
+    </property>
+    <property name="icon">
+     <iconset theme="Icons\delete.png"/>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Новый элемент</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Новый элемент</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Новый элемент</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

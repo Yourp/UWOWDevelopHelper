@@ -55,6 +55,7 @@ public:
     QPushButton *PB_Connect;
     QPushButton *PB_Disconnect;
     QWidget *page_2;
+    QListWidget *LW_SettingsCategories_2;
 
     void setupUi(QDialog *SettingsWindow)
     {
@@ -66,7 +67,8 @@ public:
         LW_SettingsCategories->setObjectName(QString::fromUtf8("LW_SettingsCategories"));
         LW_SettingsCategories->setGeometry(QRect(10, 10, 161, 311));
         QFont font;
-        font.setPointSize(9);
+        font.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font.setPointSize(10);
         LW_SettingsCategories->setFont(font);
         LW_SettingsCategories->setFocusPolicy(Qt::NoFocus);
         LW_SettingsCategories->setLayoutDirection(Qt::LeftToRight);
@@ -238,6 +240,49 @@ public:
         page_2 = new QWidget();
         page_2->setObjectName(QString::fromUtf8("page_2"));
         SW_SettingsLayer->addWidget(page_2);
+        LW_SettingsCategories_2 = new QListWidget(SettingsWindow);
+        QIcon icon(QIcon::fromTheme(QString::fromUtf8("Icons\\delete.png")));
+        QListWidgetItem *__qlistwidgetitem = new QListWidgetItem(LW_SettingsCategories_2);
+        __qlistwidgetitem->setIcon(icon);
+        new QListWidgetItem(LW_SettingsCategories_2);
+        new QListWidgetItem(LW_SettingsCategories_2);
+        new QListWidgetItem(LW_SettingsCategories_2);
+        LW_SettingsCategories_2->setObjectName(QString::fromUtf8("LW_SettingsCategories_2"));
+        LW_SettingsCategories_2->setGeometry(QRect(460, 410, 161, 311));
+        QFont font2;
+        font2.setPointSize(22);
+        LW_SettingsCategories_2->setFont(font2);
+        LW_SettingsCategories_2->setFocusPolicy(Qt::NoFocus);
+        LW_SettingsCategories_2->setLayoutDirection(Qt::LeftToRight);
+        LW_SettingsCategories_2->setStyleSheet(QString::fromUtf8("QListWidget::item:hover {\n"
+"   border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(180, 190, 200, 60), stop:1 rgba(255, 255, 255, 255));\n"
+"    border-color: rgb(180, 190, 200, 230);\n"
+"    border-radius: 8px;\n"
+"	image: url(:/Icons/Icons/check.png);\n"
+"}\n"
+"\n"
+"QListWidget::item:selected {\n"
+"    border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(84, 128, 190, 50), stop:1 rgba(255, 255, 255, 255));\n"
+"    border-color: rgb(84, 128, 190);\n"
+"    border-radius: 8px;\n"
+"}\n"
+"\n"
+"QListWidget\n"
+"{\n"
+"    background-color: rgb(240, 240, 240);\n"
+"}"));
+        LW_SettingsCategories_2->setFrameShape(QFrame::WinPanel);
+        LW_SettingsCategories_2->setFrameShadow(QFrame::Sunken);
+        LW_SettingsCategories_2->setLineWidth(1);
+        LW_SettingsCategories_2->setAutoScroll(false);
+        LW_SettingsCategories_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        LW_SettingsCategories_2->setProperty("showDropIndicator", QVariant(false));
+        LW_SettingsCategories_2->setSelectionMode(QAbstractItemView::SingleSelection);
+        LW_SettingsCategories_2->setTextElideMode(Qt::ElideRight);
 
         retranslateUi(SettingsWindow);
 
@@ -258,6 +303,19 @@ public:
         L_DatabaseName_2->setText(QCoreApplication::translate("SettingsWindow", "Database Name: ", nullptr));
         PB_Connect->setText(QCoreApplication::translate("SettingsWindow", "Connect", nullptr));
         PB_Disconnect->setText(QCoreApplication::translate("SettingsWindow", "Disconnected", nullptr));
+
+        const bool __sortingEnabled = LW_SettingsCategories_2->isSortingEnabled();
+        LW_SettingsCategories_2->setSortingEnabled(false);
+        QListWidgetItem *___qlistwidgetitem = LW_SettingsCategories_2->item(0);
+        ___qlistwidgetitem->setText(QCoreApplication::translate("SettingsWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
+        QListWidgetItem *___qlistwidgetitem1 = LW_SettingsCategories_2->item(1);
+        ___qlistwidgetitem1->setText(QCoreApplication::translate("SettingsWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
+        QListWidgetItem *___qlistwidgetitem2 = LW_SettingsCategories_2->item(2);
+        ___qlistwidgetitem2->setText(QCoreApplication::translate("SettingsWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
+        QListWidgetItem *___qlistwidgetitem3 = LW_SettingsCategories_2->item(3);
+        ___qlistwidgetitem3->setText(QCoreApplication::translate("SettingsWindow", "\320\235\320\276\320\262\321\213\320\271 \321\215\320\273\320\265\320\274\320\265\320\275\321\202", nullptr));
+        LW_SettingsCategories_2->setSortingEnabled(__sortingEnabled);
+
     } // retranslateUi
 
 };
