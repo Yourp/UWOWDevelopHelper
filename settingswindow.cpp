@@ -1,8 +1,8 @@
 #include "settingswindow.h"
+#include "Scripts/spellscript.h"
 #include "ui_settingswindow.h"
 #include "mainwindow.h"
 #include "Classes/classname.h"
-#include <QFile>
 #include <QFileDialog>
 
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
@@ -77,19 +77,12 @@ QString SettingsWindow::GetDatabaseName() const
 
 QIcon SettingsWindow::GetValidationPathIcon(const QString &Path) const
 {
-    return GetValidationPathIcon(CheckPathValidation(Path, "cpp"));
+    return GetValidationPathIcon(SpellScript::CheckPathAndFileValidation(Path, "cpp"));
 }
 
 QIcon SettingsWindow::GetValidationPathIcon(bool valid) const
 {
     return QIcon(valid ? "Icons/ok.png" : "Icons/not_ok.png");
-}
-
-bool SettingsWindow::CheckPathValidation(const QString &Path, const QString &Extension)
-{
-    QFileInfo fileInfo(Path);
-    QFile file(Path);
-    return file.exists() && fileInfo.suffix() == Extension;
 }
 
 QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName)
@@ -201,7 +194,7 @@ void SettingsWindow::on_LE_ClassesScriptsPath_textChanged(const QString &arg1)
         {
             Class->SetScriptsFilePath(arg1);
 
-            bool PathValid = CheckPathValidation(arg1, "cpp");
+            bool PathValid = SpellScript::CheckPathAndFileValidation(arg1, "cpp");
             ui->LW_SettingsClassesScripts->item(ClassIndex)->setIcon(GetValidationPathIcon(PathValid));
 
             if (MainWindow* MW = dynamic_cast<MainWindow*>(parent()))

@@ -21,14 +21,16 @@ public:
 
     virtual void HandleDataBase(class MainWindow*) {}
 
-    QString const FunctionFindMarker = "@FUNCTIONNAME";
-    QString const ClassFindMarker = "@CLASSNAME";
-    QString const StartGeneration = "/** #CODE_GENERATION_START */";
+    static QString const FunctionFindMarker;
+    static QString const ClassFindMarker;
+    static QString const AddScriptFunctionName;
 
 protected:
 
 
 
 };
+
+
 
 #endif // SCRIPT_H

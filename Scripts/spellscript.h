@@ -32,6 +32,8 @@ public:
 
     void SetSpellID(QString ID) { SpellID = ID; }
 
+    static bool CheckPathAndFileValidation(QString const& Path, QString const& Extension);
+
 protected:
 
     QVector<ScriptRegisterBase*> StaticRegisters;

@@ -29,7 +29,6 @@ public:
     QIcon GetValidationPathIcon(QString const& Path) const;
     QIcon GetValidationPathIcon(bool valid) const;
 
-    static bool CheckPathValidation(QString const& Path, QString const& Extension);
 
 private slots:
 

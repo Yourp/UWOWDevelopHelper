@@ -74,7 +74,7 @@ void MainWindow::on_PB_GenerateCode_released()
 {
     QString Path = Classes[ui->CB_Classes->currentIndex()]->GetScriptsFilePath();
 
-    if (!SettingsWindow::CheckPathValidation(Path, "cpp"))
+    if (!SpellScript::CheckPathAndFileValidation(Path, "cpp"))
     {
         return;
     }
@@ -86,13 +86,13 @@ void MainWindow::on_PB_GenerateCode_released()
         return;
     }
 
-    QTextStream qq(&file);
-    QString FilesText = qq.readAll();
+    QTextStream TStream(&file);
+    QString FilesText = TStream.readAll();
 
     Scripts[GetCurrentScriptIndex()]->EditScriptFilesText(FilesText, GetScriptName(), Registers);
 
     file.resize(0);
-    qq << FilesText;
+    TStream << FilesText;
 
     file.close();
 
@@ -106,7 +106,7 @@ void MainWindow::on_CB_Classes_currentIndexChanged(int index)
     if (ClassName const* Element = Classes.at(index))
     {
         ui->LE_ScriptName->setText(Element->GetPrefix());
-        ui->PB_GenerateCode->setEnabled(SettingsWindow::CheckPathValidation(Element->GetScriptsFilePath(), "cpp"));
+        ui->PB_GenerateCode->setEnabled(SpellScript::CheckPathAndFileValidation(Element->GetScriptsFilePath(), "cpp"));
     }
 }
 

@@ -19,7 +19,7 @@ QString SpellScript::CreateScript(QString ScriptName, QVector<ScriptRegister> co
 {
     QString Result;
 
-    Result += "\n\nclass " + ScriptName + " : public SpellScript";
+    Result += "class " + ScriptName + " : public SpellScript";
     Result += "\n{";
     Result += "\n    " + GetPrepareMacroName() + "(" + ScriptName + ");";
 
@@ -45,7 +45,7 @@ QString SpellScript::CreateScript(QString ScriptName, QVector<ScriptRegister> co
         Result += "\n    }";
     }
 
-    Result += "\n};";
+    Result += "\n};\n\n";
 
 
     return Result;
@@ -55,11 +55,16 @@ void SpellScript::EditScriptFilesText(QString &FilesText, QString ScriptName, co
 {
     Script::EditScriptFilesText(FilesText, ScriptName, Registers);
 
-    int StartIndex = CodeStatics::GetIndexAfterString(&FilesText, "void AddSC");
-    StartIndex = CodeStatics::GetIndexAfterString(&FilesText, "{", StartIndex);
+    int StartIndex = CodeStatics::GetIndexAfterString(&FilesText, AddScriptFunctionName);
+    StartIndex = FilesText.indexOf("}", StartIndex);
+
+    if (StartIndex < 0)
+    {
+        return;
+    }
 
     QString Result = FilesText.left(StartIndex);
-    Result += "\n    " + GetRegisterMacroName() + "(" + ScriptName + ");";
+    Result += "    " + GetRegisterMacroName() + "(" + ScriptName + ");\n";
     Result += CodeStatics::GetRightSide(&FilesText, StartIndex);
     FilesText = Result;
 }
@@ -78,19 +83,28 @@ void SpellScript::HandleDataBase(MainWindow* MW)
     if (!file.open(QFile::ReadWrite | QFile::Text))
         return;
 
-    QTextStream qq(&file);
-    QString FilesText = qq.readAll();
+    QTextStream TStream(&file);
+    QString FilesText = TStream.readAll();
 
     QString AddNew = "DELETE FROM `spell_script_names` WHERE (`ScriptName`='" + MW->GetScriptName() + "');";
     AddNew += "\n";
     AddNew += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + MW->GetSpellID() + "', '" + MW->GetScriptName() + "');\n";
 
     file.resize(0);
-    qq << FilesText + AddNew;
+    TStream << FilesText + AddNew;
 
     file.close();
 
     MW->PushToDataBase(AddNew);
+}
+
+bool SpellScript::CheckPathAndFileValidation(const QString &Path, const QString &Extension)
+{
+    QFileInfo fileInfo(Path);
+    QFile file(Path);
+
+    QTextStream TStream(&file);
+    return file.exists() && fileInfo.suffix() == Extension;
 }
 
 
