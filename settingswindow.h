@@ -28,6 +28,8 @@ public:
     QString GetDatabaseName() const;
     QIcon GetValidationPathIcon(QString const& Path) const;
 
+    static bool CheckPathValidation(QString const& Path, QString const& Extension);
+
 private slots:
 
 

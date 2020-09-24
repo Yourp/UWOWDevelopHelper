@@ -10,6 +10,7 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
@@ -36,7 +37,7 @@ public:
     QAction *Settings;
     QWidget *Tabs;
     QLineEdit *LE_ScriptName;
-    QPushButton *pushButton;
+    QPushButton *PB_GenerateCode;
     QTextEdit *textEditDebug;
     QGroupBox *groupBox;
     QWidget *horizontalLayoutWidget;
@@ -63,6 +64,10 @@ public:
         MainWindow->setEnabled(true);
         MainWindow->resize(977, 755);
         MainWindow->setContextMenuPolicy(Qt::DefaultContextMenu);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("Icons/w2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8("Icons/w2.png"), QSize(), QIcon::Normal, QIcon::On);
+        MainWindow->setWindowIcon(icon);
         Settings = new QAction(MainWindow);
         Settings->setObjectName(QString::fromUtf8("Settings"));
         Settings->setCheckable(false);
@@ -75,13 +80,13 @@ public:
         LE_ScriptName = new QLineEdit(Tabs);
         LE_ScriptName->setObjectName(QString::fromUtf8("LE_ScriptName"));
         LE_ScriptName->setGeometry(QRect(10, 10, 239, 20));
-        pushButton = new QPushButton(Tabs);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(10, 570, 101, 31));
-        pushButton->setCheckable(false);
-        pushButton->setAutoRepeatDelay(3000);
-        pushButton->setAutoRepeatInterval(1000);
-        pushButton->setAutoDefault(false);
+        PB_GenerateCode = new QPushButton(Tabs);
+        PB_GenerateCode->setObjectName(QString::fromUtf8("PB_GenerateCode"));
+        PB_GenerateCode->setGeometry(QRect(10, 570, 101, 31));
+        PB_GenerateCode->setCheckable(false);
+        PB_GenerateCode->setAutoRepeatDelay(3000);
+        PB_GenerateCode->setAutoRepeatInterval(1000);
+        PB_GenerateCode->setAutoDefault(false);
         textEditDebug = new QTextEdit(Tabs);
         textEditDebug->setObjectName(QString::fromUtf8("textEditDebug"));
         textEditDebug->setGeometry(QRect(680, 50, 251, 601));
@@ -234,7 +239,7 @@ public:
         toolBar->setFont(font);
         toolBar->setMovable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
-        QWidget::setTabOrder(pushButton, textEditDebug);
+        QWidget::setTabOrder(PB_GenerateCode, textEditDebug);
         QWidget::setTabOrder(textEditDebug, LE_FunctionName);
         QWidget::setTabOrder(LE_FunctionName, PB_AddRegister);
         QWidget::setTabOrder(PB_AddRegister, PB_RemoveRegister);
@@ -244,7 +249,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        pushButton->setDefault(false);
+        PB_GenerateCode->setDefault(false);
         PB_AddRegister->setDefault(true);
         PB_RemoveRegister->setDefault(true);
 
@@ -254,9 +259,9 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "UWOW Develop Helper", nullptr));
         Settings->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Generate Code", nullptr));
+        PB_GenerateCode->setText(QCoreApplication::translate("MainWindow", "Generate Code", nullptr));
         groupBox->setTitle(QCoreApplication::translate("MainWindow", "GroupBox", nullptr));
         PB_AddRegister->setText(QCoreApplication::translate("MainWindow", "Add Register", nullptr));
 #if QT_CONFIG(shortcut)

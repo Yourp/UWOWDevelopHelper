@@ -72,17 +72,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_released()
 {
+    QString Path = Classes[ui->CB_Classes->currentIndex()]->GetScriptsFilePath();
 
-
-
-    /** TODO: PATH */
-    QFile file("d:/Work/spell_hunter1.cpp");
-
-    if (!file.exists())
+    if (!SettingsWindow::CheckPathValidation(Path, "cpp"))
+    {
         return;
+    }
+
+    QFile file(Path);
 
     if (!file.open(QFile::ReadWrite | QFile::Text))
+    {
         return;
+    }
 
     QTextStream qq(&file);
     QString FilesText = qq.readAll();
@@ -104,6 +106,7 @@ void MainWindow::on_CB_Classes_currentIndexChanged(int index)
     if (ClassName const* Element = Classes.at(index))
     {
         ui->LE_ScriptName->setText(Element->GetPrefix());
+        ui->PB_GenerateCode->setEnabled(SettingsWindow::CheckPathValidation(Element->GetScriptsFilePath(), "cpp"));
     }
 }
 

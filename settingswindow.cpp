@@ -77,15 +77,14 @@ QString SettingsWindow::GetDatabaseName() const
 
 QIcon SettingsWindow::GetValidationPathIcon(const QString &Path) const
 {
+    return QIcon(CheckPathValidation(Path, "cpp") ? "Icons/ok.png" : "Icons/not_ok.png");
+}
+
+bool SettingsWindow::CheckPathValidation(const QString &Path, const QString &Extension)
+{
     QFileInfo fileInfo(Path);
     QFile file(Path);
-
-    if (!file.exists() || fileInfo.suffix() != "cpp")
-    {
-        return QIcon("Icons/not_ok.png");
-    }
-
-    return QIcon("Icons/ok.png");
+    return file.exists() && fileInfo.suffix() == Extension;
 }
 
 QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName)
