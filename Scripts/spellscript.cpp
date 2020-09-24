@@ -103,8 +103,20 @@ bool SpellScript::CheckPathAndFileValidation(const QString &Path, const QString 
     QFileInfo fileInfo(Path);
     QFile file(Path);
 
+    if (fileInfo.suffix() != Extension || !file.exists())
+    {
+        return false;
+    }
+
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+    {
+        return false;
+    }
+
     QTextStream TStream(&file);
-    return file.exists() && fileInfo.suffix() == Extension;
+    QString FilesText = TStream.readAll();
+
+    return FilesText.contains(AddScriptFunctionName);
 }
 
 
