@@ -66,6 +66,11 @@ void SpellScript::EditScriptFilesText(QString &FilesText, QString ScriptName, co
 
 void SpellScript::HandleDataBase(MainWindow* MW)
 {
+    if (!MW || MW->GetSpellID().isEmpty() || MW->GetScriptName().isEmpty())
+    {
+        return;
+    }
+
     QString Path = "d:/Work/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_") + "spell_script_names.sql";
     /** TODO: PATH */
     QFile file(Path);

@@ -21,6 +21,7 @@ public:
     QString const GetScriptName() const;
     QString const GetSpellID() const;
     bool PushToDataBase(QString const& Command);
+    void UpdateGenerationCodeButton(bool active, int CurrentSettingsClassIndex);
 
 
     static QVector<class Script*> const Scripts;
@@ -29,7 +30,7 @@ public:
 
 private slots:
 
-    void on_pushButton_released();
+    void on_PB_GenerateCode_released();
 
     void on_CB_Classes_currentIndexChanged(int index);
 

@@ -77,7 +77,12 @@ QString SettingsWindow::GetDatabaseName() const
 
 QIcon SettingsWindow::GetValidationPathIcon(const QString &Path) const
 {
-    return QIcon(CheckPathValidation(Path, "cpp") ? "Icons/ok.png" : "Icons/not_ok.png");
+    return GetValidationPathIcon(CheckPathValidation(Path, "cpp"));
+}
+
+QIcon SettingsWindow::GetValidationPathIcon(bool valid) const
+{
+    return QIcon(valid ? "Icons/ok.png" : "Icons/not_ok.png");
 }
 
 bool SettingsWindow::CheckPathValidation(const QString &Path, const QString &Extension)
@@ -195,7 +200,14 @@ void SettingsWindow::on_LE_ClassesScriptsPath_textChanged(const QString &arg1)
         if (Class->GetScriptsFilePath() != arg1)
         {
             Class->SetScriptsFilePath(arg1);
-            ui->LW_SettingsClassesScripts->item(ClassIndex)->setIcon(GetValidationPathIcon(arg1));
+
+            bool PathValid = CheckPathValidation(arg1, "cpp");
+            ui->LW_SettingsClassesScripts->item(ClassIndex)->setIcon(GetValidationPathIcon(PathValid));
+
+            if (MainWindow* MW = dynamic_cast<MainWindow*>(parent()))
+            {
+                MW->UpdateGenerationCodeButton(PathValid, ClassIndex);
+            }
         }
     }
 }

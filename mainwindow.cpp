@@ -70,7 +70,7 @@ MainWindow::~MainWindow()
     delete SettingWindow;
 }
 
-void MainWindow::on_pushButton_released()
+void MainWindow::on_PB_GenerateCode_released()
 {
     QString Path = Classes[ui->CB_Classes->currentIndex()]->GetScriptsFilePath();
 
@@ -166,6 +166,14 @@ const QString MainWindow::GetSpellID() const
 bool MainWindow::PushToDataBase(QString const& Command)
 {
     return DBConnector.Push(Command);
+}
+
+void MainWindow::UpdateGenerationCodeButton(bool active, int CurrentSettingsClassIndex)
+{
+    if (CurrentSettingsClassIndex == ui->CB_Classes->currentIndex())
+    {
+        ui->PB_GenerateCode->setEnabled(active);
+    }
 }
 
 void MainWindow::on_LW_StaticRegisters_currentRowChanged(int currentRow)

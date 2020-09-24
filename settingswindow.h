@@ -27,6 +27,7 @@ public:
     QString GetPassword() const;
     QString GetDatabaseName() const;
     QIcon GetValidationPathIcon(QString const& Path) const;
+    QIcon GetValidationPathIcon(bool valid) const;
 
     static bool CheckPathValidation(QString const& Path, QString const& Extension);
 
