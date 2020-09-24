@@ -84,7 +84,14 @@ OBJECTS       = debug/classname.o \
 		debug/moc_mainwindow.o \
 		debug/moc_settingswindow.o
 
-DIST          =  Classes\classname.h \
+DIST          = Icons/not \
+		ok.png \
+		Icons/not \
+		ok.png \
+		Icons/not \
+		ok.png \
+		Icons/not_ok.png \
+		Icons/ok.png Classes\classname.h \
 		DataBase\databaseconnector.h \
 		ObjectBase.h \
 		Registers\Spell\spellcastfn.h \
@@ -2554,7 +2561,14 @@ debug/settingswindow.o: settingswindow.cpp settingswindow.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QStackedWidget \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qstackedwidget.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QVBoxLayout \
-		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget \
+		mainwindow.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qmainwindow.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QVector \
+		Classes/classname.h \
+		ObjectBase.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\settingswindow.o settingswindow.cpp
 
 debug/textstatics.o: textstatics.cpp F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QString \

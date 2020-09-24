@@ -2,19 +2,23 @@
 #include "ui_settingswindow.h"
 #include "mainwindow.h"
 #include "Classes/classname.h"
+#include <QFile>
+#include <QFileDialog>
 
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
 {
     ui->setupUi(this);
 
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database Connection"));
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts Settings"));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts"));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Saves"));
 
-//    ui->LW_SettingsCategories->item(0)->setIcon(QIcon("Icons/not ok.png"));
-//    ui->LW_SettingsCategories->item(1)->setIcon(QIcon("Icons/ok.png"));
-
-
-    ui->LW_SettingsCategories->setCurrentRow(0);
+    for (auto& Class : MainWindow::Classes)
+    {
+        QListWidgetItem* NewItem = new QListWidgetItem(Class->GetName());
+        NewItem->setSizeHint(QSize(10, 20));
+        ui->LW_SettingsClassesScripts->addItem(NewItem);
+    }
 
     ui->LE_Port->setValidator(new QIntValidator(0, 99999, this));
 
@@ -28,6 +32,16 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     {
         EditButtonsWhenDisconnected();
     }
+
+    for (int i = 0; i < MainWindow::Classes.size(); ++i)
+    {
+        QString Path = MainWindow::Classes[i]->GetScriptsFilePath();
+        ui->LW_SettingsClassesScripts->item(i)->setIcon(GetValidationPathIcon(Path));
+    }
+
+
+    ui->LW_SettingsCategories->setCurrentRow(0);
+    ui->LW_SettingsClassesScripts->setCurrentRow(0);
 }
 
 SettingsWindow::~SettingsWindow()
@@ -61,12 +75,23 @@ QString SettingsWindow::GetDatabaseName() const
     return ui->LE_DatabaseName->text();
 }
 
+QIcon SettingsWindow::GetValidationPathIcon(const QString &Path) const
+{
+    QFileInfo fileInfo(Path);
+    QFile file(Path);
+
+    if (!file.exists() || fileInfo.suffix() != "cpp")
+    {
+        return QIcon("Icons/not_ok.png");
+    }
+
+    return QIcon("Icons/ok.png");
+}
+
 QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName)
 {
     QListWidgetItem* NewItem = new QListWidgetItem(ItemName);
     NewItem->setSizeHint(QSize(10, 30));
-
-
     return NewItem;
 }
 
@@ -155,4 +180,33 @@ void SettingsWindow::on_PB_Connect_clicked()
 void SettingsWindow::on_LW_SettingsCategories_currentRowChanged(int currentRow)
 {
     ui->SW_SettingsLayer->setCurrentIndex(currentRow);
+}
+
+void SettingsWindow::on_LW_SettingsClassesScripts_currentRowChanged(int currentRow)
+{
+    ui->LE_ClassesScriptsPath->setText(MainWindow::Classes[currentRow]->GetScriptsFilePath());
+}
+
+void SettingsWindow::on_LE_ClassesScriptsPath_textChanged(const QString &arg1)
+{
+    int ClassIndex = ui->LW_SettingsClassesScripts->currentRow();
+
+    if (ClassName* Class = MainWindow::Classes.at(ClassIndex))
+    {
+        if (Class->GetScriptsFilePath() != arg1)
+        {
+            Class->SetScriptsFilePath(arg1);
+            ui->LW_SettingsClassesScripts->item(ClassIndex)->setIcon(GetValidationPathIcon(arg1));
+        }
+    }
+}
+
+void SettingsWindow::on_PB_FindScriptFile_released()
+{
+    QString Path = QFileDialog::getOpenFileName(this, "Find script file", "", "*.cpp");
+
+    if (!Path.isEmpty())
+    {
+        ui->LE_ClassesScriptsPath->setText(Path);
+    }
 }

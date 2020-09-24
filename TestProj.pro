@@ -61,3 +61,10 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+DISTFILES += \
+    Icons/not ok.png \
+    Icons/not ok.png \
+    Icons/not ok.png \
+    Icons/not_ok.png \
+    Icons/ok.png
+

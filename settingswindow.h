@@ -5,7 +5,7 @@
 #include <QString>
 #include "DataBase/databaseconnector.h"
 
-
+class QListWidgetItem;
 
 
 namespace Ui {
@@ -26,6 +26,7 @@ public:
     QString GetUserName() const;
     QString GetPassword() const;
     QString GetDatabaseName() const;
+    QIcon GetValidationPathIcon(QString const& Path) const;
 
 private slots:
 
@@ -33,6 +34,10 @@ private slots:
     void on_PB_Disconnect_clicked();
     void on_PB_Connect_clicked();
     void on_LW_SettingsCategories_currentRowChanged(int currentRow);
+    void on_LW_SettingsClassesScripts_currentRowChanged(int currentRow);
+    void on_LE_ClassesScriptsPath_textChanged(const QString &arg1);
+
+    void on_PB_FindScriptFile_released();
 
 private:
     Ui::SettingsWindow *ui;
