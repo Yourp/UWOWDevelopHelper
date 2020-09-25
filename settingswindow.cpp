@@ -9,7 +9,11 @@
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
 {
     ui->setupUi(this);
-    DBSettings.BindLineEdits(this);
+    DBSettings.BindHostName(ui->LE_HostName);
+    DBSettings.BindPort(ui->LE_Port);
+    DBSettings.BindUserName(ui->LE_UserName);
+    DBSettings.BindPassword(ui->LE_Password);
+    DBSettings.BindDatabaseName(ui->LE_DatabaseName);
 
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database Connection"));
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts"));

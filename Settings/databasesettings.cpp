@@ -6,14 +6,6 @@
 #define CHECKED(VAR) VAR ? VAR->text() : ""
 
 
-void DataBaseSettings::BindLineEdits(SettingsWindow *SW)
-{
-    HostName = SW->GetUI()->LE_HostName;
-    Port = SW->GetUI()->LE_Port;
-    UserName = SW->GetUI()->LE_UserName;
-    Password = SW->GetUI()->LE_Password;
-    DatabaseName = SW->GetUI()->LE_DatabaseName;
-}
 
 QString DataBaseSettings::GetHostName() const
 {
