@@ -41,6 +41,8 @@ private slots:
 
     void on_PB_FindScriptFile_released();
 
+    void on_PB_FindWorldSQLFolder_released();
+
 private:
     Ui::SettingsWindow *ui;
 

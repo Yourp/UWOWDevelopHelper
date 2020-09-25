@@ -136,6 +136,9 @@ void SettingsWindow::LoadConfig()
     ui->LE_Password->setText(Conf.value("Database.Password").toString());
     ui->LE_DatabaseName->setText(Conf.value("Database.DatabaseName").toString());
 
+    ui->LE_WorldSQLFolder->setText(Conf.value("Saves.WorldSQLFolder").toString());
+    ui->LE_SQLFileName->setText(Conf.value("Saves.SQLFileName", "spell_script_names").toString());
+
     for (auto& Class : MainWindow::Classes)
     {
         Class->SetScriptsFilePath(Conf.value("SpellScript.Classes." + Class->GetName()).toString());
@@ -151,6 +154,9 @@ void SettingsWindow::SaveToConfig()
     Conf.setValue("Database.UserName", ui->LE_UserName->text());
     Conf.setValue("Database.Password", ui->LE_Password->text());
     Conf.setValue("Database.DatabaseName", ui->LE_DatabaseName->text());
+
+    Conf.setValue("Saves.WorldSQLFolder", ui->LE_WorldSQLFolder->text());
+    Conf.setValue("Saves.SQLFileName", ui->LE_SQLFileName->text());
 
     for (auto& Class : MainWindow::Classes)
     {
@@ -172,7 +178,6 @@ void SettingsWindow::on_PB_Connect_clicked()
         EditButtonsWhenConnected();
     }
 }
-
 
 void SettingsWindow::on_LW_SettingsCategories_currentRowChanged(int currentRow)
 {
@@ -212,5 +217,15 @@ void SettingsWindow::on_PB_FindScriptFile_released()
     if (!Path.isEmpty())
     {
         ui->LE_ClassesScriptsPath->setText(Path);
+    }
+}
+
+void SettingsWindow::on_PB_FindWorldSQLFolder_released()
+{
+    QString Path = QFileDialog::getExistingDirectory(this, "Find world SQL folder");
+
+    if (!Path.isEmpty())
+    {
+        ui->LE_WorldSQLFolder->setText(Path);
     }
 }

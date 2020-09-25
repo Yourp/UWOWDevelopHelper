@@ -68,6 +68,12 @@ public:
         icon.addFile(QString::fromUtf8("Icons/w2.png"), QSize(), QIcon::Normal, QIcon::Off);
         icon.addFile(QString::fromUtf8("Icons/w2.png"), QSize(), QIcon::Normal, QIcon::On);
         MainWindow->setWindowIcon(icon);
+        MainWindow->setStyleSheet(QString::fromUtf8(""));
+        MainWindow->setToolButtonStyle(Qt::ToolButtonFollowStyle);
+        MainWindow->setAnimated(true);
+        MainWindow->setTabShape(QTabWidget::Rounded);
+        MainWindow->setDockNestingEnabled(false);
+        MainWindow->setUnifiedTitleAndToolBarOnMac(false);
         Settings = new QAction(MainWindow);
         Settings->setObjectName(QString::fromUtf8("Settings"));
         Settings->setCheckable(false);

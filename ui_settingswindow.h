@@ -61,6 +61,17 @@ public:
     QLineEdit *LE_ClassesScriptsPath;
     QPushButton *PB_FindScriptFile;
     QWidget *page_3;
+    QLabel *label_2;
+    QWidget *widget1;
+    QVBoxLayout *verticalLayout_4;
+    QVBoxLayout *verticalLayout_3;
+    QLabel *label;
+    QLineEdit *LE_SQLFileName;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *label_3;
+    QHBoxLayout *horizontalLayout_3;
+    QLineEdit *LE_WorldSQLFolder;
+    QPushButton *PB_FindWorldSQLFolder;
 
     void setupUi(QDialog *SettingsWindow)
     {
@@ -294,7 +305,7 @@ public:
 
         PB_FindScriptFile = new QPushButton(layoutWidget);
         PB_FindScriptFile->setObjectName(QString::fromUtf8("PB_FindScriptFile"));
-        PB_FindScriptFile->setMaximumSize(QSize(25, 16777215));
+        PB_FindScriptFile->setMaximumSize(QSize(25, 20));
         QFont font2;
         font2.setBold(false);
         font2.setWeight(50);
@@ -306,10 +317,84 @@ public:
         page_3 = new QWidget();
         page_3->setObjectName(QString::fromUtf8("page_3"));
         SW_SettingsLayer->addWidget(page_3);
+        label_2 = new QLabel(SettingsWindow);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(481, 532, 0, 0));
+        label_2->setMinimumSize(QSize(0, 0));
+        label_2->setMaximumSize(QSize(0, 0));
+        widget1 = new QWidget(SettingsWindow);
+        widget1->setObjectName(QString::fromUtf8("widget1"));
+        widget1->setGeometry(QRect(330, 450, 331, 84));
+        verticalLayout_4 = new QVBoxLayout(widget1);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(0);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        label = new QLabel(widget1);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setMinimumSize(QSize(0, 15));
+        label->setMaximumSize(QSize(16777215, 15));
+
+        verticalLayout_3->addWidget(label);
+
+        LE_SQLFileName = new QLineEdit(widget1);
+        LE_SQLFileName->setObjectName(QString::fromUtf8("LE_SQLFileName"));
+        LE_SQLFileName->setMinimumSize(QSize(0, 20));
+        LE_SQLFileName->setMaximumSize(QSize(150, 20));
+        LE_SQLFileName->setMouseTracking(true);
+        LE_SQLFileName->setFocusPolicy(Qt::StrongFocus);
+        LE_SQLFileName->setAcceptDrops(true);
+        LE_SQLFileName->setFrame(true);
+        LE_SQLFileName->setReadOnly(false);
+
+        verticalLayout_3->addWidget(LE_SQLFileName);
+
+
+        verticalLayout_4->addLayout(verticalLayout_3);
+
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(0);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        label_3 = new QLabel(widget1);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setMinimumSize(QSize(0, 15));
+        label_3->setMaximumSize(QSize(16777215, 15));
+
+        verticalLayout_2->addWidget(label_3);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(0);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        LE_WorldSQLFolder = new QLineEdit(widget1);
+        LE_WorldSQLFolder->setObjectName(QString::fromUtf8("LE_WorldSQLFolder"));
+        LE_WorldSQLFolder->setMinimumSize(QSize(0, 20));
+        LE_WorldSQLFolder->setMaximumSize(QSize(16777215, 20));
+        LE_WorldSQLFolder->setMouseTracking(true);
+        LE_WorldSQLFolder->setFocusPolicy(Qt::StrongFocus);
+        LE_WorldSQLFolder->setAcceptDrops(true);
+        LE_WorldSQLFolder->setFrame(true);
+        LE_WorldSQLFolder->setReadOnly(false);
+
+        horizontalLayout_3->addWidget(LE_WorldSQLFolder);
+
+        PB_FindWorldSQLFolder = new QPushButton(widget1);
+        PB_FindWorldSQLFolder->setObjectName(QString::fromUtf8("PB_FindWorldSQLFolder"));
+        PB_FindWorldSQLFolder->setMaximumSize(QSize(25, 20));
+        PB_FindWorldSQLFolder->setFont(font2);
+
+        horizontalLayout_3->addWidget(PB_FindWorldSQLFolder);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_3);
+
+
+        verticalLayout_4->addLayout(verticalLayout_2);
+
 
         retranslateUi(SettingsWindow);
 
-        SW_SettingsLayer->setCurrentIndex(0);
+        SW_SettingsLayer->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(SettingsWindow);
@@ -328,6 +413,10 @@ public:
         PB_Disconnect->setText(QCoreApplication::translate("SettingsWindow", "Disconnected", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("SettingsWindow", "Path of Scripts File:", nullptr));
         PB_FindScriptFile->setText(QCoreApplication::translate("SettingsWindow", "...", nullptr));
+        label_2->setText(QCoreApplication::translate("SettingsWindow", "World SQL's folder:", nullptr));
+        label->setText(QCoreApplication::translate("SettingsWindow", "File Name:", nullptr));
+        label_3->setText(QCoreApplication::translate("SettingsWindow", "World SQL's files folder:", nullptr));
+        PB_FindWorldSQLFolder->setText(QCoreApplication::translate("SettingsWindow", "...", nullptr));
     } // retranslateUi
 
 };

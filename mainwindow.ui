@@ -27,6 +27,24 @@
     <normaloff>Icons/w2.png</normaloff>
     <normalon>Icons/w2.png</normalon>Icons/w2.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonFollowStyle</enum>
+  </property>
+  <property name="animated">
+   <bool>true</bool>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="Tabs">
    <widget class="QLineEdit" name="LE_ScriptName">
     <property name="geometry">
