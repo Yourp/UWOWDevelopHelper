@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -32,7 +33,7 @@ public:
     QStackedWidget *SW_SettingsLayer;
     QWidget *page;
     QGroupBox *groupBox;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QVBoxLayout *verticalLayout_5;
     QLabel *L_HostName_2;
@@ -56,28 +57,27 @@ public:
     QWidget *page_2;
     QListWidget *LW_SettingsClassesScripts;
     QGroupBox *groupBox_2;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QLineEdit *LE_ClassesScriptsPath;
     QPushButton *PB_FindScriptFile;
     QWidget *page_3;
-    QLabel *label_2;
-    QWidget *widget1;
-    QVBoxLayout *verticalLayout_4;
-    QVBoxLayout *verticalLayout_3;
+    QGroupBox *groupBox_3;
+    QWidget *widget;
+    QFormLayout *formLayout;
     QLabel *label;
     QLineEdit *LE_SQLFileName;
-    QVBoxLayout *verticalLayout_2;
     QLabel *label_3;
     QHBoxLayout *horizontalLayout_3;
     QLineEdit *LE_WorldSQLFolder;
     QPushButton *PB_FindWorldSQLFolder;
+    QLabel *label_2;
 
     void setupUi(QDialog *SettingsWindow)
     {
         if (SettingsWindow->objectName().isEmpty())
             SettingsWindow->setObjectName(QString::fromUtf8("SettingsWindow"));
-        SettingsWindow->resize(1051, 770);
+        SettingsWindow->resize(988, 706);
         SettingsWindow->setWindowOpacity(1.000000000000000);
         LW_SettingsCategories = new QListWidget(SettingsWindow);
         LW_SettingsCategories->setObjectName(QString::fromUtf8("LW_SettingsCategories"));
@@ -118,27 +118,27 @@ public:
         LW_SettingsCategories->setTextElideMode(Qt::ElideRight);
         SW_SettingsLayer = new QStackedWidget(SettingsWindow);
         SW_SettingsLayer->setObjectName(QString::fromUtf8("SW_SettingsLayer"));
-        SW_SettingsLayer->setGeometry(QRect(180, 10, 691, 351));
+        SW_SettingsLayer->setGeometry(QRect(180, 10, 591, 331));
         page = new QWidget();
         page->setObjectName(QString::fromUtf8("page"));
         groupBox = new QGroupBox(page);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(0, 0, 211, 311));
-        widget = new QWidget(groupBox);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 30, 192, 271));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(groupBox);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 30, 192, 271));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setSpacing(0);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        L_HostName_2 = new QLabel(widget);
+        L_HostName_2 = new QLabel(layoutWidget);
         L_HostName_2->setObjectName(QString::fromUtf8("L_HostName_2"));
 
         verticalLayout_5->addWidget(L_HostName_2);
 
-        LE_HostName = new QLineEdit(widget);
+        LE_HostName = new QLineEdit(layoutWidget);
         LE_HostName->setObjectName(QString::fromUtf8("LE_HostName"));
 
         verticalLayout_5->addWidget(LE_HostName);
@@ -149,12 +149,12 @@ public:
         verticalLayout_8 = new QVBoxLayout();
         verticalLayout_8->setSpacing(0);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
-        L_Port_2 = new QLabel(widget);
+        L_Port_2 = new QLabel(layoutWidget);
         L_Port_2->setObjectName(QString::fromUtf8("L_Port_2"));
 
         verticalLayout_8->addWidget(L_Port_2);
 
-        LE_Port = new QLineEdit(widget);
+        LE_Port = new QLineEdit(layoutWidget);
         LE_Port->setObjectName(QString::fromUtf8("LE_Port"));
         LE_Port->setMaximumSize(QSize(40, 16777215));
         LE_Port->setMaxLength(5);
@@ -167,12 +167,12 @@ public:
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setSpacing(0);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        L_UserName_2 = new QLabel(widget);
+        L_UserName_2 = new QLabel(layoutWidget);
         L_UserName_2->setObjectName(QString::fromUtf8("L_UserName_2"));
 
         verticalLayout_6->addWidget(L_UserName_2);
 
-        LE_UserName = new QLineEdit(widget);
+        LE_UserName = new QLineEdit(layoutWidget);
         LE_UserName->setObjectName(QString::fromUtf8("LE_UserName"));
 
         verticalLayout_6->addWidget(LE_UserName);
@@ -183,12 +183,12 @@ public:
         verticalLayout_7 = new QVBoxLayout();
         verticalLayout_7->setSpacing(0);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
-        L_Password_2 = new QLabel(widget);
+        L_Password_2 = new QLabel(layoutWidget);
         L_Password_2->setObjectName(QString::fromUtf8("L_Password_2"));
 
         verticalLayout_7->addWidget(L_Password_2);
 
-        LE_Password = new QLineEdit(widget);
+        LE_Password = new QLineEdit(layoutWidget);
         LE_Password->setObjectName(QString::fromUtf8("LE_Password"));
         LE_Password->setFrame(true);
         LE_Password->setEchoMode(QLineEdit::Password);
@@ -201,12 +201,12 @@ public:
         verticalLayout_9 = new QVBoxLayout();
         verticalLayout_9->setSpacing(0);
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
-        L_DatabaseName_2 = new QLabel(widget);
+        L_DatabaseName_2 = new QLabel(layoutWidget);
         L_DatabaseName_2->setObjectName(QString::fromUtf8("L_DatabaseName_2"));
 
         verticalLayout_9->addWidget(L_DatabaseName_2);
 
-        LE_DatabaseName = new QLineEdit(widget);
+        LE_DatabaseName = new QLineEdit(layoutWidget);
         LE_DatabaseName->setObjectName(QString::fromUtf8("LE_DatabaseName"));
 
         verticalLayout_9->addWidget(LE_DatabaseName);
@@ -220,7 +220,7 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        PB_Connect = new QPushButton(widget);
+        PB_Connect = new QPushButton(layoutWidget);
         PB_Connect->setObjectName(QString::fromUtf8("PB_Connect"));
         PB_Connect->setEnabled(true);
         PB_Connect->setMinimumSize(QSize(91, 31));
@@ -234,7 +234,7 @@ public:
 
         horizontalLayout->addWidget(PB_Connect);
 
-        PB_Disconnect = new QPushButton(widget);
+        PB_Disconnect = new QPushButton(layoutWidget);
         PB_Disconnect->setObjectName(QString::fromUtf8("PB_Disconnect"));
         PB_Disconnect->setEnabled(false);
         PB_Disconnect->setMinimumSize(QSize(91, 31));
@@ -287,13 +287,13 @@ public:
         groupBox_2 = new QGroupBox(page_2);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         groupBox_2->setGeometry(QRect(180, 10, 401, 61));
-        layoutWidget = new QWidget(groupBox_2);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 20, 381, 26));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
+        layoutWidget1 = new QWidget(groupBox_2);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(10, 20, 381, 26));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        LE_ClassesScriptsPath = new QLineEdit(layoutWidget);
+        LE_ClassesScriptsPath = new QLineEdit(layoutWidget1);
         LE_ClassesScriptsPath->setObjectName(QString::fromUtf8("LE_ClassesScriptsPath"));
         LE_ClassesScriptsPath->setMouseTracking(true);
         LE_ClassesScriptsPath->setFocusPolicy(Qt::StrongFocus);
@@ -303,7 +303,7 @@ public:
 
         horizontalLayout_2->addWidget(LE_ClassesScriptsPath);
 
-        PB_FindScriptFile = new QPushButton(layoutWidget);
+        PB_FindScriptFile = new QPushButton(layoutWidget1);
         PB_FindScriptFile->setObjectName(QString::fromUtf8("PB_FindScriptFile"));
         PB_FindScriptFile->setMaximumSize(QSize(25, 20));
         QFont font2;
@@ -316,29 +316,23 @@ public:
         SW_SettingsLayer->addWidget(page_2);
         page_3 = new QWidget();
         page_3->setObjectName(QString::fromUtf8("page_3"));
-        SW_SettingsLayer->addWidget(page_3);
-        label_2 = new QLabel(SettingsWindow);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(481, 532, 0, 0));
-        label_2->setMinimumSize(QSize(0, 0));
-        label_2->setMaximumSize(QSize(0, 0));
-        widget1 = new QWidget(SettingsWindow);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(330, 450, 331, 84));
-        verticalLayout_4 = new QVBoxLayout(widget1);
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setSpacing(0);
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        label = new QLabel(widget1);
+        groupBox_3 = new QGroupBox(page_3);
+        groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
+        groupBox_3->setGeometry(QRect(10, 10, 411, 81));
+        widget = new QWidget(groupBox_3);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(10, 20, 391, 50));
+        formLayout = new QFormLayout(widget);
+        formLayout->setObjectName(QString::fromUtf8("formLayout"));
+        formLayout->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(widget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setMinimumSize(QSize(0, 15));
-        label->setMaximumSize(QSize(16777215, 15));
+        label->setMinimumSize(QSize(0, 20));
+        label->setMaximumSize(QSize(16777215, 20));
 
-        verticalLayout_3->addWidget(label);
+        formLayout->setWidget(0, QFormLayout::LabelRole, label);
 
-        LE_SQLFileName = new QLineEdit(widget1);
+        LE_SQLFileName = new QLineEdit(widget);
         LE_SQLFileName->setObjectName(QString::fromUtf8("LE_SQLFileName"));
         LE_SQLFileName->setMinimumSize(QSize(0, 20));
         LE_SQLFileName->setMaximumSize(QSize(150, 20));
@@ -348,25 +342,18 @@ public:
         LE_SQLFileName->setFrame(true);
         LE_SQLFileName->setReadOnly(false);
 
-        verticalLayout_3->addWidget(LE_SQLFileName);
+        formLayout->setWidget(0, QFormLayout::FieldRole, LE_SQLFileName);
 
-
-        verticalLayout_4->addLayout(verticalLayout_3);
-
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(0);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label_3 = new QLabel(widget1);
+        label_3 = new QLabel(widget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setMinimumSize(QSize(0, 15));
+        label_3->setMinimumSize(QSize(0, 20));
         label_3->setMaximumSize(QSize(16777215, 15));
 
-        verticalLayout_2->addWidget(label_3);
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_3);
 
         horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setSpacing(0);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        LE_WorldSQLFolder = new QLineEdit(widget1);
+        LE_WorldSQLFolder = new QLineEdit(widget);
         LE_WorldSQLFolder->setObjectName(QString::fromUtf8("LE_WorldSQLFolder"));
         LE_WorldSQLFolder->setMinimumSize(QSize(0, 20));
         LE_WorldSQLFolder->setMaximumSize(QSize(16777215, 20));
@@ -378,7 +365,7 @@ public:
 
         horizontalLayout_3->addWidget(LE_WorldSQLFolder);
 
-        PB_FindWorldSQLFolder = new QPushButton(widget1);
+        PB_FindWorldSQLFolder = new QPushButton(widget);
         PB_FindWorldSQLFolder->setObjectName(QString::fromUtf8("PB_FindWorldSQLFolder"));
         PB_FindWorldSQLFolder->setMaximumSize(QSize(25, 20));
         PB_FindWorldSQLFolder->setFont(font2);
@@ -386,15 +373,18 @@ public:
         horizontalLayout_3->addWidget(PB_FindWorldSQLFolder);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_3);
+        formLayout->setLayout(1, QFormLayout::FieldRole, horizontalLayout_3);
 
-
-        verticalLayout_4->addLayout(verticalLayout_2);
-
+        SW_SettingsLayer->addWidget(page_3);
+        label_2 = new QLabel(SettingsWindow);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(481, 532, 0, 0));
+        label_2->setMinimumSize(QSize(0, 0));
+        label_2->setMaximumSize(QSize(0, 0));
 
         retranslateUi(SettingsWindow);
 
-        SW_SettingsLayer->setCurrentIndex(2);
+        SW_SettingsLayer->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(SettingsWindow);
@@ -413,10 +403,11 @@ public:
         PB_Disconnect->setText(QCoreApplication::translate("SettingsWindow", "Disconnected", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("SettingsWindow", "Path of Scripts File:", nullptr));
         PB_FindScriptFile->setText(QCoreApplication::translate("SettingsWindow", "...", nullptr));
-        label_2->setText(QCoreApplication::translate("SettingsWindow", "World SQL's folder:", nullptr));
+        groupBox_3->setTitle(QCoreApplication::translate("SettingsWindow", "SQL's save information:", nullptr));
         label->setText(QCoreApplication::translate("SettingsWindow", "File Name:", nullptr));
         label_3->setText(QCoreApplication::translate("SettingsWindow", "World SQL's files folder:", nullptr));
         PB_FindWorldSQLFolder->setText(QCoreApplication::translate("SettingsWindow", "...", nullptr));
+        label_2->setText(QCoreApplication::translate("SettingsWindow", "World SQL's folder:", nullptr));
     } // retranslateUi
 
 };

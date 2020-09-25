@@ -5,6 +5,7 @@
 #include "spellscript.h"
 #include "textstatics.h"
 #include "mainwindow.h"
+#include "settingswindow.h"
 #include "DataBase/databaseconnector.h"
 
 
@@ -70,14 +71,21 @@ void SpellScript::EditScriptFilesText(QString &FilesText, QString ScriptName, co
     FilesText = Result;
 }
 
-void SpellScript::HandleDataBase(MainWindow const* MW)
+void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
 {
     if (!MW || MW->GetSpellID().isEmpty() || MW->GetScriptName().isEmpty())
     {
         return;
     }
 
-    QString Path = "d:/Work/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_") + "spell_script_names.sql";
+    QString Folder = SW->GetWorldSQLsFolder();
+
+    if (Folder.isEmpty())
+    {
+        return;
+    }
+
+    QString Path = Folder + "/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_") + SW->GetSQLFileName() + ".sql";
     /** TODO: PATH */
     QFile file(Path);
 

@@ -96,7 +96,7 @@ void MainWindow::on_PB_GenerateCode_released()
 
     file.close();
 
-    Scripts[GetCurrentScriptIndex()]->HandleDataBase(this);
+    Scripts[GetCurrentScriptIndex()]->HandleDataBase(this, SettingWindow);
 
     ui->textEditDebug->setText(QDateTime::currentDateTime().toString("dd_MM_yyyy"));
 }

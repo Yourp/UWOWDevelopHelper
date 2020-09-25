@@ -28,7 +28,7 @@ public:
 
     virtual QString const GetRegisterMacroName() const = 0;
 
-    virtual void HandleDataBase(class MainWindow const* MW) override;
+    virtual void HandleDataBase(class MainWindow const* MW, class SettingsWindow const* SW) override;
 
     void SetSpellID(QString ID) { SpellID = ID; }
 

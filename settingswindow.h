@@ -22,6 +22,8 @@ public:
     explicit SettingsWindow(QWidget *parent = nullptr);
     ~SettingsWindow();
 
+    QString const GetWorldSQLsFolder() const;
+    QString const GetSQLFileName() const;
 
     QIcon GetValidationPathIcon(QString const& Path) const;
     QIcon GetValidationPathIcon(bool valid) const;

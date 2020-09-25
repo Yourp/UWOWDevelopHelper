@@ -19,7 +19,7 @@ public:
 
     virtual void EditScriptFilesText(QString& FilesText, QString ScriptName, QVector<ScriptRegister> const& Registers);
 
-    virtual void HandleDataBase(class MainWindow const*) {}
+    virtual void HandleDataBase(class MainWindow const*, class SettingsWindow const*) {}
 
     static QString const FunctionFindMarker;
     static QString const ClassFindMarker;

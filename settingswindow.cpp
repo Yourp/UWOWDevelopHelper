@@ -15,6 +15,8 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts"));
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Saves"));
 
+    setFixedSize(size());
+
     for (auto& Class : MainWindow::Classes)
     {
         QListWidgetItem* NewItem = new QListWidgetItem(Class->GetName());
@@ -50,6 +52,16 @@ SettingsWindow::~SettingsWindow()
 {
     SaveToConfig();
     delete ui;
+}
+
+const QString SettingsWindow::GetWorldSQLsFolder() const
+{
+    return ui->LE_WorldSQLFolder->text();
+}
+
+const QString SettingsWindow::GetSQLFileName() const
+{
+    return ui->LE_SQLFileName->text();
 }
 
 QIcon SettingsWindow::GetValidationPathIcon(const QString &Path) const
