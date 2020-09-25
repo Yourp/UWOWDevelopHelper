@@ -8,7 +8,7 @@
 class ScriptRegisterBase : public ObjectBase
 {
     friend class SSSpell;
-
+    friend class SSAura;
 
 protected:
 
@@ -29,17 +29,50 @@ public:
 
 };
 
-class ScriptRegister : public ScriptRegisterBase
+class SelectedScriptRegister : public ScriptRegisterBase
 {
 
     QString FunctionName;
 
 public:
-    ScriptRegister(ScriptRegisterBase const& Base, QString const& FuncName);
+    SelectedScriptRegister(ScriptRegisterBase const& Base, QString const& FuncName);
 
-    //void SetFunctionName(QString const& Name) { FunctionName = Name; }
     QString const GetFunctionName() const { return FunctionName; }
 
 };
+
+class AuraDispelFn : public ScriptRegisterBase
+{
+    public: AuraDispelFn();
+};
+
+class AuraEffectApplyRemove : public ScriptRegisterBase
+{
+    public: AuraEffectApplyRemove();
+};
+
+class AuraEffectApplyFn : public AuraEffectApplyRemove
+{
+    public: AuraEffectApplyFn();
+};
+
+class AuraEffectRemoveFn : public AuraEffectApplyRemove
+{
+    public: AuraEffectRemoveFn();
+};
+
+class AuraEffectCalcAmountFn : public ScriptRegisterBase
+{
+    public: AuraEffectCalcAmountFn();
+};
+
+class AuraEffectAbsorbFn : public ScriptRegisterBase
+{
+    public: AuraEffectAbsorbFn();
+};
+
+
+
+
 
 #endif // SCRIPTREGISTER_H

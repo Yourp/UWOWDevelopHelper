@@ -22,6 +22,7 @@ SOURCES += \
     Registers/Spell/spelleffectfn.cpp \
     Registers/Spell/spellhitfn.cpp \
     Scripts/spellscript.cpp \
+    Scripts/ssaura.cpp \
     Scripts/ssspell.cpp \
     Settings/databasesettings.cpp \
     Settings/settingbase.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
     Registers/Spell/spelleffectfn.h \
     Registers/Spell/spellhitfn.h \
     Scripts/spellscript.h \
+    Scripts/ssaura.h \
     Scripts/ssspell.h \
     Settings/databasesettings.h \
     Settings/settingbase.h \

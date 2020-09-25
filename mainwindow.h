@@ -25,7 +25,7 @@ public:
 
     static QVector<class Script*> const Scripts;
     static QVector<class ClassName*> const Classes;
-    QVector<class ScriptRegister> Registers;
+    QVector<class SelectedScriptRegister> Registers;
 
 private slots:
 
@@ -42,6 +42,8 @@ private slots:
     void on_TW_AddedRegisters_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
 
     void on_Settings_triggered();
+
+    void on_CB_Scripts_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;

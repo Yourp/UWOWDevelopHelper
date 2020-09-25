@@ -4,6 +4,7 @@ release/spellcastfn.o
 release/spelleffectfn.o
 release/spellhitfn.o
 release/spellscript.o
+release/ssaura.o
 release/ssspell.o
 release/databasesettings.o
 release/settingbase.o

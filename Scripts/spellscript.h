@@ -20,9 +20,9 @@ public:
 
     virtual void FillOptionsListWidget(class QListWidget*) override;
 
-    virtual QString CreateScript(QString ScriptName, QVector<ScriptRegister> const& StaticRegisters) override;
+    virtual QString CreateScript(QString ScriptName, QVector<SelectedScriptRegister> const& StaticRegisters) override;
 
-    virtual void EditScriptFilesText(QString& FilesText, QString ScriptName, QVector<ScriptRegister> const& StaticRegisters) override;
+    virtual void EditScriptFilesText(QString& FilesText, QString ScriptName, QVector<SelectedScriptRegister> const& StaticRegisters) override;
 
     virtual QString const GetPrepareMacroName() const = 0;
 

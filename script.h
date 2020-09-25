@@ -13,11 +13,11 @@ public:
 
     virtual ~Script() {}
 
-    virtual QString CreateScript(QString ScriptName, QVector<ScriptRegister> const& Registers) = 0;
+    virtual QString CreateScript(QString ScriptName, QVector<SelectedScriptRegister> const& Registers) = 0;
 
     virtual void FillOptionsListWidget(class QListWidget*) {}
 
-    virtual void EditScriptFilesText(QString& FilesText, QString ScriptName, QVector<ScriptRegister> const& Registers);
+    virtual void EditScriptFilesText(QString& FilesText, QString ScriptName, QVector<SelectedScriptRegister> const& Registers);
 
     virtual void HandleDataBase(class MainWindow const*, class SettingsWindow const*) {}
 

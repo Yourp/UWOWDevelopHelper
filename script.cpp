@@ -6,7 +6,7 @@ QString const Script::ClassFindMarker = "@CLASSNAME";
 QString const Script::AddScriptFunctionName = "void AddSC";
 
 
-void Script::EditScriptFilesText(QString &FilesText, QString ScriptName, const QVector<ScriptRegister> &Registers)
+void Script::EditScriptFilesText(QString &FilesText, QString ScriptName, const QVector<SelectedScriptRegister> &Registers)
 {
     int StartIndex = FilesText.indexOf(AddScriptFunctionName);
 

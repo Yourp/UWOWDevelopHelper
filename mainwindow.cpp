@@ -3,13 +3,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "textstatics.h"
+#include "scriptregister.h"
 #include "Scripts/spellscript.h"
 #include "Scripts/ssspell.h"
+#include "Scripts/ssaura.h"
 #include "script.h"
 #include "Classes/classname.h"
 #include "mainwindow.h"
 #include "settingswindow.h"
-#include "scriptregister.h"
+
 
 
 
@@ -32,7 +34,8 @@ QVector<ClassName*> const MainWindow::Classes =
 
 QVector<Script*> const MainWindow::Scripts =
 {
-    new SSSpell()
+    new SSSpell(),
+    new SSAura()
 };
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -46,6 +49,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     Registers.reserve(20);
 
+
+
     for (auto const& Itr : Scripts)
     {
         ui->CB_Scripts->addItem(Itr->GetName());
@@ -56,11 +61,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         ui->CB_Classes->addItem(Itr->GetName());
     }
 
-    Scripts[ui->CB_Scripts->currentIndex()]->FillOptionsListWidget(ui->LW_StaticRegisters);
-
     SettingWindow = new SettingsWindow(this);
 
-    SettingWindow->exec();
+    //SettingWindow->exec();
 
 }
 
@@ -132,7 +135,7 @@ void MainWindow::on_PB_AddRegister_released()
             ui->TW_AddedRegisters->setItem(Index, 0, new QTableWidgetItem(Base->GetName()));
             ui->TW_AddedRegisters->setItem(Index, 1, new QTableWidgetItem(FunctionName));
 
-            Registers.push_back(ScriptRegister(*Base, FunctionName));
+            Registers.push_back(SelectedScriptRegister(*Base, FunctionName));
         }
     }
 }
@@ -215,4 +218,13 @@ void MainWindow::on_Settings_triggered()
     }
 
     SettingWindow->exec();
+}
+
+void MainWindow::on_CB_Scripts_currentIndexChanged(int index)
+{
+    ui->LW_StaticRegisters->clear();
+    Registers.clear();
+    ui->TW_AddedRegisters->clearContents();
+    ui->TW_AddedRegisters->setRowCount(0);
+    Scripts[index]->FillOptionsListWidget(ui->LW_StaticRegisters);
 }

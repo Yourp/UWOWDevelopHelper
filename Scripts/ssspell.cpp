@@ -55,7 +55,7 @@ SSSpell::SSSpell() : SpellScript()
     REGISTER(DoCalcEffMask) = new ScriptRegisterBase();
     REGISTER(DoCalcEffMask)->Name = "DoCalcEffMask";
     REGISTER(DoCalcEffMask)->DefaultFunctionName = "CalculateEffectMask";
-    REGISTER(DoCalcEffMask)->FunctionsParameters = "";
+    REGISTER(DoCalcEffMask)->FunctionsParameters = "uint32& effMask";
     REGISTER(DoCalcEffMask)->FunctionsReturnType = "void";
     REGISTER(DoCalcEffMask)->InitializationTemplate = "CalcEffectMaskFn(@CLASSNAME::@FUNCTIONNAME)";
 
@@ -124,7 +124,7 @@ SSSpell::SSSpell() : SpellScript()
     REGISTER(OnObjectTargetSelect)->DefaultFunctionName = "CallOnObjectTargetSelect";
     REGISTER(OnObjectTargetSelect)->FunctionsParameters = "WorldObject*& target";
     REGISTER(OnObjectTargetSelect)->FunctionsReturnType = "void";
-    REGISTER(OnObjectTargetSelect)->InitializationTemplate = "SpellObjectTargetSelectFn(@CLASSNAME::@FUNCTIONNAME)";
+    REGISTER(OnObjectTargetSelect)->InitializationTemplate = "SpellObjectTargetSelectFn(@CLASSNAME::@FUNCTIONNAME, EFFECT_0, TARGET_UNIT_CASTER)";
 }
 
 

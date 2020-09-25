@@ -4,6 +4,7 @@ debug/spellcastfn.o
 debug/spelleffectfn.o
 debug/spellhitfn.o
 debug/spellscript.o
+debug/ssaura.o
 debug/ssspell.o
 debug/databasesettings.o
 debug/settingbase.o

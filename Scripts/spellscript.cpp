@@ -17,11 +17,11 @@ void SpellScript::FillOptionsListWidget(QListWidget* LW)
     }
 }
 
-QString SpellScript::CreateScript(QString ScriptName, QVector<ScriptRegister> const& Registers)
+QString SpellScript::CreateScript(QString ScriptName, QVector<SelectedScriptRegister> const& Registers)
 {
     QString Result;
 
-    Result += "class " + ScriptName + " : public SpellScript";
+    Result += "class " + ScriptName + " : public " + GetName();
     Result += "\n{";
     Result += "\n    " + GetPrepareMacroName() + "(" + ScriptName + ");";
 
@@ -53,7 +53,7 @@ QString SpellScript::CreateScript(QString ScriptName, QVector<ScriptRegister> co
     return Result;
 }
 
-void SpellScript::EditScriptFilesText(QString &FilesText, QString ScriptName, const QVector<ScriptRegister> &Registers)
+void SpellScript::EditScriptFilesText(QString &FilesText, QString ScriptName, const QVector<SelectedScriptRegister> &Registers)
 {
     Script::EditScriptFilesText(FilesText, ScriptName, Registers);
 
