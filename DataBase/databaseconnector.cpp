@@ -1,13 +1,14 @@
 #include "databaseconnector.h"
-#include "settingswindow.h"
+#include "Settings/databasesettings.h"
+
+QSqlDatabase DataBaseConnector::Connector = QSqlDatabase::addDatabase("QMYSQL");
 
 DataBaseConnector::DataBaseConnector()
 {
 }
 
-bool DataBaseConnector::Connect(SettingsWindow* Settings)
+bool DataBaseConnector::Connect(DataBaseSettings* Settings)
 {
-    Connector = QSqlDatabase::addDatabase("QMYSQL");
     Connector.setHostName(Settings->GetHostName());
     Connector.setUserName(Settings->GetUserName());
     Connector.setPassword(Settings->GetPassword());

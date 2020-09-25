@@ -5,10 +5,10 @@
 #include <QString>
 
 
-class SettingBase : public ObjectBase
+class SettingBase
 {
 public:
-    SettingBase() : ObjectBase() {}
+    SettingBase() {}
     virtual ~SettingBase() {}
 };
 

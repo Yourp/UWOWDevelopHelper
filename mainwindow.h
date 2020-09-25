@@ -20,7 +20,6 @@ public:
     int GetCurrentScriptIndex() const;
     QString const GetScriptName() const;
     QString const GetSpellID() const;
-    bool PushToDataBase(QString const& Command);
     void UpdateGenerationCodeButton(bool active, int CurrentSettingsClassIndex);
 
 
@@ -47,7 +46,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    DataBaseConnector DBConnector;
     class SettingsWindow* SettingWindow;
 
 

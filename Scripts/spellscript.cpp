@@ -5,6 +5,7 @@
 #include "spellscript.h"
 #include "textstatics.h"
 #include "mainwindow.h"
+#include "DataBase/databaseconnector.h"
 
 
 void SpellScript::FillOptionsListWidget(QListWidget* LW)
@@ -69,7 +70,7 @@ void SpellScript::EditScriptFilesText(QString &FilesText, QString ScriptName, co
     FilesText = Result;
 }
 
-void SpellScript::HandleDataBase(MainWindow* MW)
+void SpellScript::HandleDataBase(MainWindow const* MW)
 {
     if (!MW || MW->GetSpellID().isEmpty() || MW->GetScriptName().isEmpty())
     {
@@ -95,7 +96,7 @@ void SpellScript::HandleDataBase(MainWindow* MW)
 
     file.close();
 
-    MW->PushToDataBase(AddNew);
+    DataBaseConnector::Push(AddNew);
 }
 
 bool SpellScript::CheckPathAndFileValidation(const QString &Path, const QString &Extension)

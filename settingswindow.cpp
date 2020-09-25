@@ -3,6 +3,7 @@
 #include "ui_settingswindow.h"
 #include "mainwindow.h"
 #include "Classes/classname.h"
+#include "DataBase/databaseconnector.h"
 #include <QFileDialog>
 
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
@@ -24,15 +25,6 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
 
     LoadConfig();
 
-    if (DBConnection.Connect(this))
-    {
-        EditButtonsWhenConnected();
-    }
-    else
-    {
-        EditButtonsWhenDisconnected();
-    }
-
     for (int i = 0; i < MainWindow::Classes.size(); ++i)
     {
         QString Path = MainWindow::Classes[i]->GetScriptsFilePath();
@@ -42,37 +34,23 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
 
     ui->LW_SettingsCategories->setCurrentRow(0);
     ui->LW_SettingsClassesScripts->setCurrentRow(0);
+
+    DBSettings.BindLineEdits(this);
+
+    if (DataBaseConnector::Connect(&DBSettings))
+    {
+        EditButtonsWhenConnected();
+    }
+    else
+    {
+        EditButtonsWhenDisconnected();
+    }
 }
 
 SettingsWindow::~SettingsWindow()
 {
     SaveToConfig();
     delete ui;
-}
-
-QString SettingsWindow::GetHostName() const
-{
-    return ui->LE_HostName->text();
-}
-
-int SettingsWindow::GetPort() const
-{
-    return ui->LE_Port->text().toInt(nullptr, 0);
-}
-
-QString SettingsWindow::GetUserName() const
-{
-    return ui->LE_UserName->text();
-}
-
-QString SettingsWindow::GetPassword() const
-{
-    return ui->LE_Password->text();
-}
-
-QString SettingsWindow::GetDatabaseName() const
-{
-    return ui->LE_DatabaseName->text();
 }
 
 QIcon SettingsWindow::GetValidationPathIcon(const QString &Path) const
@@ -167,13 +145,13 @@ void SettingsWindow::SaveToConfig()
 
 void SettingsWindow::on_PB_Disconnect_clicked()
 {
-    DBConnection.Disconnect();
+    DataBaseConnector::Disconnect();
     EditButtonsWhenDisconnected();
 }
 
 void SettingsWindow::on_PB_Connect_clicked()
 {
-    if (DBConnection.Connect(this))
+    if (DataBaseConnector::Connect(&DBSettings))
     {
         EditButtonsWhenConnected();
     }

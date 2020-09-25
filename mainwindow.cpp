@@ -163,11 +163,6 @@ const QString MainWindow::GetSpellID() const
     return ui->LE_SpellID->text();
 }
 
-bool MainWindow::PushToDataBase(QString const& Command)
-{
-    return DBConnector.Push(Command);
-}
-
 void MainWindow::UpdateGenerationCodeButton(bool active, int CurrentSettingsClassIndex)
 {
     if (CurrentSettingsClassIndex == ui->CB_Classes->currentIndex())
