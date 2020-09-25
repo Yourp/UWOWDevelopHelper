@@ -9,6 +9,7 @@
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
 {
     ui->setupUi(this);
+    DBSettings.BindLineEdits(this);
 
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database Connection"));
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts"));
@@ -34,8 +35,6 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
 
     ui->LW_SettingsCategories->setCurrentRow(0);
     ui->LW_SettingsClassesScripts->setCurrentRow(0);
-
-    DBSettings.BindLineEdits(this);
 
     if (DataBaseConnector::Connect(&DBSettings))
     {

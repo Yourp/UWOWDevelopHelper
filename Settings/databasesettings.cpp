@@ -3,14 +3,8 @@
 #include "ui_settingswindow.h"
 #include <QLineEdit>
 
-DataBaseSettings::DataBaseSettings()
-{
-    HostName = nullptr;
-    Port = nullptr;
-    UserName = nullptr;
-    Password = nullptr;
-    DatabaseName = nullptr;
-}
+#define CHECKED(VAR) VAR ? VAR->text() : ""
+
 
 void DataBaseSettings::BindLineEdits(SettingsWindow *SW)
 {
@@ -23,29 +17,29 @@ void DataBaseSettings::BindLineEdits(SettingsWindow *SW)
 
 QString DataBaseSettings::GetHostName() const
 {
-    return HostName->text();
+    return CHECKED(HostName);
 }
 
 int DataBaseSettings::GetPort() const
 {
-    return Port->text().toInt(nullptr, 0);
+    return Port ? Port->text().toInt(nullptr, 0) : -1;
 }
 
 QString DataBaseSettings::GetUserName() const
 {
-    return UserName->text();
+    return CHECKED(UserName);
 }
 
 QString DataBaseSettings::GetPassword() const
 {
-    return Password->text();
+    return CHECKED(Password);
 }
 
 QString DataBaseSettings::GetDatabaseName() const
 {
-    return DatabaseName->text();
+    return CHECKED(DatabaseName);
 }
 
-
+#undef CHECKED
 
 

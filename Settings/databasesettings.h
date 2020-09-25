@@ -4,6 +4,7 @@
 #include "Settings/settingbase.h"
 
 class QLineEdit;
+class SettingsWindow;
 
 
 class DataBaseSettings : public Setting
@@ -15,7 +16,7 @@ class DataBaseSettings : public Setting
     QLineEdit* DatabaseName;
 
 public:
-    DataBaseSettings();
+    DataBaseSettings() {}
 
     QString GetHostName() const;
     int GetPort() const;
@@ -23,7 +24,7 @@ public:
     QString GetPassword() const;
     QString GetDatabaseName() const;
 
-    void BindLineEdits(class SettingsWindow* SW);
+    void BindLineEdits(SettingsWindow* SW);
 
 };
 
