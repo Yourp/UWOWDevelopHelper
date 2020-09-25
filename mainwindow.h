@@ -19,7 +19,6 @@ public:
 
     int GetCurrentScriptIndex() const;
     QString const GetScriptName() const;
-    QString const GetSpellID() const;
     void UpdateGenerationCodeButton(bool active, int CurrentSettingsClassIndex);
 
 
@@ -44,6 +43,8 @@ private slots:
     void on_Settings_triggered();
 
     void on_CB_Scripts_currentIndexChanged(int index);
+
+    void on_LE_SpellID_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

@@ -21,6 +21,11 @@ QString SpellScript::CreateScript(QString ScriptName, QVector<SelectedScriptRegi
 {
     QString Result;
 
+    if (!SpellID.isEmpty())
+    {
+        Result += "/** " + SpellID + " */\n";
+    }
+
     Result += "class " + ScriptName + " : public " + GetName();
     Result += "\n{";
     Result += "\n    " + GetPrepareMacroName() + "(" + ScriptName + ");";
@@ -73,7 +78,7 @@ void SpellScript::EditScriptFilesText(QString &FilesText, QString ScriptName, co
 
 void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
 {
-    if (!MW || MW->GetSpellID().isEmpty() || MW->GetScriptName().isEmpty())
+    if (!MW || SpellID.isEmpty() || MW->GetScriptName().isEmpty())
     {
         return;
     }
@@ -86,7 +91,6 @@ void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
     }
 
     QString Path = Folder + "/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_") + SW->GetSQLFileName() + ".sql";
-    /** TODO: PATH */
     QFile file(Path);
 
     if (!file.open(QFile::ReadWrite | QFile::Text))
@@ -97,7 +101,7 @@ void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
 
     QString AddNew = "DELETE FROM `spell_script_names` WHERE (`ScriptName`='" + MW->GetScriptName() + "');";
     AddNew += "\n";
-    AddNew += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + MW->GetSpellID() + "', '" + MW->GetScriptName() + "');\n";
+    AddNew += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + SpellID + "', '" + MW->GetScriptName() + "');\n";
 
     file.resize(0);
     TStream << FilesText + AddNew;

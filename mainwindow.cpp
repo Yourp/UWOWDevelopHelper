@@ -47,9 +47,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->LE_SpellID->setValidator(new QIntValidator(0, 99999999, this));
     setFixedSize(size());
 
+    SettingWindow = new SettingsWindow(this);
+
     Registers.reserve(20);
-
-
 
     for (auto const& Itr : Scripts)
     {
@@ -61,10 +61,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         ui->CB_Classes->addItem(Itr->GetName());
     }
 
-    SettingWindow = new SettingsWindow(this);
-
     //SettingWindow->exec();
-
 }
 
 MainWindow::~MainWindow()
@@ -161,11 +158,6 @@ const QString MainWindow::GetScriptName() const
     return ui->LE_ScriptName->text();
 }
 
-const QString MainWindow::GetSpellID() const
-{
-    return ui->LE_SpellID->text();
-}
-
 void MainWindow::UpdateGenerationCodeButton(bool active, int CurrentSettingsClassIndex)
 {
     if (CurrentSettingsClassIndex == ui->CB_Classes->currentIndex())
@@ -227,4 +219,17 @@ void MainWindow::on_CB_Scripts_currentIndexChanged(int index)
     ui->TW_AddedRegisters->clearContents();
     ui->TW_AddedRegisters->setRowCount(0);
     Scripts[index]->FillOptionsListWidget(ui->LW_StaticRegisters);
+
+    if (SpellScript* SC = dynamic_cast<SpellScript*>(Scripts[index]))
+    {
+        SC->SetSpellID(ui->LE_SpellID->text());
+    }
+}
+
+void MainWindow::on_LE_SpellID_textChanged(const QString &arg1)
+{
+    if (SpellScript* SC = dynamic_cast<SpellScript*>(Scripts[GetCurrentScriptIndex()]))
+    {
+        SC->SetSpellID(arg1);
+    }
 }
