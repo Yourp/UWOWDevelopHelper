@@ -3,7 +3,7 @@
 
 LineEditWithIcon::LineEditWithIcon(QWidget *parent) : QLineEdit(parent)
 {
-    SetIcon(QIcon("Icons/ok.png"));
+
 }
 
 void LineEditWithIcon::SetIcon(QIcon icon)

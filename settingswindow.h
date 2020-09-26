@@ -28,8 +28,8 @@ public:
     QIcon GetValidationPathIcon(QString const& Path) const;
     QIcon GetValidationPathIcon(bool valid) const;
 
-    static const QIcon VMark;
-    static const QIcon XMark;
+    static const QString VMark;
+    static const QString XMark;
 
 private slots:
 

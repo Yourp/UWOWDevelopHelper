@@ -6,8 +6,8 @@
 #include "DataBase/databaseconnector.h"
 #include <QFileDialog>
 
-const QIcon SettingsWindow::VMark = QIcon("Icons/ok.png");
-const QIcon SettingsWindow::XMark = QIcon("Icons/not_ok.png");
+const QString SettingsWindow::VMark = "Icons/ok.png";
+const QString SettingsWindow::XMark = "Icons/not_ok.png";
 
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
 {
@@ -78,7 +78,7 @@ QIcon SettingsWindow::GetValidationPathIcon(const QString &Path) const
 
 QIcon SettingsWindow::GetValidationPathIcon(bool valid) const
 {
-    return valid ? VMark : XMark;
+    return QIcon(valid ? VMark : XMark);
 }
 
 QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName)
@@ -103,6 +103,8 @@ void SettingsWindow::EditButtonsWhenConnected()
     ui->LE_UserName->setEnabled(false);
     ui->LE_Password->setEnabled(false);
     ui->LE_WorldDatabase->setEnabled(false);
+    ui->LE_CharacterDatabase->setEnabled(false);
+    ui->LE_LoginDatabase->setEnabled(false);
 }
 
 void SettingsWindow::EditButtonsWhenDisconnected()
@@ -120,6 +122,8 @@ void SettingsWindow::EditButtonsWhenDisconnected()
     ui->LE_UserName->setEnabled(true);
     ui->LE_Password->setEnabled(true);
     ui->LE_WorldDatabase->setEnabled(true);
+    ui->LE_CharacterDatabase->setEnabled(true);
+    ui->LE_LoginDatabase->setEnabled(true);
 }
 
 void SettingsWindow::LoadConfig()

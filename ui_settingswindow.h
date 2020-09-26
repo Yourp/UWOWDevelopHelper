@@ -13,12 +13,14 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QWidget>
 #include "SpecialsWidgets/lineeditwithicon.h"
@@ -32,25 +34,25 @@ public:
     QStackedWidget *SW_SettingsLayer;
     QWidget *page;
     QGroupBox *groupBox;
-    QWidget *layoutWidget;
-    QFormLayout *formLayout_2;
+    QWidget *widget;
+    QGridLayout *gridLayout;
+    LineEditWithIcon *LE_LoginDatabase;
+    QLineEdit *LE_UserName;
+    QLineEdit *LE_Port;
+    QLabel *L_DatabaseName_4;
+    QLineEdit *LE_Password;
+    QLabel *L_Port_2;
+    QLabel *L_Password_2;
+    LineEditWithIcon *LE_CharacterDatabase;
+    QPushButton *PB_Disconnect;
+    QLabel *L_DatabaseName_2;
+    QLabel *L_UserName_2;
+    LineEditWithIcon *LE_WorldDatabase;
+    QPushButton *PB_Connect;
+    QLabel *L_DatabaseName_3;
     QLabel *L_HostName_2;
     QLineEdit *LE_HostName;
-    QLabel *L_Port_2;
-    QLineEdit *LE_Port;
-    QLabel *L_UserName_2;
-    QLineEdit *LE_UserName;
-    QLabel *L_Password_2;
-    QLineEdit *LE_Password;
-    QLabel *L_DatabaseName_2;
-    LineEditWithIcon *LE_WorldDatabase;
-    QLabel *L_DatabaseName_3;
-    LineEditWithIcon *LE_CharacterDatabase;
-    QLabel *L_DatabaseName_4;
-    LineEditWithIcon *LE_LoginDatabase;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *PB_Connect;
-    QPushButton *PB_Disconnect;
+    QSpacerItem *horizontalSpacer;
     QWidget *page_2;
     QListWidget *LW_SettingsClassesScripts;
     QGroupBox *groupBox_2;
@@ -121,129 +123,129 @@ public:
         groupBox = new QGroupBox(page);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setEnabled(true);
-        groupBox->setGeometry(QRect(0, 0, 301, 250));
-        layoutWidget = new QWidget(groupBox);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 30, 281, 209));
-        formLayout_2 = new QFormLayout(layoutWidget);
-        formLayout_2->setObjectName(QString::fromUtf8("formLayout_2"));
-        formLayout_2->setContentsMargins(0, 0, 0, 0);
-        L_HostName_2 = new QLabel(layoutWidget);
-        L_HostName_2->setObjectName(QString::fromUtf8("L_HostName_2"));
-        L_HostName_2->setMinimumSize(QSize(0, 20));
-        L_HostName_2->setMaximumSize(QSize(16777215, 20));
+        groupBox->setGeometry(QRect(0, 0, 301, 241));
+        widget = new QWidget(groupBox);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(10, 30, 281, 211));
+        gridLayout = new QGridLayout(widget);
+        gridLayout->setSpacing(0);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        LE_LoginDatabase = new LineEditWithIcon(widget);
+        LE_LoginDatabase->setObjectName(QString::fromUtf8("LE_LoginDatabase"));
 
-        formLayout_2->setWidget(0, QFormLayout::LabelRole, L_HostName_2);
+        gridLayout->addWidget(LE_LoginDatabase, 6, 1, 1, 3);
 
-        LE_HostName = new QLineEdit(layoutWidget);
-        LE_HostName->setObjectName(QString::fromUtf8("LE_HostName"));
+        LE_UserName = new QLineEdit(widget);
+        LE_UserName->setObjectName(QString::fromUtf8("LE_UserName"));
 
-        formLayout_2->setWidget(0, QFormLayout::FieldRole, LE_HostName);
+        gridLayout->addWidget(LE_UserName, 2, 1, 1, 3);
 
-        L_Port_2 = new QLabel(layoutWidget);
-        L_Port_2->setObjectName(QString::fromUtf8("L_Port_2"));
-        L_Port_2->setMinimumSize(QSize(0, 20));
-        L_Port_2->setMaximumSize(QSize(16777215, 20));
-
-        formLayout_2->setWidget(1, QFormLayout::LabelRole, L_Port_2);
-
-        LE_Port = new QLineEdit(layoutWidget);
+        LE_Port = new QLineEdit(widget);
         LE_Port->setObjectName(QString::fromUtf8("LE_Port"));
         LE_Port->setMaximumSize(QSize(40, 16777215));
         LE_Port->setMaxLength(5);
 
-        formLayout_2->setWidget(1, QFormLayout::FieldRole, LE_Port);
+        gridLayout->addWidget(LE_Port, 1, 1, 1, 1);
 
-        L_UserName_2 = new QLabel(layoutWidget);
-        L_UserName_2->setObjectName(QString::fromUtf8("L_UserName_2"));
-        L_UserName_2->setMinimumSize(QSize(0, 20));
-        L_UserName_2->setMaximumSize(QSize(16777215, 20));
-
-        formLayout_2->setWidget(2, QFormLayout::LabelRole, L_UserName_2);
-
-        LE_UserName = new QLineEdit(layoutWidget);
-        LE_UserName->setObjectName(QString::fromUtf8("LE_UserName"));
-
-        formLayout_2->setWidget(2, QFormLayout::FieldRole, LE_UserName);
-
-        L_Password_2 = new QLabel(layoutWidget);
-        L_Password_2->setObjectName(QString::fromUtf8("L_Password_2"));
-        L_Password_2->setMinimumSize(QSize(0, 20));
-        L_Password_2->setMaximumSize(QSize(16777215, 20));
-
-        formLayout_2->setWidget(3, QFormLayout::LabelRole, L_Password_2);
-
-        LE_Password = new QLineEdit(layoutWidget);
-        LE_Password->setObjectName(QString::fromUtf8("LE_Password"));
-        LE_Password->setFrame(true);
-        LE_Password->setEchoMode(QLineEdit::Password);
-
-        formLayout_2->setWidget(3, QFormLayout::FieldRole, LE_Password);
-
-        L_DatabaseName_2 = new QLabel(layoutWidget);
-        L_DatabaseName_2->setObjectName(QString::fromUtf8("L_DatabaseName_2"));
-        L_DatabaseName_2->setMinimumSize(QSize(0, 20));
-        L_DatabaseName_2->setMaximumSize(QSize(16777215, 20));
-
-        formLayout_2->setWidget(4, QFormLayout::LabelRole, L_DatabaseName_2);
-
-        LE_WorldDatabase = new LineEditWithIcon(layoutWidget);
-        LE_WorldDatabase->setObjectName(QString::fromUtf8("LE_WorldDatabase"));
-
-        formLayout_2->setWidget(4, QFormLayout::FieldRole, LE_WorldDatabase);
-
-        L_DatabaseName_3 = new QLabel(layoutWidget);
-        L_DatabaseName_3->setObjectName(QString::fromUtf8("L_DatabaseName_3"));
-        L_DatabaseName_3->setMinimumSize(QSize(0, 20));
-        L_DatabaseName_3->setMaximumSize(QSize(16777215, 20));
-
-        formLayout_2->setWidget(5, QFormLayout::LabelRole, L_DatabaseName_3);
-
-        LE_CharacterDatabase = new LineEditWithIcon(layoutWidget);
-        LE_CharacterDatabase->setObjectName(QString::fromUtf8("LE_CharacterDatabase"));
-
-        formLayout_2->setWidget(5, QFormLayout::FieldRole, LE_CharacterDatabase);
-
-        L_DatabaseName_4 = new QLabel(layoutWidget);
+        L_DatabaseName_4 = new QLabel(widget);
         L_DatabaseName_4->setObjectName(QString::fromUtf8("L_DatabaseName_4"));
         L_DatabaseName_4->setMinimumSize(QSize(0, 20));
         L_DatabaseName_4->setMaximumSize(QSize(16777215, 20));
 
-        formLayout_2->setWidget(6, QFormLayout::LabelRole, L_DatabaseName_4);
+        gridLayout->addWidget(L_DatabaseName_4, 6, 0, 1, 1);
 
-        LE_LoginDatabase = new LineEditWithIcon(layoutWidget);
-        LE_LoginDatabase->setObjectName(QString::fromUtf8("LE_LoginDatabase"));
+        LE_Password = new QLineEdit(widget);
+        LE_Password->setObjectName(QString::fromUtf8("LE_Password"));
+        LE_Password->setFrame(true);
+        LE_Password->setEchoMode(QLineEdit::Password);
 
-        formLayout_2->setWidget(6, QFormLayout::FieldRole, LE_LoginDatabase);
+        gridLayout->addWidget(LE_Password, 3, 1, 1, 3);
 
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        PB_Connect = new QPushButton(layoutWidget);
-        PB_Connect->setObjectName(QString::fromUtf8("PB_Connect"));
-        PB_Connect->setEnabled(true);
-        PB_Connect->setMinimumSize(QSize(83, 23));
-        PB_Connect->setMaximumSize(QSize(83, 23));
+        L_Port_2 = new QLabel(widget);
+        L_Port_2->setObjectName(QString::fromUtf8("L_Port_2"));
+        L_Port_2->setMinimumSize(QSize(0, 20));
+        L_Port_2->setMaximumSize(QSize(16777215, 20));
+
+        gridLayout->addWidget(L_Port_2, 1, 0, 1, 1);
+
+        L_Password_2 = new QLabel(widget);
+        L_Password_2->setObjectName(QString::fromUtf8("L_Password_2"));
+        L_Password_2->setMinimumSize(QSize(0, 20));
+        L_Password_2->setMaximumSize(QSize(16777215, 20));
+
+        gridLayout->addWidget(L_Password_2, 3, 0, 1, 1);
+
+        LE_CharacterDatabase = new LineEditWithIcon(widget);
+        LE_CharacterDatabase->setObjectName(QString::fromUtf8("LE_CharacterDatabase"));
+
+        gridLayout->addWidget(LE_CharacterDatabase, 5, 1, 1, 3);
+
+        PB_Disconnect = new QPushButton(widget);
+        PB_Disconnect->setObjectName(QString::fromUtf8("PB_Disconnect"));
+        PB_Disconnect->setEnabled(false);
+        PB_Disconnect->setMinimumSize(QSize(85, 23));
+        PB_Disconnect->setMaximumSize(QSize(85, 23));
         QFont font1;
         font1.setBold(true);
         font1.setWeight(75);
+        PB_Disconnect->setFont(font1);
+        PB_Disconnect->setAutoDefault(false);
+
+        gridLayout->addWidget(PB_Disconnect, 7, 3, 1, 1);
+
+        L_DatabaseName_2 = new QLabel(widget);
+        L_DatabaseName_2->setObjectName(QString::fromUtf8("L_DatabaseName_2"));
+        L_DatabaseName_2->setMinimumSize(QSize(0, 20));
+        L_DatabaseName_2->setMaximumSize(QSize(16777215, 20));
+
+        gridLayout->addWidget(L_DatabaseName_2, 4, 0, 1, 1);
+
+        L_UserName_2 = new QLabel(widget);
+        L_UserName_2->setObjectName(QString::fromUtf8("L_UserName_2"));
+        L_UserName_2->setMinimumSize(QSize(0, 20));
+        L_UserName_2->setMaximumSize(QSize(16777215, 20));
+
+        gridLayout->addWidget(L_UserName_2, 2, 0, 1, 1);
+
+        LE_WorldDatabase = new LineEditWithIcon(widget);
+        LE_WorldDatabase->setObjectName(QString::fromUtf8("LE_WorldDatabase"));
+
+        gridLayout->addWidget(LE_WorldDatabase, 4, 1, 1, 3);
+
+        PB_Connect = new QPushButton(widget);
+        PB_Connect->setObjectName(QString::fromUtf8("PB_Connect"));
+        PB_Connect->setEnabled(true);
+        PB_Connect->setMinimumSize(QSize(85, 23));
+        PB_Connect->setMaximumSize(QSize(85, 23));
         PB_Connect->setFont(font1);
         PB_Connect->setCheckable(false);
         PB_Connect->setChecked(false);
 
-        horizontalLayout->addWidget(PB_Connect);
+        gridLayout->addWidget(PB_Connect, 7, 1, 1, 1);
 
-        PB_Disconnect = new QPushButton(layoutWidget);
-        PB_Disconnect->setObjectName(QString::fromUtf8("PB_Disconnect"));
-        PB_Disconnect->setEnabled(false);
-        PB_Disconnect->setMinimumSize(QSize(83, 23));
-        PB_Disconnect->setMaximumSize(QSize(83, 23));
-        PB_Disconnect->setFont(font1);
-        PB_Disconnect->setAutoDefault(false);
+        L_DatabaseName_3 = new QLabel(widget);
+        L_DatabaseName_3->setObjectName(QString::fromUtf8("L_DatabaseName_3"));
+        L_DatabaseName_3->setMinimumSize(QSize(0, 20));
+        L_DatabaseName_3->setMaximumSize(QSize(16777215, 20));
 
-        horizontalLayout->addWidget(PB_Disconnect);
+        gridLayout->addWidget(L_DatabaseName_3, 5, 0, 1, 1);
 
+        L_HostName_2 = new QLabel(widget);
+        L_HostName_2->setObjectName(QString::fromUtf8("L_HostName_2"));
+        L_HostName_2->setMinimumSize(QSize(0, 20));
+        L_HostName_2->setMaximumSize(QSize(16777215, 20));
 
-        formLayout_2->setLayout(7, QFormLayout::FieldRole, horizontalLayout);
+        gridLayout->addWidget(L_HostName_2, 0, 0, 1, 1);
+
+        LE_HostName = new QLineEdit(widget);
+        LE_HostName->setObjectName(QString::fromUtf8("LE_HostName"));
+
+        gridLayout->addWidget(LE_HostName, 0, 1, 1, 3);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 7, 2, 1, 1);
 
         SW_SettingsLayer->addWidget(page);
         page_2 = new QWidget();
@@ -392,15 +394,15 @@ public:
     {
         SettingsWindow->setWindowTitle(QCoreApplication::translate("SettingsWindow", "Settings", nullptr));
         groupBox->setTitle(QCoreApplication::translate("SettingsWindow", "Database Connection", nullptr));
-        L_HostName_2->setText(QCoreApplication::translate("SettingsWindow", "Host Name: ", nullptr));
-        L_Port_2->setText(QCoreApplication::translate("SettingsWindow", "Port: ", nullptr));
-        L_UserName_2->setText(QCoreApplication::translate("SettingsWindow", "User Name: ", nullptr));
-        L_Password_2->setText(QCoreApplication::translate("SettingsWindow", "Password: ", nullptr));
-        L_DatabaseName_2->setText(QCoreApplication::translate("SettingsWindow", "World Database: ", nullptr));
-        L_DatabaseName_3->setText(QCoreApplication::translate("SettingsWindow", "Character Database: ", nullptr));
         L_DatabaseName_4->setText(QCoreApplication::translate("SettingsWindow", "Login Database: ", nullptr));
-        PB_Connect->setText(QCoreApplication::translate("SettingsWindow", "Connect", nullptr));
+        L_Port_2->setText(QCoreApplication::translate("SettingsWindow", "Port: ", nullptr));
+        L_Password_2->setText(QCoreApplication::translate("SettingsWindow", "Password: ", nullptr));
         PB_Disconnect->setText(QCoreApplication::translate("SettingsWindow", "Disconnected", nullptr));
+        L_DatabaseName_2->setText(QCoreApplication::translate("SettingsWindow", "World Database: ", nullptr));
+        L_UserName_2->setText(QCoreApplication::translate("SettingsWindow", "User Name: ", nullptr));
+        PB_Connect->setText(QCoreApplication::translate("SettingsWindow", "Connect", nullptr));
+        L_DatabaseName_3->setText(QCoreApplication::translate("SettingsWindow", "Character Database: ", nullptr));
+        L_HostName_2->setText(QCoreApplication::translate("SettingsWindow", "Host Name: ", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("SettingsWindow", "Path of Scripts File:", nullptr));
         PB_FindScriptFile->setText(QCoreApplication::translate("SettingsWindow", "...", nullptr));
         groupBox_3->setTitle(QCoreApplication::translate("SettingsWindow", "SQL's save information:", nullptr));
