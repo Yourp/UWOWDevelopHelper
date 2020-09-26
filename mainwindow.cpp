@@ -11,6 +11,7 @@
 #include "Classes/classname.h"
 #include "mainwindow.h"
 #include "settingswindow.h"
+#include <QDir>
 
 
 
@@ -61,7 +62,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         ui->CB_Classes->addItem(Itr->GetName());
     }
 
-    //SettingWindow->exec();
+
+
+
+    SettingWindow->exec();
 }
 
 MainWindow::~MainWindow()
@@ -98,7 +102,15 @@ void MainWindow::on_PB_GenerateCode_released()
 
     Scripts[GetCurrentScriptIndex()]->HandleDataBase(this, SettingWindow);
 
-    ui->textEditDebug->setText(QDateTime::currentDateTime().toString("dd_MM_yyyy"));
+    QFileInfo fi("d:/Work/Report.cpp");
+
+    QString tt = QString::number(fi.lastModified().toMSecsSinceEpoch());
+    tt += "\n" + fi.lastModified().toString();
+
+
+    QStringList sl = QDir("d:/Work").entryList(QDir::Filter::Files, QDir::SortFlag::Time);
+
+    ui->textEditDebug->setText(sl.join("\n"));
 }
 
 void MainWindow::on_CB_Classes_currentIndexChanged(int index)

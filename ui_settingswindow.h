@@ -318,10 +318,10 @@ public:
         page_3->setObjectName(QString::fromUtf8("page_3"));
         groupBox_3 = new QGroupBox(page_3);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(0, 0, 411, 81));
+        groupBox_3->setGeometry(QRect(0, 0, 411, 91));
         layoutWidget_1 = new QWidget(groupBox_3);
         layoutWidget_1->setObjectName(QString::fromUtf8("layoutWidget_1"));
-        layoutWidget_1->setGeometry(QRect(10, 20, 391, 50));
+        layoutWidget_1->setGeometry(QRect(10, 30, 391, 50));
         formLayout = new QFormLayout(layoutWidget_1);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
@@ -384,7 +384,7 @@ public:
 
         retranslateUi(SettingsWindow);
 
-        SW_SettingsLayer->setCurrentIndex(0);
+        SW_SettingsLayer->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(SettingsWindow);

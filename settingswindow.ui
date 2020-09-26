@@ -94,7 +94,7 @@ QListWidget
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QGroupBox" name="groupBox">
@@ -518,7 +518,7 @@ QListWidget
        <x>0</x>
        <y>0</y>
        <width>411</width>
-       <height>81</height>
+       <height>91</height>
       </rect>
      </property>
      <property name="title">
@@ -528,7 +528,7 @@ QListWidget
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>20</y>
+        <y>30</y>
         <width>391</width>
         <height>50</height>
        </rect>

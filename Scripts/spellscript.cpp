@@ -83,6 +83,12 @@ void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
         return;
     }
 
+    QString AddNew = "DELETE FROM `spell_script_names` WHERE (`ScriptName`='" + MW->GetScriptName() + "');";
+    AddNew += "\n";
+    AddNew += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + SpellID + "', '" + MW->GetScriptName() + "');\n";
+
+    DataBaseConnector::Push(DataBaseConnector::WorldConnector, AddNew);
+
     QString Folder = SW->GetWorldSQLsFolder();
 
     if (Folder.isEmpty())
@@ -98,17 +104,10 @@ void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
 
     QTextStream TStream(&file);
     QString FilesText = TStream.readAll();
-
-    QString AddNew = "DELETE FROM `spell_script_names` WHERE (`ScriptName`='" + MW->GetScriptName() + "');";
-    AddNew += "\n";
-    AddNew += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + SpellID + "', '" + MW->GetScriptName() + "');\n";
-
     file.resize(0);
     TStream << FilesText + AddNew;
 
     file.close();
-
-    DataBaseConnector::Push(AddNew);
 }
 
 bool SpellScript::CheckPathAndFileValidation(const QString &Path, const QString &Extension)

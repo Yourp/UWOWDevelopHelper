@@ -8,27 +8,21 @@ class QLineEdit;
 
 class DataBaseSettings : public Setting
 {
-    QLineEdit* HostName;
-    QLineEdit* Port;
-    QLineEdit* UserName;
-    QLineEdit* Password;
-    QLineEdit* DatabaseName;
+    friend class SettingsWindow;
 
-public:
     DataBaseSettings() {}
 
-    QString GetHostName() const;
-    int GetPort() const;
-    QString GetUserName() const;
-    QString GetPassword() const;
-    QString GetDatabaseName() const;
+    static QLineEdit* HostName;
+    static QLineEdit* Port;
+    static QLineEdit* UserName;
+    static QLineEdit* Password;
 
-    void BindHostName(QLineEdit* LE) { HostName = LE; }
-    void BindPort(QLineEdit* LE) { Port = LE; }
-    void BindUserName(QLineEdit* LE) { UserName = LE; }
-    void BindPassword(QLineEdit* LE) { Password = LE; }
-    void BindDatabaseName(QLineEdit* LE) { DatabaseName = LE; }
+public:
 
+    static QString GetHostName();
+    static int GetPort();
+    static QString GetUserName();
+    static QString GetPassword();
 };
 
 #endif // DATABASESETTINGS_H

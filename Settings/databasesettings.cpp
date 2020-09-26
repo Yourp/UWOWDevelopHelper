@@ -5,32 +5,31 @@
 
 #define CHECKED(VAR) VAR ? VAR->text() : ""
 
+QLineEdit* DataBaseSettings::HostName = nullptr;
+QLineEdit* DataBaseSettings::Port = nullptr;
+QLineEdit* DataBaseSettings::UserName = nullptr;
+QLineEdit* DataBaseSettings::Password = nullptr;
 
-
-QString DataBaseSettings::GetHostName() const
+QString DataBaseSettings::GetHostName()
 {
     return CHECKED(HostName);
 }
 
-int DataBaseSettings::GetPort() const
+int DataBaseSettings::GetPort()
 {
     return Port ? Port->text().toInt(nullptr, 0) : -1;
 }
 
-QString DataBaseSettings::GetUserName() const
+QString DataBaseSettings::GetUserName()
 {
     return CHECKED(UserName);
 }
 
-QString DataBaseSettings::GetPassword() const
+QString DataBaseSettings::GetPassword()
 {
     return CHECKED(Password);
 }
 
-QString DataBaseSettings::GetDatabaseName() const
-{
-    return CHECKED(DatabaseName);
-}
 
 #undef CHECKED
 

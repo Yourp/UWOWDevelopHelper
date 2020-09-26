@@ -4,6 +4,7 @@
 #include "mainwindow.h"
 #include "Classes/classname.h"
 #include "DataBase/databaseconnector.h"
+#include "Settings/databasesettings.h"
 #include <QFileDialog>
 
 const QString SettingsWindow::VMark = "Icons/ok.png";
@@ -12,11 +13,10 @@ const QString SettingsWindow::XMark = "Icons/not_ok.png";
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
 {
     ui->setupUi(this);
-    DBSettings.BindHostName(ui->LE_HostName);
-    DBSettings.BindPort(ui->LE_Port);
-    DBSettings.BindUserName(ui->LE_UserName);
-    DBSettings.BindPassword(ui->LE_Password);
-    DBSettings.BindDatabaseName(ui->LE_WorldDatabase);
+    DataBaseSettings::HostName = ui->LE_HostName;
+    DataBaseSettings::Port = ui->LE_Port;
+    DataBaseSettings::UserName = ui->LE_UserName;
+    DataBaseSettings::Password = ui->LE_Password;
 
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database Connection"));
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts"));
@@ -38,14 +38,14 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     for (int i = 0; i < MainWindow::Classes.size(); ++i)
     {
         QString Path = MainWindow::Classes[i]->GetScriptsFilePath();
-        ui->LW_SettingsClassesScripts->item(i)->setIcon(GetValidationPathIcon(Path));
+        ui->LW_SettingsClassesScripts->item(i)->setIcon(GetValidationIcon(Path));
     }
 
 
     ui->LW_SettingsCategories->setCurrentRow(0);
     ui->LW_SettingsClassesScripts->setCurrentRow(0);
 
-    if (DataBaseConnector::Connect(&DBSettings))
+    if (DataBaseConnector::Connect(DataBaseConnector::WorldConnector, ui->LE_WorldDatabase->text()))
     {
         EditButtonsWhenConnected();
     }
@@ -53,6 +53,11 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     {
         EditButtonsWhenDisconnected();
     }
+
+    DataBaseConnector::Connect(DataBaseConnector::CharacterConnector, ui->LE_CharacterDatabase->text());
+    DataBaseConnector::Connect(DataBaseConnector::LoginConnector, ui->LE_LoginDatabase->text());
+
+    UpdateDatabasesLEIcons();
 }
 
 SettingsWindow::~SettingsWindow()
@@ -71,12 +76,12 @@ const QString SettingsWindow::GetSQLFileName() const
     return ui->LE_SQLFileName->text();
 }
 
-QIcon SettingsWindow::GetValidationPathIcon(const QString &Path) const
+QIcon SettingsWindow::GetValidationIcon(const QString &Path) const
 {
-    return GetValidationPathIcon(SpellScript::CheckPathAndFileValidation(Path, "cpp"));
+    return GetValidationIcon(SpellScript::CheckPathAndFileValidation(Path, "cpp"));
 }
 
-QIcon SettingsWindow::GetValidationPathIcon(bool valid) const
+QIcon SettingsWindow::GetValidationIcon(bool valid) const
 {
     return QIcon(valid ? VMark : XMark);
 }
@@ -130,53 +135,84 @@ void SettingsWindow::LoadConfig()
 {
     QSettings Conf("Config.ini", QSettings::IniFormat);
 
-    ui->LE_HostName->setText(Conf.value("Database.HostName").toString());
-    ui->LE_Port->setText(Conf.value("Database.Port").toString());
-    ui->LE_UserName->setText(Conf.value("Database.UserName").toString());
-    ui->LE_Password->setText(Conf.value("Database.Password").toString());
-    ui->LE_WorldDatabase->setText(Conf.value("Database.WorldDatabase").toString());
+    Conf.beginGroup("Database");
+    ui->LE_HostName->setText(Conf.value("HostName").toString());
+    ui->LE_Port->setText(Conf.value("Port").toString());
+    ui->LE_UserName->setText(Conf.value("UserName").toString());
+    ui->LE_Password->setText(Conf.value("Password").toString());
+    ui->LE_WorldDatabase->setText(Conf.value("WorldDatabase").toString());
+    ui->LE_CharacterDatabase->setText(Conf.value("CharacterDatabase").toString());
+    ui->LE_LoginDatabase->setText(Conf.value("LoginDatabase").toString());
+    Conf.endGroup();
 
-    ui->LE_WorldSQLFolder->setText(Conf.value("Saves.WorldSQLFolder").toString());
-    ui->LE_SQLFileName->setText(Conf.value("Saves.SQLFileName", "spell_script_names").toString());
+    Conf.beginGroup("SQL");
+    ui->LE_WorldSQLFolder->setText(Conf.value("WorldSQLFolder").toString());
+    ui->LE_SQLFileName->setText(Conf.value("SQLFileName", "spell_script_names").toString());
+    Conf.endGroup();
 
+    Conf.beginGroup("SpellScript");
     for (auto& Class : MainWindow::Classes)
     {
-        Class->SetScriptsFilePath(Conf.value("SpellScript.Classes." + Class->GetName()).toString());
+        Class->SetScriptsFilePath(Conf.value("Classes." + Class->GetName()).toString());
     }
+    Conf.endGroup();
 }
 
 void SettingsWindow::SaveToConfig()
 {
     QSettings Conf("Config.ini", QSettings::IniFormat);
 
-    Conf.setValue("Database.HostName", ui->LE_HostName->text());
-    Conf.setValue("Database.Port", ui->LE_Port->text());
-    Conf.setValue("Database.UserName", ui->LE_UserName->text());
-    Conf.setValue("Database.Password", ui->LE_Password->text());
-    Conf.setValue("Database.WorldDatabase", ui->LE_WorldDatabase->text());
+    Conf.beginGroup("Database");
+    Conf.setValue("HostName", ui->LE_HostName->text());
+    Conf.setValue("Port", ui->LE_Port->text());
+    Conf.setValue("UserName", ui->LE_UserName->text());
+    Conf.setValue("Password", ui->LE_Password->text());
+    Conf.setValue("WorldDatabase", ui->LE_WorldDatabase->text());
+    Conf.setValue("CharacterDatabase", ui->LE_CharacterDatabase->text());
+    Conf.setValue("LoginDatabase", ui->LE_LoginDatabase->text());
+    Conf.endGroup();
 
-    Conf.setValue("Saves.WorldSQLFolder", ui->LE_WorldSQLFolder->text());
-    Conf.setValue("Saves.SQLFileName", ui->LE_SQLFileName->text());
+    Conf.beginGroup("SQL");
+    Conf.setValue("WorldSQLFolder", ui->LE_WorldSQLFolder->text());
+    Conf.setValue("SQLFileName", ui->LE_SQLFileName->text());
+    Conf.endGroup();
 
+    Conf.beginGroup("SpellScript");
     for (auto& Class : MainWindow::Classes)
     {
-        Conf.setValue("SpellScript.Classes." + Class->GetName(), Class->GetScriptsFilePath());
+        Conf.setValue("Classes." + Class->GetName(), Class->GetScriptsFilePath());
     }
+    Conf.endGroup();
+}
+
+void SettingsWindow::UpdateDatabasesLEIcons()
+{
+    ui->LE_WorldDatabase->SetIcon(GetValidationIcon(DataBaseConnector::WorldConnector.isOpen()));
+    ui->LE_CharacterDatabase->SetIcon(GetValidationIcon(DataBaseConnector::CharacterConnector.isOpen()));
+    ui->LE_LoginDatabase->SetIcon(GetValidationIcon(DataBaseConnector::LoginConnector.isOpen()));
 }
 
 
 void SettingsWindow::on_PB_Disconnect_clicked()
 {
-    DataBaseConnector::Disconnect();
+    DataBaseConnector::Disconnect(DataBaseConnector::WorldConnector);
+    DataBaseConnector::Disconnect(DataBaseConnector::CharacterConnector);
+    DataBaseConnector::Disconnect(DataBaseConnector::LoginConnector);
     EditButtonsWhenDisconnected();
+    UpdateDatabasesLEIcons();
 }
 
 void SettingsWindow::on_PB_Connect_clicked()
 {
-    if (DataBaseConnector::Connect(&DBSettings))
+    DataBaseConnector::Connect(DataBaseConnector::WorldConnector, ui->LE_WorldDatabase->text());
+    DataBaseConnector::Connect(DataBaseConnector::CharacterConnector, ui->LE_CharacterDatabase->text());
+    DataBaseConnector::Connect(DataBaseConnector::LoginConnector, ui->LE_LoginDatabase->text());
+
+    if (DataBaseConnector::WorldConnector.isOpen() || DataBaseConnector::CharacterConnector.isOpen() || DataBaseConnector::LoginConnector.isOpen())
     {
         EditButtonsWhenConnected();
     }
+    UpdateDatabasesLEIcons();
 }
 
 void SettingsWindow::on_LW_SettingsCategories_currentRowChanged(int currentRow)
@@ -200,7 +236,7 @@ void SettingsWindow::on_LE_ClassesScriptsPath_textChanged(const QString &arg1)
             Class->SetScriptsFilePath(arg1);
 
             bool PathValid = SpellScript::CheckPathAndFileValidation(arg1, "cpp");
-            ui->LW_SettingsClassesScripts->item(ClassIndex)->setIcon(GetValidationPathIcon(PathValid));
+            ui->LW_SettingsClassesScripts->item(ClassIndex)->setIcon(GetValidationIcon(PathValid));
 
             if (MainWindow* MW = dynamic_cast<MainWindow*>(parent()))
             {

@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QString>
 #include "DataBase/databaseconnector.h"
-#include "Settings/databasesettings.h"
+#include "SpecialsWidgets/lineeditwithicon.h"
 
 class QListWidgetItem;
 
@@ -25,8 +25,8 @@ public:
     QString const GetWorldSQLsFolder() const;
     QString const GetSQLFileName() const;
 
-    QIcon GetValidationPathIcon(QString const& Path) const;
-    QIcon GetValidationPathIcon(bool valid) const;
+    QIcon GetValidationIcon(QString const& Path) const;
+    QIcon GetValidationIcon(bool valid) const;
 
     static const QString VMark;
     static const QString XMark;
@@ -52,7 +52,7 @@ private:
     void LoadConfig();
     void SaveToConfig();
 
-    DataBaseSettings DBSettings;
+    void UpdateDatabasesLEIcons();
 
 
 
