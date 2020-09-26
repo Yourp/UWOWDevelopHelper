@@ -6,6 +6,9 @@
 #include "DataBase/databaseconnector.h"
 #include <QFileDialog>
 
+const QIcon SettingsWindow::VMark = QIcon("Icons/ok.png");
+const QIcon SettingsWindow::XMark = QIcon("Icons/not_ok.png");
+
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
 {
     ui->setupUi(this);
@@ -75,7 +78,7 @@ QIcon SettingsWindow::GetValidationPathIcon(const QString &Path) const
 
 QIcon SettingsWindow::GetValidationPathIcon(bool valid) const
 {
-    return QIcon(valid ? "Icons/ok.png" : "Icons/not_ok.png");
+    return valid ? VMark : XMark;
 }
 
 QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName)

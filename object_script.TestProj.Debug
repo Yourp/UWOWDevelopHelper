@@ -8,6 +8,7 @@ debug/ssaura.o
 debug/ssspell.o
 debug/databasesettings.o
 debug/settingbase.o
+debug/lineeditwithicon.o
 debug/main.o
 debug/mainwindow.o
 debug/script.o

@@ -8,6 +8,7 @@ release/ssaura.o
 release/ssspell.o
 release/databasesettings.o
 release/settingbase.o
+release/lineeditwithicon.o
 release/main.o
 release/mainwindow.o
 release/script.o

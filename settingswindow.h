@@ -28,7 +28,8 @@ public:
     QIcon GetValidationPathIcon(QString const& Path) const;
     QIcon GetValidationPathIcon(bool valid) const;
 
-    Ui::SettingsWindow* GetUI() const { return ui; }
+    static const QIcon VMark;
+    static const QIcon XMark;
 
 private slots:
 

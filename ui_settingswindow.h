@@ -21,6 +21,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QWidget>
+#include "SpecialsWidgets/lineeditwithicon.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -42,11 +43,11 @@ public:
     QLabel *L_Password_2;
     QLineEdit *LE_Password;
     QLabel *L_DatabaseName_2;
-    QLineEdit *LE_WorldDatabase;
+    LineEditWithIcon *LE_WorldDatabase;
     QLabel *L_DatabaseName_3;
-    QLineEdit *LE_CharacterDatabase;
+    LineEditWithIcon *LE_CharacterDatabase;
     QLabel *L_DatabaseName_4;
-    QLineEdit *LE_LoginDatabase;
+    LineEditWithIcon *LE_LoginDatabase;
     QHBoxLayout *horizontalLayout;
     QPushButton *PB_Connect;
     QPushButton *PB_Disconnect;
@@ -68,12 +69,6 @@ public:
     QLineEdit *LE_WorldSQLFolder;
     QPushButton *PB_FindWorldSQLFolder;
     QLabel *label_2;
-    QLabel *label_4;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_3;
-    QLineEdit *lineEdit_2;
-    QLabel *label_6;
-    QLabel *label_5;
 
     void setupUi(QDialog *SettingsWindow)
     {
@@ -126,10 +121,10 @@ public:
         groupBox = new QGroupBox(page);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setEnabled(true);
-        groupBox->setGeometry(QRect(0, 0, 301, 245));
+        groupBox->setGeometry(QRect(0, 0, 301, 250));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 30, 285, 209));
+        layoutWidget->setGeometry(QRect(10, 30, 281, 209));
         formLayout_2 = new QFormLayout(layoutWidget);
         formLayout_2->setObjectName(QString::fromUtf8("formLayout_2"));
         formLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -192,7 +187,7 @@ public:
 
         formLayout_2->setWidget(4, QFormLayout::LabelRole, L_DatabaseName_2);
 
-        LE_WorldDatabase = new QLineEdit(layoutWidget);
+        LE_WorldDatabase = new LineEditWithIcon(layoutWidget);
         LE_WorldDatabase->setObjectName(QString::fromUtf8("LE_WorldDatabase"));
 
         formLayout_2->setWidget(4, QFormLayout::FieldRole, LE_WorldDatabase);
@@ -204,7 +199,7 @@ public:
 
         formLayout_2->setWidget(5, QFormLayout::LabelRole, L_DatabaseName_3);
 
-        LE_CharacterDatabase = new QLineEdit(layoutWidget);
+        LE_CharacterDatabase = new LineEditWithIcon(layoutWidget);
         LE_CharacterDatabase->setObjectName(QString::fromUtf8("LE_CharacterDatabase"));
 
         formLayout_2->setWidget(5, QFormLayout::FieldRole, LE_CharacterDatabase);
@@ -216,7 +211,7 @@ public:
 
         formLayout_2->setWidget(6, QFormLayout::LabelRole, L_DatabaseName_4);
 
-        LE_LoginDatabase = new QLineEdit(layoutWidget);
+        LE_LoginDatabase = new LineEditWithIcon(layoutWidget);
         LE_LoginDatabase->setObjectName(QString::fromUtf8("LE_LoginDatabase"));
 
         formLayout_2->setWidget(6, QFormLayout::FieldRole, LE_LoginDatabase);
@@ -384,39 +379,6 @@ public:
         label_2->setGeometry(QRect(481, 532, 0, 0));
         label_2->setMinimumSize(QSize(0, 0));
         label_2->setMaximumSize(QSize(0, 0));
-        label_4 = new QLabel(SettingsWindow);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(162, 522, 20, 20));
-        label_4->setMaximumSize(QSize(20, 20));
-        label_4->setStyleSheet(QString::fromUtf8(""));
-        label_4->setPixmap(QPixmap(QString::fromUtf8("Icons/ok.png")));
-        label_4->setScaledContents(true);
-        lineEdit = new QLineEdit(SettingsWindow);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(342, 548, 116, 20));
-        lineEdit->setFrame(true);
-        lineEdit_3 = new QLineEdit(SettingsWindow);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(342, 594, 116, 20));
-        lineEdit_3->setFrame(true);
-        lineEdit_2 = new QLineEdit(SettingsWindow);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(342, 640, 116, 20));
-        lineEdit_2->setFrame(true);
-        label_6 = new QLabel(SettingsWindow);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(162, 548, 20, 20));
-        label_6->setMaximumSize(QSize(20, 20));
-        label_6->setStyleSheet(QString::fromUtf8(""));
-        label_6->setPixmap(QPixmap(QString::fromUtf8("Icons/not_ok.png")));
-        label_6->setScaledContents(true);
-        label_5 = new QLabel(SettingsWindow);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(162, 574, 20, 20));
-        label_5->setMaximumSize(QSize(20, 20));
-        label_5->setStyleSheet(QString::fromUtf8(""));
-        label_5->setPixmap(QPixmap(QString::fromUtf8("Icons/ok.png")));
-        label_5->setScaledContents(true);
 
         retranslateUi(SettingsWindow);
 
@@ -446,9 +408,6 @@ public:
         label_3->setText(QCoreApplication::translate("SettingsWindow", "World SQL's files folder:", nullptr));
         PB_FindWorldSQLFolder->setText(QCoreApplication::translate("SettingsWindow", "...", nullptr));
         label_2->setText(QCoreApplication::translate("SettingsWindow", "World SQL's folder:", nullptr));
-        label_4->setText(QString());
-        label_6->setText(QString());
-        label_5->setText(QString());
     } // retranslateUi
 
 };

@@ -26,6 +26,7 @@ SOURCES += \
     Scripts/ssspell.cpp \
     Settings/databasesettings.cpp \
     Settings/settingbase.cpp \
+    SpecialsWidgets/lineeditwithicon.cpp \
     main.cpp \
     mainwindow.cpp \
     script.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     Scripts/ssspell.h \
     Settings/databasesettings.h \
     Settings/settingbase.h \
+    SpecialsWidgets/lineeditwithicon.h \
     mainwindow.h \
     script.h \
     scriptregister.h \
