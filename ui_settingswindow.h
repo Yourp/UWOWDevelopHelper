@@ -123,7 +123,7 @@ public:
         groupBox = new QGroupBox(page);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setEnabled(true);
-        groupBox->setGeometry(QRect(0, 0, 301, 253));
+        groupBox->setGeometry(QRect(0, 0, 301, 251));
         widget = new QWidget(groupBox);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setGeometry(QRect(10, 30, 281, 221));
@@ -181,8 +181,8 @@ public:
         PB_Disconnect = new QPushButton(widget);
         PB_Disconnect->setObjectName(QString::fromUtf8("PB_Disconnect"));
         PB_Disconnect->setEnabled(false);
-        PB_Disconnect->setMinimumSize(QSize(85, 24));
-        PB_Disconnect->setMaximumSize(QSize(85, 24));
+        PB_Disconnect->setMinimumSize(QSize(85, 23));
+        PB_Disconnect->setMaximumSize(QSize(85, 23));
         QFont font1;
         font1.setBold(true);
         font1.setWeight(75);
@@ -218,8 +218,8 @@ public:
         PB_Connect = new QPushButton(widget);
         PB_Connect->setObjectName(QString::fromUtf8("PB_Connect"));
         PB_Connect->setEnabled(true);
-        PB_Connect->setMinimumSize(QSize(85, 24));
-        PB_Connect->setMaximumSize(QSize(85, 24));
+        PB_Connect->setMinimumSize(QSize(85, 23));
+        PB_Connect->setMaximumSize(QSize(85, 23));
         PB_Connect->setFont(font1);
         PB_Connect->setCheckable(false);
         PB_Connect->setChecked(false);

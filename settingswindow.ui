@@ -106,7 +106,7 @@ QListWidget
        <x>0</x>
        <y>0</y>
        <width>301</width>
-       <height>253</height>
+       <height>251</height>
       </rect>
      </property>
      <property name="title">
@@ -225,13 +225,13 @@ QListWidget
          <property name="minimumSize">
           <size>
            <width>85</width>
-           <height>24</height>
+           <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>85</width>
-           <height>24</height>
+           <height>23</height>
           </size>
          </property>
          <property name="font">
@@ -300,13 +300,13 @@ QListWidget
          <property name="minimumSize">
           <size>
            <width>85</width>
-           <height>24</height>
+           <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>85</width>
-           <height>24</height>
+           <height>23</height>
           </size>
          </property>
          <property name="font">
