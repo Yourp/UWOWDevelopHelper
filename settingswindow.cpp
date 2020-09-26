@@ -13,7 +13,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     DBSettings.BindPort(ui->LE_Port);
     DBSettings.BindUserName(ui->LE_UserName);
     DBSettings.BindPassword(ui->LE_Password);
-    DBSettings.BindDatabaseName(ui->LE_DatabaseName);
+    DBSettings.BindDatabaseName(ui->LE_WorldDatabase);
 
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database Connection"));
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts"));
@@ -99,7 +99,7 @@ void SettingsWindow::EditButtonsWhenConnected()
     ui->LE_Port->setEnabled(false);
     ui->LE_UserName->setEnabled(false);
     ui->LE_Password->setEnabled(false);
-    ui->LE_DatabaseName->setEnabled(false);
+    ui->LE_WorldDatabase->setEnabled(false);
 }
 
 void SettingsWindow::EditButtonsWhenDisconnected()
@@ -116,7 +116,7 @@ void SettingsWindow::EditButtonsWhenDisconnected()
     ui->LE_Port->setEnabled(true);
     ui->LE_UserName->setEnabled(true);
     ui->LE_Password->setEnabled(true);
-    ui->LE_DatabaseName->setEnabled(true);
+    ui->LE_WorldDatabase->setEnabled(true);
 }
 
 void SettingsWindow::LoadConfig()
@@ -127,7 +127,7 @@ void SettingsWindow::LoadConfig()
     ui->LE_Port->setText(Conf.value("Database.Port").toString());
     ui->LE_UserName->setText(Conf.value("Database.UserName").toString());
     ui->LE_Password->setText(Conf.value("Database.Password").toString());
-    ui->LE_DatabaseName->setText(Conf.value("Database.DatabaseName").toString());
+    ui->LE_WorldDatabase->setText(Conf.value("Database.WorldDatabase").toString());
 
     ui->LE_WorldSQLFolder->setText(Conf.value("Saves.WorldSQLFolder").toString());
     ui->LE_SQLFileName->setText(Conf.value("Saves.SQLFileName", "spell_script_names").toString());
@@ -146,7 +146,7 @@ void SettingsWindow::SaveToConfig()
     Conf.setValue("Database.Port", ui->LE_Port->text());
     Conf.setValue("Database.UserName", ui->LE_UserName->text());
     Conf.setValue("Database.Password", ui->LE_Password->text());
-    Conf.setValue("Database.DatabaseName", ui->LE_DatabaseName->text());
+    Conf.setValue("Database.WorldDatabase", ui->LE_WorldDatabase->text());
 
     Conf.setValue("Saves.WorldSQLFolder", ui->LE_WorldSQLFolder->text());
     Conf.setValue("Saves.SQLFileName", ui->LE_SQLFileName->text());

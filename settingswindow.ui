@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>771</width>
-    <height>331</height>
+    <width>963</width>
+    <height>736</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -98,12 +98,15 @@ QListWidget
    </property>
    <widget class="QWidget" name="page">
     <widget class="QGroupBox" name="groupBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>211</width>
-       <height>311</height>
+       <width>301</width>
+       <height>245</height>
       </rect>
      </property>
      <property name="title">
@@ -114,26 +117,23 @@ QListWidget
        <rect>
         <x>10</x>
         <y>30</y>
-        <width>192</width>
-        <height>271</height>
+        <width>285</width>
+        <height>209</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="DB1">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <item>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
         <widget class="QLabel" name="L_HostName_2">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
          <property name="text">
@@ -141,37 +141,21 @@ QListWidget
          </property>
         </widget>
        </item>
-       <item>
+       <item row="0" column="1">
         <widget class="QLineEdit" name="LE_HostName"/>
        </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>7</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
+       <item row="1" column="0">
         <widget class="QLabel" name="L_Port_2">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
          <property name="text">
@@ -179,7 +163,7 @@ QListWidget
          </property>
         </widget>
        </item>
-       <item>
+       <item row="1" column="1">
         <widget class="QLineEdit" name="LE_Port">
          <property name="maximumSize">
           <size>
@@ -192,34 +176,18 @@ QListWidget
          </property>
         </widget>
        </item>
-       <item>
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>7</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
+       <item row="2" column="0">
         <widget class="QLabel" name="L_UserName_2">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
          <property name="text">
@@ -227,37 +195,21 @@ QListWidget
          </property>
         </widget>
        </item>
-       <item>
+       <item row="2" column="1">
         <widget class="QLineEdit" name="LE_UserName"/>
        </item>
-       <item>
-        <spacer name="verticalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>7</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
+       <item row="3" column="0">
         <widget class="QLabel" name="L_Password_2">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
          <property name="text">
@@ -265,7 +217,7 @@ QListWidget
          </property>
         </widget>
        </item>
-       <item>
+       <item row="3" column="1">
         <widget class="QLineEdit" name="LE_Password">
          <property name="frame">
           <bool>true</bool>
@@ -275,62 +227,74 @@ QListWidget
          </property>
         </widget>
        </item>
-       <item>
-        <spacer name="verticalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>7</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
+       <item row="4" column="0">
         <widget class="QLabel" name="L_DatabaseName_2">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
          <property name="text">
-          <string>Database Name: </string>
+          <string>World Database: </string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QLineEdit" name="LE_DatabaseName"/>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="LE_WorldDatabase"/>
        </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
+       <item row="5" column="0">
+        <widget class="QLabel" name="L_DatabaseName_3">
+         <property name="minimumSize">
           <size>
-           <width>187</width>
-           <height>63</height>
+           <width>0</width>
+           <height>20</height>
           </size>
          </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="DB2">
-         <property name="spacing">
-          <number>6</number>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>20</height>
+          </size>
          </property>
+         <property name="text">
+          <string>Character Database: </string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="LE_CharacterDatabase"/>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="L_DatabaseName_4">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Login Database: </string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="LE_LoginDatabase"/>
+       </item>
+       <item row="7" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QPushButton" name="PB_Connect">
            <property name="enabled">
@@ -338,14 +302,14 @@ QListWidget
            </property>
            <property name="minimumSize">
             <size>
-             <width>91</width>
-             <height>31</height>
+             <width>83</width>
+             <height>23</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>91</width>
-             <height>31</height>
+             <width>83</width>
+             <height>23</height>
             </size>
            </property>
            <property name="font">
@@ -372,14 +336,14 @@ QListWidget
            </property>
            <property name="minimumSize">
             <size>
-             <width>91</width>
-             <height>31</height>
+             <width>83</width>
+             <height>23</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>91</width>
-             <height>31</height>
+             <width>83</width>
+             <height>23</height>
             </size>
            </property>
            <property name="font">
@@ -709,6 +673,129 @@ QListWidget
    </property>
    <property name="text">
     <string>World SQL's folder:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>162</x>
+     <y>522</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>Icons/ok.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>342</x>
+     <y>548</y>
+     <width>116</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="frame">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3">
+   <property name="geometry">
+    <rect>
+     <x>342</x>
+     <y>594</y>
+     <width>116</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="frame">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>342</x>
+     <y>640</y>
+     <width>116</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="frame">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>162</x>
+     <y>548</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>Icons/not_ok.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>162</x>
+     <y>574</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>Icons/ok.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
