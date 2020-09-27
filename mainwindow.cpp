@@ -14,31 +14,6 @@
 #include <QDir>
 
 
-
-
-QVector<ClassName*> const MainWindow::Classes =
-{
-    new Generic(),
-    new Mage(),
-    new Warrior(),
-    new Warlock(),
-    new Priest(),
-    new Druid(),
-    new Rogue(),
-    new Hunter(),
-    new Paladin(),
-    new Shaman(),
-    new DeathKnight(),
-    new Monk(),
-    new DemonHunter()
-};
-
-QVector<Script*> const MainWindow::Scripts =
-{
-    new SSSpell(),
-    new SSAura()
-};
-
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -52,18 +27,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     Registers.reserve(20);
 
-    for (auto const& Itr : Scripts)
+    for (auto const& Itr : Script::Scripts)
     {
         ui->CB_Scripts->addItem(Itr->GetName());
     }
 
-    for (auto const& Itr : Classes)
+    for (auto const& Itr : ClassName::Classes)
     {
         ui->CB_Classes->addItem(Itr->GetName());
     }
-
-
-
 
     SettingWindow->exec();
 }
@@ -76,7 +48,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_PB_GenerateCode_released()
 {
-    QString Path = Classes[ui->CB_Classes->currentIndex()]->GetScriptsFilePath();
+    QString Path = ClassName::Classes[ui->CB_Classes->currentIndex()]->GetScriptsFilePath();
 
     if (!SpellScript::CheckPathAndFileValidation(Path, "cpp"))
     {
@@ -93,14 +65,14 @@ void MainWindow::on_PB_GenerateCode_released()
     QTextStream TStream(&file);
     QString FilesText = TStream.readAll();
 
-    Scripts[GetCurrentScriptIndex()]->EditScriptFilesText(FilesText, GetScriptName(), Registers);
+    Script::Scripts[GetCurrentScriptIndex()]->EditScriptFilesText(FilesText, GetScriptName(), Registers);
 
     file.resize(0);
     TStream << FilesText;
 
     file.close();
 
-    Scripts[GetCurrentScriptIndex()]->HandleDataBase(this, SettingWindow);
+    Script::Scripts[GetCurrentScriptIndex()]->HandleDataBase(this, SettingWindow);
 
     QFileInfo fi("d:/Work/Report.cpp");
 
@@ -115,7 +87,7 @@ void MainWindow::on_PB_GenerateCode_released()
 
 void MainWindow::on_CB_Classes_currentIndexChanged(int index)
 {
-    if (ClassName const* Element = Classes.at(index))
+    if (ClassName const* Element = ClassName::Classes.at(index))
     {
         ui->LE_ScriptName->setText(Element->GetPrefix());
         ui->PB_GenerateCode->setEnabled(SpellScript::CheckPathAndFileValidation(Element->GetScriptsFilePath(), "cpp"));
@@ -132,7 +104,7 @@ void MainWindow::on_PB_AddRegister_released()
     }
 
 
-    if (SpellScript const* CastedSpellScript = dynamic_cast<SpellScript const*>(Scripts[GetCurrentScriptIndex()]))
+    if (SpellScript const* CastedSpellScript = dynamic_cast<SpellScript const*>(Script::Scripts[GetCurrentScriptIndex()]))
     {
         if (ScriptRegisterBase const* Base = CastedSpellScript->GetRegisterByIndex(RegisterIndex))
         {
@@ -185,7 +157,7 @@ void MainWindow::on_LW_StaticRegisters_currentRowChanged(int currentRow)
         return;
     }
 
-    if (SpellScript const* CastedSpellScript = dynamic_cast<SpellScript const*>(Scripts[GetCurrentScriptIndex()]))
+    if (SpellScript const* CastedSpellScript = dynamic_cast<SpellScript const*>(Script::Scripts[GetCurrentScriptIndex()]))
     {
         if (ScriptRegisterBase const* Register = CastedSpellScript->GetRegisterByIndex(currentRow))
         {
@@ -230,9 +202,9 @@ void MainWindow::on_CB_Scripts_currentIndexChanged(int index)
     Registers.clear();
     ui->TW_AddedRegisters->clearContents();
     ui->TW_AddedRegisters->setRowCount(0);
-    Scripts[index]->FillOptionsListWidget(ui->LW_StaticRegisters);
+    Script::Scripts[index]->FillOptionsListWidget(ui->LW_StaticRegisters);
 
-    if (SpellScript* SC = dynamic_cast<SpellScript*>(Scripts[index]))
+    if (SpellScript* SC = dynamic_cast<SpellScript*>(Script::Scripts[index]))
     {
         SC->SetSpellID(ui->LE_SpellID->text());
     }
@@ -240,7 +212,7 @@ void MainWindow::on_CB_Scripts_currentIndexChanged(int index)
 
 void MainWindow::on_LE_SpellID_textChanged(const QString &arg1)
 {
-    if (SpellScript* SC = dynamic_cast<SpellScript*>(Scripts[GetCurrentScriptIndex()]))
+    if (SpellScript* SC = dynamic_cast<SpellScript*>(Script::Scripts[GetCurrentScriptIndex()]))
     {
         SC->SetSpellID(arg1);
     }

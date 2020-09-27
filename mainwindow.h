@@ -21,9 +21,6 @@ public:
     QString const GetScriptName() const;
     void UpdateGenerationCodeButton(bool active, int CurrentSettingsClassIndex);
 
-
-    static QVector<class Script*> const Scripts;
-    static QVector<class ClassName*> const Classes;
     QVector<class SelectedScriptRegister> Registers;
 
 private slots:

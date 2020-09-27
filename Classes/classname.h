@@ -17,6 +17,8 @@ public:
 
     QString const& GetScriptsFilePath() const { return ScriptsFilePath; }
     void SetScriptsFilePath(QString Str) { ScriptsFilePath = Str; }
+
+    static QVector<ClassName*> const Classes;
 };
 
 class Generic : public ClassName

@@ -24,6 +24,7 @@ public:
     static QString const FunctionFindMarker;
     static QString const ClassFindMarker;
     static QString const AddScriptFunctionName;
+    static QVector<Script*> const Scripts;
 
 protected:
 
