@@ -42,8 +42,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow()
 {
-    delete ui;
     delete SettingWindow;
+    delete ui;
 }
 
 void MainWindow::on_PB_GenerateCode_released()
@@ -74,15 +74,7 @@ void MainWindow::on_PB_GenerateCode_released()
 
     Script::Scripts[GetCurrentScriptIndex()]->HandleDataBase(this, SettingWindow);
 
-    QFileInfo fi("d:/Work/Report.cpp");
 
-    QString tt = QString::number(fi.lastModified().toMSecsSinceEpoch());
-    tt += "\n" + fi.lastModified().toString();
-
-
-    QStringList sl = QDir("d:/Work").entryList(QDir::Filter::Files, QDir::SortFlag::Time);
-
-    ui->textEditDebug->setText(sl.join("\n"));
 }
 
 void MainWindow::on_CB_Classes_currentIndexChanged(int index)

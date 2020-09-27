@@ -18,6 +18,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Classes/classname.cpp \
     DataBase/databaseconnector.cpp \
+    DataBase/databaseconnectorstatics.cpp \
+    DataBase/databaseupdater.cpp \
     Registers/Spell/spellcastfn.cpp \
     Registers/Spell/spelleffectfn.cpp \
     Registers/Spell/spellhitfn.cpp \
@@ -37,6 +39,8 @@ SOURCES += \
 HEADERS += \
     Classes/classname.h \
     DataBase/databaseconnector.h \
+    DataBase/databaseconnectorstatics.h \
+    DataBase/databaseupdater.h \
     ObjectBase.h \
     Registers/Spell/spellcastfn.h \
     Registers/Spell/spelleffectfn.h \

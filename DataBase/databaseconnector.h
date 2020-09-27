@@ -7,17 +7,17 @@
 
 class DataBaseConnector
 {
-    DataBaseConnector() {}
+    QSqlDatabase Database;
 
 public:
 
-    static QSqlDatabase WorldConnector;
-    static QSqlDatabase CharacterConnector;
-    static QSqlDatabase LoginConnector;
+    DataBaseConnector(QString ConnectionName);
 
-    static bool Connect(QSqlDatabase& DB, QString DBName);
-    static void Disconnect(QSqlDatabase& DB);
-    static bool Push(QSqlDatabase& DB, class QString command);
+    bool IsOpen() const { return Database.isOpen(); }
+    bool Connect(QString DBName);
+    bool Push(QString command);
+    void Disconnect();
+
 };
 
 #endif // DATABASECONNECTOR_H

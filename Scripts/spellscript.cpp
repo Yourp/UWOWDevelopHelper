@@ -6,7 +6,7 @@
 #include "textstatics.h"
 #include "mainwindow.h"
 #include "settingswindow.h"
-#include "DataBase/databaseconnector.h"
+#include "DataBase/databaseconnectorstatics.h"
 
 
 void SpellScript::FillOptionsListWidget(QListWidget* LW)
@@ -87,7 +87,7 @@ void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
     AddNew += "\n";
     AddNew += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + SpellID + "', '" + MW->GetScriptName() + "');\n";
 
-    DataBaseConnector::Push(DataBaseConnector::WorldConnector, AddNew);
+    DatabaseConnectorStatics::World.Push(AddNew);
 
     QString Folder = SW->GetWorldSQLsFolder();
 

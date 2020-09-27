@@ -1,35 +1,36 @@
 #include "databaseconnector.h"
 #include "Settings/databasesettings.h"
 
-QSqlDatabase DataBaseConnector::WorldConnector = QSqlDatabase::addDatabase("QMYSQL", "World");
-QSqlDatabase DataBaseConnector::CharacterConnector = QSqlDatabase::addDatabase("QMYSQL", "Character");
-QSqlDatabase DataBaseConnector::LoginConnector = QSqlDatabase::addDatabase("QMYSQL", "Login");
 
+DataBaseConnector::DataBaseConnector(QString ConnectionName)
+{
+    Database = QSqlDatabase::addDatabase("QMYSQL", ConnectionName);
+}
 
-bool DataBaseConnector::Connect(QSqlDatabase& DB, QString DBName)
+bool DataBaseConnector::Connect(QString DBName)
 {
     if (DBName.isEmpty())
     {
         return false;
     }
 
-    DB.setHostName(DataBaseSettings::GetHostName());
-    DB.setUserName(DataBaseSettings::GetUserName());
-    DB.setPassword(DataBaseSettings::GetPassword());
-    DB.setPort(DataBaseSettings::GetPort());
-    DB.setDatabaseName(DBName);
+    Database.setHostName(DataBaseSettings::GetHostName());
+    Database.setUserName(DataBaseSettings::GetUserName());
+    Database.setPassword(DataBaseSettings::GetPassword());
+    Database.setPort(DataBaseSettings::GetPort());
+    Database.setDatabaseName(DBName);
 
-    return DB.open();
+    return Database.open();
 }
 
-void DataBaseConnector::Disconnect(QSqlDatabase& DB)
+void DataBaseConnector::Disconnect()
 {
-    DB.close();
+    Database.close();
 }
 
-bool DataBaseConnector::Push(QSqlDatabase& DB, QString command)
+bool DataBaseConnector::Push(QString command)
 {
-    QSqlQuery Query(DB);
+    QSqlQuery Query(Database);
 
     return Query.exec(command);
 }

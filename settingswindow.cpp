@@ -3,7 +3,7 @@
 #include "ui_settingswindow.h"
 #include "mainwindow.h"
 #include "Classes/classname.h"
-#include "DataBase/databaseconnector.h"
+#include "DataBase/databaseconnectorstatics.h"
 #include "Settings/databasesettings.h"
 #include <QFileDialog>
 
@@ -45,7 +45,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     ui->LW_SettingsCategories->setCurrentRow(0);
     ui->LW_SettingsClassesScripts->setCurrentRow(0);
 
-    if (DataBaseConnector::Connect(DataBaseConnector::WorldConnector, ui->LE_WorldDatabase->text()))
+    if (DatabaseConnectorStatics::World.Connect(ui->LE_WorldDatabase->text()))
     {
         EditButtonsWhenConnected();
     }
@@ -54,8 +54,8 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
         EditButtonsWhenDisconnected();
     }
 
-    DataBaseConnector::Connect(DataBaseConnector::CharacterConnector, ui->LE_CharacterDatabase->text());
-    DataBaseConnector::Connect(DataBaseConnector::LoginConnector, ui->LE_LoginDatabase->text());
+    DatabaseConnectorStatics::Character.Connect(ui->LE_CharacterDatabase->text());
+    DatabaseConnectorStatics::Login.Connect(ui->LE_LoginDatabase->text());
 
     UpdateDatabasesLEIcons();
 }
@@ -187,28 +187,28 @@ void SettingsWindow::SaveToConfig()
 
 void SettingsWindow::UpdateDatabasesLEIcons()
 {
-    ui->LE_WorldDatabase->SetIcon(GetValidationIcon(DataBaseConnector::WorldConnector.isOpen()));
-    ui->LE_CharacterDatabase->SetIcon(GetValidationIcon(DataBaseConnector::CharacterConnector.isOpen()));
-    ui->LE_LoginDatabase->SetIcon(GetValidationIcon(DataBaseConnector::LoginConnector.isOpen()));
+    ui->LE_WorldDatabase->SetIcon(GetValidationIcon(DatabaseConnectorStatics::World.IsOpen()));
+    ui->LE_CharacterDatabase->SetIcon(GetValidationIcon(DatabaseConnectorStatics::Character.IsOpen()));
+    ui->LE_LoginDatabase->SetIcon(GetValidationIcon(DatabaseConnectorStatics::Login.IsOpen()));
 }
 
 
 void SettingsWindow::on_PB_Disconnect_clicked()
 {
-    DataBaseConnector::Disconnect(DataBaseConnector::WorldConnector);
-    DataBaseConnector::Disconnect(DataBaseConnector::CharacterConnector);
-    DataBaseConnector::Disconnect(DataBaseConnector::LoginConnector);
+    DatabaseConnectorStatics::World.Disconnect();
+    DatabaseConnectorStatics::Character.Disconnect();
+    DatabaseConnectorStatics::Login.Disconnect();
     EditButtonsWhenDisconnected();
     UpdateDatabasesLEIcons();
 }
 
 void SettingsWindow::on_PB_Connect_clicked()
 {
-    DataBaseConnector::Connect(DataBaseConnector::WorldConnector, ui->LE_WorldDatabase->text());
-    DataBaseConnector::Connect(DataBaseConnector::CharacterConnector, ui->LE_CharacterDatabase->text());
-    DataBaseConnector::Connect(DataBaseConnector::LoginConnector, ui->LE_LoginDatabase->text());
+    DatabaseConnectorStatics::World.Connect(ui->LE_WorldDatabase->text());
+    DatabaseConnectorStatics::Character.Connect(ui->LE_CharacterDatabase->text());
+    DatabaseConnectorStatics::Login.Connect(ui->LE_LoginDatabase->text());
 
-    if (DataBaseConnector::WorldConnector.isOpen() || DataBaseConnector::CharacterConnector.isOpen() || DataBaseConnector::LoginConnector.isOpen())
+    if (DatabaseConnectorStatics::World.IsOpen() || DatabaseConnectorStatics::Character.IsOpen() || DatabaseConnectorStatics::Login.IsOpen())
     {
         EditButtonsWhenConnected();
     }
