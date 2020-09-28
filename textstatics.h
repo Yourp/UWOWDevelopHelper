@@ -2,6 +2,8 @@
 #define TEXTSTATICS_H
 
 class QString;
+class QStringList;
+class QChar;
 
 class CodeStatics
 {
@@ -10,6 +12,7 @@ class CodeStatics
 public:
 
     static int GetIndexAfterString(QString const* From, QString const StringKey, int StartPoint = 0);
+    static int GetIndexAfterString(QString const* From, QChar const StringKey, int StartPoint = 0);
 
     static QString GetRightSide(QString const* From, int Index);
 
@@ -20,6 +23,8 @@ public:
     static int GetIndexOfClassEnd(QString const* Where, QString const ClassName);
 
     static QString ReplaceFirst(QString const& Where, QString const WhatReplace, QString const ReplaceTo, int StartIndex = 0);
+
+    static void Split(QStringList& In, QString const& From, QChar EndLine, int Cicle);
 };
 
 #endif // TEXTSTATICS_H

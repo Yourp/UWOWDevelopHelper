@@ -28,23 +28,24 @@ void DataBaseConnector::Disconnect()
     Database.close();
 }
 
-bool DataBaseConnector::Push(QString command)
+bool DataBaseConnector::Push(QString const& command)
 {
-    QStringList sqlStatements = command.split(';', Qt::SkipEmptyParts);
+    QSqlQuery Query(Database);
+    return Query.exec(command);
+}
 
+bool DataBaseConnector::Push(QStringList const& command)
+{
+    QSqlQuery Query(Database);
 
-    int successCount = 0;
-
-    foreach(const QString& statement, sqlStatements)
+    for (auto const& Itr : command)
     {
-        //if (statement.trimmed() != "")
-        //{
-            QSqlQuery Query(Database);
-            if (Query.exec(statement))
-                successCount++;
-            else
-                qDebug() << "Failed:" << statement << "\nReason:" << Query.lastError();
-        //}
+        if (Itr.trimmed() != "")
+        {
+            if (!Query.exec(Itr))
+                qDebug() << "Failed:" << Itr << "\nReason:" << Query.lastError();
+        }
     }
-    return successCount;
+
+    return true;
 }

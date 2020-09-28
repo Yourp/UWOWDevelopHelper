@@ -1,4 +1,5 @@
 #include <QString>
+#include <QStringList>
 #include "textstatics.h"
 
 
@@ -10,6 +11,18 @@ int CodeStatics::GetIndexAfterString(const QString *From, const QString StringKe
     if (Index >= 0)
     {
         Index += StringKey.length();
+    }
+
+    return Index;
+}
+
+int CodeStatics::GetIndexAfterString(const QString *From, const QChar StringKey, int StartPoint)
+{
+    int Index = From->indexOf(StringKey, StartPoint);
+
+    if (Index >= 0)
+    {
+        Index++;
     }
 
     return Index;
@@ -103,6 +116,34 @@ QString CodeStatics::ReplaceFirst(const QString &Where, const QString WhatReplac
 
     return Result;
 }
+
+void CodeStatics::Split(QStringList &In, const QString &From, QChar EndLine, int Cicle)
+{
+    QString row;
+    row.reserve(Cicle * 1000);
+    int End = 0;
+    int Start;
+
+    while (End >= 0)
+    {
+        row.clear();
+
+        for (int i = 0; i < Cicle; ++i)
+        {
+            Start = End;
+
+            End = CodeStatics::GetIndexAfterString(&From, EndLine, Start);
+
+            if (End < 0)
+            {
+                break;
+            }
+            row += From.mid(Start, End - Start);
+        }
+        In.push_back(row);
+    }
+}
+
 
 
 

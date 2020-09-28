@@ -9,7 +9,7 @@ class DatabaseUpdater
     qint64 LastUpdatesTime;
     QString Folder;
 
-    QString GetAllSQLsInOneStrings();
+    void GetAllSQLsInOneStrings(QStringList& List);
 
 public:
 

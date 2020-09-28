@@ -2,16 +2,17 @@
 #include <QFile>
 #include <QDir>
 #include <QDateTime>
+#include "textstatics.h"
 
 DatabaseUpdater::DatabaseUpdater()
 {
     LastUpdatesTime = 0;
 }
 
-QString DatabaseUpdater::GetAllSQLsInOneStrings()
+void DatabaseUpdater::GetAllSQLsInOneStrings(QStringList& List)
 {
-    QString Result;
-    Result.reserve(1000000000);
+    //QString Result;
+    //Result.reserve(1000000000);
     QString CheckFolder = Folder;
     QStringList ScanedDir = QDir(CheckFolder).entryList(QDir::Filter::Files, QDir::SortFlag::Time | QDir::SortFlag::Reversed);
 
@@ -33,13 +34,14 @@ QString DatabaseUpdater::GetAllSQLsInOneStrings()
 
                 QTextStream TStream(&file);
                 TStream.setCodec("UTF-8");
-                Result += TStream.readAll();
+                QString text;
+                text.reserve(1000000);
+                text = TStream.readAll();
+                CodeStatics::Split(List, text, ';', 100);
                 file.close();
             }
         }
     }
-
-    return Result;
 }
 
 bool DatabaseUpdater::HasNewSQLs()
@@ -62,8 +64,20 @@ bool DatabaseUpdater::HasNewSQLs()
 
 void DatabaseUpdater::Update(DataBaseConnector* Connector)
 {
-    Connector->Push(GetAllSQLsInOneStrings());
+    quint64 t = QDateTime::currentMSecsSinceEpoch();
+    quint64 allt = t;
+    QStringList List;
+    List.reserve(1000000);
+    GetAllSQLsInOneStrings(List);
+    qDebug() << "reserve  " << QDateTime::currentMSecsSinceEpoch() - t;
+    t = QDateTime::currentMSecsSinceEpoch();
+
+    Connector->Push(List);
+    qDebug() << "Push " << QDateTime::currentMSecsSinceEpoch() - t;
+    qDebug() << "AllTime " << QDateTime::currentMSecsSinceEpoch() - allt;
+
     SetLastUpdatesTime(QDateTime::currentMSecsSinceEpoch());
+
 }
 
 
