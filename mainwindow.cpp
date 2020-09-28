@@ -3,6 +3,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "textstatics.h"
+#include "DataBase/databaseupdaterstatics.h"
+#include "DataBase/databaseconnectorstatics.h"
 #include "scriptregister.h"
 #include "Scripts/spellscript.h"
 #include "Scripts/ssspell.h"
@@ -37,7 +39,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         ui->CB_Classes->addItem(Itr->GetName());
     }
 
-    SettingWindow->exec();
+    ui->Update->setEnabled(false);
+    //SettingWindow->exec();
 }
 
 MainWindow::~MainWindow()
@@ -63,6 +66,7 @@ void MainWindow::on_PB_GenerateCode_released()
     }
 
     QTextStream TStream(&file);
+    TStream.setCodec("UTF-8");
     QString FilesText = TStream.readAll();
 
     Script::Scripts[GetCurrentScriptIndex()]->EditScriptFilesText(FilesText, GetScriptName(), Registers);
@@ -208,4 +212,15 @@ void MainWindow::on_LE_SpellID_textChanged(const QString &arg1)
     {
         SC->SetSpellID(arg1);
     }
+}
+
+void MainWindow::on_Refresh_clicked()
+{
+    ui->Update->setEnabled(DatabaseUpdaterStatics::World.HasNewSQLs());
+}
+
+void MainWindow::on_Update_clicked()
+{
+    DatabaseUpdaterStatics::World.Update(&DatabaseConnectorStatics::World);
+    ui->Update->setEnabled(DatabaseUpdaterStatics::World.HasNewSQLs());
 }

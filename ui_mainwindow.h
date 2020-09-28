@@ -35,6 +35,7 @@ class Ui_MainWindow
 {
 public:
     QAction *Settings;
+    QAction *actionUpdateDatabase;
     QWidget *Tabs;
     QLineEdit *LE_ScriptName;
     QPushButton *PB_GenerateCode;
@@ -52,6 +53,10 @@ public:
     QComboBox *CB_Scripts;
     QComboBox *CB_Classes;
     QLineEdit *LE_SpellID;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *Refresh;
+    QPushButton *Update;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QToolBar *toolBar;
@@ -81,6 +86,11 @@ public:
         Settings->setEnabled(true);
         Settings->setAutoRepeat(true);
         Settings->setVisible(true);
+        actionUpdateDatabase = new QAction(MainWindow);
+        actionUpdateDatabase->setObjectName(QString::fromUtf8("actionUpdateDatabase"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8("Icons/w2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionUpdateDatabase->setIcon(icon1);
         Tabs = new QWidget(MainWindow);
         Tabs->setObjectName(QString::fromUtf8("Tabs"));
         LE_ScriptName = new QLineEdit(Tabs);
@@ -229,6 +239,22 @@ public:
         LE_SpellID->setObjectName(QString::fromUtf8("LE_SpellID"));
         LE_SpellID->setGeometry(QRect(250, 10, 113, 20));
         LE_SpellID->setMaxLength(10);
+        widget = new QWidget(Tabs);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(420, 20, 158, 25));
+        horizontalLayout_2 = new QHBoxLayout(widget);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        Refresh = new QPushButton(widget);
+        Refresh->setObjectName(QString::fromUtf8("Refresh"));
+
+        horizontalLayout_2->addWidget(Refresh);
+
+        Update = new QPushButton(widget);
+        Update->setObjectName(QString::fromUtf8("Update"));
+
+        horizontalLayout_2->addWidget(Update);
+
         MainWindow->setCentralWidget(Tabs);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -267,6 +293,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "UWOW Develop Helper", nullptr));
         Settings->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
+        actionUpdateDatabase->setText(QCoreApplication::translate("MainWindow", "UpdateDatabase", nullptr));
         PB_GenerateCode->setText(QCoreApplication::translate("MainWindow", "Generate Code", nullptr));
         groupBox->setTitle(QCoreApplication::translate("MainWindow", "GroupBox", nullptr));
         PB_AddRegister->setText(QCoreApplication::translate("MainWindow", "Add Register", nullptr));
@@ -281,6 +308,8 @@ public:
 #if QT_CONFIG(shortcut)
         PB_RemoveRegister->setShortcut(QCoreApplication::translate("MainWindow", "Del", nullptr));
 #endif // QT_CONFIG(shortcut)
+        Refresh->setText(QCoreApplication::translate("MainWindow", "Refresh", nullptr));
+        Update->setText(QCoreApplication::translate("MainWindow", "Update", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 

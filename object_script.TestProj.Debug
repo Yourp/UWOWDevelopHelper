@@ -2,6 +2,7 @@ debug/classname.o
 debug/databaseconnector.o
 debug/databaseconnectorstatics.o
 debug/databaseupdater.o
+debug/databaseupdaterstatics.o
 debug/spellcastfn.o
 debug/spelleffectfn.o
 debug/spellhitfn.o

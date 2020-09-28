@@ -2,6 +2,7 @@ release/classname.o
 release/databaseconnector.o
 release/databaseconnectorstatics.o
 release/databaseupdater.o
+release/databaseupdaterstatics.o
 release/spellcastfn.o
 release/spelleffectfn.o
 release/spellhitfn.o

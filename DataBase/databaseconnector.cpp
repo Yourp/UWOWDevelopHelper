@@ -30,7 +30,21 @@ void DataBaseConnector::Disconnect()
 
 bool DataBaseConnector::Push(QString command)
 {
-    QSqlQuery Query(Database);
+    QStringList sqlStatements = command.split(';', Qt::SkipEmptyParts);
 
-    return Query.exec(command);
+
+    int successCount = 0;
+
+    foreach(const QString& statement, sqlStatements)
+    {
+        //if (statement.trimmed() != "")
+        //{
+            QSqlQuery Query(Database);
+            if (Query.exec(statement))
+                successCount++;
+            else
+                qDebug() << "Failed:" << statement << "\nReason:" << Query.lastError();
+        //}
+    }
+    return successCount;
 }

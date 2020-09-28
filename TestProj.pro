@@ -20,6 +20,7 @@ SOURCES += \
     DataBase/databaseconnector.cpp \
     DataBase/databaseconnectorstatics.cpp \
     DataBase/databaseupdater.cpp \
+    DataBase/databaseupdaterstatics.cpp \
     Registers/Spell/spellcastfn.cpp \
     Registers/Spell/spelleffectfn.cpp \
     Registers/Spell/spellhitfn.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     DataBase/databaseconnector.h \
     DataBase/databaseconnectorstatics.h \
     DataBase/databaseupdater.h \
+    DataBase/databaseupdaterstatics.h \
     ObjectBase.h \
     Registers/Spell/spellcastfn.h \
     Registers/Spell/spelleffectfn.h \

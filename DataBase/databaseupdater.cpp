@@ -1,27 +1,40 @@
 #include "databaseupdater.h"
 #include <QFile>
 #include <QDir>
+#include <QDateTime>
 
 DatabaseUpdater::DatabaseUpdater()
 {
     LastUpdatesTime = 0;
 }
 
-QStringList DatabaseUpdater::GetNewSQLs()
+QString DatabaseUpdater::GetAllSQLsInOneStrings()
 {
-    QStringList Result;
+    QString Result;
+    Result.reserve(1000000000);
     QString CheckFolder = Folder;
-    QStringList ScanedDir = QDir(CheckFolder).entryList(QDir::Filter::Files, (QDir::SortFlag::Time | QDir::SortFlag::Reversed));
+    QStringList ScanedDir = QDir(CheckFolder).entryList(QDir::Filter::Files, QDir::SortFlag::Time | QDir::SortFlag::Reversed);
 
-    for (auto const& Itr : ScanedDir)
+    for (auto const& FileName : ScanedDir)
     {
-        QFileInfo FI(CheckFolder + "/" + Itr);
+        QString FilePath = CheckFolder + "/" + FileName;
+        QFileInfo FI(FilePath);
 
         if (FI.suffix() == "sql")
         {
             if (FI.lastModified().toMSecsSinceEpoch() > LastUpdatesTime)
             {
-                Result.push_back(Itr);
+                QFile file(FilePath);
+
+                if (!file.open(QFile::ReadOnly | QFile::Text))
+                {
+                    continue;
+                }
+
+                QTextStream TStream(&file);
+                TStream.setCodec("UTF-8");
+                Result += TStream.readAll();
+                file.close();
             }
         }
     }
@@ -47,9 +60,10 @@ bool DatabaseUpdater::HasNewSQLs()
     return false;
 }
 
-void DatabaseUpdater::Update()
+void DatabaseUpdater::Update(DataBaseConnector* Connector)
 {
-
+    Connector->Push(GetAllSQLsInOneStrings());
+    SetLastUpdatesTime(QDateTime::currentMSecsSinceEpoch());
 }
 
 

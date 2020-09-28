@@ -103,6 +103,7 @@ void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
         return;
 
     QTextStream TStream(&file);
+    TStream.setCodec("UTF-8");
     QString FilesText = TStream.readAll();
     file.resize(0);
     TStream << FilesText + AddNew;
@@ -126,6 +127,7 @@ bool SpellScript::CheckPathAndFileValidation(const QString &Path, const QString 
     }
 
     QTextStream TStream(&file);
+    TStream.setCodec("UTF-8");
     QString FilesText = TStream.readAll();
 
     return FilesText.contains(AddScriptFunctionName);

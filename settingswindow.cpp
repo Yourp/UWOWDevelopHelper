@@ -4,8 +4,10 @@
 #include "mainwindow.h"
 #include "Classes/classname.h"
 #include "DataBase/databaseconnectorstatics.h"
+#include "DataBase/databaseupdaterstatics.h"
 #include "Settings/databasesettings.h"
 #include <QFileDialog>
+#include <QDateTime>
 
 const QString SettingsWindow::VMark = "Icons/ok.png";
 const QString SettingsWindow::XMark = "Icons/not_ok.png";
@@ -148,6 +150,7 @@ void SettingsWindow::LoadConfig()
     Conf.beginGroup("SQL");
     ui->LE_WorldSQLFolder->setText(Conf.value("WorldSQLFolder").toString());
     ui->LE_SQLFileName->setText(Conf.value("SQLFileName", "spell_script_names").toString());
+    DatabaseUpdaterStatics::World.SetLastUpdatesTime(Conf.value("World.LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
     Conf.endGroup();
 
     Conf.beginGroup("SpellScript");
@@ -175,6 +178,7 @@ void SettingsWindow::SaveToConfig()
     Conf.beginGroup("SQL");
     Conf.setValue("WorldSQLFolder", ui->LE_WorldSQLFolder->text());
     Conf.setValue("SQLFileName", ui->LE_SQLFileName->text());
+    Conf.setValue("World.LastTimeUpdate", DatabaseUpdaterStatics::World.GetLastUpdatesTime());
     Conf.endGroup();
 
     Conf.beginGroup("SpellScript");
@@ -264,4 +268,9 @@ void SettingsWindow::on_PB_FindWorldSQLFolder_released()
     {
         ui->LE_WorldSQLFolder->setText(Path);
     }
+}
+
+void SettingsWindow::on_LE_WorldSQLFolder_textChanged(const QString &arg1)
+{
+    DatabaseUpdaterStatics::World.SetFolderForCheck(arg1);
 }

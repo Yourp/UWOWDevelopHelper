@@ -43,6 +43,10 @@ private slots:
 
     void on_LE_SpellID_textChanged(const QString &arg1);
 
+    void on_Refresh_clicked();
+
+    void on_Update_clicked();
+
 private:
     Ui::MainWindow *ui;
 

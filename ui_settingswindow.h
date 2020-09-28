@@ -384,7 +384,7 @@ public:
 
         retranslateUi(SettingsWindow);
 
-        SW_SettingsLayer->setCurrentIndex(0);
+        SW_SettingsLayer->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(SettingsWindow);
