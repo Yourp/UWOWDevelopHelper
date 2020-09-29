@@ -45,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     timer->start(2000);
     connect(timer, SIGNAL(timeout()), this, SLOT(OnTick()));
 
-    SettingWindow->exec();
+    //SettingWindow->exec();
 }
 
 MainWindow::~MainWindow()
