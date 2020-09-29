@@ -20,9 +20,9 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     DataBaseSettings::UserName = ui->LE_UserName;
     DataBaseSettings::Password = ui->LE_Password;
 
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database Connection"));
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts"));
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Saves"));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database"));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts & Classes"));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("SQL & Saves"));
 
     setFixedSize(size());
 

@@ -88,7 +88,7 @@ public:
         A_UpdateDatabase->setObjectName(QString::fromUtf8("A_UpdateDatabase"));
         A_UpdateDatabase->setEnabled(true);
         QIcon icon2;
-        icon2.addFile(QString::fromUtf8("Icons/Download_Database_36923.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QString::fromUtf8("Icons/database_import_icon_135719.png"), QSize(), QIcon::Normal, QIcon::Off);
         icon2.addFile(QString::fromUtf8("Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png"), QSize(), QIcon::Disabled, QIcon::Off);
         icon2.addFile(QString::fromUtf8("Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png"), QSize(), QIcon::Disabled, QIcon::On);
         A_UpdateDatabase->setIcon(icon2);

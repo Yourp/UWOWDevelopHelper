@@ -46,6 +46,11 @@ void DatabaseUpdater::GetAllSQLsInOneStrings(QStringList& List)
 
 bool DatabaseUpdater::HasNewSQLs()
 {
+    if (Folder.isEmpty())
+    {
+        return false;
+    }
+
     QString CheckFolder = Folder;
     QStringList ScanedDir = QDir(CheckFolder).entryList(QDir::Filter::Files, QDir::SortFlag::Time);
 

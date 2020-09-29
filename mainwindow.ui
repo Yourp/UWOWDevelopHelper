@@ -505,9 +505,9 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>Icons/Download_Database_36923.png</normaloff>
+     <normaloff>Icons/database_import_icon_135719.png</normaloff>
      <disabledoff>Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png</disabledoff>
-     <disabledon>Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png</disabledon>Icons/Download_Database_36923.png</iconset>
+     <disabledon>Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png</disabledon>Icons/database_import_icon_135719.png</iconset>
    </property>
    <property name="text">
     <string>UpdateDatabase</string>
