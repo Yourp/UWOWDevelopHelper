@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>963</width>
-    <height>736</height>
+    <width>771</width>
+    <height>330</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -94,7 +94,7 @@ QListWidget
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QGroupBox" name="groupBox">
@@ -509,6 +509,9 @@ QListWidget
           <iconset>
            <normaloff>Icons/folder_search_icon_136606.png</normaloff>Icons/folder_search_icon_136606.png</iconset>
          </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
         </widget>
        </item>
       </layout>
@@ -561,6 +564,9 @@ QListWidget
          <property name="icon">
           <iconset>
            <normaloff>Icons/folder_search_icon_136606.png</normaloff>Icons/folder_search_icon_136606.png</iconset>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -623,6 +629,9 @@ QListWidget
           <iconset>
            <normaloff>Icons/folder_search_icon_136606.png</normaloff>Icons/folder_search_icon_136606.png</iconset>
          </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
         </widget>
        </item>
        <item row="4" column="2">
@@ -645,6 +654,9 @@ QListWidget
          <property name="icon">
           <iconset>
            <normaloff>Icons/folder_search_icon_136606.png</normaloff>Icons/folder_search_icon_136606.png</iconset>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
          </property>
         </widget>
        </item>

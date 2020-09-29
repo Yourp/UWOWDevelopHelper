@@ -74,15 +74,13 @@ void DatabaseUpdater::Update(DataBaseConnector* Connector)
     QStringList List;
     List.reserve(1000000);
     GetAllSQLsInOneStrings(List);
+    SetLastUpdatesTime(QDateTime::currentMSecsSinceEpoch());
     qDebug() << "reserve  " << QDateTime::currentMSecsSinceEpoch() - t;
     t = QDateTime::currentMSecsSinceEpoch();
 
     Connector->Push(List);
     qDebug() << "Push " << QDateTime::currentMSecsSinceEpoch() - t;
     qDebug() << "AllTime " << QDateTime::currentMSecsSinceEpoch() - allt;
-
-    SetLastUpdatesTime(QDateTime::currentMSecsSinceEpoch());
-
 }
 
 

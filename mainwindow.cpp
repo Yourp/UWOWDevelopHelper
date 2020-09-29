@@ -45,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     timer->start(2000);
     connect(timer, SIGNAL(timeout()), this, SLOT(OnTick()));
 
-    //SettingWindow->exec();
+    SettingWindow->exec();
 }
 
 MainWindow::~MainWindow()
@@ -155,7 +155,9 @@ void MainWindow::OnTick()
 {
     if (!ui->A_UpdateDatabase->isEnabled())
     {
-        ui->A_UpdateDatabase->setEnabled(DatabaseUpdaterStatics::World.HasNewSQLs());
+        ui->A_UpdateDatabase->setEnabled(DatabaseUpdaterStatics::World.HasNewSQLs() ||
+                                         DatabaseUpdaterStatics::Character.HasNewSQLs() ||
+                                         DatabaseUpdaterStatics::Login.HasNewSQLs());
     }
 }
 
@@ -229,6 +231,8 @@ void MainWindow::on_LE_SpellID_textChanged(const QString &arg1)
 
 void MainWindow::on_A_UpdateDatabase_triggered()
 {
+    ui->A_UpdateDatabase->setEnabled(false);
     DatabaseUpdaterStatics::World.Update(&DatabaseConnectorStatics::World);
-    ui->A_UpdateDatabase->setEnabled(DatabaseUpdaterStatics::World.HasNewSQLs());
+    DatabaseUpdaterStatics::Character.Update(&DatabaseConnectorStatics::Character);
+    DatabaseUpdaterStatics::Login.Update(&DatabaseConnectorStatics::Login);
 }

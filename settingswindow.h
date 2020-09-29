@@ -38,10 +38,15 @@ private slots:
     void on_LW_SettingsCategories_currentRowChanged(int currentRow);
     void on_LW_SettingsClassesScripts_currentRowChanged(int currentRow);
     void on_LE_ClassesScriptsPath_textChanged(const QString &arg1);
-    void on_PB_FindScriptFile_released();
-    void on_PB_FindWorldSQLFolder_released();
-
     void on_LE_WorldSQLFolder_textChanged(const QString &arg1);
+    void on_PB_FindCharacterSQLFolder_clicked();
+    void on_PB_FindWorldSQLFolder_clicked();
+    void on_PB_FindLoginSQLFolder_clicked();
+    void on_PB_FindScriptFile_clicked();
+
+    void on_LE_CharacterSQLFolder_textChanged(const QString &arg1);
+
+    void on_LE_LoginSQLFolder_textChanged(const QString &arg1);
 
 private:
     Ui::SettingsWindow *ui;

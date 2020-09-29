@@ -85,7 +85,7 @@ public:
     {
         if (SettingsWindow->objectName().isEmpty())
             SettingsWindow->setObjectName(QString::fromUtf8("SettingsWindow"));
-        SettingsWindow->resize(963, 736);
+        SettingsWindow->resize(771, 330);
         SettingsWindow->setWindowOpacity(1.000000000000000);
         LW_SettingsCategories = new QListWidget(SettingsWindow);
         LW_SettingsCategories->setObjectName(QString::fromUtf8("LW_SettingsCategories"));
@@ -322,6 +322,7 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8("Icons/folder_search_icon_136606.png"), QSize(), QIcon::Normal, QIcon::Off);
         PB_FindScriptFile->setIcon(icon);
+        PB_FindScriptFile->setAutoDefault(false);
 
         horizontalLayout_2->addWidget(PB_FindScriptFile);
 
@@ -343,6 +344,7 @@ public:
         PB_FindCharacterSQLFolder->setMaximumSize(QSize(25, 20));
         PB_FindCharacterSQLFolder->setFont(font2);
         PB_FindCharacterSQLFolder->setIcon(icon);
+        PB_FindCharacterSQLFolder->setAutoDefault(false);
 
         gridLayout_2->addWidget(PB_FindCharacterSQLFolder, 2, 2, 1, 1);
 
@@ -365,6 +367,7 @@ public:
         PB_FindWorldSQLFolder->setMaximumSize(QSize(25, 20));
         PB_FindWorldSQLFolder->setFont(font2);
         PB_FindWorldSQLFolder->setIcon(icon);
+        PB_FindWorldSQLFolder->setAutoDefault(false);
 
         gridLayout_2->addWidget(PB_FindWorldSQLFolder, 0, 2, 1, 1);
 
@@ -373,6 +376,7 @@ public:
         PB_FindLoginSQLFolder->setMaximumSize(QSize(25, 20));
         PB_FindLoginSQLFolder->setFont(font2);
         PB_FindLoginSQLFolder->setIcon(icon);
+        PB_FindLoginSQLFolder->setAutoDefault(false);
 
         gridLayout_2->addWidget(PB_FindLoginSQLFolder, 4, 2, 1, 1);
 
@@ -461,7 +465,7 @@ public:
 
         retranslateUi(SettingsWindow);
 
-        SW_SettingsLayer->setCurrentIndex(2);
+        SW_SettingsLayer->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(SettingsWindow);

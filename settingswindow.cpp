@@ -148,9 +148,14 @@ void SettingsWindow::LoadConfig()
     Conf.endGroup();
 
     Conf.beginGroup("SQL");
-    ui->LE_WorldSQLFolder->setText(Conf.value("WorldSQLFolder").toString());
     ui->LE_SQLFileName->setText(Conf.value("SQLFileName", "spell_script_names").toString());
+    ui->LE_WorldSQLFolder->setText(Conf.value("WorldSQLFolder").toString());
+    ui->LE_CharacterSQLFolder->setText(Conf.value("CharacterSQLFolder").toString());
+    ui->LE_LoginSQLFolder->setText(Conf.value("LoginSQLFolder").toString());
+
     DatabaseUpdaterStatics::World.SetLastUpdatesTime(Conf.value("World.LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
+    DatabaseUpdaterStatics::Character.SetLastUpdatesTime(Conf.value("Character.LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
+    DatabaseUpdaterStatics::Login.SetLastUpdatesTime(Conf.value("Login.LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
     Conf.endGroup();
 
     Conf.beginGroup("SpellScript");
@@ -176,9 +181,14 @@ void SettingsWindow::SaveToConfig()
     Conf.endGroup();
 
     Conf.beginGroup("SQL");
-    Conf.setValue("WorldSQLFolder", ui->LE_WorldSQLFolder->text());
     Conf.setValue("SQLFileName", ui->LE_SQLFileName->text());
+    Conf.setValue("WorldSQLFolder", ui->LE_WorldSQLFolder->text());
+    Conf.setValue("CharacterSQLFolder", ui->LE_CharacterSQLFolder->text());
+    Conf.setValue("LoginSQLFolder", ui->LE_LoginSQLFolder->text());
+
     Conf.setValue("World.LastTimeUpdate", DatabaseUpdaterStatics::World.GetLastUpdatesTime());
+    Conf.setValue("Character.LastTimeUpdate", DatabaseUpdaterStatics::Character.GetLastUpdatesTime());
+    Conf.setValue("Login.LastTimeUpdate", DatabaseUpdaterStatics::Login.GetLastUpdatesTime());
     Conf.endGroup();
 
     Conf.beginGroup("SpellScript");
@@ -250,17 +260,17 @@ void SettingsWindow::on_LE_ClassesScriptsPath_textChanged(const QString &arg1)
     }
 }
 
-void SettingsWindow::on_PB_FindScriptFile_released()
+void SettingsWindow::on_PB_FindCharacterSQLFolder_clicked()
 {
-    QString Path = QFileDialog::getOpenFileName(this, "Find script file", "", "*.cpp");
+    QString Path = QFileDialog::getExistingDirectory(this, "Find character SQL folder");
 
     if (!Path.isEmpty())
     {
-        ui->LE_ClassesScriptsPath->setText(Path);
+        ui->LE_CharacterSQLFolder->setText(Path);
     }
 }
 
-void SettingsWindow::on_PB_FindWorldSQLFolder_released()
+void SettingsWindow::on_PB_FindWorldSQLFolder_clicked()
 {
     QString Path = QFileDialog::getExistingDirectory(this, "Find world SQL folder");
 
@@ -270,7 +280,37 @@ void SettingsWindow::on_PB_FindWorldSQLFolder_released()
     }
 }
 
+void SettingsWindow::on_PB_FindLoginSQLFolder_clicked()
+{
+    QString Path = QFileDialog::getExistingDirectory(this, "Find login SQL folder");
+
+    if (!Path.isEmpty())
+    {
+        ui->LE_LoginSQLFolder->setText(Path);
+    }
+}
+
+void SettingsWindow::on_PB_FindScriptFile_clicked()
+{
+    QString Path = QFileDialog::getOpenFileName(this, "Find script file", "", "*.cpp");
+
+    if (!Path.isEmpty())
+    {
+        ui->LE_ClassesScriptsPath->setText(Path);
+    }
+}
+
 void SettingsWindow::on_LE_WorldSQLFolder_textChanged(const QString &arg1)
 {
     DatabaseUpdaterStatics::World.SetFolderForCheck(arg1);
+}
+
+void SettingsWindow::on_LE_CharacterSQLFolder_textChanged(const QString &arg1)
+{
+    DatabaseUpdaterStatics::Character.SetFolderForCheck(arg1);
+}
+
+void SettingsWindow::on_LE_LoginSQLFolder_textChanged(const QString &arg1)
+{
+    DatabaseUpdaterStatics::Login.SetFolderForCheck(arg1);
 }

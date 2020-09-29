@@ -7,6 +7,7 @@
 #include "mainwindow.h"
 #include "settingswindow.h"
 #include "DataBase/databaseconnectorstatics.h"
+#include "DataBase/databaseupdaterstatics.h"
 
 
 void SpellScript::FillOptionsListWidget(QListWidget* LW)
@@ -109,6 +110,8 @@ void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
     TStream << FilesText + AddNew;
 
     file.close();
+
+    DatabaseUpdaterStatics::World.SetLastUpdatesTime(QDateTime::currentMSecsSinceEpoch());
 }
 
 bool SpellScript::CheckPathAndFileValidation(const QString &Path, const QString &Extension)
