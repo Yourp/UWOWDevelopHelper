@@ -17,15 +17,14 @@
    </rect>
   </property>
   <property name="contextMenuPolicy">
-   <enum>Qt::DefaultContextMenu</enum>
+   <enum>Qt::NoContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>UWOW Develop Helper</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>Icons/w2.png</normaloff>
-    <normalon>Icons/w2.png</normalon>Icons/w2.png</iconset>
+    <normaloff>Icons/databasespeeddataserver-115837_115792.png</normaloff>Icons/databasespeeddataserver-115837_115792.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -425,32 +424,6 @@
      <number>10</number>
     </property>
    </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>20</y>
-      <width>158</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QPushButton" name="Refresh">
-       <property name="text">
-        <string>Refresh</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Update">
-       <property name="text">
-        <string>Update</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menuBar">
@@ -462,6 +435,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::NoContextMenu</enum>
+   </property>
   </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="enabled">
@@ -472,10 +448,22 @@
      <pointsize>10</pointsize>
     </font>
    </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::NoContextMenu</enum>
+   </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
    <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+   <property name="floatable">
     <bool>false</bool>
    </property>
    <attribute name="toolBarArea">
@@ -484,6 +472,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="A_UpdateDatabase"/>
    <addaction name="Settings"/>
   </widget>
   <action name="Settings">
@@ -496,6 +485,10 @@
    <property name="enabled">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>Icons/cog_transfer_icon_135749.png</normaloff>Icons/cog_transfer_icon_135749.png</iconset>
+   </property>
    <property name="text">
     <string>Settings</string>
    </property>
@@ -506,10 +499,15 @@
     <bool>true</bool>
    </property>
   </action>
-  <action name="actionUpdateDatabase">
+  <action name="A_UpdateDatabase">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset>
-     <normaloff>Icons/w2.png</normaloff>Icons/w2.png</iconset>
+     <normaloff>Icons/Download_Database_36923.png</normaloff>
+     <disabledoff>Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png</disabledoff>
+     <disabledon>Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png</disabledon>Icons/Download_Database_36923.png</iconset>
    </property>
    <property name="text">
     <string>UpdateDatabase</string>

@@ -35,7 +35,7 @@ class Ui_MainWindow
 {
 public:
     QAction *Settings;
-    QAction *actionUpdateDatabase;
+    QAction *A_UpdateDatabase;
     QWidget *Tabs;
     QLineEdit *LE_ScriptName;
     QPushButton *PB_GenerateCode;
@@ -53,10 +53,6 @@ public:
     QComboBox *CB_Scripts;
     QComboBox *CB_Classes;
     QLineEdit *LE_SpellID;
-    QWidget *widget;
-    QHBoxLayout *horizontalLayout_2;
-    QPushButton *Refresh;
-    QPushButton *Update;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QToolBar *toolBar;
@@ -68,10 +64,9 @@ public:
         MainWindow->setWindowModality(Qt::NonModal);
         MainWindow->setEnabled(true);
         MainWindow->resize(977, 755);
-        MainWindow->setContextMenuPolicy(Qt::DefaultContextMenu);
+        MainWindow->setContextMenuPolicy(Qt::NoContextMenu);
         QIcon icon;
-        icon.addFile(QString::fromUtf8("Icons/w2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon.addFile(QString::fromUtf8("Icons/w2.png"), QSize(), QIcon::Normal, QIcon::On);
+        icon.addFile(QString::fromUtf8("Icons/databasespeeddataserver-115837_115792.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         MainWindow->setToolButtonStyle(Qt::ToolButtonFollowStyle);
@@ -84,13 +79,19 @@ public:
         Settings->setCheckable(false);
         Settings->setChecked(false);
         Settings->setEnabled(true);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8("Icons/cog_transfer_icon_135749.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Settings->setIcon(icon1);
         Settings->setAutoRepeat(true);
         Settings->setVisible(true);
-        actionUpdateDatabase = new QAction(MainWindow);
-        actionUpdateDatabase->setObjectName(QString::fromUtf8("actionUpdateDatabase"));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8("Icons/w2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionUpdateDatabase->setIcon(icon1);
+        A_UpdateDatabase = new QAction(MainWindow);
+        A_UpdateDatabase->setObjectName(QString::fromUtf8("A_UpdateDatabase"));
+        A_UpdateDatabase->setEnabled(true);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8("Icons/Download_Database_36923.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QString::fromUtf8("Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png"), QSize(), QIcon::Disabled, QIcon::Off);
+        icon2.addFile(QString::fromUtf8("Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png"), QSize(), QIcon::Disabled, QIcon::On);
+        A_UpdateDatabase->setIcon(icon2);
         Tabs = new QWidget(MainWindow);
         Tabs->setObjectName(QString::fromUtf8("Tabs"));
         LE_ScriptName = new QLineEdit(Tabs);
@@ -239,22 +240,6 @@ public:
         LE_SpellID->setObjectName(QString::fromUtf8("LE_SpellID"));
         LE_SpellID->setGeometry(QRect(250, 10, 113, 20));
         LE_SpellID->setMaxLength(10);
-        widget = new QWidget(Tabs);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(420, 20, 158, 25));
-        horizontalLayout_2 = new QHBoxLayout(widget);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        Refresh = new QPushButton(widget);
-        Refresh->setObjectName(QString::fromUtf8("Refresh"));
-
-        horizontalLayout_2->addWidget(Refresh);
-
-        Update = new QPushButton(widget);
-        Update->setObjectName(QString::fromUtf8("Update"));
-
-        horizontalLayout_2->addWidget(Update);
-
         MainWindow->setCentralWidget(Tabs);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -262,6 +247,7 @@ public:
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 977, 22));
+        menuBar->setContextMenuPolicy(Qt::NoContextMenu);
         MainWindow->setMenuBar(menuBar);
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
@@ -269,7 +255,10 @@ public:
         QFont font;
         font.setPointSize(10);
         toolBar->setFont(font);
+        toolBar->setContextMenuPolicy(Qt::NoContextMenu);
         toolBar->setMovable(false);
+        toolBar->setIconSize(QSize(40, 40));
+        toolBar->setFloatable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
         QWidget::setTabOrder(PB_GenerateCode, textEditDebug);
         QWidget::setTabOrder(textEditDebug, LE_FunctionName);
@@ -277,6 +266,7 @@ public:
         QWidget::setTabOrder(PB_AddRegister, PB_RemoveRegister);
         QWidget::setTabOrder(PB_RemoveRegister, LE_ScriptName);
 
+        toolBar->addAction(A_UpdateDatabase);
         toolBar->addAction(Settings);
 
         retranslateUi(MainWindow);
@@ -293,7 +283,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "UWOW Develop Helper", nullptr));
         Settings->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
-        actionUpdateDatabase->setText(QCoreApplication::translate("MainWindow", "UpdateDatabase", nullptr));
+        A_UpdateDatabase->setText(QCoreApplication::translate("MainWindow", "UpdateDatabase", nullptr));
         PB_GenerateCode->setText(QCoreApplication::translate("MainWindow", "Generate Code", nullptr));
         groupBox->setTitle(QCoreApplication::translate("MainWindow", "GroupBox", nullptr));
         PB_AddRegister->setText(QCoreApplication::translate("MainWindow", "Add Register", nullptr));
@@ -308,8 +298,6 @@ public:
 #if QT_CONFIG(shortcut)
         PB_RemoveRegister->setShortcut(QCoreApplication::translate("MainWindow", "Del", nullptr));
 #endif // QT_CONFIG(shortcut)
-        Refresh->setText(QCoreApplication::translate("MainWindow", "Refresh", nullptr));
-        Update->setText(QCoreApplication::translate("MainWindow", "Update", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 

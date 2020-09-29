@@ -21,9 +21,12 @@ public:
     QString const GetScriptName() const;
     void UpdateGenerationCodeButton(bool active, int CurrentSettingsClassIndex);
 
+
     QVector<class SelectedScriptRegister> Registers;
 
 private slots:
+
+    void OnTick();
 
     void on_PB_GenerateCode_released();
 
@@ -43,9 +46,7 @@ private slots:
 
     void on_LE_SpellID_textChanged(const QString &arg1);
 
-    void on_Refresh_clicked();
-
-    void on_Update_clicked();
+    void on_A_UpdateDatabase_triggered();
 
 private:
     Ui::MainWindow *ui;

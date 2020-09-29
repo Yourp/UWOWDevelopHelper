@@ -14,6 +14,7 @@
 #include "mainwindow.h"
 #include "settingswindow.h"
 #include <QDir>
+#include <QTimer>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -39,7 +40,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         ui->CB_Classes->addItem(Itr->GetName());
     }
 
-    ui->Update->setEnabled(false);
+    ui->A_UpdateDatabase->setEnabled(false);
+    QTimer* timer = new QTimer();
+    timer->start(2000);
+    connect(timer, SIGNAL(timeout()), this, SLOT(OnTick()));
+
     //SettingWindow->exec();
 }
 
@@ -146,6 +151,14 @@ void MainWindow::UpdateGenerationCodeButton(bool active, int CurrentSettingsClas
     }
 }
 
+void MainWindow::OnTick()
+{
+    if (!ui->A_UpdateDatabase->isEnabled())
+    {
+        ui->A_UpdateDatabase->setEnabled(DatabaseUpdaterStatics::World.HasNewSQLs());
+    }
+}
+
 void MainWindow::on_LW_StaticRegisters_currentRowChanged(int currentRow)
 {
     if (currentRow < 0)
@@ -214,13 +227,8 @@ void MainWindow::on_LE_SpellID_textChanged(const QString &arg1)
     }
 }
 
-void MainWindow::on_Refresh_clicked()
-{
-    ui->Update->setEnabled(DatabaseUpdaterStatics::World.HasNewSQLs());
-}
-
-void MainWindow::on_Update_clicked()
+void MainWindow::on_A_UpdateDatabase_triggered()
 {
     DatabaseUpdaterStatics::World.Update(&DatabaseConnectorStatics::World);
-    ui->Update->setEnabled(DatabaseUpdaterStatics::World.HasNewSQLs());
+    ui->A_UpdateDatabase->setEnabled(DatabaseUpdaterStatics::World.HasNewSQLs());
 }

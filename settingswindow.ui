@@ -94,7 +94,7 @@ QListWidget
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QGroupBox" name="groupBox">
@@ -503,7 +503,11 @@ QListWidget
           </font>
          </property>
          <property name="text">
-          <string>...</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Icons/folder_search_icon_136606.png</normaloff>Icons/folder_search_icon_136606.png</iconset>
          </property>
         </widget>
        </item>
@@ -651,7 +655,11 @@ QListWidget
             </font>
            </property>
            <property name="text">
-            <string>...</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>Icons/folder_search_icon_136606.png</normaloff>Icons/folder_search_icon_136606.png</iconset>
            </property>
           </widget>
          </item>
