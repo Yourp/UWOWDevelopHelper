@@ -40,25 +40,30 @@ public:
     QWidget *Tabs;
     QWidget *widget;
     QVBoxLayout *verticalLayout;
+    QListWidget *LW_StaticRegisters;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_3;
     QLineEdit *LE_FunctionName;
-    QListWidget *LW_StaticRegisters;
     QPushButton *PB_AddRegister;
     QWidget *widget1;
     QVBoxLayout *verticalLayout_2;
-    QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout;
+    QComboBox *CB_Classes;
+    QComboBox *CB_Scripts;
     QFormLayout *formLayout;
     QLabel *label;
     QLineEdit *LE_ScriptName;
     QLabel *label_2;
     QLineEdit *LE_SpellID;
-    QHBoxLayout *horizontalLayout;
-    QComboBox *CB_Classes;
-    QComboBox *CB_Scripts;
-    QSpacerItem *verticalSpacer_2;
+    QHBoxLayout *horizontalLayout_3;
+    QSpacerItem *horizontalSpacer;
+    QLabel *label_4;
+    QSpacerItem *horizontalSpacer_2;
     QPushButton *PB_GenerateCode;
-    QSpacerItem *verticalSpacer;
+    QHBoxLayout *horizontalLayout_4;
+    QSpacerItem *horizontalSpacer_3;
+    QLabel *label_5;
+    QSpacerItem *horizontalSpacer_4;
     QTableWidget *TW_AddedRegisters;
     QPushButton *PB_RemoveRegister;
     QStatusBar *statusbar;
@@ -71,7 +76,7 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setWindowModality(Qt::NonModal);
         MainWindow->setEnabled(true);
-        MainWindow->resize(691, 709);
+        MainWindow->resize(692, 696);
         MainWindow->setContextMenuPolicy(Qt::NoContextMenu);
         QIcon icon;
         icon.addFile(QString::fromUtf8("Icons/databasespeeddataserver-115837_115792.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -108,24 +113,6 @@ public:
         verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_3 = new QLabel(widget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setMinimumSize(QSize(0, 15));
-        label_3->setMaximumSize(QSize(16777215, 15));
-
-        horizontalLayout_2->addWidget(label_3);
-
-        LE_FunctionName = new QLineEdit(widget);
-        LE_FunctionName->setObjectName(QString::fromUtf8("LE_FunctionName"));
-        LE_FunctionName->setMinimumSize(QSize(0, 20));
-
-        horizontalLayout_2->addWidget(LE_FunctionName);
-
-
-        verticalLayout->addLayout(horizontalLayout_2);
-
         LW_StaticRegisters = new QListWidget(widget);
         LW_StaticRegisters->setObjectName(QString::fromUtf8("LW_StaticRegisters"));
         LW_StaticRegisters->setMinimumSize(QSize(0, 0));
@@ -151,6 +138,24 @@ public:
 
         verticalLayout->addWidget(LW_StaticRegisters);
 
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_3 = new QLabel(widget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setMinimumSize(QSize(0, 15));
+        label_3->setMaximumSize(QSize(16777215, 15));
+
+        horizontalLayout_2->addWidget(label_3);
+
+        LE_FunctionName = new QLineEdit(widget);
+        LE_FunctionName->setObjectName(QString::fromUtf8("LE_FunctionName"));
+        LE_FunctionName->setMinimumSize(QSize(0, 20));
+
+        horizontalLayout_2->addWidget(LE_FunctionName);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
         PB_AddRegister = new QPushButton(widget);
         PB_AddRegister->setObjectName(QString::fromUtf8("PB_AddRegister"));
         PB_AddRegister->setEnabled(false);
@@ -172,42 +177,6 @@ public:
         verticalLayout_2 = new QVBoxLayout(widget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        formLayout = new QFormLayout();
-        formLayout->setObjectName(QString::fromUtf8("formLayout"));
-        label = new QLabel(widget1);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setMinimumSize(QSize(0, 20));
-        label->setMaximumSize(QSize(16777215, 20));
-
-        formLayout->setWidget(0, QFormLayout::LabelRole, label);
-
-        LE_ScriptName = new QLineEdit(widget1);
-        LE_ScriptName->setObjectName(QString::fromUtf8("LE_ScriptName"));
-
-        formLayout->setWidget(0, QFormLayout::FieldRole, LE_ScriptName);
-
-        label_2 = new QLabel(widget1);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setMinimumSize(QSize(0, 20));
-        label_2->setMaximumSize(QSize(16777215, 20));
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
-
-        LE_SpellID = new QLineEdit(widget1);
-        LE_SpellID->setObjectName(QString::fromUtf8("LE_SpellID"));
-        LE_SpellID->setMaximumSize(QSize(70, 16777215));
-        LE_SpellID->setMaxLength(10);
-
-        formLayout->setWidget(1, QFormLayout::FieldRole, LE_SpellID);
-
-
-        verticalLayout_3->addLayout(formLayout);
-
-
-        verticalLayout_2->addLayout(verticalLayout_3);
-
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         CB_Classes = new QComboBox(widget1);
@@ -230,9 +199,62 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        formLayout = new QFormLayout();
+        formLayout->setObjectName(QString::fromUtf8("formLayout"));
+        label = new QLabel(widget1);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setMinimumSize(QSize(0, 20));
+        label->setMaximumSize(QSize(16777215, 20));
 
-        verticalLayout_2->addItem(verticalSpacer_2);
+        formLayout->setWidget(0, QFormLayout::LabelRole, label);
+
+        LE_ScriptName = new QLineEdit(widget1);
+        LE_ScriptName->setObjectName(QString::fromUtf8("LE_ScriptName"));
+        LE_ScriptName->setMinimumSize(QSize(128, 0));
+
+        formLayout->setWidget(0, QFormLayout::FieldRole, LE_ScriptName);
+
+        label_2 = new QLabel(widget1);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setMinimumSize(QSize(0, 20));
+        label_2->setMaximumSize(QSize(16777215, 20));
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
+
+        LE_SpellID = new QLineEdit(widget1);
+        LE_SpellID->setObjectName(QString::fromUtf8("LE_SpellID"));
+        LE_SpellID->setMaximumSize(QSize(70, 16777215));
+        LE_SpellID->setMaxLength(10);
+
+        formLayout->setWidget(1, QFormLayout::FieldRole, LE_SpellID);
+
+
+        verticalLayout_2->addLayout(formLayout);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer);
+
+        label_4 = new QLabel(widget1);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setEnabled(true);
+        label_4->setMaximumSize(QSize(40, 40));
+        label_4->setLayoutDirection(Qt::LeftToRight);
+        label_4->setPixmap(QPixmap(QString::fromUtf8("Icons/down-arrow_icon-icons.com_71215.png")));
+        label_4->setScaledContents(true);
+        label_4->setAlignment(Qt::AlignCenter);
+        label_4->setWordWrap(false);
+
+        horizontalLayout_3->addWidget(label_4);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_2);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_3);
 
         PB_GenerateCode = new QPushButton(widget1);
         PB_GenerateCode->setObjectName(QString::fromUtf8("PB_GenerateCode"));
@@ -248,9 +270,30 @@ public:
 
         verticalLayout_2->addWidget(PB_GenerateCode);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        verticalLayout_2->addItem(verticalSpacer);
+        horizontalLayout_4->addItem(horizontalSpacer_3);
+
+        label_5 = new QLabel(widget1);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setEnabled(true);
+        label_5->setMaximumSize(QSize(40, 40));
+        label_5->setLayoutDirection(Qt::LeftToRight);
+        label_5->setPixmap(QPixmap(QString::fromUtf8("Icons/up-arrow_icon-icons.com_70835.png")));
+        label_5->setScaledContents(true);
+        label_5->setAlignment(Qt::AlignCenter);
+        label_5->setWordWrap(false);
+
+        horizontalLayout_4->addWidget(label_5);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_4);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
 
         TW_AddedRegisters = new QTableWidget(widget1);
         if (TW_AddedRegisters->columnCount() < 2)
@@ -332,7 +375,7 @@ public:
         MainWindow->setStatusBar(statusbar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 691, 22));
+        menuBar->setGeometry(QRect(0, 0, 692, 22));
         menuBar->setContextMenuPolicy(Qt::NoContextMenu);
         MainWindow->setMenuBar(menuBar);
         toolBar = new QToolBar(MainWindow);
@@ -371,7 +414,9 @@ public:
 #endif // QT_CONFIG(shortcut)
         label->setText(QCoreApplication::translate("MainWindow", "Script Name:", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Spells ID:", nullptr));
+        label_4->setText(QString());
         PB_GenerateCode->setText(QCoreApplication::translate("MainWindow", "Generate", nullptr));
+        label_5->setText(QString());
         QTableWidgetItem *___qtablewidgetitem = TW_AddedRegisters->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = TW_AddedRegisters->horizontalHeaderItem(1);
