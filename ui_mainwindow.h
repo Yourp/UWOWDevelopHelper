@@ -23,7 +23,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
@@ -41,31 +40,23 @@ public:
     QWidget *widget;
     QVBoxLayout *verticalLayout;
     QListWidget *LW_StaticRegisters;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_3;
-    QLineEdit *LE_FunctionName;
-    QPushButton *PB_AddRegister;
     QWidget *widget1;
     QVBoxLayout *verticalLayout_2;
+    QPushButton *PB_GenerateCode;
     QHBoxLayout *horizontalLayout;
     QComboBox *CB_Classes;
     QComboBox *CB_Scripts;
     QFormLayout *formLayout;
-    QLabel *label;
-    QLineEdit *LE_ScriptName;
     QLabel *label_2;
     QLineEdit *LE_SpellID;
+    QLabel *label;
+    QLineEdit *LE_ScriptName;
+    QLabel *label_3;
+    QLineEdit *LE_FunctionName;
     QHBoxLayout *horizontalLayout_3;
-    QSpacerItem *horizontalSpacer;
-    QLabel *label_4;
-    QSpacerItem *horizontalSpacer_2;
-    QPushButton *PB_GenerateCode;
-    QHBoxLayout *horizontalLayout_4;
-    QSpacerItem *horizontalSpacer_3;
-    QLabel *label_5;
-    QSpacerItem *horizontalSpacer_4;
-    QTableWidget *TW_AddedRegisters;
+    QPushButton *PB_AddRegister;
     QPushButton *PB_RemoveRegister;
+    QTableWidget *TW_AddedRegisters;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QToolBar *toolBar;
@@ -76,7 +67,7 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setWindowModality(Qt::NonModal);
         MainWindow->setEnabled(true);
-        MainWindow->resize(692, 696);
+        MainWindow->resize(652, 632);
         MainWindow->setContextMenuPolicy(Qt::NoContextMenu);
         QIcon icon;
         icon.addFile(QString::fromUtf8("Icons/databasespeeddataserver-115837_115792.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -109,7 +100,7 @@ public:
         Tabs->setObjectName(QString::fromUtf8("Tabs"));
         widget = new QWidget(Tabs);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 10, 258, 591));
+        widget->setGeometry(QRect(10, 10, 221, 521));
         verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -138,45 +129,28 @@ public:
 
         verticalLayout->addWidget(LW_StaticRegisters);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_3 = new QLabel(widget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setMinimumSize(QSize(0, 15));
-        label_3->setMaximumSize(QSize(16777215, 15));
-
-        horizontalLayout_2->addWidget(label_3);
-
-        LE_FunctionName = new QLineEdit(widget);
-        LE_FunctionName->setObjectName(QString::fromUtf8("LE_FunctionName"));
-        LE_FunctionName->setMinimumSize(QSize(0, 20));
-
-        horizontalLayout_2->addWidget(LE_FunctionName);
-
-
-        verticalLayout->addLayout(horizontalLayout_2);
-
-        PB_AddRegister = new QPushButton(widget);
-        PB_AddRegister->setObjectName(QString::fromUtf8("PB_AddRegister"));
-        PB_AddRegister->setEnabled(false);
-        QFont font1;
-        font1.setPointSize(10);
-        PB_AddRegister->setFont(font1);
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8("Icons/pencil_plus_icon_138298.png"), QSize(), QIcon::Normal, QIcon::Off);
-        PB_AddRegister->setIcon(icon3);
-        PB_AddRegister->setIconSize(QSize(30, 30));
-        PB_AddRegister->setAutoDefault(true);
-        PB_AddRegister->setFlat(false);
-
-        verticalLayout->addWidget(PB_AddRegister);
-
         widget1 = new QWidget(Tabs);
         widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(280, 10, 402, 591));
+        widget1->setGeometry(QRect(240, 10, 402, 521));
         verticalLayout_2 = new QVBoxLayout(widget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        PB_GenerateCode = new QPushButton(widget1);
+        PB_GenerateCode->setObjectName(QString::fromUtf8("PB_GenerateCode"));
+        QFont font1;
+        font1.setPointSize(10);
+        PB_GenerateCode->setFont(font1);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8("Icons/language_cpp_icon_136465.png"), QSize(), QIcon::Normal, QIcon::Off);
+        PB_GenerateCode->setIcon(icon3);
+        PB_GenerateCode->setIconSize(QSize(30, 30));
+        PB_GenerateCode->setCheckable(false);
+        PB_GenerateCode->setAutoRepeatDelay(3000);
+        PB_GenerateCode->setAutoRepeatInterval(1000);
+        PB_GenerateCode->setAutoDefault(false);
+
+        verticalLayout_2->addWidget(PB_GenerateCode);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         CB_Classes = new QComboBox(widget1);
@@ -201,99 +175,80 @@ public:
 
         formLayout = new QFormLayout();
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
-        label = new QLabel(widget1);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setMinimumSize(QSize(0, 20));
-        label->setMaximumSize(QSize(16777215, 20));
-
-        formLayout->setWidget(0, QFormLayout::LabelRole, label);
-
-        LE_ScriptName = new QLineEdit(widget1);
-        LE_ScriptName->setObjectName(QString::fromUtf8("LE_ScriptName"));
-        LE_ScriptName->setMinimumSize(QSize(128, 0));
-
-        formLayout->setWidget(0, QFormLayout::FieldRole, LE_ScriptName);
-
         label_2 = new QLabel(widget1);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setMinimumSize(QSize(0, 20));
         label_2->setMaximumSize(QSize(16777215, 20));
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
+        formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
 
         LE_SpellID = new QLineEdit(widget1);
         LE_SpellID->setObjectName(QString::fromUtf8("LE_SpellID"));
         LE_SpellID->setMaximumSize(QSize(70, 16777215));
         LE_SpellID->setMaxLength(10);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, LE_SpellID);
+        formLayout->setWidget(0, QFormLayout::FieldRole, LE_SpellID);
+
+        label = new QLabel(widget1);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setMinimumSize(QSize(0, 20));
+        label->setMaximumSize(QSize(16777215, 20));
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, label);
+
+        LE_ScriptName = new QLineEdit(widget1);
+        LE_ScriptName->setObjectName(QString::fromUtf8("LE_ScriptName"));
+        LE_ScriptName->setMinimumSize(QSize(128, 0));
+
+        formLayout->setWidget(1, QFormLayout::FieldRole, LE_ScriptName);
+
+        label_3 = new QLabel(widget1);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setMinimumSize(QSize(0, 20));
+        label_3->setMaximumSize(QSize(16777215, 20));
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
+
+        LE_FunctionName = new QLineEdit(widget1);
+        LE_FunctionName->setObjectName(QString::fromUtf8("LE_FunctionName"));
+        LE_FunctionName->setMinimumSize(QSize(0, 20));
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, LE_FunctionName);
 
 
         verticalLayout_2->addLayout(formLayout);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        PB_AddRegister = new QPushButton(widget1);
+        PB_AddRegister->setObjectName(QString::fromUtf8("PB_AddRegister"));
+        PB_AddRegister->setEnabled(false);
+        PB_AddRegister->setFont(font1);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8("Icons/pencil_plus_icon_138298.png"), QSize(), QIcon::Normal, QIcon::Off);
+        PB_AddRegister->setIcon(icon4);
+        PB_AddRegister->setIconSize(QSize(30, 30));
+        PB_AddRegister->setAutoDefault(true);
+        PB_AddRegister->setFlat(false);
 
-        horizontalLayout_3->addItem(horizontalSpacer);
+        horizontalLayout_3->addWidget(PB_AddRegister);
 
-        label_4 = new QLabel(widget1);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setEnabled(true);
-        label_4->setMaximumSize(QSize(40, 40));
-        label_4->setLayoutDirection(Qt::LeftToRight);
-        label_4->setPixmap(QPixmap(QString::fromUtf8("Icons/down-arrow_icon-icons.com_71215.png")));
-        label_4->setScaledContents(true);
-        label_4->setAlignment(Qt::AlignCenter);
-        label_4->setWordWrap(false);
+        PB_RemoveRegister = new QPushButton(widget1);
+        PB_RemoveRegister->setObjectName(QString::fromUtf8("PB_RemoveRegister"));
+        PB_RemoveRegister->setEnabled(false);
+        PB_RemoveRegister->setFont(font1);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8("Icons/delete_icon_135708.png"), QSize(), QIcon::Normal, QIcon::Off);
+        PB_RemoveRegister->setIcon(icon5);
+        PB_RemoveRegister->setIconSize(QSize(30, 30));
+        PB_RemoveRegister->setCheckable(false);
+        PB_RemoveRegister->setChecked(false);
+        PB_RemoveRegister->setAutoDefault(true);
 
-        horizontalLayout_3->addWidget(label_4);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer_2);
+        horizontalLayout_3->addWidget(PB_RemoveRegister);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
-
-        PB_GenerateCode = new QPushButton(widget1);
-        PB_GenerateCode->setObjectName(QString::fromUtf8("PB_GenerateCode"));
-        PB_GenerateCode->setFont(font1);
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8("Icons/language_cpp_icon_136465.png"), QSize(), QIcon::Normal, QIcon::Off);
-        PB_GenerateCode->setIcon(icon4);
-        PB_GenerateCode->setIconSize(QSize(30, 30));
-        PB_GenerateCode->setCheckable(false);
-        PB_GenerateCode->setAutoRepeatDelay(3000);
-        PB_GenerateCode->setAutoRepeatInterval(1000);
-        PB_GenerateCode->setAutoDefault(false);
-
-        verticalLayout_2->addWidget(PB_GenerateCode);
-
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_4->addItem(horizontalSpacer_3);
-
-        label_5 = new QLabel(widget1);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setEnabled(true);
-        label_5->setMaximumSize(QSize(40, 40));
-        label_5->setLayoutDirection(Qt::LeftToRight);
-        label_5->setPixmap(QPixmap(QString::fromUtf8("Icons/up-arrow_icon-icons.com_70835.png")));
-        label_5->setScaledContents(true);
-        label_5->setAlignment(Qt::AlignCenter);
-        label_5->setWordWrap(false);
-
-        horizontalLayout_4->addWidget(label_5);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_4->addItem(horizontalSpacer_4);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_4);
 
         TW_AddedRegisters = new QTableWidget(widget1);
         if (TW_AddedRegisters->columnCount() < 2)
@@ -355,27 +310,13 @@ public:
 
         verticalLayout_2->addWidget(TW_AddedRegisters);
 
-        PB_RemoveRegister = new QPushButton(widget1);
-        PB_RemoveRegister->setObjectName(QString::fromUtf8("PB_RemoveRegister"));
-        PB_RemoveRegister->setEnabled(false);
-        PB_RemoveRegister->setFont(font1);
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8("Icons/delete_icon_135708.png"), QSize(), QIcon::Normal, QIcon::Off);
-        PB_RemoveRegister->setIcon(icon5);
-        PB_RemoveRegister->setIconSize(QSize(30, 30));
-        PB_RemoveRegister->setCheckable(false);
-        PB_RemoveRegister->setChecked(false);
-        PB_RemoveRegister->setAutoDefault(true);
-
-        verticalLayout_2->addWidget(PB_RemoveRegister);
-
         MainWindow->setCentralWidget(Tabs);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 692, 22));
+        menuBar->setGeometry(QRect(0, 0, 652, 22));
         menuBar->setContextMenuPolicy(Qt::NoContextMenu);
         MainWindow->setMenuBar(menuBar);
         toolBar = new QToolBar(MainWindow);
@@ -394,8 +335,8 @@ public:
 
         retranslateUi(MainWindow);
 
-        PB_AddRegister->setDefault(true);
         PB_GenerateCode->setDefault(false);
+        PB_AddRegister->setDefault(true);
         PB_RemoveRegister->setDefault(true);
 
 
@@ -407,24 +348,22 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "UWOW Develop Helper", nullptr));
         Settings->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         A_UpdateDatabase->setText(QCoreApplication::translate("MainWindow", "UpdateDatabase", nullptr));
+        PB_GenerateCode->setText(QCoreApplication::translate("MainWindow", "Generate", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Spells ID:", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Script Name:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Function Name:", nullptr));
         PB_AddRegister->setText(QCoreApplication::translate("MainWindow", "Add Register", nullptr));
 #if QT_CONFIG(shortcut)
         PB_AddRegister->setShortcut(QCoreApplication::translate("MainWindow", "Return", nullptr));
 #endif // QT_CONFIG(shortcut)
-        label->setText(QCoreApplication::translate("MainWindow", "Script Name:", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Spells ID:", nullptr));
-        label_4->setText(QString());
-        PB_GenerateCode->setText(QCoreApplication::translate("MainWindow", "Generate", nullptr));
-        label_5->setText(QString());
-        QTableWidgetItem *___qtablewidgetitem = TW_AddedRegisters->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
-        QTableWidgetItem *___qtablewidgetitem1 = TW_AddedRegisters->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Function", nullptr));
         PB_RemoveRegister->setText(QCoreApplication::translate("MainWindow", "Remove Register", nullptr));
 #if QT_CONFIG(shortcut)
         PB_RemoveRegister->setShortcut(QCoreApplication::translate("MainWindow", "Del", nullptr));
 #endif // QT_CONFIG(shortcut)
+        QTableWidgetItem *___qtablewidgetitem = TW_AddedRegisters->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = TW_AddedRegisters->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Function", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
