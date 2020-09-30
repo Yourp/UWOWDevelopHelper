@@ -51,7 +51,7 @@ private slots:
 private:
     Ui::SettingsWindow *ui;
 
-    class QListWidgetItem* CreateSettingWidgetItem(QString const& ItemName);
+    class QListWidgetItem* CreateSettingWidgetItem(QString const& ItemName, QIcon ico);
 
     void EditButtonsWhenConnected();
     void EditButtonsWhenDisconnected();

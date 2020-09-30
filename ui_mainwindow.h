@@ -37,10 +37,10 @@ public:
     QAction *Settings;
     QAction *A_UpdateDatabase;
     QWidget *Tabs;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QListWidget *LW_StaticRegisters;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_2;
     QPushButton *PB_GenerateCode;
     QHBoxLayout *horizontalLayout;
@@ -67,10 +67,10 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setWindowModality(Qt::NonModal);
         MainWindow->setEnabled(true);
-        MainWindow->resize(652, 632);
+        MainWindow->resize(631, 606);
         MainWindow->setContextMenuPolicy(Qt::NoContextMenu);
         QIcon icon;
-        icon.addFile(QString::fromUtf8("Icons/databasespeeddataserver-115837_115792.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8("Icons/ProgramMain.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         MainWindow->setToolButtonStyle(Qt::ToolButtonFollowStyle);
@@ -84,7 +84,8 @@ public:
         Settings->setChecked(false);
         Settings->setEnabled(true);
         QIcon icon1;
-        icon1.addFile(QString::fromUtf8("Icons/cog_transfer_icon_135749.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QString::fromUtf8("Icons/SettingEnabled.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QString::fromUtf8("Icons/down-arrow_icon-icons.com_71215 (1).png"), QSize(), QIcon::Disabled, QIcon::Off);
         Settings->setIcon(icon1);
         Settings->setAutoRepeat(true);
         Settings->setVisible(true);
@@ -92,26 +93,60 @@ public:
         A_UpdateDatabase->setObjectName(QString::fromUtf8("A_UpdateDatabase"));
         A_UpdateDatabase->setEnabled(true);
         QIcon icon2;
-        icon2.addFile(QString::fromUtf8("Icons/database_import_icon_135719.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon2.addFile(QString::fromUtf8("Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png"), QSize(), QIcon::Disabled, QIcon::Off);
-        icon2.addFile(QString::fromUtf8("Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png"), QSize(), QIcon::Disabled, QIcon::On);
+        icon2.addFile(QString::fromUtf8("Icons/DBOn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QString::fromUtf8("Icons/DBOff.png"), QSize(), QIcon::Disabled, QIcon::Off);
         A_UpdateDatabase->setIcon(icon2);
         Tabs = new QWidget(MainWindow);
         Tabs->setObjectName(QString::fromUtf8("Tabs"));
-        widget = new QWidget(Tabs);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 10, 221, 521));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(Tabs);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 10, 201, 501));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        LW_StaticRegisters = new QListWidget(widget);
+        LW_StaticRegisters = new QListWidget(layoutWidget);
         LW_StaticRegisters->setObjectName(QString::fromUtf8("LW_StaticRegisters"));
         LW_StaticRegisters->setMinimumSize(QSize(0, 0));
         QFont font;
         font.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
         font.setPointSize(10);
         LW_StaticRegisters->setFont(font);
-        LW_StaticRegisters->setFocusPolicy(Qt::StrongFocus);
+        LW_StaticRegisters->setFocusPolicy(Qt::NoFocus);
+        LW_StaticRegisters->setStyleSheet(QString::fromUtf8("QListWidget\n"
+"{\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(240, 240, 240);\n"
+"    border-color: rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QListWidget::item {\n"
+"    border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    border-color: rgb(180, 190, 200, 0);\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QListWidget::item:hover\n"
+"{\n"
+"    border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(180, 190, 200, 50);\n"
+"    border-color: rgb(180, 190, 200, 230);\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QListWidget::item:selected {\n"
+"    border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(0, 170, 0, 50);\n"
+"    border-color: rgb(0, 170, 0);\n"
+"    border-radius: 6px;\n"
+"\n"
+"}\n"
+"\n"
+""));
+        LW_StaticRegisters->setFrameShape(QFrame::StyledPanel);
+        LW_StaticRegisters->setFrameShadow(QFrame::Sunken);
         LW_StaticRegisters->setAutoScroll(false);
         LW_StaticRegisters->setEditTriggers(QAbstractItemView::NoEditTriggers);
         LW_StaticRegisters->setProperty("showDropIndicator", QVariant(true));
@@ -129,19 +164,21 @@ public:
 
         verticalLayout->addWidget(LW_StaticRegisters);
 
-        widget1 = new QWidget(Tabs);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(240, 10, 402, 521));
-        verticalLayout_2 = new QVBoxLayout(widget1);
+        layoutWidget1 = new QWidget(Tabs);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(220, 10, 402, 501));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        PB_GenerateCode = new QPushButton(widget1);
+        PB_GenerateCode = new QPushButton(layoutWidget1);
         PB_GenerateCode->setObjectName(QString::fromUtf8("PB_GenerateCode"));
         QFont font1;
         font1.setPointSize(10);
         PB_GenerateCode->setFont(font1);
+        PB_GenerateCode->setStyleSheet(QString::fromUtf8(""));
         QIcon icon3;
-        icon3.addFile(QString::fromUtf8("Icons/language_cpp_icon_136465.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QString::fromUtf8("Icons/GenOn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QString::fromUtf8("Icons/GenOff.png"), QSize(), QIcon::Disabled, QIcon::Off);
         PB_GenerateCode->setIcon(icon3);
         PB_GenerateCode->setIconSize(QSize(30, 30));
         PB_GenerateCode->setCheckable(false);
@@ -153,7 +190,7 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        CB_Classes = new QComboBox(widget1);
+        CB_Classes = new QComboBox(layoutWidget1);
         CB_Classes->setObjectName(QString::fromUtf8("CB_Classes"));
         CB_Classes->setMinimumSize(QSize(0, 38));
         CB_Classes->setFont(font1);
@@ -162,7 +199,7 @@ public:
 
         horizontalLayout->addWidget(CB_Classes);
 
-        CB_Scripts = new QComboBox(widget1);
+        CB_Scripts = new QComboBox(layoutWidget1);
         CB_Scripts->setObjectName(QString::fromUtf8("CB_Scripts"));
         CB_Scripts->setMinimumSize(QSize(0, 38));
         CB_Scripts->setFont(font1);
@@ -175,41 +212,41 @@ public:
 
         formLayout = new QFormLayout();
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
-        label_2 = new QLabel(widget1);
+        label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setMinimumSize(QSize(0, 20));
         label_2->setMaximumSize(QSize(16777215, 20));
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
 
-        LE_SpellID = new QLineEdit(widget1);
+        LE_SpellID = new QLineEdit(layoutWidget1);
         LE_SpellID->setObjectName(QString::fromUtf8("LE_SpellID"));
         LE_SpellID->setMaximumSize(QSize(70, 16777215));
         LE_SpellID->setMaxLength(10);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, LE_SpellID);
 
-        label = new QLabel(widget1);
+        label = new QLabel(layoutWidget1);
         label->setObjectName(QString::fromUtf8("label"));
         label->setMinimumSize(QSize(0, 20));
         label->setMaximumSize(QSize(16777215, 20));
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label);
 
-        LE_ScriptName = new QLineEdit(widget1);
+        LE_ScriptName = new QLineEdit(layoutWidget1);
         LE_ScriptName->setObjectName(QString::fromUtf8("LE_ScriptName"));
         LE_ScriptName->setMinimumSize(QSize(128, 0));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, LE_ScriptName);
 
-        label_3 = new QLabel(widget1);
+        label_3 = new QLabel(layoutWidget1);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setMinimumSize(QSize(0, 20));
         label_3->setMaximumSize(QSize(16777215, 20));
 
         formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
 
-        LE_FunctionName = new QLineEdit(widget1);
+        LE_FunctionName = new QLineEdit(layoutWidget1);
         LE_FunctionName->setObjectName(QString::fromUtf8("LE_FunctionName"));
         LE_FunctionName->setMinimumSize(QSize(0, 20));
 
@@ -220,12 +257,13 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        PB_AddRegister = new QPushButton(widget1);
+        PB_AddRegister = new QPushButton(layoutWidget1);
         PB_AddRegister->setObjectName(QString::fromUtf8("PB_AddRegister"));
         PB_AddRegister->setEnabled(false);
         PB_AddRegister->setFont(font1);
         QIcon icon4;
-        icon4.addFile(QString::fromUtf8("Icons/pencil_plus_icon_138298.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon4.addFile(QString::fromUtf8("Icons/AddRegOn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon4.addFile(QString::fromUtf8("Icons/AddRegNot.png"), QSize(), QIcon::Disabled, QIcon::Off);
         PB_AddRegister->setIcon(icon4);
         PB_AddRegister->setIconSize(QSize(30, 30));
         PB_AddRegister->setAutoDefault(true);
@@ -233,12 +271,13 @@ public:
 
         horizontalLayout_3->addWidget(PB_AddRegister);
 
-        PB_RemoveRegister = new QPushButton(widget1);
+        PB_RemoveRegister = new QPushButton(layoutWidget1);
         PB_RemoveRegister->setObjectName(QString::fromUtf8("PB_RemoveRegister"));
         PB_RemoveRegister->setEnabled(false);
         PB_RemoveRegister->setFont(font1);
         QIcon icon5;
-        icon5.addFile(QString::fromUtf8("Icons/delete_icon_135708.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon5.addFile(QString::fromUtf8("Icons/DelRegOn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon5.addFile(QString::fromUtf8("Icons/DelRegOff.png"), QSize(), QIcon::Disabled, QIcon::Off);
         PB_RemoveRegister->setIcon(icon5);
         PB_RemoveRegister->setIconSize(QSize(30, 30));
         PB_RemoveRegister->setCheckable(false);
@@ -250,7 +289,7 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_3);
 
-        TW_AddedRegisters = new QTableWidget(widget1);
+        TW_AddedRegisters = new QTableWidget(layoutWidget1);
         if (TW_AddedRegisters->columnCount() < 2)
             TW_AddedRegisters->setColumnCount(2);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
@@ -259,7 +298,7 @@ public:
         TW_AddedRegisters->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         TW_AddedRegisters->setObjectName(QString::fromUtf8("TW_AddedRegisters"));
         TW_AddedRegisters->setEnabled(true);
-        TW_AddedRegisters->setMinimumSize(QSize(400, 260));
+        TW_AddedRegisters->setMinimumSize(QSize(400, 0));
         TW_AddedRegisters->setMaximumSize(QSize(400, 16777215));
         TW_AddedRegisters->setFont(font);
         TW_AddedRegisters->setTabletTracking(false);
@@ -267,10 +306,36 @@ public:
         TW_AddedRegisters->setAutoFillBackground(true);
         TW_AddedRegisters->setStyleSheet(QString::fromUtf8("QTableWidget\n"
 "{\n"
-"	selection-background-color: qlineargradient(spread:reflect, x1:1, y1:0, x2:1, y2:1, stop:0.397727 rgba(163, 0, 0, 47), stop:1 rgba(255, 255, 255, 255));\n"
-"	selection-color: rgb(0, 0, 0);\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(240, 240, 240);\n"
+"}\n"
 "\n"
-"}"));
+"QTableWidget::item {\n"
+"   border-top: 2px solid;\n"
+"	border-bottom: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    border-color: rgb(180, 190, 200, 0);\n"
+"\n"
+"}\n"
+"\n"
+"QTableWidget::item:hover\n"
+"{\n"
+"    border-top: 2px solid;\n"
+"	border-bottom: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(180, 190, 200, 0);\n"
+"    border-color: rgb(180, 190, 200, 0);\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected {\n"
+"    border-top: 2px solid;\n"
+"	border-bottom: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(170, 0, 0, 50);\n"
+"	 border-color: rgb(170, 0, 0);\n"
+"}\n"
+"\n"
+""));
         TW_AddedRegisters->setFrameShape(QFrame::StyledPanel);
         TW_AddedRegisters->setFrameShadow(QFrame::Sunken);
         TW_AddedRegisters->setLineWidth(1);
@@ -293,6 +358,7 @@ public:
         TW_AddedRegisters->setShowGrid(true);
         TW_AddedRegisters->setGridStyle(Qt::SolidLine);
         TW_AddedRegisters->setSortingEnabled(false);
+        TW_AddedRegisters->setWordWrap(true);
         TW_AddedRegisters->setCornerButtonEnabled(false);
         TW_AddedRegisters->horizontalHeader()->setVisible(false);
         TW_AddedRegisters->horizontalHeader()->setCascadingSectionResizes(false);
@@ -316,7 +382,7 @@ public:
         MainWindow->setStatusBar(statusbar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 652, 22));
+        menuBar->setGeometry(QRect(0, 0, 631, 22));
         menuBar->setContextMenuPolicy(Qt::NoContextMenu);
         MainWindow->setMenuBar(menuBar);
         toolBar = new QToolBar(MainWindow);

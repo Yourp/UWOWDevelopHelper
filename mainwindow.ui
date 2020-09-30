@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>652</width>
-    <height>632</height>
+    <width>631</width>
+    <height>606</height>
    </rect>
   </property>
   <property name="contextMenuPolicy">
@@ -24,7 +24,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>Icons/databasespeeddataserver-115837_115792.png</normaloff>Icons/databasespeeddataserver-115837_115792.png</iconset>
+    <normaloff>Icons/ProgramMain.png</normaloff>Icons/ProgramMain.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -45,13 +45,13 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="Tabs">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>221</width>
-      <height>521</height>
+      <width>201</width>
+      <height>501</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -70,7 +70,48 @@
         </font>
        </property>
        <property name="focusPolicy">
-        <enum>Qt::StrongFocus</enum>
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QListWidget
+{
+    color: rgb(0, 0, 0);
+    background-color: rgb(240, 240, 240);
+    border-color: rgb(0, 0, 0);
+}
+
+QListWidget::item {
+    border: 2px solid;
+    color: rgb(0, 0, 0);
+    border-color: rgb(180, 190, 200, 0);
+    border-radius: 6px;
+}
+
+QListWidget::item:hover
+{
+    border: 2px solid;
+    color: rgb(0, 0, 0);
+    background-color: rgb(180, 190, 200, 50);
+    border-color: rgb(180, 190, 200, 230);
+    border-radius: 6px;
+}
+
+QListWidget::item:selected {
+    border: 2px solid;
+    color: rgb(0, 0, 0);
+    background-color: rgb(0, 170, 0, 50);
+    border-color: rgb(0, 170, 0);
+    border-radius: 6px;
+
+}
+
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
        </property>
        <property name="autoScroll">
         <bool>false</bool>
@@ -118,13 +159,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget1">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>220</x>
       <y>10</y>
       <width>402</width>
-      <height>521</height>
+      <height>501</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -135,12 +176,16 @@
          <pointsize>10</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="text">
         <string>Generate</string>
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>Icons/language_cpp_icon_136465.png</normaloff>Icons/language_cpp_icon_136465.png</iconset>
+         <normaloff>Icons/GenOn.png</normaloff>
+         <disabledoff>Icons/GenOff.png</disabledoff>Icons/GenOn.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -319,7 +364,8 @@
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>Icons/pencil_plus_icon_138298.png</normaloff>Icons/pencil_plus_icon_138298.png</iconset>
+           <normaloff>Icons/AddRegOn.png</normaloff>
+           <disabledoff>Icons/AddRegNot.png</disabledoff>Icons/AddRegOn.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -356,7 +402,8 @@
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>Icons/delete_icon_135708.png</normaloff>Icons/delete_icon_135708.png</iconset>
+           <normaloff>Icons/DelRegOn.png</normaloff>
+           <disabledoff>Icons/DelRegOff.png</disabledoff>Icons/DelRegOn.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -391,7 +438,7 @@
        <property name="minimumSize">
         <size>
          <width>400</width>
-         <height>260</height>
+         <height>0</height>
         </size>
        </property>
        <property name="maximumSize">
@@ -418,10 +465,36 @@
        <property name="styleSheet">
         <string notr="true">QTableWidget
 {
-	selection-background-color: qlineargradient(spread:reflect, x1:1, y1:0, x2:1, y2:1, stop:0.397727 rgba(163, 0, 0, 47), stop:1 rgba(255, 255, 255, 255));
-	selection-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background-color: rgb(240, 240, 240);
+}
 
-}</string>
+QTableWidget::item {
+   border-top: 2px solid;
+	border-bottom: 2px solid;
+    color: rgb(0, 0, 0);
+    border-color: rgb(180, 190, 200, 0);
+
+}
+
+QTableWidget::item:hover
+{
+    border-top: 2px solid;
+	border-bottom: 2px solid;
+    color: rgb(0, 0, 0);
+    background-color: rgb(180, 190, 200, 0);
+    border-color: rgb(180, 190, 200, 0);
+}
+
+QTableWidget::item:selected {
+    border-top: 2px solid;
+	border-bottom: 2px solid;
+    color: rgb(0, 0, 0);
+    background-color: rgb(170, 0, 0, 50);
+	 border-color: rgb(170, 0, 0);
+}
+
+</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -489,6 +562,9 @@
        <property name="sortingEnabled">
         <bool>false</bool>
        </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
        <property name="cornerButtonEnabled">
         <bool>false</bool>
        </property>
@@ -552,7 +628,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>652</width>
+     <width>631</width>
      <height>22</height>
     </rect>
    </property>
@@ -609,7 +685,8 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>Icons/cog_transfer_icon_135749.png</normaloff>Icons/cog_transfer_icon_135749.png</iconset>
+     <normaloff>Icons/SettingEnabled.png</normaloff>
+     <disabledoff>Icons/down-arrow_icon-icons.com_71215 (1).png</disabledoff>Icons/SettingEnabled.png</iconset>
    </property>
    <property name="text">
     <string>Settings</string>
@@ -627,9 +704,8 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>Icons/database_import_icon_135719.png</normaloff>
-     <disabledoff>Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png</disabledoff>
-     <disabledon>Icons/servicemanager_serviceconfig_gerentedeservicio_6020.png</disabledon>Icons/database_import_icon_135719.png</iconset>
+     <normaloff>Icons/DBOn.png</normaloff>
+     <disabledoff>Icons/DBOff.png</disabledoff>Icons/DBOn.png</iconset>
    </property>
    <property name="text">
     <string>UpdateDatabase</string>

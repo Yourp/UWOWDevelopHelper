@@ -38,10 +38,25 @@
     <enum>Qt::LeftToRight</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">QListWidget::item:hover {
-   border: 2px solid;
+    <string notr="true">QListWidget
+{
     color: rgb(0, 0, 0);
-    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(180, 190, 200, 60), stop:1 rgba(255, 255, 255, 255));
+    background-color: rgb(240, 240, 240);
+    border-color: rgb(0, 0, 0);
+}
+
+QListWidget::item {
+    border: 2px solid;
+    color: rgb(0, 0, 0);
+    border-color: rgb(180, 190, 200, 0);
+    border-radius: 8px;
+}
+
+QListWidget::item:hover
+{
+    border: 2px solid;
+    color: rgb(0, 0, 0);
+    background-color: rgb(180, 190, 200, 50);
     border-color: rgb(180, 190, 200, 230);
     border-radius: 8px;
 }
@@ -49,18 +64,16 @@
 QListWidget::item:selected {
     border: 2px solid;
     color: rgb(0, 0, 0);
-    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(84, 128, 190, 50), stop:1 rgba(255, 255, 255, 255));
-    border-color: rgb(84, 128, 190);
+    background-color: rgb(85, 170, 255, 50);
+    border-color: rgb(85, 170, 255);
     border-radius: 8px;
+
 }
 
-QListWidget
-{
-    background-color: rgb(240, 240, 240);
-}</string>
+</string>
    </property>
    <property name="frameShape">
-    <enum>QFrame::WinPanel</enum>
+    <enum>QFrame::StyledPanel</enum>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Sunken</enum>
@@ -94,7 +107,7 @@ QListWidget
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QGroupBox" name="groupBox">
@@ -401,10 +414,25 @@ QListWidget
       <enum>Qt::LeftToRight</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true">QListWidget::item:hover {
-   border: 2px solid;
+      <string notr="true">QListWidget
+{
     color: rgb(0, 0, 0);
-    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(180, 190, 200, 60), stop:1 rgba(255, 255, 255, 255));
+    background-color: rgb(240, 240, 240);
+    border-color: rgb(0, 0, 0);
+}
+
+QListWidget::item {
+    border: 2px solid;
+    color: rgb(0, 0, 0);
+    border-color: rgb(180, 190, 200, 0);
+    border-radius: 6px;
+}
+
+QListWidget::item:hover
+{
+    border: 2px solid;
+    color: rgb(0, 0, 0);
+    background-color: rgb(180, 190, 200, 50);
     border-color: rgb(180, 190, 200, 230);
     border-radius: 6px;
 }
@@ -412,18 +440,16 @@ QListWidget
 QListWidget::item:selected {
     border: 2px solid;
     color: rgb(0, 0, 0);
-    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(84, 128, 190, 50), stop:1 rgba(255, 255, 255, 255));
-    border-color: rgb(84, 128, 190);
+    background-color: rgb(85, 170, 255, 50);
+	border-color: rgb(85, 170, 255);
     border-radius: 6px;
+
 }
 
-QListWidget
-{
-    background-color: rgb(240, 240, 240);
-}</string>
+</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::WinPanel</enum>
+      <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Sunken</enum>
@@ -507,7 +533,8 @@ QListWidget
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>Icons/folder_search_icon_136606.png</normaloff>Icons/folder_search_icon_136606.png</iconset>
+           <normaloff>Icons/FindOn.png</normaloff>
+           <disabledoff>Icons/FindOff.png</disabledoff>Icons/FindOn.png</iconset>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -531,7 +558,7 @@ QListWidget
      <property name="title">
       <string>SQL's folders:</string>
      </property>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -563,7 +590,8 @@ QListWidget
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>Icons/folder_search_icon_136606.png</normaloff>Icons/folder_search_icon_136606.png</iconset>
+           <normaloff>Icons/FindOn.png</normaloff>
+           <disabledoff>Icons/FindOff.png</disabledoff>Icons/FindOn.png</iconset>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -627,7 +655,8 @@ QListWidget
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>Icons/folder_search_icon_136606.png</normaloff>Icons/folder_search_icon_136606.png</iconset>
+           <normaloff>Icons/FindOn.png</normaloff>
+           <disabledoff>Icons/FindOff.png</disabledoff>Icons/FindOn.png</iconset>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -653,7 +682,8 @@ QListWidget
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>Icons/folder_search_icon_136606.png</normaloff>Icons/folder_search_icon_136606.png</iconset>
+           <normaloff>Icons/FindOn.png</normaloff>
+           <disabledoff>Icons/FindOff.png</disabledoff>Icons/FindOn.png</iconset>
          </property>
          <property name="autoDefault">
           <bool>false</bool>
@@ -801,7 +831,7 @@ QListWidget
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>

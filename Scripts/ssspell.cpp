@@ -29,7 +29,7 @@ SSSpell::SSSpell() : SpellScript()
 
     REGISTER(OnFinishCast) = new SpellCastFn();
     REGISTER(OnFinishCast)->Name = "OnFinishCast";
-    REGISTER(OnFinishCast)->DefaultFunctionName = "HandleOnFinishCast";
+    REGISTER(OnFinishCast)->DefaultFunctionName = "HandleFinishCast";
 
     REGISTER(OnCheckCast) = new ScriptRegisterBase();
     REGISTER(OnCheckCast)->Name = "OnCheckCast";
@@ -54,30 +54,30 @@ SSSpell::SSSpell() : SpellScript()
 
     REGISTER(DoCalcEffMask) = new ScriptRegisterBase();
     REGISTER(DoCalcEffMask)->Name = "DoCalcEffMask";
-    REGISTER(DoCalcEffMask)->DefaultFunctionName = "CalculateEffectMask";
+    REGISTER(DoCalcEffMask)->DefaultFunctionName = "CalcEffectMask";
     REGISTER(DoCalcEffMask)->FunctionsParameters = "uint32& effMask";
     REGISTER(DoCalcEffMask)->FunctionsReturnType = "void";
     REGISTER(DoCalcEffMask)->InitializationTemplate = "CalcEffectMaskFn(@CLASSNAME::@FUNCTIONNAME)";
 
     REGISTER(OnEffectLaunch) = new SpellEffectFn();
     REGISTER(OnEffectLaunch)->Name = "OnEffectLaunch";
-    REGISTER(OnEffectLaunch)->DefaultFunctionName = "HandleOnEffectLaunch";
+    REGISTER(OnEffectLaunch)->DefaultFunctionName = "EffectLaunch";
 
     REGISTER(OnEffectLaunchTarget) = new SpellEffectFn();
     REGISTER(OnEffectLaunchTarget)->Name = "OnEffectLaunchTarget";
-    REGISTER(OnEffectLaunchTarget)->DefaultFunctionName = "HandleOnEffectLaunchTarget";
+    REGISTER(OnEffectLaunchTarget)->DefaultFunctionName = "EffectLaunchTarget";
 
     REGISTER(OnEffectHit) = new SpellEffectFn();
     REGISTER(OnEffectHit)->Name = "OnEffectHit";
-    REGISTER(OnEffectHit)->DefaultFunctionName = "HandleOnEffectHit";
+    REGISTER(OnEffectHit)->DefaultFunctionName = "EffectHit";
 
     REGISTER(OnEffectHitTarget) = new SpellEffectFn();
     REGISTER(OnEffectHitTarget)->Name = "OnEffectHitTarget";
-    REGISTER(OnEffectHitTarget)->DefaultFunctionName = "HandleOnEffectHitTarget";
+    REGISTER(OnEffectHitTarget)->DefaultFunctionName = "EffectHitTarget";
 
     REGISTER(OnEffectSuccessfulDispel) = new SpellEffectFn();
     REGISTER(OnEffectSuccessfulDispel)->Name = "OnEffectSuccessfulDispel";
-    REGISTER(OnEffectSuccessfulDispel)->DefaultFunctionName = "HandleOnEffectSuccessfulDispel";
+    REGISTER(OnEffectSuccessfulDispel)->DefaultFunctionName = "EffectSuccessfulDispel";
 
     REGISTER(BeforeHit) = new SpellHitFn();
     REGISTER(BeforeHit)->Name = "BeforeHit";
@@ -93,35 +93,35 @@ SSSpell::SSSpell() : SpellScript()
 
     REGISTER(OnObjectAreaTargetSelect) = new ScriptRegisterBase();
     REGISTER(OnObjectAreaTargetSelect)->Name = "OnObjectAreaTargetSelect";
-    REGISTER(OnObjectAreaTargetSelect)->DefaultFunctionName = "CalledOnObjectAreaTargetSelect";
+    REGISTER(OnObjectAreaTargetSelect)->DefaultFunctionName = "SelectAreaTargets";
     REGISTER(OnObjectAreaTargetSelect)->FunctionsParameters = "std::list<WorldObject*>& Targets";
     REGISTER(OnObjectAreaTargetSelect)->FunctionsReturnType = "void";
     REGISTER(OnObjectAreaTargetSelect)->InitializationTemplate = "SpellObjectAreaTargetSelectFn(@CLASSNAME::@FUNCTIONNAME, EFFECT_0, TARGET_NONE)";
 
     REGISTER(OnObjectJumpTarget) = new ScriptRegisterBase();
     REGISTER(OnObjectJumpTarget)->Name = "OnObjectJumpTarget";
-    REGISTER(OnObjectJumpTarget)->DefaultFunctionName = "CalledOnObjectJumpTarget";
+    REGISTER(OnObjectJumpTarget)->DefaultFunctionName = "ObjectJumpTarget";
     REGISTER(OnObjectJumpTarget)->FunctionsParameters = "int32& AddJumpTarget";
     REGISTER(OnObjectJumpTarget)->FunctionsReturnType = "void";
     REGISTER(OnObjectJumpTarget)->InitializationTemplate = "SpellObjectJumpTargetFn(@CLASSNAME::@FUNCTIONNAME, EFFECT_0, TARGET_NONE)";
 
     REGISTER(DoCalcChannelDuration) = new ScriptRegisterBase();
     REGISTER(DoCalcChannelDuration)->Name = "DoCalcChannelDuration";
-    REGISTER(DoCalcChannelDuration)->DefaultFunctionName = "CalculateChannelDuration";
+    REGISTER(DoCalcChannelDuration)->DefaultFunctionName = "CalcChannelDuration";
     REGISTER(DoCalcChannelDuration)->FunctionsParameters = "uint32& Duration";
     REGISTER(DoCalcChannelDuration)->FunctionsReturnType = "void";
     REGISTER(DoCalcChannelDuration)->InitializationTemplate = "SpellCalcChannelDurationFn(@CLASSNAME::@FUNCTIONNAME)";
 
     REGISTER(DoModTriggerFlags) = new ScriptRegisterBase();
     REGISTER(DoModTriggerFlags)->Name = "DoModTriggerFlags";
-    REGISTER(DoModTriggerFlags)->DefaultFunctionName = "ModifyTriggerFlags";
+    REGISTER(DoModTriggerFlags)->DefaultFunctionName = "ModTriggerFlags";
     REGISTER(DoModTriggerFlags)->FunctionsParameters = "uint32& TriggerCastFlags";
     REGISTER(DoModTriggerFlags)->FunctionsReturnType = "void";
     REGISTER(DoModTriggerFlags)->InitializationTemplate = "SpellModTriggerFlagsFn(@CLASSNAME::@FUNCTIONNAME)";
 
     REGISTER(OnObjectTargetSelect) = new ScriptRegisterBase();
     REGISTER(OnObjectTargetSelect)->Name = "OnObjectTargetSelect";
-    REGISTER(OnObjectTargetSelect)->DefaultFunctionName = "CallOnObjectTargetSelect";
+    REGISTER(OnObjectTargetSelect)->DefaultFunctionName = "SelectTarget";
     REGISTER(OnObjectTargetSelect)->FunctionsParameters = "WorldObject*& target";
     REGISTER(OnObjectTargetSelect)->FunctionsReturnType = "void";
     REGISTER(OnObjectTargetSelect)->InitializationTemplate = "SpellObjectTargetSelectFn(@CLASSNAME::@FUNCTIONNAME, EFFECT_0, TARGET_UNIT_CASTER)";

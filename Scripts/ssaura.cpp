@@ -68,7 +68,7 @@ SSAura::SSAura() : SpellScript()
 
     REGISTER(OnEffectUpdatePeriodic) = new ScriptRegisterBase();
     REGISTER(OnEffectUpdatePeriodic)->Name = "OnEffectUpdatePeriodic";
-    REGISTER(OnEffectUpdatePeriodic)->DefaultFunctionName = "HandleEffectPeriodicUpdate";
+    REGISTER(OnEffectUpdatePeriodic)->DefaultFunctionName = "UpdatePeriodic";
     REGISTER(OnEffectUpdatePeriodic)->FunctionsParameters = "AuraEffect* AurEff";
     REGISTER(OnEffectUpdatePeriodic)->FunctionsReturnType = "void";
     REGISTER(OnEffectUpdatePeriodic)->InitializationTemplate = "AuraEffectUpdatePeriodicFn(@CLASSNAME::@FUNCTIONNAME, EFFECT_0, SPELL_AURA_PERIODIC_DAMAGE)";
@@ -87,7 +87,7 @@ SSAura::SSAura() : SpellScript()
 
     REGISTER(DoCalcMaxDuration) = new ScriptRegisterBase();
     REGISTER(DoCalcMaxDuration)->Name = "DoCalcMaxDuration";
-    REGISTER(DoCalcMaxDuration)->DefaultFunctionName = "CalculateMaxDuration";
+    REGISTER(DoCalcMaxDuration)->DefaultFunctionName = "CalcMaxDuration";
     REGISTER(DoCalcMaxDuration)->FunctionsParameters = "int32& Duration";
     REGISTER(DoCalcMaxDuration)->FunctionsReturnType = "void";
     REGISTER(DoCalcMaxDuration)->InitializationTemplate = "AuraCalcMaxDurationFn(@CLASSNAME::@FUNCTIONNAME)";

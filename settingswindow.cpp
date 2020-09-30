@@ -20,10 +20,10 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     DataBaseSettings::UserName = ui->LE_UserName;
     DataBaseSettings::Password = ui->LE_Password;
 
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database"));
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts & Classes"));
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("SQL & Saves"));
-
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database", QIcon("Icons/SettDBOn.png")));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts & Classes", QIcon("Icons/SettScOn.png")));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("SQL & Saves", QIcon("Icons/SettSQLOn.png")));
+    ui->LW_SettingsCategories->setIconSize(QSize(25, 25));
     setFixedSize(size());
 
     for (auto& Class : ClassName::Classes)
@@ -88,9 +88,10 @@ QIcon SettingsWindow::GetValidationIcon(bool valid) const
     return QIcon(valid ? VMark : XMark);
 }
 
-QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName)
+QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName, QIcon ico)
 {
     QListWidgetItem* NewItem = new QListWidgetItem(ItemName);
+    NewItem->setIcon(ico);
     NewItem->setSizeHint(QSize(10, 30));
     return NewItem;
 }

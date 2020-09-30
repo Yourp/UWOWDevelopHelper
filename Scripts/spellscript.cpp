@@ -10,11 +10,14 @@
 #include "DataBase/databaseupdaterstatics.h"
 
 
+
 void SpellScript::FillOptionsListWidget(QListWidget* LW)
 {
     for (auto const Itr : StaticRegisters)
     {
-        LW->addItem(Itr->GetName());
+        QListWidgetItem* NewItem = new QListWidgetItem(Itr->GetName());
+        NewItem->setSizeHint(QSize(10, 20));
+        LW->addItem(NewItem);
     }
 }
 

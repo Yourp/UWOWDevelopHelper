@@ -62,7 +62,7 @@ public:
     QPushButton *PB_FindScriptFile;
     QWidget *page_3;
     QGroupBox *groupBox_3;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout_2;
     QPushButton *PB_FindCharacterSQLFolder;
     QLabel *label_4;
@@ -75,7 +75,7 @@ public:
     QSpacerItem *verticalSpacer;
     QLineEdit *LE_LoginSQLFolder;
     QSpacerItem *verticalSpacer_2;
-    QWidget *widget1;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QLineEdit *LE_SQLFileName;
@@ -96,10 +96,25 @@ public:
         LW_SettingsCategories->setFont(font);
         LW_SettingsCategories->setFocusPolicy(Qt::NoFocus);
         LW_SettingsCategories->setLayoutDirection(Qt::LeftToRight);
-        LW_SettingsCategories->setStyleSheet(QString::fromUtf8("QListWidget::item:hover {\n"
-"   border: 2px solid;\n"
+        LW_SettingsCategories->setStyleSheet(QString::fromUtf8("QListWidget\n"
+"{\n"
 "    color: rgb(0, 0, 0);\n"
-"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(180, 190, 200, 60), stop:1 rgba(255, 255, 255, 255));\n"
+"    background-color: rgb(240, 240, 240);\n"
+"    border-color: rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QListWidget::item {\n"
+"    border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    border-color: rgb(180, 190, 200, 0);\n"
+"    border-radius: 8px;\n"
+"}\n"
+"\n"
+"QListWidget::item:hover\n"
+"{\n"
+"    border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(180, 190, 200, 50);\n"
 "    border-color: rgb(180, 190, 200, 230);\n"
 "    border-radius: 8px;\n"
 "}\n"
@@ -107,16 +122,14 @@ public:
 "QListWidget::item:selected {\n"
 "    border: 2px solid;\n"
 "    color: rgb(0, 0, 0);\n"
-"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(84, 128, 190, 50), stop:1 rgba(255, 255, 255, 255));\n"
-"    border-color: rgb(84, 128, 190);\n"
+"    background-color: rgb(85, 170, 255, 50);\n"
+"    border-color: rgb(85, 170, 255);\n"
 "    border-radius: 8px;\n"
+"\n"
 "}\n"
 "\n"
-"QListWidget\n"
-"{\n"
-"    background-color: rgb(240, 240, 240);\n"
-"}"));
-        LW_SettingsCategories->setFrameShape(QFrame::WinPanel);
+""));
+        LW_SettingsCategories->setFrameShape(QFrame::StyledPanel);
         LW_SettingsCategories->setFrameShadow(QFrame::Sunken);
         LW_SettingsCategories->setLineWidth(1);
         LW_SettingsCategories->setAutoScroll(false);
@@ -265,10 +278,25 @@ public:
         LW_SettingsClassesScripts->setFont(font);
         LW_SettingsClassesScripts->setFocusPolicy(Qt::NoFocus);
         LW_SettingsClassesScripts->setLayoutDirection(Qt::LeftToRight);
-        LW_SettingsClassesScripts->setStyleSheet(QString::fromUtf8("QListWidget::item:hover {\n"
-"   border: 2px solid;\n"
+        LW_SettingsClassesScripts->setStyleSheet(QString::fromUtf8("QListWidget\n"
+"{\n"
 "    color: rgb(0, 0, 0);\n"
-"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(180, 190, 200, 60), stop:1 rgba(255, 255, 255, 255));\n"
+"    background-color: rgb(240, 240, 240);\n"
+"    border-color: rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QListWidget::item {\n"
+"    border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    border-color: rgb(180, 190, 200, 0);\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QListWidget::item:hover\n"
+"{\n"
+"    border: 2px solid;\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(180, 190, 200, 50);\n"
 "    border-color: rgb(180, 190, 200, 230);\n"
 "    border-radius: 6px;\n"
 "}\n"
@@ -276,16 +304,14 @@ public:
 "QListWidget::item:selected {\n"
 "    border: 2px solid;\n"
 "    color: rgb(0, 0, 0);\n"
-"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.423729 rgba(84, 128, 190, 50), stop:1 rgba(255, 255, 255, 255));\n"
-"    border-color: rgb(84, 128, 190);\n"
+"    background-color: rgb(85, 170, 255, 50);\n"
+"	border-color: rgb(85, 170, 255);\n"
 "    border-radius: 6px;\n"
+"\n"
 "}\n"
 "\n"
-"QListWidget\n"
-"{\n"
-"    background-color: rgb(240, 240, 240);\n"
-"}"));
-        LW_SettingsClassesScripts->setFrameShape(QFrame::WinPanel);
+""));
+        LW_SettingsClassesScripts->setFrameShape(QFrame::StyledPanel);
         LW_SettingsClassesScripts->setFrameShadow(QFrame::Sunken);
         LW_SettingsClassesScripts->setLineWidth(1);
         LW_SettingsClassesScripts->setAutoScroll(false);
@@ -320,7 +346,8 @@ public:
         font2.setWeight(50);
         PB_FindScriptFile->setFont(font2);
         QIcon icon;
-        icon.addFile(QString::fromUtf8("Icons/folder_search_icon_136606.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8("Icons/FindOn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8("Icons/FindOff.png"), QSize(), QIcon::Disabled, QIcon::Off);
         PB_FindScriptFile->setIcon(icon);
         PB_FindScriptFile->setAutoDefault(false);
 
@@ -332,14 +359,14 @@ public:
         groupBox_3 = new QGroupBox(page_3);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         groupBox_3->setGeometry(QRect(0, 60, 351, 121));
-        widget = new QWidget(groupBox_3);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 30, 331, 81));
-        gridLayout_2 = new QGridLayout(widget);
+        layoutWidget1 = new QWidget(groupBox_3);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(10, 30, 331, 81));
+        gridLayout_2 = new QGridLayout(layoutWidget1);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setVerticalSpacing(0);
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        PB_FindCharacterSQLFolder = new QPushButton(widget);
+        PB_FindCharacterSQLFolder = new QPushButton(layoutWidget1);
         PB_FindCharacterSQLFolder->setObjectName(QString::fromUtf8("PB_FindCharacterSQLFolder"));
         PB_FindCharacterSQLFolder->setMaximumSize(QSize(25, 20));
         PB_FindCharacterSQLFolder->setFont(font2);
@@ -348,21 +375,21 @@ public:
 
         gridLayout_2->addWidget(PB_FindCharacterSQLFolder, 2, 2, 1, 1);
 
-        label_4 = new QLabel(widget);
+        label_4 = new QLabel(layoutWidget1);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setMinimumSize(QSize(0, 20));
         label_4->setMaximumSize(QSize(16777215, 15));
 
         gridLayout_2->addWidget(label_4, 2, 0, 1, 1);
 
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget1);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setMinimumSize(QSize(0, 20));
         label_3->setMaximumSize(QSize(16777215, 15));
 
         gridLayout_2->addWidget(label_3, 0, 0, 1, 1);
 
-        PB_FindWorldSQLFolder = new QPushButton(widget);
+        PB_FindWorldSQLFolder = new QPushButton(layoutWidget1);
         PB_FindWorldSQLFolder->setObjectName(QString::fromUtf8("PB_FindWorldSQLFolder"));
         PB_FindWorldSQLFolder->setMaximumSize(QSize(25, 20));
         PB_FindWorldSQLFolder->setFont(font2);
@@ -371,7 +398,7 @@ public:
 
         gridLayout_2->addWidget(PB_FindWorldSQLFolder, 0, 2, 1, 1);
 
-        PB_FindLoginSQLFolder = new QPushButton(widget);
+        PB_FindLoginSQLFolder = new QPushButton(layoutWidget1);
         PB_FindLoginSQLFolder->setObjectName(QString::fromUtf8("PB_FindLoginSQLFolder"));
         PB_FindLoginSQLFolder->setMaximumSize(QSize(25, 20));
         PB_FindLoginSQLFolder->setFont(font2);
@@ -380,14 +407,14 @@ public:
 
         gridLayout_2->addWidget(PB_FindLoginSQLFolder, 4, 2, 1, 1);
 
-        label_5 = new QLabel(widget);
+        label_5 = new QLabel(layoutWidget1);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setMinimumSize(QSize(0, 20));
         label_5->setMaximumSize(QSize(16777215, 15));
 
         gridLayout_2->addWidget(label_5, 4, 0, 1, 1);
 
-        LE_CharacterSQLFolder = new QLineEdit(widget);
+        LE_CharacterSQLFolder = new QLineEdit(layoutWidget1);
         LE_CharacterSQLFolder->setObjectName(QString::fromUtf8("LE_CharacterSQLFolder"));
         LE_CharacterSQLFolder->setMinimumSize(QSize(0, 20));
         LE_CharacterSQLFolder->setMaximumSize(QSize(16777215, 20));
@@ -399,7 +426,7 @@ public:
 
         gridLayout_2->addWidget(LE_CharacterSQLFolder, 2, 1, 1, 1);
 
-        LE_WorldSQLFolder = new QLineEdit(widget);
+        LE_WorldSQLFolder = new QLineEdit(layoutWidget1);
         LE_WorldSQLFolder->setObjectName(QString::fromUtf8("LE_WorldSQLFolder"));
         LE_WorldSQLFolder->setMinimumSize(QSize(0, 20));
         LE_WorldSQLFolder->setMaximumSize(QSize(16777215, 20));
@@ -415,7 +442,7 @@ public:
 
         gridLayout_2->addItem(verticalSpacer, 3, 1, 1, 1);
 
-        LE_LoginSQLFolder = new QLineEdit(widget);
+        LE_LoginSQLFolder = new QLineEdit(layoutWidget1);
         LE_LoginSQLFolder->setObjectName(QString::fromUtf8("LE_LoginSQLFolder"));
         LE_LoginSQLFolder->setMinimumSize(QSize(0, 20));
         LE_LoginSQLFolder->setMaximumSize(QSize(16777215, 20));
@@ -431,20 +458,20 @@ public:
 
         gridLayout_2->addItem(verticalSpacer_2, 1, 1, 1, 1);
 
-        widget1 = new QWidget(page_3);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(10, 10, 261, 22));
-        horizontalLayout = new QHBoxLayout(widget1);
+        layoutWidget2 = new QWidget(page_3);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(10, 10, 261, 22));
+        horizontalLayout = new QHBoxLayout(layoutWidget2);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget1);
+        label = new QLabel(layoutWidget2);
         label->setObjectName(QString::fromUtf8("label"));
         label->setMinimumSize(QSize(0, 20));
         label->setMaximumSize(QSize(16777215, 20));
 
         horizontalLayout->addWidget(label);
 
-        LE_SQLFileName = new QLineEdit(widget1);
+        LE_SQLFileName = new QLineEdit(layoutWidget2);
         LE_SQLFileName->setObjectName(QString::fromUtf8("LE_SQLFileName"));
         LE_SQLFileName->setMinimumSize(QSize(0, 20));
         LE_SQLFileName->setMaximumSize(QSize(150, 20));
@@ -465,7 +492,7 @@ public:
 
         retranslateUi(SettingsWindow);
 
-        SW_SettingsLayer->setCurrentIndex(0);
+        SW_SettingsLayer->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(SettingsWindow);
