@@ -1,7 +1,4 @@
 #include <QListWidget>
-#include <QTextStream>
-#include <QFile>
-#include <QDateTime>
 #include "spellscript.h"
 #include "textstatics.h"
 #include "mainwindow.h"

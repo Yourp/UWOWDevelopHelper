@@ -1,7 +1,4 @@
 #include "databaseupdater.h"
-#include <QFile>
-#include <QDir>
-#include <QDateTime>
 #include "textstatics.h"
 
 DatabaseUpdater::DatabaseUpdater()

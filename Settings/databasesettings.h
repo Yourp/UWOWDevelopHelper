@@ -2,6 +2,7 @@
 #define DATABASESETTINGS_H
 
 #include "Settings/settingbase.h"
+#include "ObjectBase.h"
 
 class QLineEdit;
 

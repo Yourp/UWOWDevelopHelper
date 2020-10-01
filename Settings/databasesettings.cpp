@@ -1,7 +1,7 @@
 #include "databasesettings.h"
 #include "settingswindow.h"
-#include "ui_settingswindow.h"
-#include <QLineEdit>
+
+
 
 #define CHECKED(VAR) VAR ? VAR->text() : ""
 

@@ -17,6 +17,7 @@ debug/mainwindow.o
 debug/script.o
 debug/scriptregister.o
 debug/settingswindow.o
+debug/statictools.o
 debug/textstatics.o
 debug/moc_mainwindow.o
 debug/moc_settingswindow.o

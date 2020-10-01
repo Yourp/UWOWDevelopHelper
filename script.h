@@ -1,7 +1,7 @@
 #ifndef SCRIPT_H
 #define SCRIPT_H
 
-#include <QVector>
+
 #include "ObjectBase.h"
 #include "scriptregister.h"
 

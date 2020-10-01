@@ -57,7 +57,9 @@ private:
     void EditButtonsWhenDisconnected();
 
     void LoadConfig();
-    void SaveToConfig();
+    void SaveConfig();
+    void SaveToConfig(QSettings& Conf, QString const& Key, QString const& Text);
+    void SaveToConfig(QSettings& Conf, QString const& Key, QVariant const& Veriable);
 
     void UpdateDatabasesLEIcons();
 

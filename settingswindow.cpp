@@ -7,7 +7,7 @@
 #include "DataBase/databaseupdaterstatics.h"
 #include "Settings/databasesettings.h"
 #include <QFileDialog>
-#include <QDateTime>
+
 
 const QString SettingsWindow::VMark = "Icons/ok.png";
 const QString SettingsWindow::XMark = "Icons/not_ok.png";
@@ -25,6 +25,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("SQL & Saves", QIcon("Icons/SettSQLOn.png")));
     ui->LW_SettingsCategories->setIconSize(QSize(25, 25));
     setFixedSize(size());
+
 
     for (auto& Class : ClassName::Classes)
     {
@@ -64,7 +65,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
 
 SettingsWindow::~SettingsWindow()
 {
-    SaveToConfig();
+    SaveConfig();
     delete ui;
 }
 
@@ -154,50 +155,66 @@ void SettingsWindow::LoadConfig()
     ui->LE_CharacterSQLFolder->setText(Conf.value("CharacterSQLFolder").toString());
     ui->LE_LoginSQLFolder->setText(Conf.value("LoginSQLFolder").toString());
 
-    DatabaseUpdaterStatics::World.SetLastUpdatesTime(Conf.value("World.LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
-    DatabaseUpdaterStatics::Character.SetLastUpdatesTime(Conf.value("Character.LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
-    DatabaseUpdaterStatics::Login.SetLastUpdatesTime(Conf.value("Login.LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
+    DatabaseUpdaterStatics::World.SetLastUpdatesTime(Conf.value("World/LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
+    DatabaseUpdaterStatics::Character.SetLastUpdatesTime(Conf.value("Character/LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
+    DatabaseUpdaterStatics::Login.SetLastUpdatesTime(Conf.value("Login/LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
     Conf.endGroup();
 
     Conf.beginGroup("SpellScript");
     for (auto& Class : ClassName::Classes)
     {
-        Class->SetScriptsFilePath(Conf.value("Classes." + Class->GetName()).toString());
+        Class->SetScriptsFilePath(Conf.value("Classes/" + Class->GetName()).toString());
     }
+
     Conf.endGroup();
 }
 
-void SettingsWindow::SaveToConfig()
+void SettingsWindow::SaveConfig()
 {
     QSettings Conf("Config.ini", QSettings::IniFormat);
 
     Conf.beginGroup("Database");
-    Conf.setValue("HostName", ui->LE_HostName->text());
-    Conf.setValue("Port", ui->LE_Port->text());
-    Conf.setValue("UserName", ui->LE_UserName->text());
-    Conf.setValue("Password", ui->LE_Password->text());
-    Conf.setValue("WorldDatabase", ui->LE_WorldDatabase->text());
-    Conf.setValue("CharacterDatabase", ui->LE_CharacterDatabase->text());
-    Conf.setValue("LoginDatabase", ui->LE_LoginDatabase->text());
+    SaveToConfig(Conf, "HostName", ui->LE_HostName->text());
+    SaveToConfig(Conf, "Port", ui->LE_Port->text());
+    SaveToConfig(Conf, "UserName", ui->LE_UserName->text());
+    SaveToConfig(Conf, "Password", ui->LE_Password->text());
+    SaveToConfig(Conf, "WorldDatabase", ui->LE_WorldDatabase->text());
+    SaveToConfig(Conf, "CharacterDatabase", ui->LE_CharacterDatabase->text());
+    SaveToConfig(Conf, "LoginDatabase", ui->LE_LoginDatabase->text());
     Conf.endGroup();
 
     Conf.beginGroup("SQL");
-    Conf.setValue("SQLFileName", ui->LE_SQLFileName->text());
-    Conf.setValue("WorldSQLFolder", ui->LE_WorldSQLFolder->text());
-    Conf.setValue("CharacterSQLFolder", ui->LE_CharacterSQLFolder->text());
-    Conf.setValue("LoginSQLFolder", ui->LE_LoginSQLFolder->text());
+    SaveToConfig(Conf, "SQLFileName", ui->LE_SQLFileName->text());
+    SaveToConfig(Conf, "WorldSQLFolder", ui->LE_WorldSQLFolder->text());
+    SaveToConfig(Conf, "CharacterSQLFolder", ui->LE_CharacterSQLFolder->text());
+    SaveToConfig(Conf, "LoginSQLFolder", ui->LE_LoginSQLFolder->text());
 
-    Conf.setValue("World.LastTimeUpdate", DatabaseUpdaterStatics::World.GetLastUpdatesTime());
-    Conf.setValue("Character.LastTimeUpdate", DatabaseUpdaterStatics::Character.GetLastUpdatesTime());
-    Conf.setValue("Login.LastTimeUpdate", DatabaseUpdaterStatics::Login.GetLastUpdatesTime());
+    Conf.setValue("World/LastTimeUpdate", DatabaseUpdaterStatics::World.GetLastUpdatesTime());
+    Conf.setValue("Character/LastTimeUpdate", DatabaseUpdaterStatics::Character.GetLastUpdatesTime());
+    Conf.setValue("Login/LastTimeUpdate", DatabaseUpdaterStatics::Login.GetLastUpdatesTime());
     Conf.endGroup();
 
     Conf.beginGroup("SpellScript");
     for (auto& Class : ClassName::Classes)
     {
-        Conf.setValue("Classes." + Class->GetName(), Class->GetScriptsFilePath());
+        SaveToConfig(Conf, "Classes/" + Class->GetName(), Class->GetScriptsFilePath());
     }
     Conf.endGroup();
+}
+
+void SettingsWindow::SaveToConfig(QSettings &Conf, const QString &Key, const QString &Text)
+{
+    if (!Text.isEmpty())
+    {
+        Conf.setValue(Key, Text);
+        return;
+    }
+    Conf.remove(Key);
+}
+
+void SettingsWindow::SaveToConfig(QSettings &Conf, const QString &Key, const QVariant &Veriable)
+{
+    Conf.setValue(Key, Veriable);
 }
 
 void SettingsWindow::UpdateDatabasesLEIcons()

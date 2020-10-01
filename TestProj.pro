@@ -35,6 +35,7 @@ SOURCES += \
     script.cpp \
     scriptregister.cpp \
     settingswindow.cpp \
+    statictools.cpp \
     textstatics.cpp
 
 HEADERS += \
@@ -57,6 +58,7 @@ HEADERS += \
     script.h \
     scriptregister.h \
     settingswindow.h \
+    statictools.h \
     textstatics.h
 
 FORMS += \

@@ -2,8 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QVector>
-#include "DataBase/databaseconnector.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,7 +18,6 @@ public:
     int GetCurrentScriptIndex() const;
     QString const GetScriptName() const;
     void UpdateGenerationCodeButton(bool active, int CurrentSettingsClassIndex);
-
 
     QVector<class SelectedScriptRegister> Registers;
 
@@ -52,6 +49,8 @@ private:
     Ui::MainWindow *ui;
 
     class SettingsWindow* SettingWindow;
+
+    void FillComboBox(class QComboBox* Box, QVector<class ObjectBase*> const& From, QSize Size);
 
 
 

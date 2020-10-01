@@ -1,20 +1,13 @@
-#include <QTextStream>
-#include <QFile>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "textstatics.h"
 #include "DataBase/databaseupdaterstatics.h"
 #include "DataBase/databaseconnectorstatics.h"
-#include "scriptregister.h"
 #include "Scripts/spellscript.h"
-#include "Scripts/ssspell.h"
-#include "Scripts/ssaura.h"
-#include "script.h"
 #include "Classes/classname.h"
 #include "mainwindow.h"
 #include "settingswindow.h"
-#include <QDir>
-#include <QTimer>
+#include "statictools.h"
+
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -30,34 +23,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     Registers.reserve(20);
 
-    QAbstractItemModel* ScriptsModel = ui->CB_Classes->model();
-
-    if (ScriptsModel)
-    {
-        int Index = 0;
-
-        for (auto const& Itr : Script::Scripts)
-        {
-            ui->CB_Scripts->addItem(Itr->GetName());
-            ScriptsModel->setData(ScriptsModel->index(Index, 0), QSize(10, 20), Qt::SizeHintRole);
-            Index++;
-        }
-    }
-
-    QAbstractItemModel* ClasModel = ui->CB_Classes->model();
-
-    if (ClasModel)
-    {
-        int Index = 0;
-
-        for (auto const& Itr : ClassName::Classes)
-        {
-            ui->CB_Classes->addItem(Itr->GetName());
-            ClasModel->setData(ClasModel->index(Index, 0), QSize(10, 20), Qt::SizeHintRole);
-            Index++;
-        }
-    }
-
+    FillComboBox(ui->CB_Scripts, StaticTools::ConvertQVector<ObjectBase>(Script::Scripts), QSize(10, 20));
+    FillComboBox(ui->CB_Classes, StaticTools::ConvertQVector<ObjectBase>(ClassName::Classes), QSize(10, 20));
 
 
     ui->A_UpdateDatabase->setEnabled(false);
@@ -258,3 +225,20 @@ void MainWindow::on_A_UpdateDatabase_triggered()
     DatabaseUpdaterStatics::Character.Update(&DatabaseConnectorStatics::Character);
     DatabaseUpdaterStatics::Login.Update(&DatabaseConnectorStatics::Login);
 }
+
+void MainWindow::FillComboBox(QComboBox *Box, QVector<ObjectBase*> const& From, QSize Size)
+{
+    if (QAbstractItemModel* Model = Box->model())
+    {
+        int Index = 0;
+
+        for (auto const& Itr : From)
+        {
+            Box->addItem(Itr->GetName());
+            Model->setData(Model->index(Index, 0), Size, Qt::SizeHintRole);
+            Index++;
+        }
+    }
+}
+
+
