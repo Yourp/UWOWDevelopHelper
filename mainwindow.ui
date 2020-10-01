@@ -81,7 +81,7 @@
 }
 
 QListWidget::item {
-    border: 2px solid;
+    border: 1px solid;
     color: rgb(0, 0, 0);
     border-color: rgb(180, 190, 200, 0);
     border-radius: 6px;
@@ -89,17 +89,17 @@ QListWidget::item {
 
 QListWidget::item:hover
 {
-    border: 2px solid;
+    border: 1px solid;
     color: rgb(0, 0, 0);
-    background-color: rgb(180, 190, 200, 50);
+    background-color: rgb(180, 190, 200, 20);
     border-color: rgb(180, 190, 200, 230);
     border-radius: 6px;
 }
 
 QListWidget::item:selected {
-    border: 2px solid;
-    color: rgb(0, 0, 0);
-    background-color: rgb(0, 170, 0, 50);
+    border: 1px solid;
+    color: rgb(0, 170, 0);
+    background-color: rgb(0, 170, 0, 20);
     border-color: rgb(0, 170, 0);
     border-radius: 6px;
 
@@ -225,11 +225,26 @@ QListWidget::item:selected {
            <pointsize>10</pointsize>
           </font>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"> QComboBox QAbstractItemView {
+    outline: 1px solid;
+    outline-color: rgb(85, 170, 255);
+    selection-background-color: rgb(85, 170, 255, 20);
+    border-radius: 6px;
+    selection-color: rgb(85, 170, 255);
+}</string>
+         </property>
          <property name="editable">
           <bool>false</bool>
          </property>
          <property name="maxVisibleItems">
           <number>100</number>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContents</enum>
          </property>
         </widget>
        </item>
@@ -245,6 +260,15 @@ QListWidget::item:selected {
           <font>
            <pointsize>10</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"> QComboBox QAbstractItemView {
+    outline: 1px solid;
+    outline-color: rgb(85, 170, 255);
+    selection-background-color: rgb(85, 170, 255, 20);
+    border-radius: 6px;
+    selection-color: rgb(85, 170, 255);
+}</string>
          </property>
          <property name="editable">
           <bool>false</bool>
@@ -470,8 +494,8 @@ QListWidget::item:selected {
 }
 
 QTableWidget::item {
-   border-top: 2px solid;
-	border-bottom: 2px solid;
+   border-top: 1px solid;
+	border-bottom: 1px solid;
     color: rgb(0, 0, 0);
     border-color: rgb(180, 190, 200, 0);
 
@@ -479,18 +503,18 @@ QTableWidget::item {
 
 QTableWidget::item:hover
 {
-    border-top: 2px solid;
-	border-bottom: 2px solid;
+    border-top: 1px solid;
+	border-bottom: 1px solid;
     color: rgb(0, 0, 0);
     background-color: rgb(180, 190, 200, 0);
     border-color: rgb(180, 190, 200, 0);
 }
 
 QTableWidget::item:selected {
-    border-top: 2px solid;
-	border-bottom: 2px solid;
-    color: rgb(0, 0, 0);
-    background-color: rgb(170, 0, 0, 50);
+    border-top: 1px solid;
+	border-bottom: 1px solid;
+    color: rgb(170, 0, 0);
+    background-color: rgb(170, 0, 0, 20);
 	 border-color: rgb(170, 0, 0);
 }
 

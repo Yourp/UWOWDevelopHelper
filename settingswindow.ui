@@ -46,7 +46,7 @@
 }
 
 QListWidget::item {
-    border: 2px solid;
+    border: 1px solid;
     color: rgb(0, 0, 0);
     border-color: rgb(180, 190, 200, 0);
     border-radius: 8px;
@@ -54,7 +54,7 @@ QListWidget::item {
 
 QListWidget::item:hover
 {
-    border: 2px solid;
+    border: 1px solid;
     color: rgb(0, 0, 0);
     background-color: rgb(180, 190, 200, 50);
     border-color: rgb(180, 190, 200, 230);
@@ -62,9 +62,9 @@ QListWidget::item:hover
 }
 
 QListWidget::item:selected {
-    border: 2px solid;
-    color: rgb(0, 0, 0);
-    background-color: rgb(85, 170, 255, 50);
+    border: 1px solid;
+    color: rgb(85, 170, 255);
+    background-color: rgb(85, 170, 255, 20);
     border-color: rgb(85, 170, 255);
     border-radius: 8px;
 
@@ -422,7 +422,7 @@ QListWidget::item:selected {
 }
 
 QListWidget::item {
-    border: 2px solid;
+    border: 1px solid;
     color: rgb(0, 0, 0);
     border-color: rgb(180, 190, 200, 0);
     border-radius: 6px;
@@ -430,7 +430,7 @@ QListWidget::item {
 
 QListWidget::item:hover
 {
-    border: 2px solid;
+    border: 1px solid;
     color: rgb(0, 0, 0);
     background-color: rgb(180, 190, 200, 50);
     border-color: rgb(180, 190, 200, 230);
@@ -438,9 +438,9 @@ QListWidget::item:hover
 }
 
 QListWidget::item:selected {
-    border: 2px solid;
-    color: rgb(0, 0, 0);
-    background-color: rgb(85, 170, 255, 50);
+    border: 1px solid;
+    color: rgb(85, 170, 255);
+    background-color: rgb(85, 170, 255, 20);
 	border-color: rgb(85, 170, 255);
     border-radius: 6px;
 

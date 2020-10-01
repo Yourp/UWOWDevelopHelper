@@ -30,15 +30,35 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     Registers.reserve(20);
 
-    for (auto const& Itr : Script::Scripts)
+    QAbstractItemModel* ScriptsModel = ui->CB_Classes->model();
+
+    if (ScriptsModel)
     {
-        ui->CB_Scripts->addItem(Itr->GetName());
+        int Index = 0;
+
+        for (auto const& Itr : Script::Scripts)
+        {
+            ui->CB_Scripts->addItem(Itr->GetName());
+            ScriptsModel->setData(ScriptsModel->index(Index, 0), QSize(10, 20), Qt::SizeHintRole);
+            Index++;
+        }
     }
 
-    for (auto const& Itr : ClassName::Classes)
+    QAbstractItemModel* ClasModel = ui->CB_Classes->model();
+
+    if (ClasModel)
     {
-        ui->CB_Classes->addItem(Itr->GetName());
+        int Index = 0;
+
+        for (auto const& Itr : ClassName::Classes)
+        {
+            ui->CB_Classes->addItem(Itr->GetName());
+            ClasModel->setData(ClasModel->index(Index, 0), QSize(10, 20), Qt::SizeHintRole);
+            Index++;
+        }
     }
+
+
 
     ui->A_UpdateDatabase->setEnabled(false);
     QTimer* timer = new QTimer();

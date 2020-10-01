@@ -120,7 +120,7 @@ public:
 "}\n"
 "\n"
 "QListWidget::item {\n"
-"    border: 2px solid;\n"
+"    border: 1px solid;\n"
 "    color: rgb(0, 0, 0);\n"
 "    border-color: rgb(180, 190, 200, 0);\n"
 "    border-radius: 6px;\n"
@@ -128,17 +128,17 @@ public:
 "\n"
 "QListWidget::item:hover\n"
 "{\n"
-"    border: 2px solid;\n"
+"    border: 1px solid;\n"
 "    color: rgb(0, 0, 0);\n"
-"    background-color: rgb(180, 190, 200, 50);\n"
+"    background-color: rgb(180, 190, 200, 20);\n"
 "    border-color: rgb(180, 190, 200, 230);\n"
 "    border-radius: 6px;\n"
 "}\n"
 "\n"
 "QListWidget::item:selected {\n"
-"    border: 2px solid;\n"
-"    color: rgb(0, 0, 0);\n"
-"    background-color: rgb(0, 170, 0, 50);\n"
+"    border: 1px solid;\n"
+"    color: rgb(0, 170, 0);\n"
+"    background-color: rgb(0, 170, 0, 20);\n"
 "    border-color: rgb(0, 170, 0);\n"
 "    border-radius: 6px;\n"
 "\n"
@@ -194,8 +194,17 @@ public:
         CB_Classes->setObjectName(QString::fromUtf8("CB_Classes"));
         CB_Classes->setMinimumSize(QSize(0, 38));
         CB_Classes->setFont(font1);
+        CB_Classes->setFocusPolicy(Qt::NoFocus);
+        CB_Classes->setStyleSheet(QString::fromUtf8(" QComboBox QAbstractItemView {\n"
+"    outline: 1px solid;\n"
+"    outline-color: rgb(85, 170, 255);\n"
+"    selection-background-color: rgb(85, 170, 255, 20);\n"
+"    border-radius: 6px;\n"
+"    selection-color: rgb(85, 170, 255);\n"
+"}"));
         CB_Classes->setEditable(false);
         CB_Classes->setMaxVisibleItems(100);
+        CB_Classes->setSizeAdjustPolicy(QComboBox::AdjustToContents);
 
         horizontalLayout->addWidget(CB_Classes);
 
@@ -203,6 +212,13 @@ public:
         CB_Scripts->setObjectName(QString::fromUtf8("CB_Scripts"));
         CB_Scripts->setMinimumSize(QSize(0, 38));
         CB_Scripts->setFont(font1);
+        CB_Scripts->setStyleSheet(QString::fromUtf8(" QComboBox QAbstractItemView {\n"
+"    outline: 1px solid;\n"
+"    outline-color: rgb(85, 170, 255);\n"
+"    selection-background-color: rgb(85, 170, 255, 20);\n"
+"    border-radius: 6px;\n"
+"    selection-color: rgb(85, 170, 255);\n"
+"}"));
         CB_Scripts->setEditable(false);
 
         horizontalLayout->addWidget(CB_Scripts);
@@ -311,8 +327,8 @@ public:
 "}\n"
 "\n"
 "QTableWidget::item {\n"
-"   border-top: 2px solid;\n"
-"	border-bottom: 2px solid;\n"
+"   border-top: 1px solid;\n"
+"	border-bottom: 1px solid;\n"
 "    color: rgb(0, 0, 0);\n"
 "    border-color: rgb(180, 190, 200, 0);\n"
 "\n"
@@ -320,18 +336,18 @@ public:
 "\n"
 "QTableWidget::item:hover\n"
 "{\n"
-"    border-top: 2px solid;\n"
-"	border-bottom: 2px solid;\n"
+"    border-top: 1px solid;\n"
+"	border-bottom: 1px solid;\n"
 "    color: rgb(0, 0, 0);\n"
 "    background-color: rgb(180, 190, 200, 0);\n"
 "    border-color: rgb(180, 190, 200, 0);\n"
 "}\n"
 "\n"
 "QTableWidget::item:selected {\n"
-"    border-top: 2px solid;\n"
-"	border-bottom: 2px solid;\n"
-"    color: rgb(0, 0, 0);\n"
-"    background-color: rgb(170, 0, 0, 50);\n"
+"    border-top: 1px solid;\n"
+"	border-bottom: 1px solid;\n"
+"    color: rgb(170, 0, 0);\n"
+"    background-color: rgb(170, 0, 0, 20);\n"
 "	 border-color: rgb(170, 0, 0);\n"
 "}\n"
 "\n"
