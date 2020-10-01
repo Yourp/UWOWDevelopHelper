@@ -150,7 +150,7 @@ void SettingsWindow::LoadConfig()
     Conf.endGroup();
 
     Conf.beginGroup("SQL");
-    ui->LE_SQLFileName->setText(Conf.value("SQLFileName", "spell_script_names").toString());
+    ui->LE_SQLFileName->setText(Conf.value("SQLFileName", "00_spell_script_names").toString());
     ui->LE_WorldSQLFolder->setText(Conf.value("WorldSQLFolder").toString());
     ui->LE_CharacterSQLFolder->setText(Conf.value("CharacterSQLFolder").toString());
     ui->LE_LoginSQLFolder->setText(Conf.value("LoginSQLFolder").toString());
