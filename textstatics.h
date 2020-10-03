@@ -21,10 +21,13 @@ public:
     static QString ReWriteBetweenIndexes(QString const* Where, QString const* Midle, int Start, int End);
 
     static int GetIndexOfClassEnd(QString const* Where, QString const ClassName);
+    static int GetIndexOfBodyEnd(QString const* Where, int Start);
 
     static QString ReplaceFirst(QString const& Where, QString const WhatReplace, QString const ReplaceTo, int StartIndex = 0);
 
     static void Split(QStringList& In, QString const& From, QChar EndLine, int Cicle);
+
+    static QString GetAllClasses(QString const& Where);
 };
 
 #endif // TEXTSTATICS_H

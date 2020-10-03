@@ -138,6 +138,8 @@ bool SpellScript::CheckPathAndFileValidation(const QString &Path, const QString 
     TStream.setCodec("UTF-8");
     QString FilesText = TStream.readAll();
 
+    file.close();
+
     return FilesText.contains(AddScriptFunctionName);
 }
 

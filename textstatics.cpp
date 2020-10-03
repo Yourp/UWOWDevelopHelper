@@ -63,27 +63,35 @@ QString CodeStatics::ReWriteBetweenIndexes(const QString *Where, const QString *
 
 int CodeStatics::GetIndexOfClassEnd(const QString *Where, const QString ClassName)
 {
-    int FieldsOpened = 0;
-    int CurrentIndex = GetIndexAfterString(Where, ClassName);
+    return GetIndexOfBodyEnd(Where, GetIndexAfterString(Where, ClassName));
+}
 
-    if (CurrentIndex < 0)
+int CodeStatics::GetIndexOfBodyEnd(const QString *Where, int Start)
+{
+    if (Start < 0)
     {
         return -1;
     }
 
-    CurrentIndex = GetIndexAfterString(Where, "{", CurrentIndex);
+    int End = GetIndexAfterString(Where, ";", Start);
+    Start = GetIndexAfterString(Where, "{", Start);
 
-    if (CurrentIndex < 0)
+    if (End < 0)
     {
         return -1;
     }
 
-    FieldsOpened++;
+    if (End < Start)
+    {
+        return End;
+    }
+
+    int FieldsOpened = 1;
 
     while (FieldsOpened != 0)
     {
-        int NextOpen = GetIndexAfterString(Where, "{", CurrentIndex);
-        int NextClose = GetIndexAfterString(Where, "}", CurrentIndex);
+        int NextOpen = GetIndexAfterString(Where, "{", Start);
+        int NextClose = GetIndexAfterString(Where, "}", Start);
 
         if (NextClose < 0)
         {
@@ -93,18 +101,18 @@ int CodeStatics::GetIndexOfClassEnd(const QString *Where, const QString ClassNam
         if (NextOpen < NextClose)
         {
             FieldsOpened++;
-            CurrentIndex = NextOpen;
+            Start = NextOpen;
         }
         else
         {
             FieldsOpened--;
-            CurrentIndex = NextClose;
+            Start = NextClose;
         }
     }
 
-    CurrentIndex = GetIndexAfterString(Where, ";", CurrentIndex);
+    Start = GetIndexAfterString(Where, ";", Start);
 
-    return CurrentIndex;
+    return Start;
 }
 
 QString CodeStatics::ReplaceFirst(const QString &Where, const QString WhatReplace, const QString ReplaceTo, int StartIndex)
@@ -141,6 +149,41 @@ void CodeStatics::Split(QStringList &In, const QString &From, QChar EndLine, int
         }
         In.push_back(row);
     }
+}
+
+QString CodeStatics::GetAllClasses(const QString &Where)
+{
+    QString Result;
+
+    int Start = 0;
+
+    while (Start >= 0)
+    {
+        Start = GetIndexAfterString(&Where, "\nclass ", Start);
+
+        if (Start > 0)
+        {
+            int End = GetIndexAfterString(&Where, " ", Start);
+            int semicolonEnd = GetIndexAfterString(&Where, ";", Start);
+
+            if (End > 0 && semicolonEnd > End)
+            {
+                Result += Where.mid(Start, End - Start) + ' ';
+                Start = GetIndexOfBodyEnd(&Where, End);
+                continue;
+            }
+
+            if (semicolonEnd < 0)
+            {
+                break;
+            }
+
+            Result += Where.mid(Start, semicolonEnd - Start);
+            Start = semicolonEnd;
+        }
+    }
+
+    return Result;
 }
 
 

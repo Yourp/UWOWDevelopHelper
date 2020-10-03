@@ -45,6 +45,8 @@ private slots:
 
     void on_A_UpdateDatabase_triggered();
 
+    void on_LE_ScriptName_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 

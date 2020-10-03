@@ -8,8 +8,11 @@
 class ClassName : public ObjectBase
 {
     QString ScriptsFilePath;
+    QString ScriptNamesInFile;
 
 public:
+
+
     ClassName() : ObjectBase() {}
     virtual ~ClassName() {}
 
@@ -17,6 +20,10 @@ public:
 
     QString const& GetScriptsFilePath() const { return ScriptsFilePath; }
     void SetScriptsFilePath(QString Str) { ScriptsFilePath = Str; }
+
+    void UpdateScriptNames(QString const& Path);
+    void AddScriptName(QString const& Name);
+    bool HasScriptClass(QString const& ScriptName);
 
     static QVector<ClassName*> const Classes;
 };

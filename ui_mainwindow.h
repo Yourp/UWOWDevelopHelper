@@ -25,6 +25,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -57,6 +58,7 @@ public:
     QPushButton *PB_AddRegister;
     QPushButton *PB_RemoveRegister;
     QTableWidget *TW_AddedRegisters;
+    QTextEdit *textEdit;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QToolBar *toolBar;
@@ -389,6 +391,9 @@ public:
 
         verticalLayout_2->addWidget(TW_AddedRegisters);
 
+        textEdit = new QTextEdit(Tabs);
+        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setGeometry(QRect(70, 530, 801, 201));
         MainWindow->setCentralWidget(Tabs);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));

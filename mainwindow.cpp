@@ -55,10 +55,23 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_PB_GenerateCode_released()
 {
-    QString Path = ClassName::Classes[ui->CB_Classes->currentIndex()]->GetScriptsFilePath();
+    ClassName* Class = ClassName::Classes[ui->CB_Classes->currentIndex()];
+
+    if (!Class)
+    {
+        return;
+    }
+
+    QString Path = Class->GetScriptsFilePath();
 
     if (!SpellScript::CheckPathAndFileValidation(Path, "cpp"))
     {
+        return;
+    }
+
+    if (Class->HasScriptClass(GetScriptName()))
+    {
+        ui->PB_GenerateCode->setEnabled(false);
         return;
     }
 
@@ -81,16 +94,18 @@ void MainWindow::on_PB_GenerateCode_released()
     file.close();
 
     Script::Scripts[GetCurrentScriptIndex()]->HandleDataBase(this, SettingWindow);
-
-
+    Class->AddScriptName(GetScriptName());
+    ui->PB_GenerateCode->setEnabled(false);
 }
 
 void MainWindow::on_CB_Classes_currentIndexChanged(int index)
 {
-    if (ClassName const* Element = ClassName::Classes.at(index))
+    if (ClassName* Element = ClassName::Classes.at(index))
     {
+        Element->UpdateScriptNames(Element->GetScriptsFilePath());
         ui->LE_ScriptName->setText(Element->GetPrefix());
-        ui->PB_GenerateCode->setEnabled(SpellScript::CheckPathAndFileValidation(Element->GetScriptsFilePath(), "cpp"));
+        bool bIsEnabledGenerate = SpellScript::CheckPathAndFileValidation(Element->GetScriptsFilePath(), "cpp") && !Element->HasScriptClass(Element->GetPrefix());
+        ui->PB_GenerateCode->setEnabled(bIsEnabledGenerate);
     }
 }
 
@@ -242,4 +257,10 @@ void MainWindow::FillComboBox(QComboBox *Box, QVector<ObjectBase*> const& From, 
     }
 }
 
-
+void MainWindow::on_LE_ScriptName_textChanged(const QString &arg1)
+{
+    if (ClassName* Element = ClassName::Classes.at(ui->CB_Classes->currentIndex()))
+    {
+        ui->PB_GenerateCode->setEnabled(!Element->HasScriptClass(arg1));
+    }
+}
