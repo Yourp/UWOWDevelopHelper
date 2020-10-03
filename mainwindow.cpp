@@ -16,7 +16,17 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->TW_AddedRegisters->horizontalHeader()->setVisible(true);
     ui->TW_AddedRegisters->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Fixed);
-    ui->LE_SpellID->setValidator(new QIntValidator(0, 99999999, this));
+
+    QString Range = "^[0-9]{1,6}";
+
+    for (int var = 0; var < 20; ++var)
+    {
+        Range += " [0-9]{1,6}";
+    }
+    Range += "$";
+
+    ui->LE_SpellIDs->setValidator(new QRegExpValidator(QRegExp(Range), this));
+
     setFixedSize(size());
 
     SettingWindow = new SettingsWindow(this);
@@ -92,7 +102,6 @@ void MainWindow::on_PB_AddRegister_released()
     {
         return;
     }
-
 
     if (SpellScript const* CastedSpellScript = dynamic_cast<SpellScript const*>(Script::Scripts[GetCurrentScriptIndex()]))
     {
@@ -203,19 +212,11 @@ void MainWindow::on_CB_Scripts_currentIndexChanged(int index)
     ui->TW_AddedRegisters->clearContents();
     ui->TW_AddedRegisters->setRowCount(0);
     Script::Scripts[index]->FillOptionsListWidget(ui->LW_StaticRegisters);
-
-    if (SpellScript* SC = dynamic_cast<SpellScript*>(Script::Scripts[index]))
-    {
-        SC->SetSpellID(ui->LE_SpellID->text());
-    }
 }
 
-void MainWindow::on_LE_SpellID_textChanged(const QString &arg1)
+void MainWindow::on_LE_SpellIDs_textChanged(const QString &arg1)
 {
-    if (SpellScript* SC = dynamic_cast<SpellScript*>(Script::Scripts[GetCurrentScriptIndex()]))
-    {
-        SC->SetSpellID(arg1);
-    }
+    SpellScript::SetSpellID(arg1);
 }
 
 void MainWindow::on_A_UpdateDatabase_triggered()

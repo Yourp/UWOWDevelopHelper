@@ -48,7 +48,7 @@ public:
     QComboBox *CB_Scripts;
     QFormLayout *formLayout;
     QLabel *label_2;
-    QLineEdit *LE_SpellID;
+    QLineEdit *LE_SpellIDs;
     QLabel *label;
     QLineEdit *LE_ScriptName;
     QLabel *label_3;
@@ -67,7 +67,7 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setWindowModality(Qt::NonModal);
         MainWindow->setEnabled(true);
-        MainWindow->resize(631, 606);
+        MainWindow->resize(906, 823);
         MainWindow->setContextMenuPolicy(Qt::NoContextMenu);
         QIcon icon;
         icon.addFile(QString::fromUtf8("Icons/ProgramMain.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -235,12 +235,10 @@ public:
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
 
-        LE_SpellID = new QLineEdit(layoutWidget1);
-        LE_SpellID->setObjectName(QString::fromUtf8("LE_SpellID"));
-        LE_SpellID->setMaximumSize(QSize(70, 16777215));
-        LE_SpellID->setMaxLength(10);
+        LE_SpellIDs = new QLineEdit(layoutWidget1);
+        LE_SpellIDs->setObjectName(QString::fromUtf8("LE_SpellIDs"));
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, LE_SpellID);
+        formLayout->setWidget(0, QFormLayout::FieldRole, LE_SpellIDs);
 
         label = new QLabel(layoutWidget1);
         label->setObjectName(QString::fromUtf8("label"));
@@ -251,7 +249,6 @@ public:
 
         LE_ScriptName = new QLineEdit(layoutWidget1);
         LE_ScriptName->setObjectName(QString::fromUtf8("LE_ScriptName"));
-        LE_ScriptName->setMinimumSize(QSize(128, 0));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, LE_ScriptName);
 
@@ -398,7 +395,7 @@ public:
         MainWindow->setStatusBar(statusbar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 631, 22));
+        menuBar->setGeometry(QRect(0, 0, 906, 22));
         menuBar->setContextMenuPolicy(Qt::NoContextMenu);
         MainWindow->setMenuBar(menuBar);
         toolBar = new QToolBar(MainWindow);
@@ -431,7 +428,7 @@ public:
         Settings->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         A_UpdateDatabase->setText(QCoreApplication::translate("MainWindow", "UpdateDatabase", nullptr));
         PB_GenerateCode->setText(QCoreApplication::translate("MainWindow", "Generate", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Spells ID:", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Spells IDs:", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Script Name:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Function Name:", nullptr));
         PB_AddRegister->setText(QCoreApplication::translate("MainWindow", "Add Register", nullptr));

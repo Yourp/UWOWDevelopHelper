@@ -1,4 +1,5 @@
 #include <QListWidget>
+//#include <QStringList>
 #include "spellscript.h"
 #include "textstatics.h"
 #include "mainwindow.h"
@@ -6,7 +7,7 @@
 #include "DataBase/databaseconnectorstatics.h"
 #include "DataBase/databaseupdaterstatics.h"
 
-
+QString SpellScript::SpellID;
 
 void SpellScript::FillOptionsListWidget(QListWidget* LW)
 {
@@ -84,9 +85,13 @@ void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
         return;
     }
 
-    QString AddNew = "DELETE FROM `spell_script_names` WHERE (`ScriptName`='" + MW->GetScriptName() + "');";
-    AddNew += "\n";
-    AddNew += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + SpellID + "', '" + MW->GetScriptName() + "');\n";
+    QStringList SpellIDList = SpellID.split(' ', Qt::SkipEmptyParts);
+    QString AddNew;
+
+    for (auto const& Itr : SpellIDList)
+    {
+        AddNew += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + Itr + "', '" + MW->GetScriptName() + "');\n";
+    }
 
     DatabaseConnectorStatics::World.Push(AddNew);
 

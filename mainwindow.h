@@ -41,7 +41,7 @@ private slots:
 
     void on_CB_Scripts_currentIndexChanged(int index);
 
-    void on_LE_SpellID_textChanged(const QString &arg1);
+    void on_LE_SpellIDs_textChanged(const QString &arg1);
 
     void on_A_UpdateDatabase_triggered();
 

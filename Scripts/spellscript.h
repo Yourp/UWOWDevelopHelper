@@ -30,14 +30,14 @@ public:
 
     virtual void HandleDataBase(class MainWindow const* MW, class SettingsWindow const* SW) override;
 
-    void SetSpellID(QString ID) { SpellID = ID; }
+    static void SetSpellID(QString ID) { SpellID = ID; }
 
     static bool CheckPathAndFileValidation(QString const& Path, QString const& Extension);
 
 protected:
 
     QVector<ScriptRegisterBase*> StaticRegisters;
-    QString SpellID;
+    static QString SpellID;
 };
 
 #endif // SPELLSCRIPT_H
