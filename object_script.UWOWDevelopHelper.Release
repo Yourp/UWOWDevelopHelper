@@ -6,6 +6,8 @@ release/databaseupdaterstatics.o
 release/spellcastfn.o
 release/spelleffectfn.o
 release/spellhitfn.o
+release/commit.o
+release/salarystatics.o
 release/spellscript.o
 release/ssaura.o
 release/ssspell.o
@@ -14,10 +16,12 @@ release/settingbase.o
 release/lineeditwithicon.o
 release/main.o
 release/mainwindow.o
+release/payroll.o
 release/script.o
 release/scriptregister.o
 release/settingswindow.o
 release/statictools.o
 release/textstatics.o
 release/moc_mainwindow.o
+release/moc_payroll.o
 release/moc_settingswindow.o

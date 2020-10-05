@@ -51,6 +51,7 @@ private:
     Ui::MainWindow *ui;
 
     class SettingsWindow* SettingWindow;
+    class Payroll* PayrollWindow;
 
     void FillComboBox(class QComboBox* Box, QVector<class ObjectBase*> const& From, QSize Size);
 

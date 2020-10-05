@@ -24,6 +24,8 @@ SOURCES += \
     Registers/Spell/spellcastfn.cpp \
     Registers/Spell/spelleffectfn.cpp \
     Registers/Spell/spellhitfn.cpp \
+    Salary/commit.cpp \
+    Salary/salarystatics.cpp \
     Scripts/spellscript.cpp \
     Scripts/ssaura.cpp \
     Scripts/ssspell.cpp \
@@ -32,6 +34,7 @@ SOURCES += \
     SpecialsWidgets/lineeditwithicon.cpp \
     main.cpp \
     mainwindow.cpp \
+    payroll.cpp \
     script.cpp \
     scriptregister.cpp \
     settingswindow.cpp \
@@ -48,6 +51,8 @@ HEADERS += \
     Registers/Spell/spellcastfn.h \
     Registers/Spell/spelleffectfn.h \
     Registers/Spell/spellhitfn.h \
+    Salary/commit.h \
+    Salary/salarystatics.h \
     Scripts/spellscript.h \
     Scripts/ssaura.h \
     Scripts/ssspell.h \
@@ -55,6 +60,7 @@ HEADERS += \
     Settings/settingbase.h \
     SpecialsWidgets/lineeditwithicon.h \
     mainwindow.h \
+    payroll.h \
     script.h \
     scriptregister.h \
     settingswindow.h \
@@ -63,6 +69,7 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
+    payroll.ui \
     settingswindow.ui
 
 TRANSLATIONS += \

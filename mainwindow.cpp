@@ -7,6 +7,7 @@
 #include "mainwindow.h"
 #include "settingswindow.h"
 #include "statictools.h"
+#include "payroll.h"
 
 
 
@@ -30,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     setFixedSize(size());
 
     SettingWindow = new SettingsWindow(this);
+    PayrollWindow = new Payroll(this);
 
     Registers.reserve(20);
 
@@ -45,6 +47,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 
     //SettingWindow->exec();
+
+    PayrollWindow->exec();
 }
 
 MainWindow::~MainWindow()

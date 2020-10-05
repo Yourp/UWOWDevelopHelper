@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>906</width>
-    <height>823</height>
+    <width>632</width>
+    <height>605</height>
    </rect>
   </property>
   <property name="contextMenuPolicy">
@@ -628,16 +628,6 @@ QTableWidget::item:selected {
      </item>
     </layout>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>530</y>
-      <width>801</width>
-      <height>201</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menuBar">
@@ -645,7 +635,7 @@ QTableWidget::item:selected {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>906</width>
+     <width>632</width>
      <height>22</height>
     </rect>
    </property>

@@ -25,7 +25,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -58,7 +57,6 @@ public:
     QPushButton *PB_AddRegister;
     QPushButton *PB_RemoveRegister;
     QTableWidget *TW_AddedRegisters;
-    QTextEdit *textEdit;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QToolBar *toolBar;
@@ -69,7 +67,7 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setWindowModality(Qt::NonModal);
         MainWindow->setEnabled(true);
-        MainWindow->resize(906, 823);
+        MainWindow->resize(632, 605);
         MainWindow->setContextMenuPolicy(Qt::NoContextMenu);
         QIcon icon;
         icon.addFile(QString::fromUtf8("Icons/ProgramMain.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -391,16 +389,13 @@ public:
 
         verticalLayout_2->addWidget(TW_AddedRegisters);
 
-        textEdit = new QTextEdit(Tabs);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(70, 530, 801, 201));
         MainWindow->setCentralWidget(Tabs);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 906, 22));
+        menuBar->setGeometry(QRect(0, 0, 632, 22));
         menuBar->setContextMenuPolicy(Qt::NoContextMenu);
         MainWindow->setMenuBar(menuBar);
         toolBar = new QToolBar(MainWindow);
