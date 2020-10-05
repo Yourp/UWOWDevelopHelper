@@ -1,21 +1,31 @@
 #include "salarystatics.h"
 #include "Salary/commit.h"
 #include "textstatics.h"
+#include <QProcess>
 
 QVector<Commit> SalaryStatics::Commits;
 
 
 
-void SalaryStatics::UpdateCommitsList(const QString &CommitsLog)
+void SalaryStatics::GetCommitsLog(QString &Log)
 {
-    if (CommitsLog.isEmpty())
-    {
-        return;
-    }
+    QProcess proc;
+    proc.setWorkingDirectory("c:/Users/Yourp/uWoW/735");
+    proc.start("C:\\Program Files\\Git\\bin\\bash.exe", {"-c", "git log --author=ysmart --date=iso -100"});
+    proc.waitForFinished();
+    Log = proc.readAll();
+    proc.close();
+}
+
+void SalaryStatics::UpdateCommitsList()
+{
+    QString CommitsLog;
+    GetCommitsLog(CommitsLog);
+
+    Commits.clear();
 
     int Start = 0;
     int End = 0;
-    QString Variable;
 
     while (true)
     {
@@ -50,4 +60,16 @@ void SalaryStatics::UpdateCommitsList(const QString &CommitsLog)
         com.SetMessage(CommitsLog.mid(Start, End - Start));
         Commits.push_back(com);
     }
+}
+
+const QString SalaryStatics::GetTotalSum()
+{
+    int Sum = 0;
+
+    for (auto const& Itr : Commits)
+    {
+        Sum += Itr.GetCost().toInt(nullptr, 0);
+    }
+
+    return QString::number(Sum) + " $";
 }

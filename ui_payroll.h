@@ -14,10 +14,10 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTableWidget>
-#include <QtWidgets/QTextEdit>
 
 QT_BEGIN_NAMESPACE
 
@@ -25,22 +25,22 @@ class Ui_Payroll
 {
 public:
     QTableWidget *TW_Payroll;
-    QTextEdit *TE_Name;
-    QTextEdit *TE_Comment;
     QSpinBox *SB_CommitCost;
     QPushButton *PB_OpenUrl;
     QPushButton *PB_GenerateReport;
     QLabel *label;
     QLabel *L_TotalSum;
+    QPlainTextEdit *PTE_Message;
+    QPlainTextEdit *PTE_Comment;
 
     void setupUi(QDialog *Payroll)
     {
         if (Payroll->objectName().isEmpty())
             Payroll->setObjectName(QString::fromUtf8("Payroll"));
-        Payroll->resize(1102, 689);
+        Payroll->resize(1121, 689);
         TW_Payroll = new QTableWidget(Payroll);
         TW_Payroll->setObjectName(QString::fromUtf8("TW_Payroll"));
-        TW_Payroll->setGeometry(QRect(10, 299, 1081, 381));
+        TW_Payroll->setGeometry(QRect(10, 299, 1101, 381));
         TW_Payroll->setMouseTracking(false);
         TW_Payroll->setTabletTracking(false);
         TW_Payroll->setFocusPolicy(Qt::NoFocus);
@@ -95,19 +95,14 @@ public:
         TW_Payroll->horizontalHeader()->setHighlightSections(true);
         TW_Payroll->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
         TW_Payroll->horizontalHeader()->setStretchLastSection(true);
+        TW_Payroll->verticalHeader()->setVisible(false);
         TW_Payroll->verticalHeader()->setCascadingSectionResizes(false);
         TW_Payroll->verticalHeader()->setHighlightSections(true);
         TW_Payroll->verticalHeader()->setProperty("showSortIndicator", QVariant(false));
         TW_Payroll->verticalHeader()->setStretchLastSection(false);
-        TE_Name = new QTextEdit(Payroll);
-        TE_Name->setObjectName(QString::fromUtf8("TE_Name"));
-        TE_Name->setGeometry(QRect(10, 100, 491, 181));
-        TE_Name->setReadOnly(true);
-        TE_Comment = new QTextEdit(Payroll);
-        TE_Comment->setObjectName(QString::fromUtf8("TE_Comment"));
-        TE_Comment->setGeometry(QRect(510, 100, 311, 121));
         SB_CommitCost = new QSpinBox(Payroll);
         SB_CommitCost->setObjectName(QString::fromUtf8("SB_CommitCost"));
+        SB_CommitCost->setEnabled(false);
         SB_CommitCost->setGeometry(QRect(840, 220, 51, 31));
         QFont font;
         font.setPointSize(10);
@@ -115,10 +110,13 @@ public:
         SB_CommitCost->setMaximum(999);
         PB_OpenUrl = new QPushButton(Payroll);
         PB_OpenUrl->setObjectName(QString::fromUtf8("PB_OpenUrl"));
+        PB_OpenUrl->setEnabled(false);
         PB_OpenUrl->setGeometry(QRect(770, 250, 61, 31));
+        PB_OpenUrl->setFont(font);
         PB_GenerateReport = new QPushButton(Payroll);
         PB_GenerateReport->setObjectName(QString::fromUtf8("PB_GenerateReport"));
         PB_GenerateReport->setGeometry(QRect(860, 50, 75, 23));
+        PB_GenerateReport->setFont(font);
         label = new QLabel(Payroll);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(920, 250, 91, 41));
@@ -141,8 +139,27 @@ public:
         L_TotalSum->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
         L_TotalSum->setMargin(0);
         L_TotalSum->setIndent(1);
+        PTE_Message = new QPlainTextEdit(Payroll);
+        PTE_Message->setObjectName(QString::fromUtf8("PTE_Message"));
+        PTE_Message->setGeometry(QRect(10, 90, 471, 161));
+        PTE_Message->setFont(font);
+        PTE_Message->setFocusPolicy(Qt::ClickFocus);
+        PTE_Message->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);\n"
+""));
+        PTE_Message->setTextInteractionFlags(Qt::TextSelectableByMouse);
+        PTE_Comment = new QPlainTextEdit(Payroll);
+        PTE_Comment->setObjectName(QString::fromUtf8("PTE_Comment"));
+        PTE_Comment->setGeometry(QRect(490, 90, 291, 101));
+        PTE_Comment->setFont(font);
+        PTE_Comment->setFocusPolicy(Qt::ClickFocus);
+        PTE_Comment->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);\n"
+""));
+        PTE_Comment->setTextInteractionFlags(Qt::TextEditorInteraction);
 
         retranslateUi(Payroll);
+
+        PB_OpenUrl->setDefault(true);
+
 
         QMetaObject::connectSlotsByName(Payroll);
     } // setupUi
@@ -151,9 +168,12 @@ public:
     {
         Payroll->setWindowTitle(QCoreApplication::translate("Payroll", "Dialog", nullptr));
         PB_OpenUrl->setText(QCoreApplication::translate("Payroll", "Open Url", nullptr));
+#if QT_CONFIG(shortcut)
+        PB_OpenUrl->setShortcut(QCoreApplication::translate("Payroll", "Return", nullptr));
+#endif // QT_CONFIG(shortcut)
         PB_GenerateReport->setText(QCoreApplication::translate("Payroll", "Report", nullptr));
         label->setText(QCoreApplication::translate("Payroll", "TOTAL SUM:", nullptr));
-        L_TotalSum->setText(QCoreApplication::translate("Payroll", "8888 $", nullptr));
+        L_TotalSum->setText(QCoreApplication::translate("Payroll", "0 $", nullptr));
     } // retranslateUi
 
 };

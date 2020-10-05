@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1102</width>
+    <width>1121</width>
     <height>689</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>10</x>
      <y>299</y>
-     <width>1081</width>
+     <width>1101</width>
      <height>381</height>
     </rect>
    </property>
@@ -122,6 +122,9 @@ QTableWidget::item:selected {
    <attribute name="horizontalHeaderStretchLastSection">
     <bool>true</bool>
    </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
    <attribute name="verticalHeaderCascadingSectionResizes">
     <bool>false</bool>
    </attribute>
@@ -135,30 +138,10 @@ QTableWidget::item:selected {
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QTextEdit" name="TE_Name">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>100</y>
-     <width>491</width>
-     <height>181</height>
-    </rect>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="TE_Comment">
-   <property name="geometry">
-    <rect>
-     <x>510</x>
-     <y>100</y>
-     <width>311</width>
-     <height>121</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QSpinBox" name="SB_CommitCost">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>840</x>
@@ -177,6 +160,9 @@ QTableWidget::item:selected {
    </property>
   </widget>
   <widget class="QPushButton" name="PB_OpenUrl">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>770</x>
@@ -185,8 +171,19 @@ QTableWidget::item:selected {
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Open Url</string>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="PB_GenerateReport">
@@ -197,6 +194,11 @@ QTableWidget::item:selected {
      <width>75</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Report</string>
@@ -248,7 +250,7 @@ QTableWidget::item:selected {
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>8888 $</string>
+    <string>0 $</string>
    </property>
    <property name="textFormat">
     <enum>Qt::AutoText</enum>
@@ -264,6 +266,56 @@ QTableWidget::item:selected {
    </property>
    <property name="indent">
     <number>1</number>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="PTE_Message">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>471</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(240, 240, 240);
+</string>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::TextSelectableByMouse</set>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="PTE_Comment">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>90</y>
+     <width>291</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(240, 240, 240);
+</string>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::TextEditorInteraction</set>
    </property>
   </widget>
  </widget>

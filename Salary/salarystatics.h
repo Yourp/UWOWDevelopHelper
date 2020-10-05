@@ -4,10 +4,14 @@
 
 class SalaryStatics
 {
+    static void GetCommitsLog(QString& Log);
+
 public:
     static QVector<class Commit> Commits;
 
-    static void UpdateCommitsList(QString const& CommitsLog);
+    static void UpdateCommitsList();
+
+    static QString const GetTotalSum();
 };
 
 #endif // SALARYSTATICS_H
