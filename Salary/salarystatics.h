@@ -12,6 +12,10 @@ public:
     static void UpdateCommitsList();
 
     static QString const GetTotalSum();
+
+    static void Load();
+
+    static void SaveAll();
 };
 
 #endif // SALARYSTATICS_H

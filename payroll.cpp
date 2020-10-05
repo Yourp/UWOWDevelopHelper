@@ -8,6 +8,7 @@
 #include <QUrl>
 #include <QString>
 
+
 enum TableColumnType
 {
     Message = 0,
@@ -49,6 +50,7 @@ Payroll::Payroll(QWidget *parent) :
 
 
     SalaryStatics::UpdateCommitsList();
+    SalaryStatics::Load();
 
     ui->TW_Payroll->setRowCount(SalaryStatics::Commits.size());
 
@@ -56,7 +58,10 @@ Payroll::Payroll(QWidget *parent) :
     {
         ui->TW_Payroll->setItem(i, 0, new QTableWidgetItem(SalaryStatics::Commits[i].GetMessage()));
         ui->TW_Payroll->setItem(i, 1, new QTableWidgetItem(SalaryStatics::Commits[i].GetDate()));
-        ui->TW_Payroll->setItem(i, 2, new QTableWidgetItem(SalaryStatics::Commits[i].GetComment()));
+
+        QTableWidgetItem* Comment = new QTableWidgetItem(SalaryStatics::Commits[i].GetComment());
+        Comment->setTextAlignment(Qt::AlignCenter);
+        ui->TW_Payroll->setItem(i, 2, Comment);
 
         QTableWidgetItem* Cost = new QTableWidgetItem(SalaryStatics::Commits[i].GetCost());
         Cost->setTextAlignment(Qt::AlignCenter);
@@ -72,6 +77,7 @@ Payroll::Payroll(QWidget *parent) :
 
 Payroll::~Payroll()
 {
+    SalaryStatics::SaveAll();
     delete ui;
 }
 
@@ -105,7 +111,8 @@ void Payroll::on_TW_Payroll_currentCellChanged(int currentRow, int, int, int)
         ui->PTE_Comment->clearFocus();
 
         ui->SB_CommitCost->setEnabled(true);
-        ui->SB_CommitCost->clearFocus();
+        ui->SB_CommitCost->setFocus();
+        ui->SB_CommitCost->selectAll();
 
         ui->PB_OpenUrl->setEnabled(true);
     }
@@ -150,7 +157,7 @@ void Payroll::on_SB_CommitCost_valueChanged(const QString &arg1)
 
         if (QTableWidgetItem* CommitCostItem = ui->TW_Payroll->item(Index, Price))
         {
-            CommitCostItem->setText(arg1 == '0' ? "" : arg1);
+            CommitCostItem->setText(SalaryStatics::Commits[Index].GetCost());
         }
     }
 }

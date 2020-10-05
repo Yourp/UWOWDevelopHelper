@@ -152,7 +152,11 @@ QTableWidget::item:selected {
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <family>Calibri</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
     </font>
    </property>
    <property name="maximum">
@@ -288,6 +292,15 @@ QTableWidget::item:selected {
    <property name="styleSheet">
     <string notr="true">background-color: rgb(240, 240, 240);
 </string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="midLineWidth">
+    <number>0</number>
    </property>
    <property name="textInteractionFlags">
     <set>Qt::TextSelectableByMouse</set>

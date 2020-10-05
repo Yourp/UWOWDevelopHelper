@@ -2,6 +2,7 @@
 #include "Salary/commit.h"
 #include "textstatics.h"
 #include <QProcess>
+#include <QSettings>
 
 QVector<Commit> SalaryStatics::Commits;
 
@@ -72,4 +73,36 @@ const QString SalaryStatics::GetTotalSum()
     }
 
     return QString::number(Sum) + " $";
+}
+
+void SalaryStatics::Load()
+{
+    QSettings Conf("SalaryData.ini", QSettings::IniFormat);
+
+    for (auto& Itr : Commits)
+    {
+        Itr.SetCost(Conf.value("Cost/" + Itr.GetName(), "0").toString());
+        Itr.SetComment(Conf.value("Comment/" + Itr.GetName(), "").toString());
+    }
+}
+
+void SalaryStatics::SaveAll()
+{
+    QSettings Conf("SalaryData.ini", QSettings::IniFormat);
+
+    Conf.remove("Cost");
+    Conf.remove("Comment");
+
+    for (auto& Itr : Commits)
+    {
+        if (!Itr.GetCost().isEmpty() && Itr.GetCost() != "0")
+        {
+            Conf.setValue("Cost/" + Itr.GetName(), Itr.GetCost());
+        }
+
+        if (!Itr.GetComment().isEmpty())
+        {
+            Conf.setValue("Comment/" + Itr.GetName(), Itr.GetComment());
+        }
+    }
 }
