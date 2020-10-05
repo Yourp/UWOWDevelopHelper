@@ -159,6 +159,9 @@ QTableWidget::item:selected {
      <bold>true</bold>
     </font>
    </property>
+   <property name="minimum">
+    <number>0</number>
+   </property>
    <property name="maximum">
     <number>999</number>
    </property>
@@ -329,6 +332,41 @@ QTableWidget::item:selected {
    </property>
    <property name="textInteractionFlags">
     <set>Qt::TextEditorInteraction</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PB_SendNewMonth">
+   <property name="geometry">
+    <rect>
+     <x>664</x>
+     <y>40</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="text">
+    <string>Send New Month </string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PB_RefreshCommits">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>30</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Refresh Commits</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

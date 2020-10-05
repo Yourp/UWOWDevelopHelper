@@ -1,4 +1,5 @@
 #include "payroll.h"
+#include "payroll.h"
 #include "ui_payroll.h"
 #include "Salary/salarystatics.h"
 #include "Salary/commit.h"
@@ -26,7 +27,6 @@ Payroll::Payroll(QWidget *parent) :
 
     ui->TW_Payroll->setColumnCount(ColumnTypeMax);
 
-
     ui->TW_Payroll->setHorizontalHeaderLabels(QStringList() << "Message" << "Date" << "Comment" << "Price");
     ui->TW_Payroll->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui->TW_Payroll->verticalHeader()->setDefaultSectionSize(15);
@@ -48,31 +48,11 @@ Payroll::Payroll(QWidget *parent) :
     pWidget->setLayout(pLayout);
     ui->TW_Payroll->setCellWidget(3, 3, pWidget);
 
-
     SalaryStatics::UpdateCommitsList();
-    SalaryStatics::Load();
+    FillTableWidget();
+    ui->L_TotalSum->setText(SalaryStatics::GetTotalSum());
 
-    ui->TW_Payroll->setRowCount(SalaryStatics::Commits.size());
-
-    for (int i = 0; i < SalaryStatics::Commits.size(); ++i)
-    {
-        ui->TW_Payroll->setItem(i, 0, new QTableWidgetItem(SalaryStatics::Commits[i].GetMessage()));
-        ui->TW_Payroll->setItem(i, 1, new QTableWidgetItem(SalaryStatics::Commits[i].GetDate()));
-
-        QTableWidgetItem* Comment = new QTableWidgetItem(SalaryStatics::Commits[i].GetComment());
-        Comment->setTextAlignment(Qt::AlignCenter);
-        ui->TW_Payroll->setItem(i, 2, Comment);
-
-        QTableWidgetItem* Cost = new QTableWidgetItem(SalaryStatics::Commits[i].GetCost());
-        Cost->setTextAlignment(Qt::AlignCenter);
-        QFont font("Calibri", 12);
-        font.setBold(true);
-        font.setItalic(true);
-        Cost->setFont(font);
-        ui->TW_Payroll->setItem(i, 3, Cost);
-    }
-
-    ui->TW_Payroll->setCurrentCell(0, 0);
+    connect(ui->PB_RefreshCommits, SIGNAL(clicked()), this, SLOT(RefreshCommits()));
 }
 
 Payroll::~Payroll()
@@ -83,9 +63,13 @@ Payroll::~Payroll()
 
 void Payroll::on_PB_OpenUrl_clicked()
 {
-    int Index = ui->TW_Payroll->currentRow();
-    QString url = "https://bitbucket.org/blackmanos/legioncore/commits/" + SalaryStatics::Commits[Index].GetName();
-    QDesktopServices::openUrl(QUrl(url, QUrl::StrictMode));
+    QItemSelectionModel *selectionModel = ui->TW_Payroll->selectionModel();
+
+    foreach(QModelIndex index, selectionModel->selectedRows())
+    {
+        QString url = "https://bitbucket.org/blackmanos/legioncore/commits/" + SalaryStatics::Commits[index.row()].GetName();
+        QDesktopServices::openUrl(QUrl(url, QUrl::StrictMode));
+    }
 }
 
 void Payroll::on_TW_Payroll_currentCellChanged(int currentRow, int, int, int)
@@ -115,6 +99,7 @@ void Payroll::on_TW_Payroll_currentCellChanged(int currentRow, int, int, int)
         ui->SB_CommitCost->selectAll();
 
         ui->PB_OpenUrl->setEnabled(true);
+        ui->PB_SendNewMonth->setEnabled(true);
     }
     else
     {
@@ -123,6 +108,7 @@ void Payroll::on_TW_Payroll_currentCellChanged(int currentRow, int, int, int)
         ui->PTE_Comment->setEnabled(false);
         ui->PB_OpenUrl->setEnabled(false);
         ui->SB_CommitCost->setEnabled(false);
+        ui->PB_SendNewMonth->setEnabled(false);
     }
 }
 
@@ -138,7 +124,7 @@ void Payroll::on_PTE_Comment_textChanged()
         {
             SalaryStatics::Commits[Index].SetComment(text);
 
-            if (QTableWidgetItem* CommentItem = ui->TW_Payroll->item(Index, 2))
+            if (QTableWidgetItem* CommentItem = ui->TW_Payroll->item(Index, Comment))
             {
                 CommentItem->setText(text);
             }
@@ -160,4 +146,50 @@ void Payroll::on_SB_CommitCost_valueChanged(const QString &arg1)
             CommitCostItem->setText(SalaryStatics::Commits[Index].GetCost());
         }
     }
+}
+
+void Payroll::on_PB_SendNewMonth_clicked()
+{
+    int Index = ui->TW_Payroll->currentRow();
+    SalaryStatics::LastCommit = SalaryStatics::Commits[Index].GetName();
+    RefreshCommits();
+}
+
+void Payroll::FillTableWidget()
+{
+    ui->TW_Payroll->setRowCount(SalaryStatics::Commits.size());
+
+    for (int i = 0; i < SalaryStatics::Commits.size(); ++i)
+    {
+        ui->TW_Payroll->setItem(i, Message, new QTableWidgetItem(SalaryStatics::Commits[i].GetMessage()));
+        ui->TW_Payroll->setItem(i, Date, new QTableWidgetItem(SalaryStatics::Commits[i].GetDate()));
+
+        QTableWidgetItem* CommentItem = new QTableWidgetItem(SalaryStatics::Commits[i].GetComment());
+        CommentItem->setTextAlignment(Qt::AlignCenter);
+        ui->TW_Payroll->setItem(i, Comment, CommentItem);
+
+        QTableWidgetItem* Cost = new QTableWidgetItem(SalaryStatics::Commits[i].GetCost());
+        Cost->setTextAlignment(Qt::AlignCenter);
+        QFont font("Calibri", 12);
+        font.setBold(true);
+        font.setItalic(true);
+        Cost->setFont(font);
+        ui->TW_Payroll->setItem(i, Price, Cost);
+    }
+
+    ui->TW_Payroll->setCurrentCell(0, 0);
+}
+
+void Payroll::RefreshCommits()
+{
+    SalaryStatics::SaveAll();
+    ui->TW_Payroll->clearContents();
+    SalaryStatics::UpdateCommitsList();
+    FillTableWidget();
+    ui->L_TotalSum->setText(SalaryStatics::GetTotalSum());
+}
+
+void Payroll::on_PB_GenerateReport_clicked()
+{
+    SalaryStatics::GenerateReport();
 }

@@ -13,9 +13,11 @@ public:
 
     static QString const GetTotalSum();
 
-    static void Load();
-
     static void SaveAll();
+
+    static void GenerateReport();
+
+    static QString LastCommit;
 };
 
 #endif // SALARYSTATICS_H

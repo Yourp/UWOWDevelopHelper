@@ -32,6 +32,8 @@ public:
     QLabel *L_TotalSum;
     QPlainTextEdit *PTE_Message;
     QPlainTextEdit *PTE_Comment;
+    QPushButton *PB_SendNewMonth;
+    QPushButton *PB_RefreshCommits;
 
     void setupUi(QDialog *Payroll)
     {
@@ -111,6 +113,7 @@ public:
         font.setItalic(true);
         font.setWeight(75);
         SB_CommitCost->setFont(font);
+        SB_CommitCost->setMinimum(0);
         SB_CommitCost->setMaximum(999);
         PB_OpenUrl = new QPushButton(Payroll);
         PB_OpenUrl->setObjectName(QString::fromUtf8("PB_OpenUrl"));
@@ -164,6 +167,15 @@ public:
         PTE_Comment->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);\n"
 ""));
         PTE_Comment->setTextInteractionFlags(Qt::TextEditorInteraction);
+        PB_SendNewMonth = new QPushButton(Payroll);
+        PB_SendNewMonth->setObjectName(QString::fromUtf8("PB_SendNewMonth"));
+        PB_SendNewMonth->setGeometry(QRect(664, 40, 141, 31));
+        PB_SendNewMonth->setFocusPolicy(Qt::NoFocus);
+        PB_SendNewMonth->setAutoDefault(false);
+        PB_RefreshCommits = new QPushButton(Payroll);
+        PB_RefreshCommits->setObjectName(QString::fromUtf8("PB_RefreshCommits"));
+        PB_RefreshCommits->setGeometry(QRect(330, 30, 131, 31));
+        PB_RefreshCommits->setAutoDefault(false);
 
         retranslateUi(Payroll);
 
@@ -183,6 +195,8 @@ public:
         PB_GenerateReport->setText(QCoreApplication::translate("Payroll", "Report", nullptr));
         label->setText(QCoreApplication::translate("Payroll", "TOTAL SUM:", nullptr));
         L_TotalSum->setText(QCoreApplication::translate("Payroll", "0 $", nullptr));
+        PB_SendNewMonth->setText(QCoreApplication::translate("Payroll", "Send New Month ", nullptr));
+        PB_RefreshCommits->setText(QCoreApplication::translate("Payroll", "Refresh Commits", nullptr));
     } // retranslateUi
 
 };

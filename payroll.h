@@ -23,8 +23,16 @@ private slots:
 
     void on_SB_CommitCost_valueChanged(const QString &arg1);
 
+    void on_PB_SendNewMonth_clicked();
+
+    void RefreshCommits();
+
+    void on_PB_GenerateReport_clicked();
+
 private:
     Ui::Payroll *ui;
+
+    void FillTableWidget();
 };
 
 #endif // PAYROLL_H

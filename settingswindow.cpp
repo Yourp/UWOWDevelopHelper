@@ -138,6 +138,7 @@ void SettingsWindow::EditButtonsWhenDisconnected()
 void SettingsWindow::LoadConfig()
 {
     QSettings Conf("Config.ini", QSettings::IniFormat);
+    Conf.setIniCodec("UTF-8");
 
     Conf.beginGroup("Database");
     ui->LE_HostName->setText(Conf.value("HostName").toString());
@@ -172,6 +173,7 @@ void SettingsWindow::LoadConfig()
 void SettingsWindow::SaveConfig()
 {
     QSettings Conf("Config.ini", QSettings::IniFormat);
+    Conf.setIniCodec("UTF-8");
 
     Conf.beginGroup("Database");
     SaveToConfig(Conf, "HostName", ui->LE_HostName->text());

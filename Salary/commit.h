@@ -4,6 +4,8 @@
 
 class Commit
 {
+    friend class SalaryStatics;
+
     QString Name;
     QString Message;
     QString Date;
