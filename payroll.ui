@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Payroll Control</string>
   </property>
   <widget class="QTableWidget" name="TW_Payroll">
    <property name="geometry">
@@ -337,7 +337,7 @@ QTableWidget::item:selected {
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>960</x>
@@ -420,7 +420,7 @@ QTableWidget::item:selected {
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>

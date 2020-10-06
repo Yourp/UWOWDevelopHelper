@@ -37,11 +37,11 @@ public:
     QPushButton *PB_RefreshCommits;
     QPushButton *PB_OpenUrl;
     QSpinBox *SB_CommitCost;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_4;
     QLabel *L_TotalCommits;
-    QWidget *widget1;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_2;
@@ -196,14 +196,14 @@ public:
 
         horizontalLayout_2->addWidget(SB_CommitCost);
 
-        widget = new QWidget(Payroll);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(960, 30, 104, 20));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        layoutWidget1 = new QWidget(Payroll);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(960, 30, 104, 20));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_3->setSpacing(14);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label_4 = new QLabel(widget);
+        label_4 = new QLabel(layoutWidget1);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         QFont font5;
         font5.setFamily(QString::fromUtf8("Calibri"));
@@ -216,7 +216,7 @@ public:
 
         horizontalLayout_3->addWidget(label_4);
 
-        L_TotalCommits = new QLabel(widget);
+        L_TotalCommits = new QLabel(layoutWidget1);
         L_TotalCommits->setObjectName(QString::fromUtf8("L_TotalCommits"));
         L_TotalCommits->setMaximumSize(QSize(16777215, 15));
         QFont font6;
@@ -238,16 +238,16 @@ public:
 
         horizontalLayout_3->addWidget(L_TotalCommits);
 
-        widget1 = new QWidget(Payroll);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(10, 50, 821, 241));
-        horizontalLayout = new QHBoxLayout(widget1);
+        layoutWidget2 = new QWidget(Payroll);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(10, 50, 821, 241));
+        horizontalLayout = new QHBoxLayout(layoutWidget2);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(0);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label_2 = new QLabel(widget1);
+        label_2 = new QLabel(layoutWidget2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setMinimumSize(QSize(0, 20));
         label_2->setMaximumSize(QSize(16777215, 20));
@@ -255,7 +255,7 @@ public:
 
         verticalLayout_2->addWidget(label_2);
 
-        PTE_Message = new QPlainTextEdit(widget1);
+        PTE_Message = new QPlainTextEdit(layoutWidget2);
         PTE_Message->setObjectName(QString::fromUtf8("PTE_Message"));
         PTE_Message->setMinimumSize(QSize(500, 0));
         PTE_Message->setFont(font3);
@@ -280,7 +280,7 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        label_3 = new QLabel(widget1);
+        label_3 = new QLabel(layoutWidget2);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setMinimumSize(QSize(0, 20));
         label_3->setMaximumSize(QSize(16777215, 20));
@@ -288,7 +288,7 @@ public:
 
         verticalLayout->addWidget(label_3);
 
-        PTE_Comment = new QPlainTextEdit(widget1);
+        PTE_Comment = new QPlainTextEdit(layoutWidget2);
         PTE_Comment->setObjectName(QString::fromUtf8("PTE_Comment"));
         PTE_Comment->setMaximumSize(QSize(350, 16777215));
         PTE_Comment->setFont(font3);
@@ -317,7 +317,7 @@ public:
 
     void retranslateUi(QDialog *Payroll)
     {
-        Payroll->setWindowTitle(QCoreApplication::translate("Payroll", "Dialog", nullptr));
+        Payroll->setWindowTitle(QCoreApplication::translate("Payroll", "Payroll Control", nullptr));
         PB_GenerateReport->setText(QCoreApplication::translate("Payroll", "Report", nullptr));
         label->setText(QCoreApplication::translate("Payroll", "TOTAL SUM:", nullptr));
         L_TotalSum->setText(QCoreApplication::translate("Payroll", "0 $", nullptr));
