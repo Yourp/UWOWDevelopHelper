@@ -296,7 +296,7 @@ public:
         PTE_Comment->setStyleSheet(QString::fromUtf8("QPlainTextEdit\n"
 "{\n"
 "	border: 1px solid;\n"
-"	border-radius: 4px;\n"
+"	border-radius: 6px;\n"
 "	background-color: rgb(240, 240, 240);\n"
 "}"));
         PTE_Comment->setTextInteractionFlags(Qt::TextEditorInteraction);
