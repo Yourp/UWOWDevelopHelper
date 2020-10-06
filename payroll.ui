@@ -228,6 +228,9 @@ QTableWidget::item:selected {
    </property>
   </widget>
   <widget class="QPushButton" name="PB_SendNewMonth">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>10</x>

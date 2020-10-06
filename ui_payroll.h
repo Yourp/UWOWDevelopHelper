@@ -152,6 +152,7 @@ public:
         L_TotalSum->setIndent(1);
         PB_SendNewMonth = new QPushButton(Payroll);
         PB_SendNewMonth->setObjectName(QString::fromUtf8("PB_SendNewMonth"));
+        PB_SendNewMonth->setEnabled(false);
         PB_SendNewMonth->setGeometry(QRect(10, 10, 101, 21));
         PB_SendNewMonth->setFocusPolicy(Qt::NoFocus);
         PB_SendNewMonth->setAutoDefault(false);
