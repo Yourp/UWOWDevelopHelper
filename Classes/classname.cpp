@@ -49,5 +49,5 @@ void ClassName::AddScriptName(const QString &Name)
 
 bool ClassName::HasScriptClass(const QString &ScriptName)
 {
-    return !ScriptName.isEmpty() && ScriptNamesInFile.contains(ScriptName);
+    return !ScriptName.isEmpty() && ScriptNamesInFile.contains(ScriptName + ' ');
 }
