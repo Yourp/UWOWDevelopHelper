@@ -11,6 +11,7 @@
 
 const QString SettingsWindow::VMark = "Icons/ok.png";
 const QString SettingsWindow::XMark = "Icons/not_ok.png";
+const QString SettingsWindow::ConfigFileName = "Config.ini";
 
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
 {
@@ -137,7 +138,7 @@ void SettingsWindow::EditButtonsWhenDisconnected()
 
 void SettingsWindow::LoadConfig()
 {
-    QSettings Conf("Config.ini", QSettings::IniFormat);
+    QSettings Conf(ConfigFileName, QSettings::IniFormat);
     Conf.setIniCodec("UTF-8");
 
     Conf.beginGroup("Database");
@@ -172,7 +173,7 @@ void SettingsWindow::LoadConfig()
 
 void SettingsWindow::SaveConfig()
 {
-    QSettings Conf("Config.ini", QSettings::IniFormat);
+    QSettings Conf(ConfigFileName, QSettings::IniFormat);
     Conf.setIniCodec("UTF-8");
 
     Conf.beginGroup("Database");
@@ -219,6 +220,29 @@ void SettingsWindow::SaveToConfig(QSettings &Conf, const QString &Key, const QVa
     Conf.setValue(Key, Veriable);
 }
 
+void SettingsWindow::SaveToConfig(QSettings &Conf, const QString &Group, const QString &Key, const QVariant &Veriable)
+{
+    Conf.beginGroup(Group);
+    SaveToConfig(Conf, Key, Veriable);
+    Conf.endGroup();
+}
+
+void SettingsWindow::SaveToConfig(const QString &Group, const QString &Key, const QVariant &Veriable)
+{
+    QSettings Conf(ConfigFileName, QSettings::IniFormat);
+    Conf.setIniCodec("UTF-8");
+
+    SaveToConfig(Conf, Group, Key, Veriable);
+}
+
+void SettingsWindow::SaveToConfig(const QString &Key, const QVariant &Veriable)
+{
+    QSettings Conf(ConfigFileName, QSettings::IniFormat);
+    Conf.setIniCodec("UTF-8");
+
+    SaveToConfig(Conf, Key, Veriable);
+}
+
 void SettingsWindow::UpdateDatabasesLEIcons()
 {
     ui->LE_WorldDatabase->SetIcon(GetValidationIcon(DatabaseConnectorStatics::World.IsOpen()));
@@ -228,7 +252,7 @@ void SettingsWindow::UpdateDatabasesLEIcons()
 
 bool SettingsWindow::HasPayrollOption() const
 {
-    QSettings Conf("Config.ini", QSettings::IniFormat);
+    QSettings Conf(ConfigFileName, QSettings::IniFormat);
     Conf.setIniCodec("UTF-8");
 
     return Conf.value("WithPayroll", "0").toInt() > 0;

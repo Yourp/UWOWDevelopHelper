@@ -16,7 +16,7 @@ public:
     bool IsOpen() const { return Database.isOpen(); }
     bool Connect(QString DBName);
     bool Push(QString const& command);
-    bool Push(QStringList const& command);
+    void Push(QStringList const& command);
     void Disconnect();
 
 };

@@ -1,5 +1,5 @@
 #include "databaseupdaterstatics.h"
 
-DatabaseUpdater DatabaseUpdaterStatics::World;
-DatabaseUpdater DatabaseUpdaterStatics::Character;
-DatabaseUpdater DatabaseUpdaterStatics::Login;
+DatabaseUpdater DatabaseUpdaterStatics::World("World");
+DatabaseUpdater DatabaseUpdaterStatics::Character("Character");
+DatabaseUpdater DatabaseUpdaterStatics::Login("Login");

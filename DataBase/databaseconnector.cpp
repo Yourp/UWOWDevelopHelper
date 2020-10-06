@@ -34,7 +34,7 @@ bool DataBaseConnector::Push(QString const& command)
     return Query.exec(command);
 }
 
-bool DataBaseConnector::Push(QStringList const& command)
+void DataBaseConnector::Push(QStringList const& command)
 {
     QSqlQuery Query(Database);
 
@@ -46,6 +46,4 @@ bool DataBaseConnector::Push(QStringList const& command)
                 qDebug() << "Failed:" << Itr << "\nReason:" << Query.lastError();
         }
     }
-
-    return true;
 }

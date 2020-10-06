@@ -30,6 +30,13 @@ public:
 
     bool HasPayrollOption() const;
 
+    static void SaveToConfig(QSettings& Conf, QString const& Key, QString const& Text);
+    static void SaveToConfig(QSettings& Conf, QString const& Key, QVariant const& Veriable);
+    static void SaveToConfig(QSettings& Conf, QString const& Group, QString const& Key, QVariant const& Veriable);
+    static void SaveToConfig(QString const& Group, QString const& Key, QVariant const& Veriable);
+    static void SaveToConfig(QString const& Key, QVariant const& Veriable);
+
+    static const QString ConfigFileName;
     static const QString VMark;
     static const QString XMark;
 
@@ -60,8 +67,7 @@ private:
 
     void LoadConfig();
     void SaveConfig();
-    void SaveToConfig(QSettings& Conf, QString const& Key, QString const& Text);
-    void SaveToConfig(QSettings& Conf, QString const& Key, QVariant const& Veriable);
+
 
     void UpdateDatabasesLEIcons();
 

@@ -1741,7 +1741,19 @@ debug/databaseupdater.o: DataBase/databaseupdater.cpp DataBase/databaseupdater.h
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtSql/qsqlresult.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtSql/qtsqlversion.h \
 		F:/Programs/Qt/5.15.1/mingw81_64/include/QtSql/QSqlDatabase \
-		textstatics.h
+		textstatics.h \
+		settingswindow.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QDialog \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qdialog.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtCore/QString \
+		SpecialsWidgets/lineeditwithicon.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtWidgets/qlineedit.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qtextcursor.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qtextformat.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
+		F:/Programs/Qt/5.15.1/mingw81_64/include/QtGui/QIcon
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\databaseupdater.o DataBase\databaseupdater.cpp
 
 debug/databaseupdaterstatics.o: DataBase/databaseupdaterstatics.cpp DataBase/databaseupdaterstatics.h \

@@ -1,15 +1,20 @@
 #include "databaseupdater.h"
 #include "textstatics.h"
+#include "settingswindow.h"
 
-DatabaseUpdater::DatabaseUpdater()
+DatabaseUpdater::DatabaseUpdater(QString name) : Name(name)
 {
     LastUpdatesTime = 0;
 }
 
+void DatabaseUpdater::SetLastUpdatesTime(qint64 MSTime)
+{
+    LastUpdatesTime = MSTime;
+    SettingsWindow::SaveToConfig("SQL", Name + "/LastTimeUpdate", LastUpdatesTime);
+}
+
 void DatabaseUpdater::GetAllSQLsInOneStrings(QStringList& List)
 {
-    //QString Result;
-    //Result.reserve(1000000000);
     QString CheckFolder = Folder;
     QStringList ScanedDir = QDir(CheckFolder).entryList(QDir::Filter::Files, QDir::SortFlag::Time | QDir::SortFlag::Reversed);
 
@@ -66,18 +71,17 @@ bool DatabaseUpdater::HasNewSQLs()
 
 void DatabaseUpdater::Update(DataBaseConnector* Connector)
 {
-    quint64 t = QDateTime::currentMSecsSinceEpoch();
-    quint64 allt = t;
     QStringList List;
     List.reserve(1000000);
     GetAllSQLsInOneStrings(List);
-    SetLastUpdatesTime(QDateTime::currentMSecsSinceEpoch());
-    qDebug() << "reserve  " << QDateTime::currentMSecsSinceEpoch() - t;
-    t = QDateTime::currentMSecsSinceEpoch();
 
+    if (List.isEmpty())
+    {
+        return;
+    }
+
+    SetLastUpdatesTime(QDateTime::currentMSecsSinceEpoch());
     Connector->Push(List);
-    qDebug() << "Push " << QDateTime::currentMSecsSinceEpoch() - t;
-    qDebug() << "AllTime " << QDateTime::currentMSecsSinceEpoch() - allt;
 }
 
 
