@@ -677,6 +677,7 @@ QTableWidget::item:selected {
     <bool>false</bool>
    </attribute>
    <addaction name="A_UpdateDatabase"/>
+   <addaction name="A_Salary"/>
    <addaction name="separator"/>
    <addaction name="Settings"/>
   </widget>
@@ -716,6 +717,21 @@ QTableWidget::item:selected {
    </property>
    <property name="text">
     <string>UpdateDatabase</string>
+   </property>
+  </action>
+  <action name="A_Salary">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>Icons/Salary.png</normaloff>Icons/Salary.png</iconset>
+   </property>
+   <property name="text">
+    <string>Salary</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
   </action>
  </widget>

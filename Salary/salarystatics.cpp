@@ -1,5 +1,6 @@
 #include "salarystatics.h"
 #include "Salary/commit.h"
+#include "salarystatics.h"
 #include "textstatics.h"
 #include <QProcess>
 #include <QSettings>
@@ -82,7 +83,7 @@ void SalaryStatics::UpdateCommitsList()
     }
 }
 
-const QString SalaryStatics::GetTotalSum()
+int SalaryStatics::GetTotalSum()
 {
     int Sum = 0;
 
@@ -91,7 +92,7 @@ const QString SalaryStatics::GetTotalSum()
         Sum += Itr.GetCost().toInt(nullptr, 0);
     }
 
-    return QString::number(Sum) + " $";
+    return Sum;
 }
 
 void SalaryStatics::SaveAll()
@@ -160,7 +161,7 @@ void SalaryStatics::GenerateReport()
     }
 
     FilesText += "\n\n\n\n";
-    FilesText += "TOTAL SUM: " + GetTotalSum() + "\n";
+    FilesText += "TOTAL SUM: " + QString::number(GetTotalSum()) + " $\n";
 
     TStream << FilesText;
     file.close();

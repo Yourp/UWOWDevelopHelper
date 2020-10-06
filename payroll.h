@@ -15,6 +15,9 @@ public:
     explicit Payroll(QWidget *parent = nullptr);
     ~Payroll();
 
+    void showEvent(QShowEvent *Event) override;
+    void closeEvent(QCloseEvent *Event) override;
+
 private slots:
     void on_PB_OpenUrl_clicked();
     void on_TW_Payroll_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
@@ -33,6 +36,7 @@ private:
     Ui::Payroll *ui;
 
     void FillTableWidget();
+    void SendTotalSum();
 };
 
 #endif // PAYROLL_H

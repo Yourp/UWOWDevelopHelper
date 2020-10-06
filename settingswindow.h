@@ -28,6 +28,8 @@ public:
     QIcon GetValidationIcon(QString const& Path) const;
     QIcon GetValidationIcon(bool valid) const;
 
+    bool HasPayrollOption() const;
+
     static const QString VMark;
     static const QString XMark;
 
@@ -62,7 +64,6 @@ private:
     void SaveToConfig(QSettings& Conf, QString const& Key, QVariant const& Veriable);
 
     void UpdateDatabasesLEIcons();
-
 
 
 };

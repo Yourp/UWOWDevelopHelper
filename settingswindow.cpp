@@ -226,6 +226,13 @@ void SettingsWindow::UpdateDatabasesLEIcons()
     ui->LE_LoginDatabase->SetIcon(GetValidationIcon(DatabaseConnectorStatics::Login.IsOpen()));
 }
 
+bool SettingsWindow::HasPayrollOption() const
+{
+    QSettings Conf("Config.ini", QSettings::IniFormat);
+    Conf.setIniCodec("UTF-8");
+
+    return Conf.value("WithPayroll", "0").toInt() > 0;
+}
 
 void SettingsWindow::on_PB_Disconnect_clicked()
 {

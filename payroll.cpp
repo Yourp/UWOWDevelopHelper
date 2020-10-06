@@ -24,12 +24,15 @@ Payroll::Payroll(QWidget *parent) :
     ui(new Ui::Payroll)
 {
     ui->setupUi(this);
+    setFixedSize(size());
 
     ui->TW_Payroll->setColumnCount(ColumnTypeMax);
 
     ui->TW_Payroll->setHorizontalHeaderLabels(QStringList() << "Message" << "Date" << "Comment" << "Price");
+    ui->TW_Payroll->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     ui->TW_Payroll->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
-    ui->TW_Payroll->verticalHeader()->setDefaultSectionSize(15);
+    ui->TW_Payroll->verticalHeader()->setDefaultSectionSize(20);
+    ui->TW_Payroll->horizontalHeader()->setFixedHeight(22);
 
     ui->TW_Payroll->setColumnWidth(0, 700);
     ui->TW_Payroll->setColumnWidth(1, 110);
@@ -48,17 +51,30 @@ Payroll::Payroll(QWidget *parent) :
     pWidget->setLayout(pLayout);
     ui->TW_Payroll->setCellWidget(3, 3, pWidget);
 
-    SalaryStatics::UpdateCommitsList();
-    FillTableWidget();
-    ui->L_TotalSum->setText(SalaryStatics::GetTotalSum());
-
     connect(ui->PB_RefreshCommits, SIGNAL(clicked()), this, SLOT(RefreshCommits()));
 }
 
 Payroll::~Payroll()
 {
-    SalaryStatics::SaveAll();
     delete ui;
+}
+
+void Payroll::showEvent(QShowEvent *Event)
+{
+    SalaryStatics::UpdateCommitsList();
+    FillTableWidget();
+    SendTotalSum();
+    ui->L_TotalCommits->setNum(SalaryStatics::Commits.size());
+
+    QDialog::showEvent(Event);
+}
+
+void Payroll::closeEvent(QCloseEvent *Event)
+{
+    SalaryStatics::SaveAll();
+    ui->TW_Payroll->clearContents();
+
+    QDialog::closeEvent(Event);
 }
 
 void Payroll::on_PB_OpenUrl_clicked()
@@ -139,7 +155,7 @@ void Payroll::on_SB_CommitCost_valueChanged(const QString &arg1)
     if (SalaryStatics::Commits[Index].GetCost() != arg1)
     {
         SalaryStatics::Commits[Index].SetCost(arg1);
-        ui->L_TotalSum->setText(SalaryStatics::GetTotalSum());
+        SendTotalSum();
 
         if (QTableWidgetItem* CommitCostItem = ui->TW_Payroll->item(Index, Price))
         {
@@ -180,16 +196,26 @@ void Payroll::FillTableWidget()
     ui->TW_Payroll->setCurrentCell(0, 0);
 }
 
+void Payroll::SendTotalSum()
+{
+    int Sum = SalaryStatics::GetTotalSum();
+    float Coloring = qMin<float>((200.f / 500.f) * Sum, 200.f);
+    ui->L_TotalSum->setText(QString::number(Sum) + " $");
+    ui->L_TotalSum->setStyleSheet("color: rgb(0, " + QString::number(Coloring) + ", 0);");
+}
+
 void Payroll::RefreshCommits()
 {
     SalaryStatics::SaveAll();
     ui->TW_Payroll->clearContents();
     SalaryStatics::UpdateCommitsList();
     FillTableWidget();
-    ui->L_TotalSum->setText(SalaryStatics::GetTotalSum());
+    SendTotalSum();
+    ui->L_TotalCommits->setNum(SalaryStatics::Commits.size());
 }
 
 void Payroll::on_PB_GenerateReport_clicked()
 {
     SalaryStatics::GenerateReport();
 }
+

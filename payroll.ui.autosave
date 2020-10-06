@@ -549,7 +549,7 @@ QTableWidget::item:selected {
          <string notr="true">QPlainTextEdit
 {
 	border: 1px solid;
-	border-radius: 4px;
+	border-radius: 6px;
 	background-color: rgb(240, 240, 240);
 }</string>
         </property>

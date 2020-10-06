@@ -31,7 +31,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     setFixedSize(size());
 
     SettingWindow = new SettingsWindow(this);
-    PayrollWindow = new Payroll(this);
+    PayrollWindow = nullptr;
+
+    if (SettingWindow->HasPayrollOption())
+    {
+        PayrollWindow = new Payroll(this);
+        ui->A_Salary->setVisible(true);
+        ui->A_Salary->setEnabled(true);
+    }
 
     Registers.reserve(20);
 
@@ -44,11 +51,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     timer->start(2000);
     connect(timer, SIGNAL(timeout()), this, SLOT(OnTick()));
 
-
-
     //SettingWindow->exec();
-
-    PayrollWindow->exec();
+    //PayrollWindow->exec();
 }
 
 MainWindow::~MainWindow()
@@ -267,4 +271,14 @@ void MainWindow::on_LE_ScriptName_textChanged(const QString &arg1)
     {
         ui->PB_GenerateCode->setEnabled(!Element->HasScriptClass(arg1));
     }
+}
+
+void MainWindow::on_A_Salary_triggered()
+{
+    if (!PayrollWindow)
+    {
+        return;
+    }
+
+    PayrollWindow->exec();
 }

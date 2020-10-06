@@ -36,6 +36,7 @@ class Ui_MainWindow
 public:
     QAction *Settings;
     QAction *A_UpdateDatabase;
+    QAction *A_Salary;
     QWidget *Tabs;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
@@ -96,6 +97,13 @@ public:
         icon2.addFile(QString::fromUtf8("Icons/DBOn.png"), QSize(), QIcon::Normal, QIcon::Off);
         icon2.addFile(QString::fromUtf8("Icons/DBOff.png"), QSize(), QIcon::Disabled, QIcon::Off);
         A_UpdateDatabase->setIcon(icon2);
+        A_Salary = new QAction(MainWindow);
+        A_Salary->setObjectName(QString::fromUtf8("A_Salary"));
+        A_Salary->setEnabled(false);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8("Icons/Salary.png"), QSize(), QIcon::Normal, QIcon::Off);
+        A_Salary->setIcon(icon3);
+        A_Salary->setVisible(false);
         Tabs = new QWidget(MainWindow);
         Tabs->setObjectName(QString::fromUtf8("Tabs"));
         layoutWidget = new QWidget(Tabs);
@@ -176,10 +184,10 @@ public:
         font1.setPointSize(10);
         PB_GenerateCode->setFont(font1);
         PB_GenerateCode->setStyleSheet(QString::fromUtf8(""));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8("Icons/GenOn.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon3.addFile(QString::fromUtf8("Icons/GenOff.png"), QSize(), QIcon::Disabled, QIcon::Off);
-        PB_GenerateCode->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8("Icons/GenOn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon4.addFile(QString::fromUtf8("Icons/GenOff.png"), QSize(), QIcon::Disabled, QIcon::Off);
+        PB_GenerateCode->setIcon(icon4);
         PB_GenerateCode->setIconSize(QSize(30, 30));
         PB_GenerateCode->setCheckable(false);
         PB_GenerateCode->setAutoRepeatDelay(3000);
@@ -274,10 +282,10 @@ public:
         PB_AddRegister->setObjectName(QString::fromUtf8("PB_AddRegister"));
         PB_AddRegister->setEnabled(false);
         PB_AddRegister->setFont(font1);
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8("Icons/AddRegOn.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon4.addFile(QString::fromUtf8("Icons/AddRegNot.png"), QSize(), QIcon::Disabled, QIcon::Off);
-        PB_AddRegister->setIcon(icon4);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8("Icons/AddRegOn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon5.addFile(QString::fromUtf8("Icons/AddRegNot.png"), QSize(), QIcon::Disabled, QIcon::Off);
+        PB_AddRegister->setIcon(icon5);
         PB_AddRegister->setIconSize(QSize(30, 30));
         PB_AddRegister->setAutoDefault(true);
         PB_AddRegister->setFlat(false);
@@ -288,10 +296,10 @@ public:
         PB_RemoveRegister->setObjectName(QString::fromUtf8("PB_RemoveRegister"));
         PB_RemoveRegister->setEnabled(false);
         PB_RemoveRegister->setFont(font1);
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8("Icons/DelRegOn.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon5.addFile(QString::fromUtf8("Icons/DelRegOff.png"), QSize(), QIcon::Disabled, QIcon::Off);
-        PB_RemoveRegister->setIcon(icon5);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8("Icons/DelRegOn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon6.addFile(QString::fromUtf8("Icons/DelRegOff.png"), QSize(), QIcon::Disabled, QIcon::Off);
+        PB_RemoveRegister->setIcon(icon6);
         PB_RemoveRegister->setIconSize(QSize(30, 30));
         PB_RemoveRegister->setCheckable(false);
         PB_RemoveRegister->setChecked(false);
@@ -409,6 +417,7 @@ public:
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
 
         toolBar->addAction(A_UpdateDatabase);
+        toolBar->addAction(A_Salary);
         toolBar->addSeparator();
         toolBar->addAction(Settings);
 
@@ -427,6 +436,7 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "UWOW Develop Helper", nullptr));
         Settings->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         A_UpdateDatabase->setText(QCoreApplication::translate("MainWindow", "UpdateDatabase", nullptr));
+        A_Salary->setText(QCoreApplication::translate("MainWindow", "Salary", nullptr));
         PB_GenerateCode->setText(QCoreApplication::translate("MainWindow", "Generate", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Spells IDs:", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Script Name:", nullptr));

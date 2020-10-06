@@ -8,13 +8,9 @@ class SalaryStatics
 
 public:
     static QVector<class Commit> Commits;
-
     static void UpdateCommitsList();
-
-    static QString const GetTotalSum();
-
+    static int GetTotalSum();
     static void SaveAll();
-
     static void GenerateReport();
 
     static QString LastCommit;

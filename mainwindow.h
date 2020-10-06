@@ -47,6 +47,8 @@ private slots:
 
     void on_LE_ScriptName_textChanged(const QString &arg1);
 
+    void on_A_Salary_triggered();
+
 private:
     Ui::MainWindow *ui;
 
