@@ -16,7 +16,7 @@ void SalaryStatics::GetCommitsLog(QString &Log)
 {
     QProcess proc;
     proc.setWorkingDirectory("c:/Users/Yourp/uWoW/735");
-    proc.start("C:\\Program Files\\Git\\bin\\bash.exe", {"-c", "git log --author=ysmart --date=iso -100"});
+    proc.start("C:\\Program Files\\Git\\bin\\bash.exe", {"-c", "git log origin/735 --author=ysmart --date=iso -100"});
     proc.waitForFinished();
     Log = proc.readAll();
     proc.close();
@@ -65,14 +65,20 @@ void SalaryStatics::UpdateCommitsList()
         Start = CodeStatics::GetIndexAfterString(&CommitsLog, "\n    ", End);
         End = CommitsLog.indexOf("\n\ncommit ", Start);
 
+        QString Message;
+
         if (End < 0)
         {
-            com.SetMessage(CommitsLog.mid(Start, CommitsLog.indexOf("\n", Start) - Start));
+            Message = CommitsLog.mid(Start, CommitsLog.indexOf("\n", Start) - Start);
+            Message.remove("    ");
+            com.SetMessage(Message);
             Commits.push_back(com);
             break;
         }
 
-        com.SetMessage(CommitsLog.mid(Start, End - Start));
+        Message = CommitsLog.mid(Start, End - Start);
+        Message.remove("    ");
+        com.SetMessage(Message);
         Commits.push_back(com);
     }
 
@@ -155,9 +161,15 @@ void SalaryStatics::GenerateReport()
         To = To.mid(0, To.indexOf(" "));
         FilesText += "\nTo:   " + To;
 
-        QString From = Commits.back().GetDate();
-        From = From.mid(0, From.indexOf(" "));
-        FilesText += "\nFrom: " + From;
+        QSettings Conf("SalaryData.ini", QSettings::IniFormat);
+        Conf.setIniCodec("UTF-8");
+
+        QString From = Conf.value("LastCommitDate", "").toString();
+
+        if (!From.isEmpty())
+        {
+            FilesText += "\nFrom: " + From;
+        }
     }
 
     FilesText += "\n\n\n\n";
@@ -165,4 +177,15 @@ void SalaryStatics::GenerateReport()
 
     TStream << FilesText;
     file.close();
+}
+
+void SalaryStatics::SaveLastCommit(Commit* com)
+{
+    LastCommit = com->GetName();
+
+    QSettings Conf("SalaryData.ini", QSettings::IniFormat);
+    Conf.setIniCodec("UTF-8");
+
+    QString Date = com->GetDate();
+    Conf.setValue("LastCommitDate", Date.mid(0, Date.indexOf(" ")));
 }

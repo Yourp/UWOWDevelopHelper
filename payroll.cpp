@@ -167,7 +167,13 @@ void Payroll::on_SB_CommitCost_valueChanged(const QString &arg1)
 void Payroll::on_PB_SendNewMonth_clicked()
 {
     int Index = ui->TW_Payroll->currentRow();
-    SalaryStatics::LastCommit = SalaryStatics::Commits[Index].GetName();
+
+    if (Index < 0)
+    {
+        return;
+    }
+
+    SalaryStatics::SaveLastCommit(&SalaryStatics::Commits[Index]);
     RefreshCommits();
 }
 

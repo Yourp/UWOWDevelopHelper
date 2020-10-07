@@ -6,14 +6,16 @@ class SalaryStatics
 {
     static void GetCommitsLog(QString& Log);
 
+    static QString LastCommit;
+
 public:
     static QVector<class Commit> Commits;
     static void UpdateCommitsList();
     static int GetTotalSum();
     static void SaveAll();
     static void GenerateReport();
+    static void SaveLastCommit(Commit* com);
 
-    static QString LastCommit;
 };
 
 #endif // SALARYSTATICS_H
