@@ -71,6 +71,11 @@ class AuraEffectAbsorbFn : public ScriptRegisterBase
     public: AuraEffectAbsorbFn();
 };
 
+class AuraApplyAndRemoveFn : public ScriptRegisterBase
+{
+    public: AuraApplyAndRemoveFn();
+};
+
 
 
 

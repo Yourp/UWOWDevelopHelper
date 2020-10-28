@@ -13,6 +13,8 @@ enum class AuraScriptRegisters
     AfterEffectApply,
     OnEffectRemove,
     AfterEffectRemove,
+    AfterAuraApply,
+    AfterAuraRemove,
     OnEffectPeriodic,
     OnAuraUpdate,
     OnEffectUpdate,

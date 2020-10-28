@@ -68,7 +68,7 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setWindowModality(Qt::NonModal);
         MainWindow->setEnabled(true);
-        MainWindow->resize(632, 605);
+        MainWindow->resize(632, 685);
         MainWindow->setContextMenuPolicy(Qt::NoContextMenu);
         QIcon icon;
         icon.addFile(QString::fromUtf8("Icons/ProgramMain.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -108,7 +108,7 @@ public:
         Tabs->setObjectName(QString::fromUtf8("Tabs"));
         layoutWidget = new QWidget(Tabs);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 201, 501));
+        layoutWidget->setGeometry(QRect(10, 10, 201, 581));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -174,7 +174,7 @@ public:
 
         layoutWidget1 = new QWidget(Tabs);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(220, 10, 402, 501));
+        layoutWidget1->setGeometry(QRect(220, 10, 402, 581));
         verticalLayout_2 = new QVBoxLayout(layoutWidget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);

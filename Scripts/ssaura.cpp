@@ -45,6 +45,14 @@ SSAura::SSAura() : SpellScript()
     REGISTER(AfterEffectRemove)->Name = "AfterEffectRemove";
     REGISTER(AfterEffectRemove)->DefaultFunctionName = "HandleAfterRemove";
 
+    REGISTER(AfterAuraApply) = new AuraApplyAndRemoveFn();
+    REGISTER(AfterAuraApply)->Name = "AfterAuraApply";
+    REGISTER(AfterAuraApply)->DefaultFunctionName = "HandleAfterApply";
+
+    REGISTER(AfterAuraRemove) = new AuraApplyAndRemoveFn();
+    REGISTER(AfterAuraRemove)->Name = "AfterAuraRemove";
+    REGISTER(AfterAuraRemove)->DefaultFunctionName = "HandleAfterRemove";
+
     REGISTER(OnEffectPeriodic) = new ScriptRegisterBase();
     REGISTER(OnEffectPeriodic)->Name = "OnEffectPeriodic";
     REGISTER(OnEffectPeriodic)->DefaultFunctionName = "OnPeriodic";

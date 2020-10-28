@@ -49,3 +49,10 @@ AuraEffectAbsorbFn::AuraEffectAbsorbFn()
     FunctionsReturnType = "void";
     InitializationTemplate = "AuraEffectAbsorbFn(@CLASSNAME::@FUNCTIONNAME, EFFECT_0, SPELL_AURA_SCHOOL_ABSORB)";
 }
+
+AuraApplyAndRemoveFn::AuraApplyAndRemoveFn() : ScriptRegisterBase()
+{
+    FunctionsParameters = "AuraApplication* Application";
+    FunctionsReturnType = "void";
+    InitializationTemplate = "AuraApplyAndRemoveFn(@CLASSNAME::@FUNCTIONNAME)";
+}
