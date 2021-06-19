@@ -32,6 +32,12 @@ Makefile*
 *_resource.rc
 *_wrapper.bat
 *_wrapper.sh
+*.creator.user*
+*.pro.user*
+*.pyqtc.user*
+*.qbs.user*
+*.qmlproject.user*
+CMakeLists.txt.user*
 
 # Compiled Java class files
 *.class
