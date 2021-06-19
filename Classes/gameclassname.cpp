@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QTextStream>
 
+/** All classes are unique. Consistency is important. */
 QVector<GameClassName*> const GameClassName::Classes =
 {
     new Generic(),
@@ -20,7 +21,6 @@ QVector<GameClassName*> const GameClassName::Classes =
     new Monk(),
     new DemonHunter()
 };
-
 
 void GameClassName::UpdateScriptNames(const QString &Path)
 {

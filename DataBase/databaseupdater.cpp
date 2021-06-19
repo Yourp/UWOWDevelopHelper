@@ -1,6 +1,6 @@
 #include "databaseupdater.h"
 #include "Tools/textstatics.h"
-#include "settingswindow.h"
+#include "ProgramWindows/settingswindow.h"
 
 DatabaseUpdater::DatabaseUpdater(QString name) : Name(name)
 {
@@ -13,14 +13,13 @@ void DatabaseUpdater::SetLastUpdatesTime(qint64 MSTime)
     SettingsWindow::SaveToConfig("SQL", Name + "/LastTimeUpdate", LastUpdatesTime);
 }
 
-void DatabaseUpdater::GetAllSQLsInOneStrings(QStringList& List)
+void DatabaseUpdater::GetAllSQLs(QStringList& List)
 {
-    QString CheckFolder = Folder;
-    QStringList ScanedDir = QDir(CheckFolder).entryList(QDir::Filter::Files, QDir::SortFlag::Time | QDir::SortFlag::Reversed);
+    QStringList ScanedDir = QDir(Folder).entryList(QDir::Filter::Files, QDir::SortFlag::Time | QDir::SortFlag::Reversed);
 
     for (auto const& FileName : ScanedDir)
     {
-        QString FilePath = CheckFolder + "/" + FileName;
+        QString FilePath = Folder + "/" + FileName;
         QFileInfo FI(FilePath);
 
         if (FI.suffix() == "sql")
@@ -53,12 +52,11 @@ bool DatabaseUpdater::HasNewSQLs()
         return false;
     }
 
-    QString CheckFolder = Folder;
-    QStringList ScanedDir = QDir(CheckFolder).entryList(QDir::Filter::Files, QDir::SortFlag::Time);
+    QStringList ScanedDir = QDir(Folder).entryList(QDir::Filter::Files, QDir::SortFlag::Time);
 
     for (auto const& Itr : ScanedDir)
     {
-        QFileInfo FI(CheckFolder + "/" + Itr);
+        QFileInfo FI(Folder + "/" + Itr);
 
         if (FI.suffix() == "sql")
         {
@@ -73,7 +71,7 @@ void DatabaseUpdater::Update(DataBaseConnector* Connector)
 {
     QStringList List;
     List.reserve(1000000);
-    GetAllSQLsInOneStrings(List);
+    GetAllSQLs(List);
 
     if (List.isEmpty())
     {
