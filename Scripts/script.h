@@ -2,7 +2,7 @@
 #define SCRIPT_H
 
 
-#include "ObjectBase.h"
+#include "Classes/ObjectBase.h"
 #include "Registers/scriptregister.h"
 
 

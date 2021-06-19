@@ -3,7 +3,7 @@
 #include "DataBase/databaseupdaterstatics.h"
 #include "DataBase/databaseconnectorstatics.h"
 #include "Scripts/spellscript.h"
-#include "Classes/classname.h"
+#include "Classes/gameclassname.h"
 #include "mainwindow.h"
 #include "settingswindow.h"
 #include "Tools/statictools.h"
@@ -43,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     Registers.reserve(20);
 
     FillComboBox(ui->CB_Scripts, StaticTools::ConvertQVector<ObjectBase>(Script::Scripts), QSize(10, 20));
-    FillComboBox(ui->CB_Classes, StaticTools::ConvertQVector<ObjectBase>(ClassName::Classes), QSize(10, 20));
+    FillComboBox(ui->CB_Classes, StaticTools::ConvertQVector<ObjectBase>(GameClassName::Classes), QSize(10, 20));
 
 
     ui->A_UpdateDatabase->setEnabled(false);
@@ -60,7 +60,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_PB_GenerateCode_released()
 {
-    ClassName* Class = ClassName::Classes[ui->CB_Classes->currentIndex()];
+    GameClassName* Class = GameClassName::Classes[ui->CB_Classes->currentIndex()];
 
     if (!Class)
     {
@@ -105,7 +105,7 @@ void MainWindow::on_PB_GenerateCode_released()
 
 void MainWindow::on_CB_Classes_currentIndexChanged(int index)
 {
-    if (ClassName* Element = ClassName::Classes.at(index))
+    if (GameClassName* Element = GameClassName::Classes.at(index))
     {
         Element->UpdateScriptNames(Element->GetScriptsFilePath());
         ui->LE_ScriptName->setText(Element->GetPrefix());
@@ -264,7 +264,7 @@ void MainWindow::FillComboBox(QComboBox *Box, QVector<ObjectBase*> const& From, 
 
 void MainWindow::on_LE_ScriptName_textChanged(const QString &arg1)
 {
-    if (ClassName* Element = ClassName::Classes.at(ui->CB_Classes->currentIndex()))
+    if (GameClassName* Element = GameClassName::Classes.at(ui->CB_Classes->currentIndex()))
     {
         ui->PB_GenerateCode->setEnabled(!Element->HasScriptClass(arg1));
     }

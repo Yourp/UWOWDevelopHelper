@@ -2,7 +2,7 @@
 #include "Scripts/spellscript.h"
 #include "ui_settingswindow.h"
 #include "mainwindow.h"
-#include "Classes/classname.h"
+#include "Classes/gameclassname.h"
 #include "DataBase/databaseconnectorstatics.h"
 #include "DataBase/databaseupdaterstatics.h"
 #include "Settings/databasesettings.h"
@@ -28,7 +28,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
     setFixedSize(size());
 
 
-    for (auto& Class : ClassName::Classes)
+    for (auto& Class : GameClassName::Classes)
     {
         QListWidgetItem* NewItem = new QListWidgetItem(Class->GetName());
         NewItem->setSizeHint(QSize(10, 20));
@@ -39,9 +39,9 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::Se
 
     LoadConfig();
 
-    for (int i = 0; i < ClassName::Classes.size(); ++i)
+    for (int i = 0; i < GameClassName::Classes.size(); ++i)
     {
-        QString Path = ClassName::Classes[i]->GetScriptsFilePath();
+        QString Path = GameClassName::Classes[i]->GetScriptsFilePath();
         ui->LW_SettingsClassesScripts->item(i)->setIcon(GetValidationIcon(Path));
     }
 
@@ -163,7 +163,7 @@ void SettingsWindow::LoadConfig()
     Conf.endGroup();
 
     Conf.beginGroup("SpellScript");
-    for (auto& Class : ClassName::Classes)
+    for (auto& Class : GameClassName::Classes)
     {
         Class->SetScriptsFilePath(Conf.value("Classes/" + Class->GetName()).toString());
     }
@@ -198,7 +198,7 @@ void SettingsWindow::SaveConfig()
     Conf.endGroup();
 
     Conf.beginGroup("SpellScript");
-    for (auto& Class : ClassName::Classes)
+    for (auto& Class : GameClassName::Classes)
     {
         SaveToConfig(Conf, "Classes/" + Class->GetName(), Class->GetScriptsFilePath());
     }
@@ -287,14 +287,14 @@ void SettingsWindow::on_LW_SettingsCategories_currentRowChanged(int currentRow)
 
 void SettingsWindow::on_LW_SettingsClassesScripts_currentRowChanged(int currentRow)
 {
-    ui->LE_ClassesScriptsPath->setText(ClassName::Classes[currentRow]->GetScriptsFilePath());
+    ui->LE_ClassesScriptsPath->setText(GameClassName::Classes[currentRow]->GetScriptsFilePath());
 }
 
 void SettingsWindow::on_LE_ClassesScriptsPath_textChanged(const QString &arg1)
 {
     int ClassIndex = ui->LW_SettingsClassesScripts->currentRow();
 
-    if (ClassName* Class = ClassName::Classes.at(ClassIndex))
+    if (GameClassName* Class = GameClassName::Classes.at(ClassIndex))
     {
         if (Class->GetScriptsFilePath() != arg1)
         {

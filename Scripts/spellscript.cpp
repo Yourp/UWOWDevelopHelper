@@ -1,8 +1,8 @@
 #include <QListWidget>
 #include "spellscript.h"
 #include "Tools/textstatics.h"
-#include "mainwindow.h"
-#include "settingswindow.h"
+#include "ProgramWindows/mainwindow.h"
+#include "ProgramWindows/settingswindow.h"
 #include "DataBase/databaseconnectorstatics.h"
 #include "DataBase/databaseupdaterstatics.h"
 

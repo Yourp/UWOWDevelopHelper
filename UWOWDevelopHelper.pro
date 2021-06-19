@@ -18,7 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Classes/classname.cpp \
+    Classes/gameclassname.cpp \
     DataBase/databaseconnector.cpp \
     DataBase/databaseconnectorstatics.cpp \
     DataBase/databaseupdater.cpp \
@@ -43,7 +43,7 @@ SOURCES += \
     Tools/textstatics.cpp
 
 HEADERS += \
-    Classes/classname.h \
+    Classes/gameclassname.h \
     DataBase/databaseconnector.h \
     DataBase/databaseconnectorstatics.h \
     DataBase/databaseupdater.h \

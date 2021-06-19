@@ -2,7 +2,7 @@
 #define SCRIPTREGISTER_H
 
 #include <QString>
-#include <ObjectBase.h>
+#include "Classes/ObjectBase.h"
 
 
 class ScriptRegisterBase : public ObjectBase

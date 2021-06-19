@@ -1,5 +1,5 @@
 #include "databasesettings.h"
-#include "settingswindow.h"
+#include "ProgramWindows/settingswindow.h"
 
 
 

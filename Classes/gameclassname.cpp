@@ -1,10 +1,10 @@
-#include "classname.h"
-#include "textstatics.h"
+#include "gameclassname.h"
+#include "Tools/textstatics.h"
 #include <QVector>
 #include <QFile>
 #include <QTextStream>
 
-QVector<ClassName*> const ClassName::Classes =
+QVector<GameClassName*> const GameClassName::Classes =
 {
     new Generic(),
     new Mage(),
@@ -22,7 +22,7 @@ QVector<ClassName*> const ClassName::Classes =
 };
 
 
-void ClassName::UpdateScriptNames(const QString &Path)
+void GameClassName::UpdateScriptNames(const QString &Path)
 {
     ScriptNamesInFile.clear();
 
@@ -42,12 +42,12 @@ void ClassName::UpdateScriptNames(const QString &Path)
     file.close();
 }
 
-void ClassName::AddScriptName(const QString &Name)
+void GameClassName::AddScriptName(const QString &Name)
 {
     ScriptNamesInFile += Name + ' ';
 }
 
-bool ClassName::HasScriptClass(const QString &ScriptName)
+bool GameClassName::HasScriptClass(const QString &ScriptName)
 {
     return !ScriptName.isEmpty() && ScriptNamesInFile.contains(ScriptName + ' ');
 }

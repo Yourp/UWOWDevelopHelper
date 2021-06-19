@@ -1,7 +1,7 @@
 #ifndef SPELLSCRIPT_H
 #define SPELLSCRIPT_H
 
-#include "script.h"
+#include "Scripts/script.h"
 #include "Registers/scriptregister.h"
 #include <QVector>
 
