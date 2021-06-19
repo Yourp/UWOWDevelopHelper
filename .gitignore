@@ -7,6 +7,32 @@
 node_modules/
 dist/
 
+#QT
+.qmake.cache
+.qmake.stash
+Makefile*
+*.a
+*.app
+*.autosave
+*.core
+*.debug
+*.embed.manifest
+*.moc
+*.o
+*.obj
+*.orig
+*.prl
+*.qm
+*.rc
+*.rej
+*.res
+*.so
+*.so.*
+*_pch.h.cpp
+*_resource.rc
+*_wrapper.bat
+*_wrapper.sh
+
 # Compiled Java class files
 *.class
 
