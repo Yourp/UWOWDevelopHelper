@@ -39,6 +39,7 @@ Makefile*
 *.qmlproject.user*
 CMakeLists.txt.user*
 ui_*.h
+*.pro.user*
 
 # MinGW generated files
 *.Debug
