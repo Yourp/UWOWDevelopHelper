@@ -40,6 +40,10 @@ Makefile*
 CMakeLists.txt.user*
 ui_*.h
 
+# MinGW generated files
+*.Debug
+*.Release
+
 # Compiled Java class files
 *.class
 
