@@ -48,7 +48,7 @@ HEADERS += \
     DataBase/databaseconnectorstatics.h \
     DataBase/databaseupdater.h \
     DataBase/databaseupdaterstatics.h \
-    ObjectBase.h \
+    Classes/ObjectBase.h \
     Registers/Spell/spellcastfn.h \
     Registers/Spell/spelleffectfn.h \
     Registers/Spell/spellhitfn.h \
