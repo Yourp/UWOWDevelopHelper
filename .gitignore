@@ -38,6 +38,7 @@ Makefile*
 *.qbs.user*
 *.qmlproject.user*
 CMakeLists.txt.user*
+ui_*.h
 
 # Compiled Java class files
 *.class
