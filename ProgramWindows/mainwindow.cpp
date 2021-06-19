@@ -6,8 +6,8 @@
 #include "Classes/classname.h"
 #include "mainwindow.h"
 #include "settingswindow.h"
-#include "statictools.h"
-#include "payroll.h"
+#include "Tools/statictools.h"
+#include "ProgramWindows/payroll.h"
 
 
 
@@ -50,9 +50,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QTimer* timer = new QTimer();
     timer->start(2000);
     connect(timer, SIGNAL(timeout()), this, SLOT(OnTick()));
-
-    //SettingWindow->exec();
-    //PayrollWindow->exec();
 }
 
 MainWindow::~MainWindow()

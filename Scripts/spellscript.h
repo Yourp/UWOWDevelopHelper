@@ -2,7 +2,7 @@
 #define SPELLSCRIPT_H
 
 #include "script.h"
-#include "scriptregister.h"
+#include "Registers/scriptregister.h"
 #include <QVector>
 
 

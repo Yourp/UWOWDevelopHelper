@@ -1,5 +1,5 @@
 #include "databaseupdater.h"
-#include "textstatics.h"
+#include "Tools/textstatics.h"
 #include "settingswindow.h"
 
 DatabaseUpdater::DatabaseUpdater(QString name) : Name(name)

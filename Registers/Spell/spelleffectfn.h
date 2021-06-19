@@ -1,7 +1,7 @@
 #ifndef SPELLEFFECTFN_H
 #define SPELLEFFECTFN_H
 
-#include "scriptregister.h"
+#include "Registers/scriptregister.h"
 
 
 class SpellEffectFn : public ScriptRegisterBase

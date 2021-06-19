@@ -1,7 +1,6 @@
 #include <QListWidget>
-//#include <QStringList>
 #include "spellscript.h"
-#include "textstatics.h"
+#include "Tools/textstatics.h"
 #include "mainwindow.h"
 #include "settingswindow.h"
 #include "DataBase/databaseconnectorstatics.h"

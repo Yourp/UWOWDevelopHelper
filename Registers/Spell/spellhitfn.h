@@ -1,7 +1,7 @@
 #ifndef SPELLHITFN_H
 #define SPELLHITFN_H
 
-#include "scriptregister.h"
+#include "Registers/scriptregister.h"
 
 
 class SpellHitFn : public ScriptRegisterBase

@@ -1,7 +1,7 @@
 #ifndef SPELLCASTFN_H
 #define SPELLCASTFN_H
 
-#include "scriptregister.h"
+#include "Registers/scriptregister.h"
 
 
 class SpellCastFn : public ScriptRegisterBase

@@ -3,7 +3,7 @@
 
 
 #include "ObjectBase.h"
-#include "scriptregister.h"
+#include "Registers/scriptregister.h"
 
 
 class Script : public ObjectBase

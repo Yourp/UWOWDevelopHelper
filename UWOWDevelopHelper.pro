@@ -35,13 +35,12 @@ SOURCES += \
     Settings/settingbase.cpp \
     SpecialsWidgets/lineeditwithicon.cpp \
     main.cpp \
-    mainwindow.cpp \
-    payroll.cpp \
-    script.cpp \
-    scriptregister.cpp \
-    settingswindow.cpp \
-    statictools.cpp \
-    textstatics.cpp
+    ProgramWindows/mainwindow.cpp \
+    ProgramWindows/payroll.cpp \
+    Scripts/script.cpp \
+    Registers/scriptregister.cpp \
+    ProgramWindows/settingswindow.cpp \
+    Tools/textstatics.cpp
 
 HEADERS += \
     Classes/classname.h \
@@ -61,18 +60,18 @@ HEADERS += \
     Settings/databasesettings.h \
     Settings/settingbase.h \
     SpecialsWidgets/lineeditwithicon.h \
-    mainwindow.h \
-    payroll.h \
-    script.h \
-    scriptregister.h \
-    settingswindow.h \
-    statictools.h \
-    textstatics.h
+    ProgramWindows/mainwindow.h \
+    ProgramWindows/payroll.h \
+    Scripts/script.h \
+    Registers/scriptregister.h \
+    ProgramWindows/settingswindow.h \
+    Tools/statictools.h \
+    Tools/textstatics.h
 
 FORMS += \
-    mainwindow.ui \
-    payroll.ui \
-    settingswindow.ui
+    Forms/mainwindow.ui \
+    Forms/payroll.ui \
+    Forms/settingswindow.ui
 
 TRANSLATIONS += \
     TestProj_ru_RU.ts

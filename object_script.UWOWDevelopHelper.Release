@@ -20,7 +20,6 @@ release/payroll.o
 release/script.o
 release/scriptregister.o
 release/settingswindow.o
-release/statictools.o
 release/textstatics.o
 release/moc_mainwindow.o
 release/moc_payroll.o

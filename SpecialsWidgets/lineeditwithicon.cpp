@@ -26,7 +26,5 @@ void LineEditWithIcon::paintEvent(QPaintEvent * event)
         int x = width() - pxm.width() - 3;
 
         painter.drawPixmap(x, 3, pxm);
-//        painter.setPen(QColor("lightgrey"));
-//        painter.drawLine(cx + 2, 3, cx + 2, height() - 4);
     }
 }

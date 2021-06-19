@@ -1,5 +1,5 @@
 #include "script.h"
-#include "textstatics.h"
+#include "Tools/textstatics.h"
 #include "Scripts/ssaura.h"
 #include "Scripts/ssspell.h"
 
