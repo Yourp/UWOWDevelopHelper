@@ -21,7 +21,7 @@ class DataBaseSettings : public Setting
 public:
 
     static QString GetHostName();
-    static int GetPort();
+    static int     GetPort();
     static QString GetUserName();
     static QString GetPassword();
 };

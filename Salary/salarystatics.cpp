@@ -1,7 +1,7 @@
 #include "salarystatics.h"
 #include "Salary/commit.h"
 #include "salarystatics.h"
-#include "textstatics.h"
+#include "Tools/textstatics.h"
 #include <QProcess>
 #include <QSettings>
 #include <QFile>
@@ -15,6 +15,8 @@ QString SalaryStatics::LastCommit;
 void SalaryStatics::GetCommitsLog(QString &Log)
 {
     QProcess proc;
+
+    // TODO: Temp solution.
     proc.setWorkingDirectory("c:/Users/Yourp/uWoW/735");
     proc.start("C:\\Program Files\\Git\\bin\\bash.exe", {"-c", "git log origin/735 --author=ysmart --date=iso -100"});
     proc.waitForFinished();
@@ -82,7 +84,7 @@ void SalaryStatics::UpdateCommitsList()
         Commits.push_back(com);
     }
 
-    for (auto& Itr : Commits)
+    for (Commit& Itr : Commits)
     {
         Itr.SetCost(Conf.value("Cost/" + Itr.GetName(), "0").toString());
         Itr.SetComment(Conf.value("Comment/" + Itr.GetName(), "").toString());
@@ -93,7 +95,7 @@ int SalaryStatics::GetTotalSum()
 {
     int Sum = 0;
 
-    for (auto const& Itr : Commits)
+    for (Commit const& Itr : Commits)
     {
         Sum += Itr.GetCost().toInt(nullptr, 0);
     }
@@ -108,7 +110,7 @@ void SalaryStatics::SaveAll()
 
     Conf.setValue("LastCommit", LastCommit);
 
-    for (auto& Itr : Commits)
+    for (Commit& Itr : Commits)
     {
         if (Itr.Cost != "0" || Conf.contains("Cost/" + Itr.GetName()))
         {
@@ -141,7 +143,7 @@ void SalaryStatics::GenerateReport()
     file.resize(0);
     QString FilesText;
 
-    for (auto const& Com : Commits)
+    for (Commit const& Com : Commits)
     {
         FilesText += Com.GetMessage();
         FilesText += "\n";

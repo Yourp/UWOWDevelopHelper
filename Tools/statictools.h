@@ -7,17 +7,18 @@ class StaticTools
     StaticTools() {}
 public:
 
+    /** Casting dynamically all elements of the vector. */
     template<class To, class From>
-    static QVector<To *> ConvertQVector(QVector<From*> const& Source);
+    static QVector<To *> ConvertQVectorTo(QVector<From*> const& Source);
 
 };
 
 template<class To, class From>
-QVector<To *> StaticTools::ConvertQVector(QVector<From *> const& Source)
+QVector<To *> StaticTools::ConvertQVectorTo(QVector<From *> const& Source)
 {
     QVector<To*> Result;
 
-    for (auto const& Itr : Source)
+    for (From* Itr : Source)
     {
         if (To* Element = dynamic_cast<To*>(Itr))
         {

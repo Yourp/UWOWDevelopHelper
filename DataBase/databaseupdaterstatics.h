@@ -3,6 +3,8 @@
 
 #include "DataBase/databaseupdater.h"
 
+
+/** This class help as to get access to all database updaters. */
 class DatabaseUpdaterStatics
 {
     DatabaseUpdaterStatics() {}

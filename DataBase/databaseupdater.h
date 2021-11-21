@@ -6,7 +6,7 @@
 
 /**
  * This class helps as to update our database in one click.
- * It find a new sql files and apply them to the database.
+ * It find a new sql files and apply them to the our database.
  */
 class DatabaseUpdater
 {

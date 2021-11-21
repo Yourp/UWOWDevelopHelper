@@ -6,24 +6,24 @@
 SelectedScriptRegister::SelectedScriptRegister(const ScriptRegisterBase& Base, QString const& FuncName)  : ScriptRegisterBase(), FunctionName(FuncName)
 {
     Name = Base.GetName();
-    DefaultFunctionName = Base.GetDefaultFunctionName();
-    FunctionsParameters = Base.GetFunctionsParameters();
-    FunctionsReturnType = Base.GetFunctionsReturnType();
+    DefaultFunctionName    = Base.GetDefaultFunctionName();
+    FunctionsParameters    = Base.GetFunctionsParameters();
+    FunctionsReturnType    = Base.GetFunctionsReturnType();
     InitializationTemplate = Base.GetInitializationTemplate();
 }
 
 
 AuraDispelFn::AuraDispelFn() : ScriptRegisterBase()
 {
-    FunctionsParameters = "DispelInfo* Info";
-    FunctionsReturnType = "void";
+    FunctionsParameters    = "DispelInfo* Info";
+    FunctionsReturnType    = "void";
     InitializationTemplate = "AuraDispelFn(@CLASSNAME::@FUNCTIONNAME)";
 }
 
 AuraEffectApplyRemove::AuraEffectApplyRemove() : ScriptRegisterBase()
 {
-    FunctionsParameters = "AuraEffect const* AuraEff, AuraEffectHandleModes Mode";
-    FunctionsReturnType = "void";
+    FunctionsParameters    = "AuraEffect const* AuraEff, AuraEffectHandleModes Mode";
+    FunctionsReturnType    = "void";
 }
 
 AuraEffectApplyFn::AuraEffectApplyFn() : AuraEffectApplyRemove()
@@ -38,21 +38,21 @@ AuraEffectRemoveFn::AuraEffectRemoveFn()
 
 AuraEffectCalcAmountFn::AuraEffectCalcAmountFn()
 {
-    FunctionsParameters = "AuraEffect const* AuraEff, float& Amount, bool& CanBeRecalculated";
-    FunctionsReturnType = "void";
+    FunctionsParameters    = "AuraEffect const* AuraEff, float& Amount, bool& CanBeRecalculated";
+    FunctionsReturnType    = "void";
     InitializationTemplate = "AuraEffectCalcAmountFn(@CLASSNAME::@FUNCTIONNAME, EFFECT_0, SPELL_AURA_SCHOOL_ABSORB)";
 }
 
 AuraEffectAbsorbFn::AuraEffectAbsorbFn()
 {
-    FunctionsParameters = "AuraEffect* AuraEff, DamageInfo& DamageInfo, float& AbsorbAmount";
-    FunctionsReturnType = "void";
+    FunctionsParameters    = "AuraEffect* AuraEff, DamageInfo& DamageInfo, float& AbsorbAmount";
+    FunctionsReturnType    = "void";
     InitializationTemplate = "AuraEffectAbsorbFn(@CLASSNAME::@FUNCTIONNAME, EFFECT_0, SPELL_AURA_SCHOOL_ABSORB)";
 }
 
 AuraApplyAndRemoveFn::AuraApplyAndRemoveFn() : ScriptRegisterBase()
 {
-    FunctionsParameters = "AuraApplication* Application";
-    FunctionsReturnType = "void";
+    FunctionsParameters    = "AuraApplication* Application";
+    FunctionsReturnType    = "void";
     InitializationTemplate = "AuraApplyAndRemoveFn(@CLASSNAME::@FUNCTIONNAME)";
 }

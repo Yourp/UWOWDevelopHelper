@@ -33,7 +33,6 @@ enum class AuraScriptRegisters
     Max
 };
 
-
 class SSAura : public SpellScript
 {
 public:

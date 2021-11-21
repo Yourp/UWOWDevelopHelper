@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     SettingWindow = new SettingsWindow(this);
     PayrollWindow = nullptr;
 
+    /** Trying enabling hidden functional. */
     if (SettingWindow->HasPayrollOption())
     {
         PayrollWindow = new Payroll(this);
@@ -42,14 +43,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     Registers.reserve(20);
 
-    FillComboBox(ui->CB_Scripts, StaticTools::ConvertQVector<ObjectBase>(Script::Scripts), QSize(10, 20));
-    FillComboBox(ui->CB_Classes, StaticTools::ConvertQVector<ObjectBase>(GameClassName::Classes), QSize(10, 20));
-
+    FillComboBox(ui->CB_Scripts, StaticTools::ConvertQVectorTo<ObjectBase>(Script::Scripts), QSize(10, 20));
+    FillComboBox(ui->CB_Classes, StaticTools::ConvertQVectorTo<ObjectBase>(GameClassName::Classes), QSize(10, 20));
 
     ui->A_UpdateDatabase->setEnabled(false);
-    QTimer* timer = new QTimer();
-    timer->start(2000);
-    connect(timer, SIGNAL(timeout()), this, SLOT(OnTick()));
+
+    QTimer* UpdateTimer = new QTimer();
+    UpdateTimer->start(2000);
+    connect(UpdateTimer, SIGNAL(timeout()), this, SLOT(OnTick()));
 }
 
 MainWindow::~MainWindow()
@@ -173,9 +174,9 @@ void MainWindow::OnTick()
 {
     if (!ui->A_UpdateDatabase->isEnabled())
     {
-        ui->A_UpdateDatabase->setEnabled(DatabaseUpdaterStatics::World.HasNewSQLs() ||
-                                         DatabaseUpdaterStatics::Character.HasNewSQLs() ||
-                                         DatabaseUpdaterStatics::Login.HasNewSQLs());
+        ui->A_UpdateDatabase->setEnabled(DatabaseUpdaterStatics::World      .HasNewSQLs() ||
+                                         DatabaseUpdaterStatics::Character  .HasNewSQLs() ||
+                                         DatabaseUpdaterStatics::Login      .HasNewSQLs());
     }
 }
 
@@ -242,9 +243,10 @@ void MainWindow::on_LE_SpellIDs_textChanged(const QString &arg1)
 void MainWindow::on_A_UpdateDatabase_triggered()
 {
     ui->A_UpdateDatabase->setEnabled(false);
-    DatabaseUpdaterStatics::World.Update(&DatabaseConnectorStatics::World);
-    DatabaseUpdaterStatics::Character.Update(&DatabaseConnectorStatics::Character);
-    DatabaseUpdaterStatics::Login.Update(&DatabaseConnectorStatics::Login);
+
+    DatabaseUpdaterStatics::World       .Update(&DatabaseConnectorStatics::World);
+    DatabaseUpdaterStatics::Character   .Update(&DatabaseConnectorStatics::Character);
+    DatabaseUpdaterStatics::Login       .Update(&DatabaseConnectorStatics::Login);
 }
 
 void MainWindow::FillComboBox(QComboBox *Box, QVector<ObjectBase*> const& From, QSize Size)
@@ -253,9 +255,9 @@ void MainWindow::FillComboBox(QComboBox *Box, QVector<ObjectBase*> const& From, 
     {
         int Index = 0;
 
-        for (auto const& Itr : From)
+        for (ObjectBase* const& CurrentObject : From)
         {
-            Box->addItem(Itr->GetName());
+            Box->addItem(CurrentObject->GetName());
             Model->setData(Model->index(Index, 0), Size, Qt::SizeHintRole);
             Index++;
         }

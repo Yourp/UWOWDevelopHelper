@@ -10,7 +10,7 @@ QString SpellScript::SpellID;
 
 void SpellScript::FillOptionsListWidget(QListWidget* LW)
 {
-    for (auto const Itr : StaticRegisters)
+    for (ScriptRegisterBase const* Itr : StaticRegisters)
     {
         QListWidgetItem* NewItem = new QListWidgetItem(Itr->GetName());
         NewItem->setSizeHint(QSize(10, 20));
@@ -33,7 +33,7 @@ QString SpellScript::CreateScript(QString ScriptName, QVector<SelectedScriptRegi
 
     if (!Registers.isEmpty())
     {
-        for (auto const& Itr : Registers)
+        for (SelectedScriptRegister const& Itr : Registers)
         {
             Result += "\n\n    " + Itr.GetFunctionsReturnType() + " " + Itr.GetFunctionName() + "(" + Itr.GetFunctionsParameters() + ")";
             Result += "\n    {";
@@ -43,7 +43,7 @@ QString SpellScript::CreateScript(QString ScriptName, QVector<SelectedScriptRegi
         Result += "\n\n    void Register() override";
         Result += "\n    {";
 
-        for (auto const& Itr : Registers)
+        for (SelectedScriptRegister const& Itr : Registers)
         {
             QString RegisterLine = CodeStatics::ReplaceFirst(Itr.GetInitializationTemplate(), ClassFindMarker, ScriptName);
             RegisterLine = CodeStatics::ReplaceFirst(RegisterLine, FunctionFindMarker, Itr.GetFunctionName());
@@ -87,7 +87,7 @@ void SpellScript::HandleDataBase(MainWindow const* MW, SettingsWindow const* SW)
     QStringList SpellIDList = SpellID.split(' ', Qt::SkipEmptyParts);
     QString AddNew;
 
-    for (auto const& Itr : SpellIDList)
+    for (QString const& Itr : SpellIDList)
     {
         AddNew += "INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES ('" + Itr + "', '" + MW->GetScriptName() + "');\n";
     }
@@ -141,14 +141,3 @@ bool SpellScript::CheckPathAndFileValidation(const QString &Path, const QString 
 
     return FilesText.contains(AddScriptFunctionName);
 }
-
-
-
-
-
-
-
-
-
-
-

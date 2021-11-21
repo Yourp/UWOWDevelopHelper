@@ -13,7 +13,6 @@ class Setting : public SettingBase
 {
 public:
     Setting() : SettingBase() {}
-    virtual ~Setting() {}
 };
 
 #endif // SETTINGSBASE_H

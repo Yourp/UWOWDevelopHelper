@@ -82,9 +82,26 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Icons/not ok.png \
-    Icons/not ok.png \
-    Icons/not ok.png \
+    Icons/AddRegNot.png \
+    Icons/AddRegOn.png \
+    Icons/DBOff.png \
+    Icons/DBOn.png \
+    Icons/DelRegOff.png \
+    Icons/DelRegOn.png \
+    Icons/FindOff.png \
+    Icons/FindOn.png \
+    Icons/GenOff.png \
+    Icons/GenOn.png \
+    Icons/ICON.ico \
+    Icons/ProgramMain.png \
+    Icons/Salary.png \
+    Icons/SettDBOff.png \
+    Icons/SettDBOn.png \
+    Icons/SettSQLOff.png \
+    Icons/SettSQLOn.png \
+    Icons/SettScOff.png \
+    Icons/SettScOn.png \
+    Icons/SettingEnabled.png \
     Icons/not_ok.png \
     Icons/ok.png
 

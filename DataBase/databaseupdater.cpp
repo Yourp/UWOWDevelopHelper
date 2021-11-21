@@ -17,14 +17,14 @@ void DatabaseUpdater::GetAllSQLs(QStringList& List)
 {
     QStringList ScanedDir = QDir(Folder).entryList(QDir::Filter::Files, QDir::SortFlag::Time | QDir::SortFlag::Reversed);
 
-    for (auto const& FileName : ScanedDir)
+    for (QString const& FileName : ScanedDir)
     {
         QString FilePath = Folder + "/" + FileName;
-        QFileInfo FI(FilePath);
+        QFileInfo FInfo(FilePath);
 
-        if (FI.suffix() == "sql")
+        if (FInfo.suffix() == "sql")
         {
-            if (FI.lastModified().toMSecsSinceEpoch() > LastUpdatesTime)
+            if (FInfo.lastModified().toMSecsSinceEpoch() > LastUpdatesTime)
             {
                 QFile file(FilePath);
 

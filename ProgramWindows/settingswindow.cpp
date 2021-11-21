@@ -8,22 +8,17 @@
 #include "Settings/databasesettings.h"
 #include <QFileDialog>
 
-
-const QString SettingsWindow::VMark = "Icons/ok.png";
-const QString SettingsWindow::XMark = "Icons/not_ok.png";
-const QString SettingsWindow::ConfigFileName = "Config.ini";
-
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsWindow)
 {
     ui->setupUi(this);
     DataBaseSettings::HostName = ui->LE_HostName;
-    DataBaseSettings::Port = ui->LE_Port;
+    DataBaseSettings::Port     = ui->LE_Port;
     DataBaseSettings::UserName = ui->LE_UserName;
     DataBaseSettings::Password = ui->LE_Password;
 
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database", QIcon("Icons/SettDBOn.png")));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Database",          QIcon("Icons/SettDBOn.png")));
     ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("Scripts & Classes", QIcon("Icons/SettScOn.png")));
-    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("SQL & Saves", QIcon("Icons/SettSQLOn.png")));
+    ui->LW_SettingsCategories->addItem(CreateSettingWidgetItem("SQL & Saves",       QIcon("Icons/SettSQLOn.png")));
     ui->LW_SettingsCategories->setIconSize(QSize(25, 25));
     setFixedSize(size());
 
@@ -70,6 +65,21 @@ SettingsWindow::~SettingsWindow()
     delete ui;
 }
 
+const QString SettingsWindow::GetConfigFileName()
+{
+    return "Config.ini";
+}
+
+const QString SettingsWindow::GetVMark() const
+{
+    return "Icons/ok.png";
+}
+
+const QString SettingsWindow::GetXMark() const
+{
+    return "Icons/not_ok.png";
+}
+
 const QString SettingsWindow::GetWorldSQLsFolder() const
 {
     return ui->LE_WorldSQLFolder->text();
@@ -87,7 +97,7 @@ QIcon SettingsWindow::GetValidationIcon(const QString &Path) const
 
 QIcon SettingsWindow::GetValidationIcon(bool valid) const
 {
-    return QIcon(valid ? VMark : XMark);
+    return QIcon(valid ? GetVMark() : GetXMark());
 }
 
 QListWidgetItem *SettingsWindow::CreateSettingWidgetItem(QString const& ItemName, QIcon ico)
@@ -108,13 +118,7 @@ void SettingsWindow::EditButtonsWhenConnected()
     ui->PB_Disconnect->setEnabled(true);
     ui->PB_Disconnect->setStyleSheet("");
 
-    ui->LE_HostName->setEnabled(false);
-    ui->LE_Port->setEnabled(false);
-    ui->LE_UserName->setEnabled(false);
-    ui->LE_Password->setEnabled(false);
-    ui->LE_WorldDatabase->setEnabled(false);
-    ui->LE_CharacterDatabase->setEnabled(false);
-    ui->LE_LoginDatabase->setEnabled(false);
+    SetEnabledLinesWithConnectInfo(false);
 }
 
 void SettingsWindow::EditButtonsWhenDisconnected()
@@ -127,39 +131,44 @@ void SettingsWindow::EditButtonsWhenDisconnected()
     ui->PB_Connect->setEnabled(true);
     ui->PB_Connect->setStyleSheet("");
 
-    ui->LE_HostName->setEnabled(true);
-    ui->LE_Port->setEnabled(true);
-    ui->LE_UserName->setEnabled(true);
-    ui->LE_Password->setEnabled(true);
-    ui->LE_WorldDatabase->setEnabled(true);
-    ui->LE_CharacterDatabase->setEnabled(true);
-    ui->LE_LoginDatabase->setEnabled(true);
+    SetEnabledLinesWithConnectInfo(true);
+}
+
+void SettingsWindow::SetEnabledLinesWithConnectInfo(bool bEnable)
+{
+    ui->LE_HostName         ->setEnabled(bEnable);
+    ui->LE_Port             ->setEnabled(bEnable);
+    ui->LE_UserName         ->setEnabled(bEnable);
+    ui->LE_Password         ->setEnabled(bEnable);
+    ui->LE_WorldDatabase    ->setEnabled(bEnable);
+    ui->LE_CharacterDatabase->setEnabled(bEnable);
+    ui->LE_LoginDatabase    ->setEnabled(bEnable);
 }
 
 void SettingsWindow::LoadConfig()
 {
-    QSettings Conf(ConfigFileName, QSettings::IniFormat);
+    QSettings Conf(GetConfigFileName(), QSettings::IniFormat);
     Conf.setIniCodec("UTF-8");
 
     Conf.beginGroup("Database");
-    ui->LE_HostName->setText(Conf.value("HostName").toString());
-    ui->LE_Port->setText(Conf.value("Port").toString());
-    ui->LE_UserName->setText(Conf.value("UserName").toString());
-    ui->LE_Password->setText(Conf.value("Password").toString());
-    ui->LE_WorldDatabase->setText(Conf.value("WorldDatabase").toString());
-    ui->LE_CharacterDatabase->setText(Conf.value("CharacterDatabase").toString());
-    ui->LE_LoginDatabase->setText(Conf.value("LoginDatabase").toString());
+    ui->LE_HostName         ->setText(Conf.value("HostName")            .toString());
+    ui->LE_Port             ->setText(Conf.value("Port")                .toString());
+    ui->LE_UserName         ->setText(Conf.value("UserName")            .toString());
+    ui->LE_Password         ->setText(Conf.value("Password")            .toString());
+    ui->LE_WorldDatabase    ->setText(Conf.value("WorldDatabase")       .toString());
+    ui->LE_CharacterDatabase->setText(Conf.value("CharacterDatabase")   .toString());
+    ui->LE_LoginDatabase    ->setText(Conf.value("LoginDatabase")       .toString());
     Conf.endGroup();
 
     Conf.beginGroup("SQL");
-    ui->LE_SQLFileName->setText(Conf.value("SQLFileName", "00_spell_script_names").toString());
-    ui->LE_WorldSQLFolder->setText(Conf.value("WorldSQLFolder").toString());
-    ui->LE_CharacterSQLFolder->setText(Conf.value("CharacterSQLFolder").toString());
-    ui->LE_LoginSQLFolder->setText(Conf.value("LoginSQLFolder").toString());
+    ui->LE_SQLFileName          ->setText(Conf.value("SQLFileName", "00_spell_script_names").toString());
+    ui->LE_WorldSQLFolder       ->setText(Conf.value("WorldSQLFolder")                      .toString());
+    ui->LE_CharacterSQLFolder   ->setText(Conf.value("CharacterSQLFolder")                  .toString());
+    ui->LE_LoginSQLFolder       ->setText(Conf.value("LoginSQLFolder")                      .toString());
 
-    DatabaseUpdaterStatics::World.SetLastUpdatesTime(Conf.value("World/LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
-    DatabaseUpdaterStatics::Character.SetLastUpdatesTime(Conf.value("Character/LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
-    DatabaseUpdaterStatics::Login.SetLastUpdatesTime(Conf.value("Login/LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
+    DatabaseUpdaterStatics::World       .SetLastUpdatesTime(Conf.value("World/LastTimeUpdate",     QDateTime::currentMSecsSinceEpoch()).toLongLong());
+    DatabaseUpdaterStatics::Character   .SetLastUpdatesTime(Conf.value("Character/LastTimeUpdate", QDateTime::currentMSecsSinceEpoch()).toLongLong());
+    DatabaseUpdaterStatics::Login       .SetLastUpdatesTime(Conf.value("Login/LastTimeUpdate",     QDateTime::currentMSecsSinceEpoch()).toLongLong());
     Conf.endGroup();
 
     Conf.beginGroup("SpellScript");
@@ -173,28 +182,28 @@ void SettingsWindow::LoadConfig()
 
 void SettingsWindow::SaveConfig()
 {
-    QSettings Conf(ConfigFileName, QSettings::IniFormat);
+    QSettings Conf(GetConfigFileName(), QSettings::IniFormat);
     Conf.setIniCodec("UTF-8");
 
     Conf.beginGroup("Database");
-    SaveToConfig(Conf, "HostName", ui->LE_HostName->text());
-    SaveToConfig(Conf, "Port", ui->LE_Port->text());
-    SaveToConfig(Conf, "UserName", ui->LE_UserName->text());
-    SaveToConfig(Conf, "Password", ui->LE_Password->text());
-    SaveToConfig(Conf, "WorldDatabase", ui->LE_WorldDatabase->text());
-    SaveToConfig(Conf, "CharacterDatabase", ui->LE_CharacterDatabase->text());
-    SaveToConfig(Conf, "LoginDatabase", ui->LE_LoginDatabase->text());
+    SaveToConfig(Conf, "HostName",          ui->LE_HostName             ->text());
+    SaveToConfig(Conf, "Port",              ui->LE_Port                 ->text());
+    SaveToConfig(Conf, "UserName",          ui->LE_UserName             ->text());
+    SaveToConfig(Conf, "Password",          ui->LE_Password             ->text());
+    SaveToConfig(Conf, "WorldDatabase",     ui->LE_WorldDatabase        ->text());
+    SaveToConfig(Conf, "CharacterDatabase", ui->LE_CharacterDatabase    ->text());
+    SaveToConfig(Conf, "LoginDatabase",     ui->LE_LoginDatabase        ->text());
     Conf.endGroup();
 
     Conf.beginGroup("SQL");
-    SaveToConfig(Conf, "SQLFileName", ui->LE_SQLFileName->text());
-    SaveToConfig(Conf, "WorldSQLFolder", ui->LE_WorldSQLFolder->text());
-    SaveToConfig(Conf, "CharacterSQLFolder", ui->LE_CharacterSQLFolder->text());
-    SaveToConfig(Conf, "LoginSQLFolder", ui->LE_LoginSQLFolder->text());
+    SaveToConfig(Conf, "SQLFileName",        ui->LE_SQLFileName         ->text());
+    SaveToConfig(Conf, "WorldSQLFolder",     ui->LE_WorldSQLFolder      ->text());
+    SaveToConfig(Conf, "CharacterSQLFolder", ui->LE_CharacterSQLFolder  ->text());
+    SaveToConfig(Conf, "LoginSQLFolder",     ui->LE_LoginSQLFolder      ->text());
 
-    Conf.setValue("World/LastTimeUpdate", DatabaseUpdaterStatics::World.GetLastUpdatesTime());
-    Conf.setValue("Character/LastTimeUpdate", DatabaseUpdaterStatics::Character.GetLastUpdatesTime());
-    Conf.setValue("Login/LastTimeUpdate", DatabaseUpdaterStatics::Login.GetLastUpdatesTime());
+    Conf.setValue("World/LastTimeUpdate",     DatabaseUpdaterStatics::World     .GetLastUpdatesTime());
+    Conf.setValue("Character/LastTimeUpdate", DatabaseUpdaterStatics::Character .GetLastUpdatesTime());
+    Conf.setValue("Login/LastTimeUpdate",     DatabaseUpdaterStatics::Login     .GetLastUpdatesTime());
     Conf.endGroup();
 
     Conf.beginGroup("SpellScript");
@@ -229,7 +238,7 @@ void SettingsWindow::SaveToConfig(QSettings &Conf, const QString &Group, const Q
 
 void SettingsWindow::SaveToConfig(const QString &Group, const QString &Key, const QVariant &Veriable)
 {
-    QSettings Conf(ConfigFileName, QSettings::IniFormat);
+    QSettings Conf(GetConfigFileName(), QSettings::IniFormat);
     Conf.setIniCodec("UTF-8");
 
     SaveToConfig(Conf, Group, Key, Veriable);
@@ -237,7 +246,7 @@ void SettingsWindow::SaveToConfig(const QString &Group, const QString &Key, cons
 
 void SettingsWindow::SaveToConfig(const QString &Key, const QVariant &Veriable)
 {
-    QSettings Conf(ConfigFileName, QSettings::IniFormat);
+    QSettings Conf(GetConfigFileName(), QSettings::IniFormat);
     Conf.setIniCodec("UTF-8");
 
     SaveToConfig(Conf, Key, Veriable);
@@ -245,14 +254,14 @@ void SettingsWindow::SaveToConfig(const QString &Key, const QVariant &Veriable)
 
 void SettingsWindow::UpdateDatabasesLEIcons()
 {
-    ui->LE_WorldDatabase->SetIcon(GetValidationIcon(DatabaseConnectorStatics::World.IsOpen()));
-    ui->LE_CharacterDatabase->SetIcon(GetValidationIcon(DatabaseConnectorStatics::Character.IsOpen()));
-    ui->LE_LoginDatabase->SetIcon(GetValidationIcon(DatabaseConnectorStatics::Login.IsOpen()));
+    ui->LE_WorldDatabase    ->SetIcon(GetValidationIcon(DatabaseConnectorStatics::World     .IsOpen()));
+    ui->LE_CharacterDatabase->SetIcon(GetValidationIcon(DatabaseConnectorStatics::Character .IsOpen()));
+    ui->LE_LoginDatabase    ->SetIcon(GetValidationIcon(DatabaseConnectorStatics::Login     .IsOpen()));
 }
 
 bool SettingsWindow::HasPayrollOption() const
 {
-    QSettings Conf(ConfigFileName, QSettings::IniFormat);
+    QSettings Conf(GetConfigFileName(), QSettings::IniFormat);
     Conf.setIniCodec("UTF-8");
 
     return Conf.value("WithPayroll", "0").toInt() > 0;
@@ -260,18 +269,19 @@ bool SettingsWindow::HasPayrollOption() const
 
 void SettingsWindow::on_PB_Disconnect_clicked()
 {
-    DatabaseConnectorStatics::World.Disconnect();
-    DatabaseConnectorStatics::Character.Disconnect();
-    DatabaseConnectorStatics::Login.Disconnect();
+    DatabaseConnectorStatics::World     .Disconnect();
+    DatabaseConnectorStatics::Character .Disconnect();
+    DatabaseConnectorStatics::Login     .Disconnect();
+
     EditButtonsWhenDisconnected();
     UpdateDatabasesLEIcons();
 }
 
 void SettingsWindow::on_PB_Connect_clicked()
 {
-    DatabaseConnectorStatics::World.Connect(ui->LE_WorldDatabase->text());
-    DatabaseConnectorStatics::Character.Connect(ui->LE_CharacterDatabase->text());
-    DatabaseConnectorStatics::Login.Connect(ui->LE_LoginDatabase->text());
+    DatabaseConnectorStatics::World     .Connect(ui->LE_WorldDatabase       ->text());
+    DatabaseConnectorStatics::Character .Connect(ui->LE_CharacterDatabase   ->text());
+    DatabaseConnectorStatics::Login     .Connect(ui->LE_LoginDatabase       ->text());
 
     if (DatabaseConnectorStatics::World.IsOpen() || DatabaseConnectorStatics::Character.IsOpen() || DatabaseConnectorStatics::Login.IsOpen())
     {
