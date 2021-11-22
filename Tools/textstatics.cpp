@@ -124,7 +124,7 @@ QString CodeStatics::ReplaceFirst(const QString &Where, const QString WhatReplac
     return Result;
 }
 
-void CodeStatics::Split(QStringList &In, const QString &From, QChar EndLine, int Cicle)
+void CodeStatics::Split(QStringList &In, const QString &From, QChar EndOfLine, int Cicle)
 {
     QString row;
     row.reserve(Cicle * 1000);
@@ -139,7 +139,7 @@ void CodeStatics::Split(QStringList &In, const QString &From, QChar EndLine, int
         {
             Start = End;
 
-            End = CodeStatics::GetIndexAfterString(&From, EndLine, Start);
+            End = CodeStatics::GetIndexAfterString(&From, EndOfLine, Start);
 
             if (End < 0)
             {
