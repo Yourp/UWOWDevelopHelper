@@ -1,7 +1,5 @@
 ## Database
 
----
-
 ![](../Img/Setting_database.jpg)
 
 Данное окно необходимо для настройки подключения к базе данных.
@@ -27,4 +25,5 @@
 
 - [Главная](../../README.md)
 - [Руководство по настройке](Settings.md)
-- [](../Img/Setting_connected.jpg)
+- [Настройка Scripts & Classes](ScriptsAndClasses.md)
+- [Настройка SQL & Saves](SQLAndSaves.md)
