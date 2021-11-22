@@ -1,4 +1,5 @@
 ## Database
+---
 
 ![](../Img/Setting_database.jpg)
 
@@ -24,5 +25,5 @@
 #### Перейти на:
 
 - [Главная](../../README.md)
-- [](../Img/Setting_connected.jpg)
+- [Руководство по настройке](Settings.md)
 - [](../Img/Setting_connected.jpg)
