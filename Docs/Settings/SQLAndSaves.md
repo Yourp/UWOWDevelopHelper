@@ -19,3 +19,4 @@
 - [Руководство по настройке](Settings.md)
 - [Настройка Database](Database.md)
 - [Настройка Scripts & Classes](ScriptsAndClasses.md)
+  
