@@ -10,7 +10,9 @@
 
 ---
 
-Руководство по настройке и использованию находятся в [Wiki](https://github.com/Yourp/UWOWDevelopHelper/wiki)
+Скачать последнюю версию бинарника можно [здесь](https://github.com/Yourp/UWOWDevelopHelper/releases).
+
+Руководство по настройке и использованию находятся в [Wiki](https://github.com/Yourp/UWOWDevelopHelper/wiki).
 
 
 
