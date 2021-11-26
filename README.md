@@ -10,7 +10,7 @@
 
 ---
 
-[Руководство по настройке](Docs/Settings/Settings.md)
+Руководство по настройке и использованию находятся в [Wiki](https://github.com/Yourp/UWOWDevelopHelper/wiki)
 
 
 
