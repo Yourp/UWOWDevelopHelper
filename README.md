@@ -4,9 +4,9 @@
 
 **Возможности:**
 
-* [Генерация базового класса скриптов для способностей персонажей.](Docs/CodeGenerator/CodeGenerator.md)
-* [Обновление базы данных в один клик.](Docs/DBUpdater/DB_Updater.md)
-* [Контроль зарплаты и в один клик создание ежемесячных отчетов о проделанной работе. (Тест)](Docs/Salary/Salary.md)
+* [Генерация базового класса скриптов для способностей персонажей.](https://github.com/Yourp/UWOWDevelopHelper/wiki/Code-Generator)
+* [Обновление базы данных в один клик.](https://github.com/Yourp/UWOWDevelopHelper/wiki/Uprate-Database)
+* [Контроль зарплаты и в один клик создание ежемесячных отчетов о проделанной работе. (Тест)](https://github.com/Yourp/UWOWDevelopHelper/wiki/Payroll-Control)
 
 ---
 
